@@ -65,7 +65,7 @@ p { margin: 0; }
 .brand h1 { font-size: 32px; }
 .daily-card { text-align: left; border: 1px solid var(--line); background: var(--card); border-radius: var(--r); padding: 16px; display: flex; flex-direction: column; gap: 12px; cursor: pointer; width: 100%; }
 .dc-title { font-family: var(--display); font-size: 20px; font-weight: 650; margin: 2px 0; }
-.dc-dots { display: grid; grid-template-columns: repeat(9, 1fr); gap: 6px; }
+.dc-dots { display: grid; grid-template-columns: repeat(10, 1fr); gap: 5px; }
 .dc-dot { height: 6px; border-radius: 3px; background: var(--soft); }
 .dc-dot.part { background: var(--marker-soft); box-shadow: inset 0 0 0 1px var(--marker); }
 .dc-dot.ok { background: var(--accent); }
