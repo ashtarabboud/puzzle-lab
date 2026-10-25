@@ -1,6 +1,6 @@
 // Seven new games: Word Grid, Word Count, Word Rush, Word Trails, Cat Logic, Survey Says, Common Threads
 const fs=require('fs');
-const files=['core/base.js','data/words.js','data/five.js','games/_five.js','games/wordgrid.js','games/wordcount.js','games/_trace.js','games/wordrush.js','../data/trails.json','games/trails.js','games/catlogic.js','../data/survey.json','../data/survey_ff.json','games/survey.js'];
+const files=['core/base.js','data/words.js','data/five.js','games/_five.js','games/wordgrid.js','games/wordcount.js','games/_trace.js','games/wordrush.js','../data/trails.json','games/trails.js','games/catlogic.js','../data/survey.json','../data/survey_ff.json','games/_survey_match.js','games/survey.js'];
 const hasThreads=fs.existsSync(__dirname+'/../data/threads.json');
 if(hasThreads)files.push('../data/threads.json','games/threads.js');
 const PL=require('./load.js')(files);
@@ -43,6 +43,30 @@ ok(S._match({board:[{label:'7',n:68,answers:['7']},{label:'13',n:26,answers:['13
 for(let lv=1;lv<=10;lv++)for(let k=0;k<20;k++){const p=S.generate(lv,PL.rng('ff'+lv+'-'+k),{});ok(p.board.length>=3&&p.board.length<=8&&(p.src==='ff'||p.src==='pq'),'board size');
   if(p.src==='ff'){const q=B.ff.find(x=>x.id===p.id);ok(q&&q.clusters.length===p.board.length&&p.board.every((c,i)=>c.n===q.clusters[i].n&&c.label===q.clusters[i].label),'whole supplied board shown with its listed counts');}}
 {const seen=new Set();for(let k=0;k<40;k++)seen.add(S.generate(5,PL.rng('rep'+k),{}).src);ok(seen.has('ff'),'supplied questions are used');}
+// ---- Survey Says matching regression tests ----
+{const M=PL.surveyMatch,bd=(...ls)=>ls.map((l,i)=>({label:l,n:50-i*5,answers:[l.toLowerCase()]})),hit=(b,g)=>{const r=M.match(b,g);return r.i<0?null:b[r.i].label;};
+ const T=(b,g,want,why)=>{const got=hit(b,g);ok(got===want,why+': "'+g+'" → '+got+' (wanted '+want+')');};
+ const gloves=bd('Cold','Work','Gardening','Fashion','Cleaning');
+ T(gloves,'cooking',null,'cooking must not match cold');T(gloves,'cold weather',null,'a different head word is not the answer');
+ const food=bd('Cookies','Cook','Crooked Teeth');T(food,'cooking','Cook','cooking = cook (same verb)');T(food,'cookie','Cookies','singular/plural');T(food,'cooks','Cook','plural verb form');
+ const tattoo=bd('Tattoo','Piercing','Long Hair');T(tattoo,'tattoo','Tattoo','exact');T(tattoo,'tattoos','Tattoo','plural');T(tattoo,'tatoo','Tattoo','misspelt guess');T(tattoo,'TATTOOS!','Tattoo','case and punctuation');
+ const pets=bd('Veterinarian','Groomer','Pet Store');T(pets,'vet','Veterinarian','vet = veterinarian');T(pets,'the vet','Veterinarian','filler words ignored');T(pets,'pet shop',null,'shop is not store');
+ const home=bd('TV','Bicycle','Cell Phone','Refrigerator');T(home,'television','TV','TV = television');T(home,'bike','Bicycle','bike = bicycle');T(home,'mobile phone','Cell Phone','cellphone = mobile phone');T(home,'cellphone','Cell Phone','cellphone one word');T(home,'fridge','Refrigerator','fridge');T(home,'phone','Cell Phone','head word phone');
+ const w=bd('Hat','Cane','Baton');T(w,'cat',null,'a different real word is not a typo');T(w,'cane','Cane','exact');T(w,'can',null,'can is not cane');
+ const nums=bd('7','13','3');T(nums,'seven','7','number words');T(nums,'1',null,'other number');T(nums,'13th',null,'13th is an ordinal, not 13 — kept strict');
+ const times=bd('10','12','11','9');T(times,'10 pm','10','unit after a number');T(times,'midnight','12','midnight = 12');T(times,'$10','10','dollar sign');
+ const amb=bd('Cold Water','Hot Water','Juice');ok(M.match(amb,'water').ambiguous&&M.match(amb,'water').i<0,'ambiguous guess reveals nothing');T(amb,'cold water','Cold Water','specific guess');
+ const kiss=[{label:'Kiss/Touch',n:40,answers:['kiss/touch','kiss']},{label:'Touch',n:30,answers:['touch']}];T(kiss,'touch','Touch','exact answer beats a shared alternative');T(kiss,'kiss','Kiss/Touch','slash alternative');
+ const star=bd('R2-D2','Darth Vader','Lightsaber');T(star,'r2d2','R2-D2','spacing');T(star,'darth vadar','Darth Vader','small typo in a name');T(star,'light saber','Lightsaber','split compound');
+ const tags=bd('Wrap It','Remove Price Tag','Buy It');T(tags,'wrap','Wrap It','filler pronoun');T(tags,'price tag','Remove Price Tag','shorter phrase with the same head');T(tags,'tag',null,'one word of three is too little');T(tags,'take off price tag',null,'different verb');
+ const pump=bd('Pumpkin','Turkey','Leaves');T(pump,'a big pumpkin','Pumpkin','longer phrase with the same head');T(pump,'pumpkin pie',null,'pie is a different thing');
+ const brush=bd('Brush Teeth','Wash Face','Shower');T(brush,'brushing teeth','Brush Teeth','verb form');T(brush,'brush your tooth','Brush Teeth','irregular plural');
+ const ages=bd('Oprah','Ellen','Dr. Phil');T(ages,'oprha','Oprah','transposed letters');T(ages,'dr phil','Dr. Phil','abbreviation punctuation');T(ages,'doctor phil','Dr. Phil','dr = doctor');
+ // the spreadsheet audit: the misspelt source answer is corrected, so the correct spelling matches it
+ const src=B.ff.filter(q=>q.clusters.some(c=>/tattoo/i.test(c.label)));ok(src.length>0&&!B.ff.some(q=>q.clusters.some(c=>/\btatoo\b/i.test(c.label))),'“Tatoo” corrected in the data');
+ ok(!B.ff.some(q=>q.clusters.some(c=>/^(Shit\/Sweater|Hawii|Deoderant|Underware|Saxophone4Guitar)$/.test(c.label))),'known misspellings corrected');
+ ok(!B.ff.some(q=>q.clusters.some(c=>/\s\/|\/\s/.test(c.label))),'no stray spaces around slashes');
+ ok(!B.ff.some(q=>q.clusters.some(c=>c.label.length>3&&c.label===c.label.toUpperCase()&&/[A-Z]{5}/.test(c.label)&&!/\d|&|-/.test(c.label))),'no ALL-CAPS answers');}
 {const recent=[];for(let k=0;k<60;k++){const p=S.generate(4,PL.rng('rc'+k),{recent:recent.slice()});ok(recent.indexOf(p.tkey)<0,'no repeat within the last 60');recent.push(p.tkey);}}
 for(let lv=1;lv<=10;lv++){const p=S.generate(lv,PL.rng('sv'+lv),{});const gs=S.init(p);p.board.forEach((c,i)=>ok(S._match(p,gs,c.label)===i||(S._match(p,gs,c.label)>=0&&p.board[S._match(p,gs,c.label)].n>=c.n),'label matches its own slot'));ok(S._match(p,gs,'qwertyuiop')<0,'nonsense rejected');}
 // Common Threads
