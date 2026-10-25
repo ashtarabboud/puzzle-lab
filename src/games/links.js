@@ -96,7 +96,8 @@
       var cap = interior ? w.length : w.length - 1;
       if (gs.reveal[idx] >= cap) continue;
       gs.reveal[idx] = interior && gs.reveal[idx] >= 1 ? w.length : gs.reveal[idx] + 1;
-      var where = idx === 0 ? 'The first word' : idx === p.parts.length - 1 ? 'The last word' : 'The shared word';
+      var nShared = p.parts.length - 2, ord = ['first', 'second', 'third'];
+      var where = idx === 0 ? 'The first word' : idx === p.parts.length - 1 ? 'The last word' : nShared > 1 ? 'The ' + ord[idx - 1] + ' shared word' : 'The shared word';
       return { msg: gs.reveal[idx] >= w.length ? where + ' is ' + w + '.' : where + ' starts ' + w.slice(0, gs.reveal[idx]) + '…', gs: gs };
     }
     return { msg: 'Nothing more to reveal — you have every piece you need.', noCount: true };
