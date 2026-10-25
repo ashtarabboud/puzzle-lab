@@ -158,7 +158,7 @@
         var match = p.words.filter(function (pl) { return pl.w === w; })[0];
         if (match && !foundSet[w]) {
           gs.found.push(w); if (gs.hintW === w) { gs.hintW = null; gs.hintStage = 0; }
-          api.toast(match.span ? 'Theme word! ' + w : w, 'good'); if (PL.fx) PL.fx.good();
+          api.toast(match.span ? 'Theme word! ' + w : w, 'good');
           if (gs.found.length === p.words.length) { api.update(gs); api.finish('solved'); return; }
           api.update(gs); return;
         }

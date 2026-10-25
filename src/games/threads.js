@@ -106,7 +106,7 @@
     var hintWords = {}; if (gs.hintG != null && gs.hintStage >= 2) p.groups[gs.hintG].words.slice(0, gs.hintStage >= 3 ? 3 : 2).forEach(function (w) { hintWords[w] = 1; });
     return h('div', { class: 'threads' },
       h('div', { class: 'muted small' }, 'Find four groups of four words that share something. Select four, then submit.'),
-      gs.solved.map(function (gi) { var g = p.groups[gi]; return h('div', { class: 'th-solved d' + g.d }, h('b', null, g.name), h('div', { class: 'small' }, g.words.join(', '))); }),
+      gs.solved.map(function (gi) { var g = p.groups[gi]; return h('div', { class: 'th-solved d' + g.d + (!api.done && PL.fx && PL.fx.once('th:' + p.groups.map(function (x) { return x.name; }).join('|') + ':' + gi) ? ' land' : '') }, h('b', null, g.name), h('div', { class: 'small' }, g.words.join(', '))); }),
       gs.hintG != null && gs.solved.indexOf(gs.hintG) < 0 ? h('div', { class: 'hintline small' }, 'Hint: one group is “' + p.groups[gs.hintG].name + '”.') : null,
       h('div', { class: 'th-grid' }, remaining.map(function (w) {
         var on = gs.sel.indexOf(w) >= 0;

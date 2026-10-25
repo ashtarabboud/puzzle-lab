@@ -132,7 +132,7 @@
         if (p.words.indexOf(w) < 0) { gs.rejected++; api.toast((PL.dict.has(w) ? '“' + w.toUpperCase() + '” isn’t in the game list.' : '“' + w.toUpperCase() + '” isn’t a word here.'), 'bad'); api.save(gs); return; }
         gs.found.push(w); if (gs.hintWord === w) { gs.hintWord = null; gs.hintStage = 0; gs.hintCell = null; }
         var bonus = !pools(p).set[w];
-        api.toast('+' + points(w.length) + ' ' + w.toUpperCase() + (bonus ? ' · bonus word' : ''), 'good'); if (PL.fx) PL.fx.good(); api.update(gs);
+        api.toast('+' + points(w.length) + ' ' + w.toUpperCase() + (bonus ? ' · bonus word' : ''), 'good'); api.update(gs);
       }
     });
     return h('div', { class: 'wordrush' },
@@ -144,7 +144,7 @@
       tr.el,
       api.done ? null : h('div', { class: 'row-actions' }, h('span', { class: 'muted small' }, PL.plural(gs.found.length, 'word') + ' found'),
         h('button', { class: 'btn', onclick: function () { if (!this.dataset.armed) { this.dataset.armed = 1; this.textContent = 'Tap again to finish'; return; } api.finish('solved'); } }, 'Finish round')),
-      h('div', { class: 'wr-found' }, gs.found.slice().reverse().map(function (w, k) { return h('span', { class: 'wchip' + (pools(p).set[w] ? '' : ' bonus') + (k === 0 ? ' pop' : '') }, w.toUpperCase() + ' ' + points(w.length)); })));
+      h('div', { class: 'wr-found' }, gs.found.slice().reverse().map(function (w, k) { return h('span', { class: 'wchip' + (pools(p).set[w] ? '' : ' bonus') + (k === 0 && PL.fx && PL.fx.once('wr:' + p.letters.join('') + ':' + w) ? ' pop' : '') }, w.toUpperCase() + ' ' + points(w.length)); })));
   }
   /* Hints: a word you have not found — first its length and first two letters with the starting tile highlighted, then the word itself */
   function hint(p, gs) {

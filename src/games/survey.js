@@ -61,7 +61,7 @@
       var m = matchInfo(p, g), i = m.i;
       if (m.ambiguous) { api.toast('“' + g + '” could mean more than one answer. Try being more specific.', ''); return; } // no strike
       if (i >= 0 && gs.open[i]) { api.toast('That matches “' + PL.cap(p.board[i].label) + '”, already on the board.', ''); return; }
-      if (i >= 0) { gs.open[i] = true; gs.last = i; gs.guesses.push({ g: g, hit: i }); api.toast('Survey says: ' + p.board[i].n + '!' + (m.level < 4 && norm(g) !== norm(p.board[i].label) ? ' (accepted as “' + PL.cap(p.board[i].label) + '”)' : ''), 'good'); if (PL.fx) PL.fx.good(); }
+      if (i >= 0) { gs.open[i] = true; gs.last = i; gs.guesses.push({ g: g, hit: i }); api.toast('Survey says: ' + p.board[i].n + '!' + (m.level < 4 && norm(g) !== norm(p.board[i].label) ? ' (accepted as “' + PL.cap(p.board[i].label) + '”)' : ''), 'good'); }
       else { gs.strikes++; gs.guesses.push({ g: g, hit: -1 }); api.wrong(); api.toast('Not on the board — strike ' + gs.strikes + '.', 'bad'); }
       if (over(p, gs)) { api.update(gs); api.finish(gs.open.every(Boolean) || points(p, gs) > 0 ? 'solved' : 'failed'); return; }
       api.update(gs);
@@ -72,7 +72,7 @@
       h('p', { class: 'prob' }, /^we asked/i.test(p.q) ? null : h('span', { class: 'lbl' }, p.src === 'ff' ? 'We asked 100 people: ' : 'We asked about ' + p.total + ' people: '), p.q),
       h('ol', { class: 'sv-board' }, p.board.map(function (c, i) {
         var open = gs.open[i] || showAll;
-        return h('li', { class: 'sv-slot' + (gs.open[i] ? ' open' : showAll ? ' missed' : '') + (gs.given[i] ? ' given' : '') },
+        return h('li', { class: 'sv-slot' + (gs.open[i] ? ' open' : showAll ? ' missed' : '') + (gs.given[i] ? ' given' : '') + (gs.open[i] && PL.fx && PL.fx.once('sv:' + p.id + ':' + i) ? ' reveal' : '') },
           h('span', { class: 'sv-rank mono' }, String(i + 1)),
           h('span', { class: 'sv-label' }, open ? PL.cap(c.label) : gs.hintIdx === i && gs.hintStage >= 1 ? String(c.label)[0].toUpperCase() + ' · ' + letters(c.label) : ''),
           h('span', { class: 'sv-n mono' }, open ? String(c.n) : ''));

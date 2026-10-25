@@ -28,6 +28,7 @@
   function toast(msg, kind) {
     var t = document.getElementById('toast');
     t.textContent = msg; t.className = 'toast show ' + (kind || '');
+    if (kind === 'good' && PL.fx) PL.fx.haptic('light');
     clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'toast'; }, kind === 'bad' ? 2600 : 2200);
   }
   PL.toast = toast;
@@ -79,7 +80,7 @@
         return h('section', { class: 'ggroup' }, h('h2', { class: 'ggroup-h' }, grp.name),
           h('ul', { class: 'games tiles2' }, grp.games.map(function (g) {
             var G = PL.games[g], r = M.rating(g), act = M.active(g);
-            return h('li', null, h('button', { class: 'gtile', onclick: function () { startUnlimited(g); }, 'aria-label': G.name + ', level ' + r.level + (act ? ', in progress' : '') },
+            return h('li', null, h('button', { class: 'gtile g-' + g, onclick: function () { startUnlimited(g); }, 'aria-label': G.name + ', level ' + r.level + (act ? ', in progress' : '') },
               h('div', { class: 'gt-top' }, icon(g), h('span', { class: 'lvl' }, 'Lv ' + r.level)),
               h('div', { class: 'gc-name' }, G.name),
               h('div', { class: 'gt-blurb' }, act ? h('span', { class: 'resume' }, 'Resume') : G.blurb)));
@@ -189,7 +190,7 @@
   function playView() {
     if (!cur) return homeView();
     var G = PL.games[cur.g], rec = cur.rec;
-    var wrap = h('main', { class: 'page play' });
+    var wrap = h('main', { class: 'page play' + (PL.fx && PL.fx.once('play:' + cur.sid) ? ' enter' : '') });
     var meta = cur.kind === 'unlimited' ? 'Level ' + cur.level + (rec.timed ? ' · timed' : '') + (rec.shuffle ? ' · shuffle' : '') : cur.kind === 'daily' ? 'Daily · ' + diffName(cur.level) : 'Daily practice (not scored)';
     var right = h('div', { class: 'tb-right' },
       h('span', { id: 'clock', class: 'clock mono' + (rec.timeLimit ? ' timed' : ''), 'aria-label': 'Active time' }, rec.timeLimit ? PL.fmtTime(rec.timeLimit * 1000 - rec.activeMs) : PL.fmtTime(rec.activeMs)),
@@ -291,9 +292,23 @@
       M.saveAttempt(att);
       sum.note = 'Practice replay: recorded in your history, not in statistics or the official daily score.';
     }
+    // a personal best: higher than every earlier result in this game (needs a few earlier results to mean something)
+    if (outcome === 'solved' && cur.kind !== 'practice') {
+      var mine = cur.kind === 'daily' ? function (a) { return a.game === cur.g && a.mode === 'daily' && a.id !== att.id && a.dailyScore; } : function (a) { return a.game === cur.g && M.eligible(a) && a.id !== att.id; };
+      var prev = M.attempts(mine).map(function (a) { return cur.kind === 'daily' ? a.dailyScore.score : a.perf; });
+      var val = cur.kind === 'daily' ? sum.daily.score : perf;
+      if (prev.length >= 3 && val > Math.max.apply(null, prev)) sum.pb = true;
+      sum.great = val >= 90;
+    }
     cur.summary = sum;
     if (leave && outcome === 'skipped') { var g = cur.g; cur = null; startUnlimited(g); toast('Skipped. Here is a fresh puzzle.', ''); return; }
     render(); window.scrollTo(0, 0);
+    if (PL.fx && outcome === 'solved') {
+      PL.fx.haptic('success');
+      var el = document.querySelector('.summary'), num = document.querySelector('.summary .sum-score b');
+      if (num) PL.fx.count(num, Number(num.textContent));
+      if (el && (sum.great || sum.pb || sum.dayDone)) PL.fx.celebrate(el, sum.pb || sum.dayDone ? 'big' : 'small');
+    }
   }
   function summaryCard() {
     var s = cur.summary, G = PL.games[cur.g];
@@ -309,7 +324,9 @@
       if (sh) startShuffle(); else startUnlimited(g);
     } }, cur.rec.shuffle ? 'Next shuffle' : 'Next puzzle') : cur.kind === 'daily' ? (s.nextDaily ? h('button', { class: 'btn primary', id: 'next-daily', onclick: function () { var g2 = s.nextDaily, dd = cur.d.date; cur = null; screen.date = dd; startDaily(g2, false); } }, 'Next puzzle: ' + PL.games[s.nextDaily].name)
         : h('button', { class: 'btn primary', onclick: function () { go({ name: 'daily', date: cur.d.date }); } }, s.dayDone ? 'See daily results' : 'Back to the daily quiz')) : h('button', { class: 'btn primary', onclick: function () { go({ name: 'daily', date: cur.d.date }); } }, 'Back');
-    return h('section', { class: 'card summary ' + (s.outcome === 'solved' ? 'ok' : 'bad') },
+    return h('section', { class: 'card summary ' + (s.outcome === 'solved' ? 'ok' : 'bad') + (PL.fx && PL.fx.once('sum:' + cur.sid) ? ' enter' : '') + (s.great ? ' great' : '') },
+      s.pb ? h('div', { class: 'pb-badge' }, '★ New personal best') : null,
+      s.dayDone ? h('div', { class: 'pb-badge day' }, 'Daily quiz complete') : null,
       h('div', { class: 'sum-head' }, h('h2', null, title), h('div', { class: 'sum-score' }, s.daily ? h('span', null, h('b', null, String(s.daily.score)), ' / 100') : h('span', null, h('b', null, String(Math.round(s.perf))), ' performance'))),
       s.daily ? h('div', { class: 'muted small' }, 'Quality ' + s.daily.quality + ' × 0.8 + time credit ' + s.daily.time + ' × 0.2 (benchmark ' + PL.fmtTime(s.daily.bench * 1000) + ')') : null,
       h('dl', { class: 'kv' }, rows.map(function (r) { return [h('dt', null, r[0]), h('dd', null, String(r[1]))]; })),
@@ -367,7 +384,7 @@
       h('ul', { class: 'dlist' }, M.dayOrder(d).map(function (g, k) {
         var G = PL.games[g], pr = d.prog[g];
         var status = pr.done ? (pr.outcome === 'solved' ? pr.score + ' pts' : 'Not solved · ' + (pr.score || 0) + ' pts') : pr.gs ? 'In progress · ' + PL.fmtTime(pr.activeMs) : d.diff === 'Mixed' ? diffName(d.levels[g]) : '';
-        return h('li', null, h('button', { class: 'gcard' + (pr.done ? ' done' : ''), disabled: !isToday && !pr.done, onclick: function () { if (pr.done) { reviewDaily(d, g); } else startDaily(g, false); } },
+        return h('li', null, h('button', { class: 'gcard g-' + g + (pr.done ? ' done' : ''), disabled: !isToday && !pr.done, onclick: function () { if (pr.done) { reviewDaily(d, g); } else startDaily(g, false); } },
           h('span', { class: 'dnum mono' }, String(k + 1)), icon(g), h('div', { class: 'gc-text' }, h('div', { class: 'gc-name' }, G.name), h('div', { class: 'gc-blurb' }, status || 'Not started')),
           pr.done ? h('span', { class: 'mark ' + (pr.outcome === 'solved' ? 'ok' : 'bad') }, pr.outcome === 'solved' ? '✓' : '×') : null));
       })),
@@ -562,6 +579,9 @@
       h('section', { class: 'card' }, h('h3', null, 'Play'),
         h('label', { class: 'switch' }, h('input', { type: 'checkbox', checked: set.timed, onchange: function () { M.setSetting('timed', this.checked); render(); } }), ' Timed mode for new unlimited puzzles'),
         h('p', { class: 'muted small' }, 'Each game sets a time limit based on its level, shown as a countdown. Timed results are stored separately and never change your difficulty level. The daily quiz is never timed.')),
+      h('section', { class: 'card' }, h('h3', null, 'Feel'),
+        h('label', { class: 'switch' }, h('input', { type: 'checkbox', checked: set.haptics !== false, onchange: function () { M.setSetting('haptics', this.checked); if (this.checked && PL.fx) PL.fx.haptic('light'); } }), ' Haptic taps for correct answers and solves'),
+        h('p', { class: 'muted small' }, 'A light tap where the iPhone supports it (iOS 18 or later). Animations are short and switch off automatically when Reduce Motion is on in iPhone Settings → Accessibility → Motion.')),
       h('section', { class: 'card' }, h('h3', null, 'Where your data lives'),
         h('p', { class: 'small' }, syncLine(st)),
         kvRows([['On this device', st.local === 'indexeddb' ? 'IndexedDB' : st.local === 'localstorage' ? 'Browser storage (limited space)' : 'Not available'], ['Protected from automatic clean-up', st.persisted ? 'Yes' : 'Not granted'], ['Puzzles recorded', PL.store.keys('att:').length], ['App version', PL.VERSION || 'dev']]),

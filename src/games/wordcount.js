@@ -105,7 +105,7 @@
     X.setKeyHandler(onKey);
     var rows = gs.rows.map(function (r, ri) {
       var m = gs.cm[ri] || [];
-      return h('div', { class: 'wc-row' + (ri === gs.rows.length - 1 && !over ? ' fresh' : '') },
+      return h('div', { class: 'wc-row' + (ri === gs.rows.length - 1 && PL.fx && PL.fx.once('wc:' + p.w + ':' + gs.rows.length + ':' + (gs.rows[ri].g)) ? ' fresh' : '') },
         h('div', { class: 'wc-word' }, r.g.split('').map(function (ch, k) { return h('button', { class: 'wc-l ' + MARK[m[k] || 0], style: '--d:' + (k * 60) + 'ms', 'aria-label': ch.toUpperCase() + ', marked ' + MARK_NAME[m[k] || 0] + ' (tap to mark)', disabled: over, onclick: function () { markGuess(ri, k); } }, ch.toUpperCase()); })),
         h('div', { class: 'wc-counts', 'aria-label': r.c[0] + ' right spot, ' + r.c[1] + ' wrong spot, ' + r.c[2] + ' absent' },
           h('span', { class: 'wc-c g' }, String(r.c[0])), h('span', { class: 'wc-c y' }, String(r.c[1])), h('span', { class: 'wc-c x' }, String(r.c[2]))));
