@@ -73,6 +73,7 @@
         h('button', { class: 'btn', onclick: function () { go({ name: 'shuffle' }); } }, 'Shuffle'),
         h('button', { class: 'btn', onclick: function () { go({ name: 'stats' }); } }, 'Statistics'),
         h('button', { class: 'btn', onclick: function () { go({ name: 'history' }); } }, 'History')),
+      freshOffer(),
       M.settings().timed ? h('div', { class: 'notice' }, 'Timed mode is on for new puzzles. Timed results are kept separately. ', h('button', { class: 'linkbtn', onclick: function () { M.setSetting('timed', false); render(); } }, 'Turn off')) : null,
       PL.groups.map(function (grp) {
         return h('section', { class: 'ggroup' }, h('h2', { class: 'ggroup-h' }, grp.name),
@@ -85,6 +86,23 @@
           })));
       }),
       h('footer', { class: 'foot muted small' }, syncLine(st)));
+  }
+  /* One-time offer after the 17-game update (the owner asked for a clean slate). Also available in Settings. */
+  function freshButton(label) {
+    return h('button', { class: 'btn sm primary', onclick: function () {
+      if (!this.dataset.armed) { this.dataset.armed = 1; this.textContent = 'Tap again to reset'; return; }
+      var r = M.freshStart(PL.dateKey()); var c = M.core(); c.freshOffered = 1; M.saveCore(c);
+      toast('Fresh start: ' + PL.plural(r.attempts, 'old result') + ' set aside, levels back to 3, today’s quiz rebuilt with all ' + PL.order.length + ' games.', 'good');
+      go({ name: 'home' });
+    } }, label);
+  }
+  function freshOffer() {
+    var c = M.core();
+    if (c.freshOffered || c.freshAt || !PL.store.keys('att:').length && !PL.store.keys('day:').length) return null;
+    return h('div', { class: 'notice fresh' },
+      h('p', null, h('b', null, 'Fresh start? '), 'Reset your statistics and levels, and rebuild today’s daily quiz with all ' + PL.order.length + ' games. Your old results are set aside (not deleted) and can be brought back from Settings.'),
+      h('div', { class: 'row-actions' }, freshButton('Reset stats and today’s quiz'),
+        h('button', { class: 'btn sm ghost', onclick: function () { var c2 = M.core(); c2.freshOffered = 1; M.saveCore(c2); render(); } }, 'Not now')));
   }
   function syncLine(st) {
     if (st.local === 'memory') return 'Storage is unavailable here, so progress will be lost when you close the app. Export your data from Settings.';
@@ -546,6 +564,11 @@
         h('p', { class: 'small' }, syncLine(st)),
         kvRows([['On this device', st.local === 'indexeddb' ? 'IndexedDB' : st.local === 'localstorage' ? 'Browser storage (limited space)' : 'Not available'], ['Protected from automatic clean-up', st.persisted ? 'Yes' : 'Not granted'], ['Puzzles recorded', PL.store.keys('att:').length], ['App version', PL.VERSION || 'dev']]),
         h('p', { class: 'muted small' }, 'Everything stays on this iPhone; nothing is uploaded. Opening Puzzle Lab from the Home Screen icon keeps its storage separate from Safari tabs. Export a backup now and then, especially before deleting the icon.')),
+      h('section', { class: 'card' }, h('h3', null, 'Fresh start'),
+        h('p', { class: 'small' }, 'Clears statistics, levels, daily results and unfinished puzzles, and rebuilds today’s daily quiz. Settings stay. The cleared records are kept aside on this iPhone and included in exports.'),
+        freshButton('Reset stats and today’s quiz'),
+        M.lastArchive() ? h('p', { class: 'small' }, 'Last reset: ' + new Date(M.lastArchive().at).toLocaleString() + '. ',
+          h('button', { class: 'linkbtn', onclick: function () { if (!this.dataset.armed) { this.dataset.armed = 1; this.textContent = 'Tap again to bring them back'; return; } var r = M.undoFreshStart(); toast('Restored ' + PL.plural(r.attempts, 'result') + ' and your previous levels.', 'good'); go({ name: 'home' }); } }, 'Bring back the old results')) : null),
       h('section', { class: 'card' }, h('h3', null, 'Export'),
         h('p', { class: 'small' }, 'A versioned JSON file with every attempt, daily result, level and scratchpad. On iPhone, choose “Save to Files”.'),
         h('button', { class: 'btn', onclick: async function () {

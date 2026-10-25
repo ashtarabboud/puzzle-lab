@@ -374,6 +374,18 @@ async def main():
         exp = await p2.evaluate('JSON.stringify(PL.model.exportData())')
         check(json.loads(exp)['schema'] == 3 and len([k for k in json.loads(exp)['data'] if k.startswith('att:')]) == 2, 'export contains everything (schema 3)')
 
+        # fresh start offer on the home screen (two taps), then undo from Settings
+        today = await p2.evaluate('PL.dateKey()')
+        await p2.evaluate("PL.store.put('day:'+PL.dateKey(), {date: PL.dateKey(), diff: 'Easy', games: PL.order.slice(0, 10), max: 1000, levels: {}, puzzles: {}, prog: {}})")
+        await p2.evaluate('PL._go({name:"home"})'); await p2.wait_for_selector('.notice.fresh')
+        await p2.screenshot(path=f'{OUT}/fresh_offer.png')
+        await p2.click(".notice.fresh >> text=Reset stats and today’s quiz"); await p2.click('.notice.fresh >> text=Tap again to reset'); await p2.wait_for_timeout(200)
+        check(await p2.evaluate("PL.store.keys('att:').length") == 0 and await p2.evaluate("PL.model.rating('bridges').level") == 3, 'fresh start clears stats and levels')
+        check(await p2.evaluate("PL.model.daily(PL.dateKey()).games.length") == 17 and await p2.locator('.dc-dot').count() == 17, "today's quiz rebuilt with 17 games")
+        check(await p2.locator('.notice.fresh').count() == 0, 'offer not shown again')
+        await p2.evaluate('PL._go({name:"settings"})'); await p2.click('text=Bring back the old results'); await p2.click('text=Tap again to bring them back'); await p2.wait_for_selector('.games')
+        check(await p2.evaluate("PL.store.keys('att:').length") == 2 and await p2.evaluate("PL.model.rating('bridges').level") == 5, 'undo restores results and levels')
+
         bad_errs = [e for e in errs if 'favicon' not in e]
         check(not bad_errs, 'no page errors' + ('' if not bad_errs else ': ' + ' | '.join(bad_errs[:5])))
         await b.close()

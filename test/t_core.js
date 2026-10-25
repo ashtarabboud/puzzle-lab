@@ -35,4 +35,12 @@ vm.runInContext('mem={}',ctx);const counts=M.importData(v1,'merge');
 ok(counts.attempts===1,'attempt imported');ok(!PL.store.get('act:logic'),'retired active dropped');
 const c=M.core();ok(c.schema===3,'schema migrated');ok(c.ratings.password.level===5,'rating preserved');ok(c.ratings.reverse&&c.ratings.links,'new ratings');ok(c.settings.excluded.indexOf('logic')<0,'excluded cleaned');
 ok(M.daily('2026-10-19').max===900,'imported old day migrated');
+// fresh start: clears stats, levels and today's daily (an old 10-game day is rebuilt with every game); undo brings it all back
+{PL.store.replaceAll({});M.core();PL.store.put('day:2026-10-25',{date:'2026-10-25',diff:'Easy',games:PL.order.slice(0,10),max:1000,levels:{},puzzles:{},prog:{}});
+ for(let i=0;i<6;i++)play('algebra',95);M.saveActive('loop',{x:1});const lvl=M.rating('algebra').level;ok(lvl>3,'level rose before reset');
+ t+=1000;const r=M.freshStart('2026-10-25');ok(r.attempts===6,'six results set aside');ok(M.attempts().length===0,'statistics empty');ok(M.rating('algebra').level===3,'levels back to 3');
+ ok(!M.active('loop'),'unfinished puzzles cleared');ok(M.daily('2026-10-25').games.length===PL.order.length,'today rebuilt with every game');ok(PL.store.keys('arc:').length===1,'archive kept');
+ ok(M.exportData().data[r.archive],'archive included in exports');
+ play('bridges',90);const u=M.undoFreshStart();ok(u.attempts===6&&M.attempts().length===7,'undo restores old results and keeps new ones');ok(M.rating('algebra').level===lvl,'undo restores levels');
+ ok(M.daily('2026-10-25').games.length===PL.order.length,'today keeps the rebuilt quiz after undo');ok(M.active('loop'),'undo restores unfinished puzzle');ok(!PL.store.keys('arc:').length,'archive consumed');}
 console.log('bad',bad);

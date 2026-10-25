@@ -169,6 +169,34 @@
   M.dailies = function () { return S().keys('day:').map(function (k) { return M.migrateDay(S().get(k)); }).filter(Boolean).sort(function (a, b) { return a.date < b.date ? -1 : 1; }); };
   M.dayPct = function (d) { return d.max ? 100 * (d.total != null ? d.total : M.dailyTotals(d).score) / d.max : 0; };
 
+  /* ---- fresh start ----
+     Clears statistics, difficulty levels, daily results and in-progress puzzles, then rebuilds today's daily quiz
+     with the current game list. Nothing is destroyed: the cleared records are kept under 'arc:<time>' (included in
+     exports, ignored by statistics) so M.undoFreshStart can put them back. Settings are kept. */
+  var CLEARED = ['att:', 'day:', 'act:'];
+  M.freshStart = function (today) {
+    var c = M.core(), arc = { at: Date.now(), ratings: PL.deep(c.ratings), recent: (c.shuffle.recent || []).slice(), data: {} };
+    CLEARED.forEach(function (pre) { S().keys(pre).forEach(function (k) { arc.data[k] = S().get(k); }); });
+    var n = Object.keys(arc.data).filter(function (k) { return k.indexOf('att:') === 0; }).length;
+    S().put('arc:' + arc.at, arc);
+    Object.keys(arc.data).forEach(function (k) { S().del(k); });
+    c.ratings = defaultCore().ratings; c.shuffle.recent = []; c.freshAt = arc.at; M.saveCore(c);
+    M.ensureDaily(today || PL.dateKey());
+    return { attempts: n, archive: 'arc:' + arc.at };
+  };
+  M.lastArchive = function () { var ks = S().keys('arc:').sort(); return ks.length ? S().get(ks[ks.length - 1]) : null; };
+  M.undoFreshStart = function () { // puts the archived records back; anything played since the reset is kept too
+    var ks = S().keys('arc:').sort(); if (!ks.length) return null;
+    var arc = S().get(ks[ks.length - 1]), c = M.core(), back = 0;
+    Object.keys(arc.data).forEach(function (k) {
+      if (k.indexOf('att:') === 0) { S().put(k, arc.data[k]); back++; }
+      else if (!S().get(k)) S().put(k, arc.data[k]); // a daily or active puzzle started after the reset wins
+    });
+    c.ratings = PL.migrate({ schema: PL.SCHEMA, ratings: arc.ratings }).ratings; c.shuffle.recent = arc.recent || []; delete c.freshAt; M.saveCore(c);
+    S().del(ks[ks.length - 1]);
+    return { attempts: back };
+  };
+
   /* ---- scratchpad ---- */
   M.scratch = function (key) { return S().get('scr:' + key) || { draw: [], text: '', grid: null }; };
   M.saveScratch = function (key, v) { S().put('scr:' + key, v); };

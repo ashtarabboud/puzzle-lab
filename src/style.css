@@ -547,3 +547,4 @@ button.re-cell { cursor: pointer; }
 .calc-sheet { height: auto; max-height: 88vh; max-height: 88dvh; }
 @media (max-width: 380px) { .tiles { grid-template-columns: repeat(2, 1fr); } .lt { width: 36px; } .det-acts { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
+.notice.fresh p { margin: 0 0 8px; }
