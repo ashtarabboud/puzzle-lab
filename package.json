@@ -6,7 +6,7 @@
     "test": "test"
   },
   "scripts": {
-    "data": "node tools/build-words.js && node tools/build-lexicon.js",
+    "data": "node tools/build-words.js && node tools/build-lexicon.js && node tools/build-five.js",
     "build": "node tools/build.js",
     "test": "node test/run-all.js",
     "e2e": "python3 test/e2e.py",

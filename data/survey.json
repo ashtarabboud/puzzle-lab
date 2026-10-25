@@ -1,0 +1,5006 @@
+[
+{
+"id": "r1q1",
+"q": "Name something that is hard to guess about a person you are just meeting.",
+"total": 100,
+"clusters": [
+{
+"label": "age",
+"n": 35,
+"answers": [
+"age",
+"birth place",
+"birthday",
+"birthday date",
+"sign",
+"their age",
+"year old",
+"zodiac sign"
+]
+},
+{
+"label": "favorite things",
+"n": 28,
+"answers": [
+"bad habits",
+"color",
+"dreams",
+"favorite color",
+"favorite food",
+"favorite movie",
+"favorite song",
+"favorite things",
+"food taste",
+"his favorite color",
+"honesty",
+"if you like someone",
+"music taste",
+"personality",
+"pleasures",
+"self esteem",
+"the feelings",
+"their thoughts",
+"thought",
+"thoughts",
+"trust",
+"who they like",
+"will have good feelings",
+"your interests"
+]
+},
+{
+"label": "name",
+"n": 12,
+"answers": [
+"last name",
+"name"
+]
+},
+{
+"label": "job",
+"n": 11,
+"answers": [
+"education",
+"his religion",
+"his virginity",
+"job",
+"past",
+"religion",
+"salary",
+"their house",
+"traumas"
+]
+},
+{
+"label": "dad's name",
+"n": 6,
+"answers": [
+"dad's name",
+"mother's name",
+"parents name",
+"partner",
+"who are your parents"
+]
+},
+{
+"label": "weight",
+"n": 5,
+"answers": [
+"allergies",
+"height",
+"iq",
+"weight"
+]
+}
+]
+},
+{
+"id": "r1q2",
+"q": "What could be some of the reasons you could be called to your kid's school?",
+"total": 100,
+"clusters": [
+{
+"label": "misbehavior",
+"n": 33,
+"answers": [
+"antics",
+"bad behavior",
+"bad behaviour",
+"bad character",
+"bad corporation",
+"behavior",
+"bullying",
+"conduct",
+"disobedience",
+"he behaved badly",
+"indiscipline",
+"lacks of regulations",
+"misbehave",
+"misbehaving",
+"misbehavior",
+"problem in classes",
+"ticket",
+"trouble"
+]
+},
+{
+"label": "fight",
+"n": 30,
+"answers": [
+"a fight",
+"fight",
+"fighting",
+"fights",
+"for an argument",
+"for hitting another child",
+"party",
+"they were fighting"
+]
+},
+{
+"label": "sickness or injury",
+"n": 16,
+"answers": [
+"accident",
+"an emergency",
+"disease",
+"disease and fights",
+"diseased",
+"emergency",
+"got hurt",
+"injury",
+"sick",
+"sickness or injury",
+"they are sick"
+]
+},
+{
+"label": "bad grades",
+"n": 6,
+"answers": [
+"bad grades",
+"ratings",
+"study"
+]
+},
+{
+"label": "absence",
+"n": 6,
+"answers": [
+"absence",
+"doesn't go to school",
+"for missing class",
+"they don't attend classes",
+"they left the breakfast",
+"they miss a class"
+]
+},
+{
+"label": "good grades",
+"n": 2,
+"answers": [
+"congratulate me",
+"good grades"
+]
+}
+]
+},
+{
+"id": "r1q3",
+"q": "Name something a monk probably would not own.",
+"total": 100,
+"clusters": [
+{
+"label": "gun",
+"n": 22,
+"answers": [
+"arm",
+"gun",
+"guns",
+"weapon",
+"weapons"
+]
+},
+{
+"label": "sex toy",
+"n": 18,
+"answers": [
+"a vibrator",
+"condom",
+"lingerie",
+"playboy",
+"playboy magazine",
+"porn",
+"porn magazine",
+"porn movie",
+"pornography",
+"preservative",
+"sex toy",
+"sex toys",
+"sexual desire"
+]
+},
+{
+"label": "cellphone",
+"n": 16,
+"answers": [
+"a gaming console",
+"car",
+"cell phone",
+"cellphone",
+"phone",
+"smartphone",
+"watch"
+]
+},
+{
+"label": "drugs",
+"n": 11,
+"answers": [
+"alcohol",
+"beer",
+"cigars",
+"drug",
+"drugs",
+"weed"
+]
+},
+{
+"label": "wife",
+"n": 9,
+"answers": [
+"have relationships",
+"have sex",
+"wife"
+]
+},
+{
+"label": "money",
+"n": 8,
+"answers": [
+"gold",
+"jewelry",
+"money"
+]
+},
+{
+"label": "cross",
+"n": 4,
+"answers": [
+"bible",
+"cross",
+"scapular"
+]
+},
+{
+"label": "hair",
+"n": 3,
+"answers": [
+"hair"
+]
+},
+{
+"label": "pants",
+"n": 2,
+"answers": [
+"clothes",
+"pants"
+]
+},
+{
+"label": "tattoo",
+"n": 2,
+"answers": [
+"piercings",
+"tattoo"
+]
+}
+]
+},
+{
+"id": "r1q5",
+"q": "Name something that people usually do before they leave the house for work?",
+"total": 100,
+"clusters": [
+{
+"label": "shower or bath",
+"n": 43,
+"answers": [
+"bath",
+"brush their teeth",
+"defecate",
+"get a shower",
+"go to the bathroom",
+"shower",
+"shower or bath",
+"showering",
+"take a bath",
+"teeth brushing",
+"wash"
+]
+},
+{
+"label": "have breakfast",
+"n": 30,
+"answers": [
+"breakfast",
+"drink coffee",
+"eat",
+"eat something",
+"have breakfast"
+]
+},
+{
+"label": "dress",
+"n": 7,
+"answers": [
+"dress",
+"dress up"
+]
+},
+{
+"label": "phone",
+"n": 7,
+"answers": [
+"close the door",
+"close the house",
+"grab keys",
+"lock the door",
+"phone",
+"take the keys",
+"turn the lights off"
+]
+},
+{
+"label": "brush hair",
+"n": 5,
+"answers": [
+"brush",
+"brush hair",
+"comb",
+"look in the mirror",
+"looking"
+]
+},
+{
+"label": "say goodbye",
+"n": 4,
+"answers": [
+"say goodbye",
+"say gooobye",
+"sons"
+]
+}
+]
+},
+{
+"id": "r1q6",
+"q": "Name something you are likely making if you buy milk, eggs, sugar and cream.",
+"total": 100,
+"clusters": [
+{
+"label": "cake",
+"n": 75,
+"answers": [
+"a cake",
+"cake",
+"cakes",
+"milk cake"
+]
+},
+{
+"label": "pie",
+"n": 9,
+"answers": [
+"pie"
+]
+},
+{
+"label": "dessert",
+"n": 7,
+"answers": [
+"custard",
+"dessert",
+"flan",
+"ice cream",
+"pastry"
+]
+},
+{
+"label": "pancakes",
+"n": 6,
+"answers": [
+"pancakes",
+"waffles"
+]
+}
+]
+},
+{
+"id": "r1q7",
+"q": "Name a vegetable that is about as big as your head.",
+"total": 100,
+"clusters": [
+{
+"label": "pumpkin",
+"n": 54,
+"answers": [
+"auyama",
+"calabaza pumking",
+"pumking",
+"pumpkin"
+]
+},
+{
+"label": "cabbage",
+"n": 21,
+"answers": [
+"cabbage",
+"lettuce"
+]
+},
+{
+"label": "watermelon",
+"n": 17,
+"answers": [
+"cantaloupe",
+"melon",
+"watermelon"
+]
+},
+{
+"label": "cucumber",
+"n": 4,
+"answers": [
+"cucumber",
+"zucchini"
+]
+}
+]
+},
+{
+"id": "r1q8",
+"q": "Name a luxury people give up while traveling.",
+"total": 100,
+"clusters": [
+{
+"label": "own bed",
+"n": 23,
+"answers": [
+"bed",
+"bedding",
+"home",
+"home comfort",
+"house",
+"leave home",
+"own bed",
+"own house",
+"sleep",
+"sleep comfortable",
+"sleep in a bed",
+"sleep late",
+"soft beds",
+"the home envoirment",
+"your home"
+]
+},
+{
+"label": "car",
+"n": 15,
+"answers": [
+"a lot of vehicles",
+"car",
+"luxury cars",
+"own car"
+]
+},
+{
+"label": "tv",
+"n": 14,
+"answers": [
+"computer",
+"headphones",
+"phone",
+"read",
+"television",
+"tv"
+]
+},
+{
+"label": "bathroom",
+"n": 12,
+"answers": [
+"bathroom",
+"toilet"
+]
+},
+{
+"label": "hotel room",
+"n": 10,
+"answers": [
+"baggage",
+"hotel",
+"hotel room",
+"restaurant",
+"suitcase"
+]
+},
+{
+"label": "watch",
+"n": 8,
+"answers": [
+"bracelets",
+"clothes",
+"jewelry",
+"pajama",
+"sunglasses",
+"watch"
+]
+},
+{
+"label": "comfort",
+"n": 6,
+"answers": [
+"air conditioning",
+"comfort"
+]
+},
+{
+"label": "home cooking",
+"n": 4,
+"answers": [
+"drinks",
+"eat",
+"home cooking",
+"home food",
+"wine"
+]
+},
+{
+"label": "family",
+"n": 2,
+"answers": [
+"family"
+]
+},
+{
+"label": "privacy",
+"n": 2,
+"answers": [
+"privacy",
+"your intimacy"
+]
+}
+]
+},
+{
+"id": "r1q9",
+"q": "Name a sport that requires a lot of equipment.",
+"total": 100,
+"clusters": [
+{
+"label": "football",
+"n": 36,
+"answers": [
+"american football",
+"football",
+"nfl",
+"rugby"
+]
+},
+{
+"label": "hockey",
+"n": 23,
+"answers": [
+"hockey"
+]
+},
+{
+"label": "soccer",
+"n": 14,
+"answers": [
+"soccer"
+]
+},
+{
+"label": "baseball",
+"n": 8,
+"answers": [
+"baseball",
+"basseball"
+]
+},
+{
+"label": "golf",
+"n": 5,
+"answers": [
+"golf"
+]
+},
+{
+"label": "races",
+"n": 4,
+"answers": [
+"car racing",
+"formula 1",
+"motocross",
+"races"
+]
+},
+{
+"label": "hoops",
+"n": 2,
+"answers": [
+"basketball",
+"hoops"
+]
+},
+{
+"label": "fencing",
+"n": 2,
+"answers": [
+"fencing"
+]
+}
+]
+},
+{
+"id": "r1q10",
+"q": "Name something people might turn their garage into.",
+"total": 100,
+"clusters": [
+{
+"label": "game or play room",
+"n": 29,
+"answers": [
+"courtyard",
+"family room",
+"game or play room",
+"game room",
+"games room",
+"garden",
+"gym",
+"movie theater",
+"party room",
+"play room",
+"pool",
+"room",
+"weight room",
+"work out room",
+"yard"
+]
+},
+{
+"label": "shop",
+"n": 17,
+"answers": [
+"business",
+"car wash",
+"carwash",
+"garage sale",
+"garage sales",
+"office",
+"restaurant",
+"shop",
+"store",
+"thrift store"
+]
+},
+{
+"label": "workshop",
+"n": 11,
+"answers": [
+"a studio",
+"studio",
+"workshop"
+]
+},
+{
+"label": "bar",
+"n": 10,
+"answers": [
+"a tavern",
+"bar",
+"bowling alley",
+"cinema",
+"pub",
+"tavern"
+]
+},
+{
+"label": "bedroom",
+"n": 8,
+"answers": [
+"bedroom",
+"home",
+"man cave"
+]
+},
+{
+"label": "storage",
+"n": 6,
+"answers": [
+"bikes",
+"storage",
+"tools",
+"warehouse"
+]
+}
+]
+},
+{
+"id": "r1q11",
+"q": "Name something that keeps children safe.",
+"total": 100,
+"clusters": [
+{
+"label": "seat belt",
+"n": 40,
+"answers": [
+"belt",
+"car children chair",
+"car seat",
+"helmet",
+"safety belt",
+"seat belt",
+"seat belts",
+"seatbelt"
+]
+},
+{
+"label": "parents",
+"n": 14,
+"answers": [
+"baby sitter",
+"kindergarten",
+"parental supervision",
+"parents",
+"people",
+"supervision",
+"the mom"
+]
+},
+{
+"label": "911",
+"n": 10,
+"answers": [
+"911",
+"police"
+]
+},
+{
+"label": "crib",
+"n": 8,
+"answers": [
+"baby bed",
+"cot",
+"cradle",
+"crib",
+"pillow",
+"teddy",
+"toys"
+]
+},
+{
+"label": "locks",
+"n": 7,
+"answers": [
+"corral",
+"doors",
+"fence",
+"locks",
+"railing",
+"railings"
+]
+},
+{
+"label": "rules",
+"n": 7,
+"answers": [
+"rules",
+"save life",
+"sleep",
+"stranger danger",
+"vegetables",
+"watch",
+"watch out"
+]
+},
+{
+"label": "diapers",
+"n": 5,
+"answers": [
+"baby bottles",
+"clothes",
+"coats",
+"diapers"
+]
+},
+{
+"label": "vaccines",
+"n": 4,
+"answers": [
+"doctor",
+"medicine",
+"vaccines"
+]
+}
+]
+},
+{
+"id": "r1q12",
+"q": "Name somewhere that has a pole.",
+"total": 100,
+"clusters": [
+{
+"label": "street corner",
+"n": 56,
+"answers": [
+"avenue",
+"avenues",
+"corner",
+"corner of avenue",
+"electric fences",
+"highway",
+"new york",
+"new york city",
+"parking lot",
+"sidewalk",
+"square",
+"street",
+"street corner",
+"streets",
+"the street",
+"the streets",
+"traffic light"
+]
+},
+{
+"label": "strip club",
+"n": 12,
+"answers": [
+"bar",
+"disco",
+"movie theater",
+"night club",
+"nightclub",
+"strip club",
+"striptease",
+"striptease club"
+]
+},
+{
+"label": "north pole",
+"n": 7,
+"answers": [
+"north pole",
+"the north pole"
+]
+},
+{
+"label": "wall",
+"n": 4,
+"answers": [
+"courtyard",
+"my wall",
+"wall"
+]
+},
+{
+"label": "flag",
+"n": 3,
+"answers": [
+"flag",
+"flag pole"
+]
+},
+{
+"label": "park",
+"n": 3,
+"answers": [
+"park",
+"the park"
+]
+},
+{
+"label": "stadium",
+"n": 3,
+"answers": [
+"golf course",
+"soccer field",
+"stadium"
+]
+},
+{
+"label": "fire station",
+"n": 2,
+"answers": [
+"fire station"
+]
+}
+]
+},
+{
+"id": "r1q14",
+"q": "Name something that gets caught in your hair.",
+"total": 100,
+"clusters": [
+{
+"label": "gum",
+"n": 23,
+"answers": [
+"bubble gum",
+"chewing gum",
+"gum"
+]
+},
+{
+"label": "comb or brush",
+"n": 21,
+"answers": [
+"brush",
+"brush hair",
+"comb",
+"comb or brush",
+"hair comb"
+]
+},
+{
+"label": "jewelry or accessories",
+"n": 16,
+"answers": [
+"band",
+"cap",
+"chain",
+"earring",
+"glasses",
+"gripper",
+"hair hook",
+"headband",
+"hook",
+"hooks",
+"jewelry or accessories",
+"necklace"
+]
+},
+{
+"label": "lice",
+"n": 10,
+"answers": [
+"bee",
+"bugs",
+"fleas",
+"lice",
+"lies",
+"louse"
+]
+},
+{
+"label": "dust",
+"n": 10,
+"answers": [
+"dirt",
+"dust",
+"powder",
+"sand",
+"smoke",
+"snow"
+]
+},
+{
+"label": "leaf",
+"n": 7,
+"answers": [
+"a leaf",
+"leaf",
+"leaves"
+]
+},
+{
+"label": "dandruff",
+"n": 6,
+"answers": [
+"dandruff"
+]
+}
+]
+},
+{
+"id": "r1q16",
+"q": "Name a piece of equipment that you are likely to find at your office and not at home?",
+"total": 100,
+"clusters": [
+{
+"label": "printer",
+"n": 37,
+"answers": [
+"copier",
+"copiers",
+"fax",
+"fax machine",
+"multifunction printer",
+"photocopier",
+"printer"
+]
+},
+{
+"label": "desk",
+"n": 15,
+"answers": [
+"desk",
+"desks",
+"file cabinet",
+"office cabinets",
+"safe"
+]
+},
+{
+"label": "computer",
+"n": 13,
+"answers": [
+"computer",
+"internet switch",
+"laptop",
+"my computer",
+"pc",
+"server"
+]
+},
+{
+"label": "stapler",
+"n": 11,
+"answers": [
+"clip",
+"clips",
+"electric stapler",
+"stapler",
+"staples"
+]
+},
+{
+"label": "pencil",
+"n": 10,
+"answers": [
+"archive",
+"calculator",
+"files",
+"notebooks",
+"pen",
+"pencil"
+]
+},
+{
+"label": "microwave",
+"n": 5,
+"answers": [
+"automatic drip coffee makers",
+"business telephone system",
+"microwave",
+"paper shredder",
+"vending machine"
+]
+},
+{
+"label": "typewriter",
+"n": 4,
+"answers": [
+"typewriter"
+]
+},
+{
+"label": "chess",
+"n": 2,
+"answers": [
+"chess",
+"soccer"
+]
+}
+]
+},
+{
+"id": "r1q17",
+"q": "Name something that an athlete would not keep in her refrigerator.",
+"total": 100,
+"clusters": [
+{
+"label": "pizza",
+"n": 36,
+"answers": [
+"a hamburger",
+"bread",
+"burger",
+"burgers",
+"cake",
+"candies",
+"cheeseburger",
+"chicken nuggets",
+"chocolate",
+"fats",
+"fries",
+"hamburger",
+"ice cream",
+"junk food",
+"mayonnaise",
+"oil",
+"pie",
+"pizza",
+"pork",
+"pork belly",
+"sweetmeats"
+]
+},
+{
+"label": "shoes",
+"n": 24,
+"answers": [
+"clothes",
+"footwear",
+"gloves",
+"shirts",
+"shoe",
+"shoes",
+"sneaker",
+"socks",
+"sports bra",
+"underwear",
+"uniform"
+]
+},
+{
+"label": "soda",
+"n": 24,
+"answers": [
+"alcohol",
+"alcoholic beverages",
+"beer",
+"cocacola",
+"coffee",
+"coke",
+"liqueur",
+"soda",
+"soda pop"
+]
+},
+{
+"label": "sports gear",
+"n": 7,
+"answers": [
+"ball",
+"bat",
+"handbag",
+"medal",
+"medals",
+"sports gear",
+"tennis",
+"trophies"
+]
+}
+]
+},
+{
+"id": "r1q18",
+"q": "Name an item of clothing that you would not lend to someone.",
+"total": 100,
+"clusters": [
+{
+"label": "underwear",
+"n": 84,
+"answers": [
+"bikini",
+"boxer",
+"boxers",
+"bra",
+"bras",
+"brassiere",
+"breeches",
+"briefs",
+"lingerie",
+"panties",
+"pants",
+"panty",
+"pantyhose",
+"support",
+"underpant",
+"underpants",
+"underwear"
+]
+},
+{
+"label": "shirt",
+"n": 5,
+"answers": [
+"shirt",
+"sweater"
+]
+},
+{
+"label": "sock",
+"n": 5,
+"answers": [
+"sock",
+"socks"
+]
+},
+{
+"label": "tie",
+"n": 3,
+"answers": [
+"sunglasses",
+"tie",
+"watch"
+]
+}
+]
+},
+{
+"id": "r1q19",
+"q": "Name a cause you are likely to donate to.",
+"total": 100,
+"clusters": [
+{
+"label": "cancer",
+"n": 34,
+"answers": [
+"breast cancer",
+"cancer",
+"cancer cure",
+"cancer research",
+"fight against cancer",
+"kids with cancer",
+"people with cancer",
+"person with cancer"
+]
+},
+{
+"label": "children",
+"n": 16,
+"answers": [
+"children",
+"children poverty",
+"children with autism",
+"children with cancer",
+"homeless children",
+"hungry kids",
+"kids from the street",
+"kids in africa",
+"orphans",
+"poor kids",
+"teleton"
+]
+},
+{
+"label": "poverty",
+"n": 10,
+"answers": [
+"food",
+"help people",
+"homeless",
+"hungry",
+"malnutrition",
+"people affected by war",
+"poverty",
+"refugees",
+"solidarity"
+]
+},
+{
+"label": "blood",
+"n": 7,
+"answers": [
+"american red cross",
+"blood",
+"red cross"
+]
+},
+{
+"label": "charity",
+"n": 7,
+"answers": [
+"charity"
+]
+},
+{
+"label": "AIDS research",
+"n": 6,
+"answers": [
+"aids",
+"aids research",
+"aids victims",
+"dead",
+"death"
+]
+},
+{
+"label": "family emergency",
+"n": 4,
+"answers": [
+"elders",
+"family",
+"family emergency"
+]
+},
+{
+"label": "greenpeace",
+"n": 4,
+"answers": [
+"charity in natural disasters",
+"climate warming",
+"earthquake",
+"greenpeace"
+]
+},
+{
+"label": "dog's rescue",
+"n": 3,
+"answers": [
+"animal protection",
+"dog's rescue",
+"protect animals"
+]
+},
+{
+"label": "god",
+"n": 2,
+"answers": [
+"god",
+"gospel"
+]
+}
+]
+},
+{
+"id": "r1q20",
+"q": "Name something they give away free to attract customers to a store.",
+"total": 100,
+"clusters": [
+{
+"label": "food",
+"n": 34,
+"answers": [
+"appetizer",
+"cake",
+"candies",
+"candy",
+"cookies",
+"food",
+"food samples",
+"hotdogs",
+"sausages",
+"sweet"
+]
+},
+{
+"label": "samples",
+"n": 26,
+"answers": [
+"free examples",
+"free samples",
+"free trial",
+"products",
+"sample",
+"samples",
+"tests"
+]
+},
+{
+"label": "coupon",
+"n": 14,
+"answers": [
+"coupon",
+"coupons",
+"discount",
+"discount coupons",
+"gift card",
+"offers",
+"purchase coupons",
+"tickets"
+]
+},
+{
+"label": "coffee",
+"n": 7,
+"answers": [
+"coffee",
+"juice",
+"water"
+]
+},
+{
+"label": "brochures",
+"n": 5,
+"answers": [
+"advertising flyers",
+"brochures",
+"calendar",
+"signs"
+]
+},
+{
+"label": "fragrance",
+"n": 4,
+"answers": [
+"fragrance",
+"scent"
+]
+},
+{
+"label": "pen",
+"n": 4,
+"answers": [
+"pen",
+"plastic bags",
+"toys",
+"tshirts"
+]
+}
+]
+},
+{
+"id": "r2q3",
+"q": "Name a popular dish made with cheese.",
+"total": 101,
+"clusters": [
+{
+"label": "pizza",
+"n": 27,
+"answers": [
+"pizza"
+]
+},
+{
+"label": "mac and cheese",
+"n": 25,
+"answers": [
+"arizona cheese crisp",
+"beer mac n cheese",
+"cheeseburger",
+"mac & cheese",
+"mac and cheese",
+"mac n cheese",
+"macaroni",
+"macaroni and cheese",
+"macaroni with cheeses",
+"macaroni with three cheeses"
+]
+},
+{
+"label": "cheese burger",
+"n": 11,
+"answers": [
+"bread with cheese",
+"burger",
+"cheese bread",
+"cheese burger",
+"hamburger",
+"hot dog",
+"reuben sandwich"
+]
+},
+{
+"label": "cheesecake",
+"n": 9,
+"answers": [
+"cheese cake",
+"cheesecake",
+"pasty"
+]
+},
+{
+"label": "lasagna",
+"n": 8,
+"answers": [
+"lasagna",
+"pasta",
+"spaghetti"
+]
+},
+{
+"label": "fondue",
+"n": 3,
+"answers": [
+"fondue"
+]
+},
+{
+"label": "cachapa",
+"n": 2,
+"answers": [
+"cachapa"
+]
+},
+{
+"label": "nachos",
+"n": 2,
+"answers": [
+"nachos"
+]
+},
+{
+"label": "quesadilla",
+"n": 2,
+"answers": [
+"quesadilla"
+]
+}
+]
+},
+{
+"id": "r2q4",
+"q": "Name a reason why someone would wear gloves.",
+"total": 100,
+"clusters": [
+{
+"label": "cold",
+"n": 38,
+"answers": [
+"cold",
+"cold weather",
+"cook",
+"cool",
+"grabbing something hot",
+"hot",
+"it's cold outside",
+"not get burned",
+"shoveling snow",
+"snow",
+"temperature",
+"the cold",
+"very cold"
+]
+},
+{
+"label": "cleaning",
+"n": 12,
+"answers": [
+"clean poop",
+"clean the house",
+"cleaning",
+"pick up trash",
+"scrub",
+"to wash",
+"wash bathrooms",
+"wash dishes"
+]
+},
+{
+"label": "surgery",
+"n": 10,
+"answers": [
+"allergy",
+"exam",
+"for operate",
+"germ",
+"he is a nurse",
+"operation",
+"surgery",
+"the germs",
+"to keep their hand cleans"
+]
+},
+{
+"label": "protection",
+"n": 9,
+"answers": [
+"hand care",
+"protect my hands",
+"protection",
+"take care of the hands",
+"to protect",
+"to protect your hands"
+]
+},
+{
+"label": "work",
+"n": 8,
+"answers": [
+"for work",
+"to do a work",
+"touch dangerous substances",
+"weld",
+"work"
+]
+},
+{
+"label": "boxing",
+"n": 7,
+"answers": [
+"boxing",
+"fight",
+"lifting weights",
+"sports",
+"to do exercise"
+]
+},
+{
+"label": "dirt",
+"n": 5,
+"answers": [
+"dirt",
+"hard work",
+"not get dirty",
+"not getting dirty",
+"not to get dirty"
+]
+},
+{
+"label": "hygiene",
+"n": 3,
+"answers": [
+"hygiene",
+"they don't like touch things"
+]
+},
+{
+"label": "cutting down tree",
+"n": 2,
+"answers": [
+"cutting down tree",
+"not to cut yourself"
+]
+}
+]
+},
+{
+"id": "r2q5",
+"q": "Name a sign that two people are friends.",
+"total": 100,
+"clusters": [
+{
+"label": "hug",
+"n": 35,
+"answers": [
+"affected",
+"fellowship",
+"giving kisses on the cheek",
+"hug",
+"hug and laughs",
+"hugs",
+"kiss",
+"love",
+"physical contact",
+"regards",
+"smile",
+"smiles",
+"the way to treat",
+"they hug",
+"they smile",
+"treatment"
+]
+},
+{
+"label": "trust",
+"n": 19,
+"answers": [
+"confiance",
+"confidence",
+"loyalty",
+"they know each other secrets",
+"trust"
+]
+},
+{
+"label": "they are always together",
+"n": 12,
+"answers": [
+"always seen together",
+"go out often",
+"hang out",
+"hang out together",
+"spending time together",
+"they are always together",
+"they go together",
+"they spend a lot of time together",
+"time spent together",
+"walk together"
+]
+},
+{
+"label": "talk",
+"n": 12,
+"answers": [
+"secrets are shared",
+"talk",
+"talk too much",
+"the way to talk",
+"they say hi to each other",
+"they talk a long time",
+"they talk a lot",
+"they talk everyday",
+"they talk frequently",
+"they're talk even when they're on bathroom"
+]
+},
+{
+"label": "laughs",
+"n": 4,
+"answers": [
+"jokes",
+"laughs",
+"they tell jokes each other"
+]
+},
+{
+"label": "calls",
+"n": 3,
+"answers": [
+"calls",
+"communication"
+]
+},
+{
+"label": "greeting",
+"n": 3,
+"answers": [
+"greeting",
+"handshakes"
+]
+},
+{
+"label": "support",
+"n": 2,
+"answers": [
+"support",
+"they support each other"
+]
+}
+]
+},
+{
+"id": "r2q6",
+"q": "Name something around the house that\u2019s often replaced.",
+"total": 100,
+"clusters": [
+{
+"label": "light bulbs",
+"n": 23,
+"answers": [
+"glass light",
+"lamps",
+"light bulbs",
+"lights bulbs"
+]
+},
+{
+"label": "toilet paper",
+"n": 15,
+"answers": [
+"paper",
+"soap",
+"toilet paper",
+"toothbrush",
+"toothpaste"
+]
+},
+{
+"label": "broom",
+"n": 9,
+"answers": [
+"bags",
+"broom",
+"brush",
+"cleaning articles",
+"garbage disposal",
+"hose"
+]
+},
+{
+"label": "food",
+"n": 8,
+"answers": [
+"food",
+"spices",
+"vegetable"
+]
+},
+{
+"label": "furniture",
+"n": 8,
+"answers": [
+"chairs",
+"fridge",
+"furniture"
+]
+},
+{
+"label": "curtains",
+"n": 7,
+"answers": [
+"blankets",
+"carpet",
+"curtains"
+]
+},
+{
+"label": "tv",
+"n": 5,
+"answers": [
+"computer",
+"power strips",
+"speaker",
+"tv"
+]
+},
+{
+"label": "plants",
+"n": 5,
+"answers": [
+"flowers",
+"grass",
+"plants",
+"vase water"
+]
+},
+{
+"label": "paint",
+"n": 4,
+"answers": [
+"paint"
+]
+},
+{
+"label": "painting",
+"n": 4,
+"answers": [
+"painting",
+"wall painting"
+]
+},
+{
+"label": "dishes",
+"n": 3,
+"answers": [
+"ceramic",
+"dishes"
+]
+},
+{
+"label": "batteries",
+"n": 2,
+"answers": [
+"batteries"
+]
+},
+{
+"label": "door",
+"n": 2,
+"answers": [
+"door",
+"fence"
+]
+}
+]
+},
+{
+"id": "r2q7",
+"q": "Name something parents tell their kids not to do",
+"total": 100,
+"clusters": [
+{
+"label": "misbehave",
+"n": 31,
+"answers": [
+"antics",
+"behave badly",
+"break the rules",
+"cry",
+"disrespect",
+"do so loudly",
+"jump",
+"jump on the bed",
+"jump on the beds",
+"loud",
+"loudly",
+"misbehave",
+"play",
+"play on the floor",
+"run with scissors",
+"scream",
+"take something",
+"take the parent's car",
+"talk",
+"touch",
+"touch something",
+"waste food",
+"write on the walls"
+]
+},
+{
+"label": "smoke",
+"n": 11,
+"answers": [
+"consume drugs",
+"drink alcohol",
+"get high",
+"smoke"
+]
+},
+{
+"label": "fight",
+"n": 11,
+"answers": [
+"fight"
+]
+},
+{
+"label": "steal",
+"n": 9,
+"answers": [
+"kill",
+"rob",
+"steal"
+]
+},
+{
+"label": "run",
+"n": 9,
+"answers": [
+"run",
+"run in circles"
+]
+},
+{
+"label": "lie",
+"n": 8,
+"answers": [
+"lie"
+]
+},
+{
+"label": "tell bad words",
+"n": 4,
+"answers": [
+"bad words",
+"say bad words",
+"tell bad words"
+]
+},
+{
+"label": "talk to strangers",
+"n": 4,
+"answers": [
+"talk to strangers"
+]
+},
+{
+"label": "go to the street",
+"n": 3,
+"answers": [
+"cross the street alone",
+"go outside alone",
+"go to the street"
+]
+},
+{
+"label": "have sex",
+"n": 2,
+"answers": [
+"have sex",
+"see pornography"
+]
+}
+]
+},
+{
+"id": "r2q8",
+"q": "Name a job where you have to be awake at night.",
+"total": 101,
+"clusters": [
+{
+"label": "security guard",
+"n": 63,
+"answers": [
+"escort",
+"guard",
+"keeper",
+"security",
+"security guard",
+"vigilant",
+"vigilante",
+"watchers",
+"watchman",
+"watchmen"
+]
+},
+{
+"label": "doctor",
+"n": 13,
+"answers": [
+"doctor",
+"emergency doctor",
+"nurse",
+"pharmacist",
+"surgeon"
+]
+},
+{
+"label": "bartender",
+"n": 8,
+"answers": [
+"bar",
+"bar's guard",
+"barman",
+"bartender",
+"dj"
+]
+},
+{
+"label": "police",
+"n": 6,
+"answers": [
+"police"
+]
+},
+{
+"label": "fast food",
+"n": 5,
+"answers": [
+"bakery",
+"fast food",
+"mcdonald",
+"mesonero"
+]
+}
+]
+},
+{
+"id": "r2q9",
+"q": "Name a complaint people have about their gym instructors.",
+"total": 100,
+"clusters": [
+{
+"label": "strict",
+"n": 41,
+"answers": [
+"a lot of exercise",
+"demanding",
+"do it",
+"exercise",
+"fatigue",
+"hard work",
+"is very strict",
+"it hurts",
+"overexertion",
+"pain",
+"painful",
+"performance",
+"scream",
+"shout",
+"strict",
+"sweat",
+"they are demanding",
+"they are too bossy",
+"they are very demanding",
+"they are very hard",
+"they are very strict",
+"too demanding",
+"too hard",
+"too intense",
+"torture",
+"very demanding",
+"very hard",
+"very strict"
+]
+},
+{
+"label": "schedule",
+"n": 15,
+"answers": [
+"bad attention",
+"being boring",
+"insufficient attention",
+"lack attention",
+"lack of attention",
+"little interest",
+"not attend",
+"not receiving attention",
+"occupied",
+"schedule",
+"time",
+"time on phone",
+"very fast"
+]
+},
+{
+"label": "bullying",
+"n": 13,
+"answers": [
+"angry",
+"bullying",
+"disrespectful",
+"embittered",
+"fight",
+"rude",
+"rudeness",
+"they are mean",
+"they are very rude",
+"too rude"
+]
+},
+{
+"label": "fat",
+"n": 10,
+"answers": [
+"bad explanation of exercises",
+"bad training",
+"bad work",
+"do not stretch well",
+"does not show the exercises the right way",
+"fat",
+"lack of preparation",
+"that are not taken care of as it should be",
+"they don't exercise"
+]
+},
+{
+"label": "touching",
+"n": 7,
+"answers": [
+"instructors touch too much",
+"pedophiles",
+"perverted",
+"they are too close",
+"they are touchy",
+"they have a bad smell",
+"touching"
+]
+},
+{
+"label": "annoying",
+"n": 3,
+"answers": [
+"annoying",
+"very annoying"
+]
+}
+]
+},
+{
+"id": "r2q10",
+"q": "Name something parents would criticize their children for having.",
+"total": 100,
+"clusters": [
+{
+"label": "drugs",
+"n": 14,
+"answers": [
+"beer",
+"drug",
+"drugs",
+"marijuana",
+"smoke"
+]
+},
+{
+"label": "laziness",
+"n": 12,
+"answers": [
+"bad habits",
+"badly bred",
+"laziness",
+"lie",
+"rudeness",
+"selfishness",
+"sleep",
+"sloth",
+"spoiledness",
+"video games",
+"weakness"
+]
+},
+{
+"label": "tattoos",
+"n": 11,
+"answers": [
+"clothes",
+"long nails",
+"piercing",
+"style",
+"tattoo",
+"tattoos"
+]
+},
+{
+"label": "money",
+"n": 11,
+"answers": [
+"expensive car",
+"expensive phone",
+"internet",
+"money",
+"more money",
+"phone",
+"telephone"
+]
+},
+{
+"label": "responsibilities",
+"n": 10,
+"answers": [
+"annoyance",
+"change diapers",
+"doctor",
+"having energy",
+"hungry",
+"lack of food",
+"lack of time",
+"maintenance",
+"responsibilities",
+"responsibility",
+"shout"
+]
+},
+{
+"label": "bad behavior",
+"n": 9,
+"answers": [
+"bad behavior",
+"behavior",
+"disobedient",
+"disorder",
+"disrespect",
+"misbehave",
+"misbehavior",
+"that is bad behavior"
+]
+},
+{
+"label": "gun",
+"n": 5,
+"answers": [
+"a firearm",
+"gun",
+"guns"
+]
+},
+{
+"label": "partners",
+"n": 4,
+"answers": [
+"bad friends",
+"couples",
+"gay friends",
+"partners"
+]
+},
+{
+"label": "gay",
+"n": 4,
+"answers": [
+"children at an early age",
+"divorce",
+"gay",
+"their ways of thinking"
+]
+},
+{
+"label": "bad grades",
+"n": 3,
+"answers": [
+"bad grades",
+"bad performance in school",
+"bad vocabulary"
+]
+},
+{
+"label": "job",
+"n": 2,
+"answers": [
+"job",
+"work"
+]
+}
+]
+},
+{
+"id": "r2q11",
+"q": "Name something people do with close friends that they wouldn't do with a stranger.",
+"total": 100,
+"clusters": [
+{
+"label": "go out together",
+"n": 29,
+"answers": [
+"dance",
+"gamble",
+"go for a walk",
+"go on trips",
+"go out together",
+"go to a party",
+"go to friend's house",
+"go to the disco",
+"go to the movies",
+"go to the shopping",
+"hangout",
+"party",
+"play",
+"play xbox",
+"travel",
+"walk",
+"watch movie",
+"watch movies",
+"watch netflix",
+"watch tv"
+]
+},
+{
+"label": "tell secrets",
+"n": 15,
+"answers": [
+"express your personal problems",
+"have private conversations",
+"intimacy of secrets",
+"share secrets",
+"talk about love",
+"talk about your relationships",
+"tell secrets",
+"tell your problems",
+"vent their problems"
+]
+},
+{
+"label": "hug",
+"n": 14,
+"answers": [
+"embrace",
+"hug",
+"hugs",
+"joke",
+"kiss",
+"tease",
+"telling jokes",
+"touch"
+]
+},
+{
+"label": "drink",
+"n": 13,
+"answers": [
+"diner",
+"drink",
+"drink a beer",
+"drink a lot",
+"drink beers",
+"eat",
+"eat together"
+]
+},
+{
+"label": "sleep together",
+"n": 8,
+"answers": [
+"sleep in the same room",
+"sleep together",
+"speak freely"
+]
+},
+{
+"label": "talk",
+"n": 6,
+"answers": [
+"talk"
+]
+},
+{
+"label": "laugh",
+"n": 5,
+"answers": [
+"cry",
+"fart",
+"laugh",
+"wear pajamas"
+]
+},
+{
+"label": "have sex",
+"n": 3,
+"answers": [
+"have sex"
+]
+},
+{
+"label": "birthday",
+"n": 2,
+"answers": [
+"birthday"
+]
+}
+]
+},
+{
+"id": "r2q12",
+"q": "Name something people might buy for a house that they would not buy for an apartment.",
+"total": 100,
+"clusters": [
+{
+"label": "gardening tools",
+"n": 19,
+"answers": [
+"a tree",
+"a watering can for the garden",
+"garden",
+"garden supplies",
+"gardening tools",
+"have a garden",
+"lawn mower",
+"plants",
+"pruner",
+"tree for yourself",
+"trees"
+]
+},
+{
+"label": "pool",
+"n": 19,
+"answers": [
+"a pool",
+"pool",
+"tank",
+"tool",
+"water tank"
+]
+},
+{
+"label": "chimney",
+"n": 11,
+"answers": [
+"bed",
+"carpet",
+"chairs",
+"chimney",
+"doorbell",
+"furniture"
+]
+},
+{
+"label": "car",
+"n": 11,
+"answers": [
+"a car for my garage",
+"a garage door",
+"broom",
+"car",
+"garage",
+"garage door",
+"garage things"
+]
+},
+{
+"label": "dog",
+"n": 11,
+"answers": [
+"dog",
+"dog pound",
+"kennel",
+"pet",
+"pets"
+]
+},
+{
+"label": "piano",
+"n": 7,
+"answers": [
+"a swing",
+"bicycle",
+"couch",
+"football goals",
+"outdoor couches",
+"piano",
+"trampoline"
+]
+},
+{
+"label": "grill",
+"n": 4,
+"answers": [
+"barbecue",
+"barbecue grill",
+"grill"
+]
+},
+{
+"label": "land",
+"n": 4,
+"answers": [
+"courtyard",
+"land",
+"portal",
+"roof"
+]
+}
+]
+},
+{
+"id": "r2q14",
+"q": "Instead of going to college, name something a person might do after high school.",
+"total": 100,
+"clusters": [
+{
+"label": "work",
+"n": 68,
+"answers": [
+"get a job",
+"job",
+"jobs",
+"labor",
+"start to work",
+"start working",
+"take a job",
+"to the job",
+"to work",
+"woked",
+"work",
+"work at a fast food restaurant",
+"working"
+]
+},
+{
+"label": "sport",
+"n": 10,
+"answers": [
+"drink alcohol",
+"enjoy",
+"go to the movies",
+"play",
+"play soccer",
+"sport",
+"sports"
+]
+},
+{
+"label": "courses",
+"n": 5,
+"answers": [
+"course",
+"courses",
+"online course",
+"summer course"
+]
+},
+{
+"label": "sleep",
+"n": 3,
+"answers": [
+"sleep"
+]
+},
+{
+"label": "travel",
+"n": 3,
+"answers": [
+"travel"
+]
+},
+{
+"label": "study",
+"n": 2,
+"answers": [
+"study"
+]
+},
+{
+"label": "military",
+"n": 2,
+"answers": [
+"military",
+"serve your country"
+]
+}
+]
+},
+{
+"id": "r2q15",
+"q": "Name something that people often remember for a long time, even when they get old.",
+"total": 99,
+"clusters": [
+{
+"label": "first love",
+"n": 30,
+"answers": [
+"a kiss",
+"first kiss",
+"first love",
+"first time",
+"first time something happened",
+"lose virginity",
+"love",
+"love of his life",
+"one love",
+"the first person they fell in love",
+"wedding"
+]
+},
+{
+"label": "parents",
+"n": 20,
+"answers": [
+"family",
+"family members",
+"friends",
+"grandmother",
+"mother",
+"parents",
+"pets",
+"relations",
+"sons",
+"when a son is born",
+"wife"
+]
+},
+{
+"label": "name",
+"n": 14,
+"answers": [
+"age",
+"name",
+"name of family",
+"names",
+"your age"
+]
+},
+{
+"label": "childhood",
+"n": 12,
+"answers": [
+"best childhood moments",
+"childhood",
+"children trauma",
+"memories of childness"
+]
+},
+{
+"label": "birthday",
+"n": 6,
+"answers": [
+"birthday"
+]
+},
+{
+"label": "travel",
+"n": 5,
+"answers": [
+"happy moment",
+"happy moments",
+"travel",
+"travels"
+]
+},
+{
+"label": "accidents",
+"n": 2,
+"answers": [
+"accidents",
+"bad experiences"
+]
+},
+{
+"label": "youth",
+"n": 2,
+"answers": [
+"youth"
+]
+}
+]
+},
+{
+"id": "r2q18",
+"q": "Name something that happens in real life but never makes the news.",
+"total": 99,
+"clusters": [
+{
+"label": "crime and abuse",
+"n": 49,
+"answers": [
+"abortions",
+"abuse",
+"abusing children",
+"amusement park accidents",
+"animal abuse",
+"assaults",
+"burglaries",
+"car crash",
+"cheating",
+"choked person with food",
+"corruption",
+"crime and abuse",
+"death of a dog",
+"deaths",
+"diseases",
+"dog fights",
+"drug addicts",
+"drugs",
+"drunkenness",
+"experiences of the most unfortunate",
+"family quarrels",
+"fight",
+"government corruption",
+"human traffic",
+"los muertos",
+"masacre",
+"mass animal deaths",
+"massacres",
+"murders",
+"neighbor fights",
+"police brutality",
+"poor",
+"probably, some deaths",
+"problems",
+"prostitution",
+"protest",
+"scams",
+"sexual harassment",
+"the death of a pet",
+"thefts",
+"to die",
+"verbal abuse",
+"violations",
+"violence",
+"war",
+"when someone gets hurt"
+]
+},
+{
+"label": "everyday routines",
+"n": 20,
+"answers": [
+"a person breathing",
+"birthday party",
+"buy food",
+"childhood of children",
+"children participating in school plays",
+"drink water",
+"eating",
+"education",
+"everyday routines",
+"fallen tree",
+"gardening",
+"go to the bathroom",
+"sleep",
+"sleeping people",
+"social events",
+"sun",
+"work"
+]
+},
+{
+"label": "awards",
+"n": 9,
+"answers": [
+"awards",
+"everyone is happy",
+"find money in the street",
+"miracles",
+"my success",
+"people doing good things",
+"people fall in love with dogs",
+"people with different opinions being kind",
+"someone helping another person"
+]
+},
+{
+"label": "sex",
+"n": 9,
+"answers": [
+"groupsex",
+"lose virginity",
+"marriage",
+"sex",
+"sexual act",
+"sexual intercourse"
+]
+},
+{
+"label": "amazon scam",
+"n": 4,
+"answers": [
+"a baby crying",
+"a child took a tooth",
+"amazon scam",
+"stubbing your toe"
+]
+},
+{
+"label": "aliens",
+"n": 3,
+"answers": [
+"aliens",
+"exorcisms",
+"ghosts"
+]
+}
+]
+},
+{
+"id": "r2q19",
+"q": "Name something specific that gets jumped.",
+"total": 100,
+"clusters": [
+{
+"label": "kangaroo",
+"n": 30,
+"answers": [
+"kangaroo",
+"kangaroos"
+]
+},
+{
+"label": "frog",
+"n": 15,
+"answers": [
+"a toad",
+"frog",
+"frogs",
+"toad",
+"toads"
+]
+},
+{
+"label": "rabbit",
+"n": 12,
+"answers": [
+"bunny",
+"rabbit"
+]
+},
+{
+"label": "grasshopper",
+"n": 7,
+"answers": [
+"cricket",
+"flea",
+"fleas",
+"grasshopper",
+"ticks"
+]
+},
+{
+"label": "fence",
+"n": 6,
+"answers": [
+"a fence",
+"doors",
+"fence",
+"fences",
+"wall"
+]
+},
+{
+"label": "trampoline",
+"n": 5,
+"answers": [
+"trampoline"
+]
+},
+{
+"label": "basketball",
+"n": 4,
+"answers": [
+"a basketball",
+"a basketball player",
+"basketball"
+]
+},
+{
+"label": "car battery",
+"n": 3,
+"answers": [
+"car battery",
+"car engine"
+]
+},
+{
+"label": "beds",
+"n": 2,
+"answers": [
+"beds",
+"chair"
+]
+},
+{
+"label": "jumper",
+"n": 2,
+"answers": [
+"jumper"
+]
+}
+]
+},
+{
+"id": "r2q20",
+"q": "Name something at the store you would find on the same aisle as cereal.",
+"total": 99,
+"clusters": [
+{
+"label": "cookies",
+"n": 39,
+"answers": [
+"candy",
+"cookes",
+"cookies",
+"galletas"
+]
+},
+{
+"label": "milk",
+"n": 26,
+"answers": [
+"milk",
+"milk powder"
+]
+},
+{
+"label": "oats",
+"n": 13,
+"answers": [
+"grains",
+"oat",
+"oatmeal",
+"oats"
+]
+},
+{
+"label": "bread",
+"n": 3,
+"answers": [
+"bread"
+]
+},
+{
+"label": "nuts",
+"n": 3,
+"answers": [
+"nuts",
+"seeds"
+]
+},
+{
+"label": "chocolate",
+"n": 2,
+"answers": [
+"chocolate"
+]
+},
+{
+"label": "protein bars",
+"n": 2,
+"answers": [
+"nutritional bars",
+"protein bars"
+]
+},
+{
+"label": "signs",
+"n": 2,
+"answers": [
+"signs",
+"spoons"
+]
+},
+{
+"label": "snack",
+"n": 2,
+"answers": [
+"doritos",
+"snack"
+]
+},
+{
+"label": "deodorant",
+"n": 2,
+"answers": [
+"deodorant",
+"toothpaste"
+]
+}
+]
+},
+{
+"id": "r2q21",
+"q": "Name something you need to make a pizza.",
+"total": 100,
+"clusters": [
+{
+"label": "cheese",
+"n": 47,
+"answers": [
+"cheddar",
+"cheese",
+"chess"
+]
+},
+{
+"label": "flour",
+"n": 32,
+"answers": [
+"dough",
+"flour",
+"wheat flour"
+]
+},
+{
+"label": "tomatoes",
+"n": 13,
+"answers": [
+"salsa",
+"sauce",
+"tomato",
+"tomato sauce",
+"tomatoes"
+]
+},
+{
+"label": "pepperoni",
+"n": 2,
+"answers": [
+"pepperoni"
+]
+}
+]
+},
+{
+"id": "r2q23",
+"q": "Name a word you hear almost every coach say at a high school football game.",
+"total": 100,
+"clusters": [
+{
+"label": "go",
+"n": 29,
+"answers": [
+"activate",
+"advance",
+"attack",
+"cheer up",
+"force",
+"go",
+"go ahead"
+]
+},
+{
+"label": "run",
+"n": 26,
+"answers": [
+"faster!",
+"hurry",
+"more energy",
+"quick",
+"run",
+"to play",
+"to run",
+"to win"
+]
+},
+{
+"label": "let's go",
+"n": 12,
+"answers": [
+"go team",
+"good game",
+"good job",
+"let's go",
+"let's go guys",
+"let's go team",
+"we did well, come on",
+"we will win",
+"you can do it"
+]
+},
+{
+"label": "come on",
+"n": 8,
+"answers": [
+"come on"
+]
+},
+{
+"label": "defense",
+"n": 5,
+"answers": [
+"defender",
+"defending",
+"defense"
+]
+},
+{
+"label": "kick",
+"n": 5,
+"answers": [
+"kick",
+"mas fuerte",
+"outside",
+"pass it",
+"pass the ball"
+]
+},
+{
+"label": "touchdown",
+"n": 3,
+"answers": [
+"nice bro",
+"touchdown"
+]
+},
+{
+"label": "referee",
+"n": 2,
+"answers": [
+"fault",
+"referee"
+]
+},
+{
+"label": "goal",
+"n": 2,
+"answers": [
+"goal"
+]
+}
+]
+},
+{
+"id": "r2q25",
+"q": "Name a reason why a person might prefer to own a cat over a dog.",
+"total": 99,
+"clusters": [
+{
+"label": "they don't bark",
+"n": 22,
+"answers": [
+"barking",
+"dogs are friendly",
+"dogs have too much energy",
+"less noisy",
+"more calm",
+"more order",
+"more quiet",
+"noise",
+"quiet",
+"reduce stress",
+"they are calmer",
+"they are more quiet",
+"they don't bark",
+"they're quiet",
+"tranquility"
+]
+},
+{
+"label": "clean",
+"n": 17,
+"answers": [
+"bath",
+"because cats are less messy",
+"cat doesn't piss everywhere",
+"clean",
+"neat",
+"they are cleaner",
+"they are more neat",
+"they bury their poop",
+"they can bathe alone",
+"they don't need take a shower"
+]
+},
+{
+"label": "size",
+"n": 12,
+"answers": [
+"for its size",
+"size",
+"size men",
+"small",
+"smaller",
+"the are smaller",
+"the size",
+"their smaller"
+]
+},
+{
+"label": "meow",
+"n": 9,
+"answers": [
+"cats are cute",
+"cute",
+"empathy",
+"fluffiness",
+"her fur",
+"love",
+"meow",
+"the cats are cuter",
+"they're adorable"
+]
+},
+{
+"label": "allergies",
+"n": 8,
+"answers": [
+"affected",
+"allergies"
+]
+},
+{
+"label": "mice",
+"n": 7,
+"answers": [
+"cats are more disastrous",
+"cats are not friendly",
+"cats hunt mice",
+"mice",
+"they eat mice",
+"to eat mice"
+]
+},
+{
+"label": "freedom",
+"n": 4,
+"answers": [
+"freedom",
+"independent",
+"they are more independence",
+"they are more independent"
+]
+},
+{
+"label": "don't need to be taken for a walk",
+"n": 3,
+"answers": [
+"don't have to take it outside to use the bathroom",
+"don't need to be taken for a walk",
+"you don't have to take them out for a walk"
+]
+},
+{
+"label": "attention",
+"n": 3,
+"answers": [
+"attention",
+"superior intelligence",
+"they are clever"
+]
+},
+{
+"label": "food",
+"n": 2,
+"answers": [
+"eat little",
+"food"
+]
+},
+{
+"label": "loyalty",
+"n": 2,
+"answers": [
+"loyalty",
+"partner"
+]
+}
+]
+},
+{
+"id": "r2q26",
+"q": "Name an animal that someone might teach to do tricks.",
+"total": 101,
+"clusters": [
+{
+"label": "dog",
+"n": 87,
+"answers": [
+"dog",
+"dogs"
+]
+},
+{
+"label": "monkey",
+"n": 8,
+"answers": [
+"monkey",
+"monkeys"
+]
+},
+{
+"label": "dolphin",
+"n": 2,
+"answers": [
+"dolphin",
+"dolphins"
+]
+},
+{
+"label": "parrot",
+"n": 2,
+"answers": [
+"parrot"
+]
+},
+{
+"label": "tiger",
+"n": 2,
+"answers": [
+"tiger",
+"tigers"
+]
+}
+]
+},
+{
+"id": "r2q27",
+"q": "Name something people do while getting checked by their dentist.",
+"total": 100,
+"clusters": [
+{
+"label": "open mouth",
+"n": 23,
+"answers": [
+"move",
+"move feet",
+"open mouth",
+"open the mouth",
+"open their mouth",
+"spit"
+]
+},
+{
+"label": "close the eyes",
+"n": 21,
+"answers": [
+"blink",
+"breathe",
+"close eyes",
+"close his eyes",
+"close the eyes",
+"he sleeps",
+"laying down",
+"relax",
+"rest",
+"rest well",
+"sleep",
+"smile",
+"stay calm"
+]
+},
+{
+"label": "think",
+"n": 15,
+"answers": [
+"pray",
+"read",
+"think",
+"thinking and close eyes"
+]
+},
+{
+"label": "talk",
+"n": 10,
+"answers": [
+"chatting",
+"talk",
+"talking about their life",
+"to complain"
+]
+},
+{
+"label": "get nervous",
+"n": 9,
+"answers": [
+"be afraid",
+"cry",
+"cry about it",
+"get nervous",
+"pain",
+"scream",
+"worried",
+"yell"
+]
+},
+{
+"label": "cell phone",
+"n": 6,
+"answers": [
+"cell phone",
+"check mentions on social medias",
+"check phone",
+"check the cell phone",
+"use the phone",
+"use their phone"
+]
+},
+{
+"label": "wait",
+"n": 4,
+"answers": [
+"get bored",
+"seated",
+"wait"
+]
+},
+{
+"label": "watch tv",
+"n": 3,
+"answers": [
+"look at the lamp",
+"see the ceiling",
+"watch tv"
+]
+}
+]
+},
+{
+"id": "r2q30",
+"q": "Name a reason why someone might have to pull off to the side of the road while driving.",
+"total": 100,
+"clusters": [
+{
+"label": "car breakdown",
+"n": 28,
+"answers": [
+"broken light",
+"car breakdown",
+"car failure",
+"car noises",
+"car overheating",
+"cars",
+"check the engine",
+"damaged rubber",
+"don't have the wheels",
+"engine overheating",
+"engine shuts down",
+"fault",
+"flat tire",
+"for a tire",
+"lose tire",
+"rims",
+"rubber prick",
+"spike rim",
+"spiky rubber",
+"the tire deflates",
+"tire",
+"tire explode",
+"to check the wheels",
+"wheel"
+]
+},
+{
+"label": "phone",
+"n": 15,
+"answers": [
+"a call",
+"answer a call",
+"answer call",
+"call",
+"cell phone",
+"make a call",
+"phone",
+"phone call",
+"speech",
+"talking on phone",
+"to make a call",
+"to take a call"
+]
+},
+{
+"label": "accident",
+"n": 12,
+"answers": [
+"accident",
+"accidents",
+"car accident"
+]
+},
+{
+"label": "bathroom break",
+"n": 10,
+"answers": [
+"bathroom break",
+"get down to pee",
+"go to the bathroom",
+"needs",
+"pee",
+"to pee",
+"to take a pis",
+"to urinate",
+"want to urinate"
+]
+},
+{
+"label": "police",
+"n": 6,
+"answers": [
+"police",
+"speeding",
+"when the cops order to stop"
+]
+},
+{
+"label": "an emergency",
+"n": 3,
+"answers": [
+"an emergency",
+"for an emergency",
+"when an ambulance passes"
+]
+},
+{
+"label": "deer",
+"n": 3,
+"answers": [
+"deer",
+"peaton",
+"there is a cow on the road"
+]
+},
+{
+"label": "fall sleep",
+"n": 3,
+"answers": [
+"fall sleep",
+"feeling sleepy",
+"wanting to sleep"
+]
+},
+{
+"label": "drunk",
+"n": 2,
+"answers": [
+"drunk",
+"drunk driving"
+]
+},
+{
+"label": "help",
+"n": 2,
+"answers": [
+"help",
+"para ayudar"
+]
+},
+{
+"label": "kids",
+"n": 2,
+"answers": [
+"kids"
+]
+}
+]
+},
+{
+"id": "r2q31",
+"q": "Besides birds, name a pet people keep in a cage.",
+"total": 100,
+"clusters": [
+{
+"label": "hamster",
+"n": 40,
+"answers": [
+"hamster",
+"hamsters",
+"hanters",
+"h\u00e1mster"
+]
+},
+{
+"label": "monkey",
+"n": 14,
+"answers": [
+"monkey",
+"monkeys"
+]
+},
+{
+"label": "rabbit",
+"n": 11,
+"answers": [
+"bunnies",
+"rabbit",
+"rabbits"
+]
+},
+{
+"label": "snake",
+"n": 10,
+"answers": [
+"lizard",
+"lizards",
+"lizars",
+"serpent",
+"snake",
+"snakes",
+"snakes.",
+"turtle"
+]
+},
+{
+"label": "parrot",
+"n": 7,
+"answers": [
+"parrot",
+"parrots",
+"turkeys"
+]
+},
+{
+"label": "mouse",
+"n": 5,
+"answers": [
+"mouse"
+]
+},
+{
+"label": "lion",
+"n": 4,
+"answers": [
+"lion",
+"lions",
+"lyon",
+"tiger"
+]
+},
+{
+"label": "dog",
+"n": 4,
+"answers": [
+"a puppie",
+"dog",
+"dogs"
+]
+},
+{
+"label": "rat",
+"n": 2,
+"answers": [
+"rat",
+"rodent"
+]
+}
+]
+},
+{
+"id": "r2q32",
+"q": "Name a reason why a child may not want to be friends with another child.",
+"total": 100,
+"clusters": [
+{
+"label": "bullying",
+"n": 42,
+"answers": [
+"abuse",
+"bad boy",
+"bad character",
+"because fight",
+"because he is a bad person",
+"because it treats evil",
+"because they fought",
+"bullying",
+"buying",
+"did something bad to him",
+"does not lend toys",
+"fear",
+"he fights a lot with him",
+"hit",
+"racism",
+"rejection",
+"rude",
+"rudeness",
+"scared",
+"selfish",
+"selfishness",
+"tease the child",
+"the other boy hits him",
+"the other kid is very rude",
+"they're a bully",
+"they're selfish",
+"unfriendly",
+"won't share toys"
+]
+},
+{
+"label": "age",
+"n": 13,
+"answers": [
+"age",
+"age difference",
+"because he is ugly",
+"by ugly",
+"color",
+"dirty",
+"for being black",
+"not common hobbies",
+"race",
+"skin color",
+"smells bad",
+"why is not neat"
+]
+},
+{
+"label": "hate",
+"n": 8,
+"answers": [
+"discomfort",
+"dislikes",
+"does not like",
+"hate",
+"he doesn't like him",
+"he don't like him",
+"they don't like each other"
+]
+},
+{
+"label": "shyness",
+"n": 8,
+"answers": [
+"shame",
+"shy",
+"shyness"
+]
+},
+{
+"label": "fight",
+"n": 7,
+"answers": [
+"fight",
+"fights"
+]
+},
+{
+"label": "envy",
+"n": 4,
+"answers": [
+"envy"
+]
+}
+]
+},
+{
+"id": "r2q35",
+"q": "Name a job which has a lot of power and influence which is not part of the government.",
+"total": 99,
+"clusters": [
+{
+"label": "ceo",
+"n": 24,
+"answers": [
+"business administration",
+"business owner",
+"businessman",
+"ceo",
+"ceo of a big company",
+"ceo of a company",
+"ceo of a major corporation",
+"ceo of apple",
+"ceo of facebook",
+"chief executive officer",
+"company director",
+"entrepreneur",
+"merchant",
+"oil tycoon",
+"own a company",
+"pdvsa",
+"president of microsoft"
+]
+},
+{
+"label": "attorney",
+"n": 13,
+"answers": [
+"attorney",
+"judge",
+"law",
+"lawyer"
+]
+},
+{
+"label": "actor",
+"n": 11,
+"answers": [
+"actor",
+"advisors",
+"advocacy",
+"be youtuber",
+"celebrity",
+"facebook",
+"influencer",
+"instagrammer",
+"marketing"
+]
+},
+{
+"label": "police",
+"n": 10,
+"answers": [
+"cop",
+"fbi",
+"firemen",
+"military",
+"police",
+"policeman",
+"sheriff"
+]
+},
+{
+"label": "doctor",
+"n": 8,
+"answers": [
+"caretaker",
+"doctor",
+"doctors"
+]
+},
+{
+"label": "mining",
+"n": 5,
+"answers": [
+"construction work",
+"engineer",
+"mining",
+"taskman",
+"work on the internet"
+]
+},
+{
+"label": "manager",
+"n": 5,
+"answers": [
+"accountant",
+"general manager",
+"manager"
+]
+},
+{
+"label": "pope",
+"n": 4,
+"answers": [
+"church",
+"pope"
+]
+},
+{
+"label": "nasa",
+"n": 3,
+"answers": [
+"director of college",
+"nasa",
+"teacher"
+]
+},
+{
+"label": "artist",
+"n": 2,
+"answers": [
+"artist",
+"musician"
+]
+},
+{
+"label": "bank",
+"n": 2,
+"answers": [
+"bank",
+"broker"
+]
+}
+]
+},
+{
+"id": "r2q37",
+"q": "Name something that would cause you to stop speaking to your best friend.",
+"total": 100,
+"clusters": [
+{
+"label": "betrayal",
+"n": 43,
+"answers": [
+"betrayal",
+"betrayed",
+"change of attitude",
+"cheating",
+"cheating with your spouse",
+"dishonesty",
+"fool me",
+"infidelity",
+"infidelity with my girlfriend",
+"jealousy",
+"let me fail as friends",
+"liar",
+"lie",
+"lie to him",
+"lie to me",
+"lies",
+"lying",
+"not telling the truth",
+"speak badly about me",
+"traitor",
+"treachery",
+"treason",
+"trust"
+]
+},
+{
+"label": "fight",
+"n": 20,
+"answers": [
+"a discussion",
+"a fight",
+"a goal",
+"a party",
+"conflict",
+"critica",
+"fight",
+"fights",
+"frighten",
+"problem",
+"problems",
+"rencor",
+"the insults",
+"violence"
+]
+},
+{
+"label": "envy",
+"n": 11,
+"answers": [
+"confidence",
+"envy",
+"fag",
+"homophobia",
+"hypocrisy",
+"ignoring",
+"nigga",
+"shit face",
+"talk",
+"to get a fag"
+]
+},
+{
+"label": "gossip",
+"n": 8,
+"answers": [
+"couples",
+"ex",
+"ex girlfriend",
+"girlfriend",
+"girls",
+"gossip",
+"the brides"
+]
+},
+{
+"label": "debt",
+"n": 4,
+"answers": [
+"debt",
+"money"
+]
+},
+{
+"label": "job",
+"n": 4,
+"answers": [
+"an emergency",
+"job",
+"remoteness",
+"shooter"
+]
+}
+]
+},
+{
+"id": "r2q38",
+"q": "Name something people buy that lasts a long time.",
+"total": 99,
+"clusters": [
+{
+"label": "phone",
+"n": 20,
+"answers": [
+"batteries",
+"battery",
+"cell phone",
+"computer",
+"console of video games",
+"pc",
+"phone",
+"phones",
+"television",
+"televisor",
+"tv",
+"watch"
+]
+},
+{
+"label": "house",
+"n": 15,
+"answers": [
+"a house",
+"house",
+"houses"
+]
+},
+{
+"label": "food",
+"n": 14,
+"answers": [
+"candy",
+"eat",
+"flavoring",
+"food",
+"food dishes",
+"long lasting milk",
+"sausages",
+"water",
+"wine"
+]
+},
+{
+"label": "car",
+"n": 9,
+"answers": [
+"a car",
+"car",
+"cars",
+"old car"
+]
+},
+{
+"label": "clothes",
+"n": 9,
+"answers": [
+"clothes",
+"clothing",
+"jackets",
+"shoes"
+]
+},
+{
+"label": "fridge",
+"n": 7,
+"answers": [
+"fridge",
+"refrigerator",
+"washing machine"
+]
+},
+{
+"label": "kitchen",
+"n": 6,
+"answers": [
+"kitchen"
+]
+},
+{
+"label": "shampoo",
+"n": 5,
+"answers": [
+"shampoo",
+"soap",
+"tooth brusher",
+"toothpaste"
+]
+},
+{
+"label": "bed",
+"n": 2,
+"answers": [
+"bed"
+]
+},
+{
+"label": "broom",
+"n": 2,
+"answers": [
+"broom"
+]
+},
+{
+"label": "anvil",
+"n": 2,
+"answers": [
+"anvil",
+"hammer"
+]
+}
+]
+},
+{
+"id": "r2q39",
+"q": "Name an activity that's often depicted in movies though people seldom do it in real life.",
+"total": 99,
+"clusters": [
+{
+"label": "murder",
+"n": 18,
+"answers": [
+"assassinations",
+"bank robberies",
+"detective",
+"kill",
+"kill the black guy",
+"mass murders",
+"murder",
+"murders",
+"police chase",
+"shoot",
+"shooting",
+"spy",
+"to  kill",
+"to kill"
+]
+},
+{
+"label": "skydiving",
+"n": 14,
+"answers": [
+"fly",
+"fly over the rainbow",
+"fly through the skies and fall without a scratch",
+"flying cars",
+"go to space",
+"parachuting",
+"skydiving"
+]
+},
+{
+"label": "fight",
+"n": 12,
+"answers": [
+"action",
+"combat",
+"fight",
+"fights",
+"flight"
+]
+},
+{
+"label": "drama",
+"n": 10,
+"answers": [
+"acrobatics",
+"drama",
+"faint",
+"fall in love at first sight",
+"fall in love in short time",
+"go to cinema every day",
+"have casual sex with a stranger",
+"sleep with makeup",
+"someone be saved at the right time",
+"travel the world"
+]
+},
+{
+"label": "run",
+"n": 8,
+"answers": [
+"golf",
+"jogging",
+"rollerblading",
+"run",
+"skating",
+"surf",
+"to run",
+"work out"
+]
+},
+{
+"label": "sing",
+"n": 6,
+"answers": [
+"sing"
+]
+},
+{
+"label": "travel",
+"n": 5,
+"answers": [
+"buy a dog",
+"picnic",
+"sex",
+"travel"
+]
+},
+{
+"label": "alien",
+"n": 5,
+"answers": [
+"alien",
+"ghost hunt",
+"kiss in slow motion",
+"looking for the ghost in their house",
+"superpowers"
+]
+},
+{
+"label": "race",
+"n": 4,
+"answers": [
+"jump on a moving train",
+"race",
+"race driver",
+"walk alone in the dark"
+]
+},
+{
+"label": "forgive",
+"n": 2,
+"answers": [
+"apologize",
+"forgive"
+]
+},
+{
+"label": "lie",
+"n": 2,
+"answers": [
+"lie",
+"pranks"
+]
+}
+]
+},
+{
+"id": "r2q40",
+"q": "Name something scary that people are no longer scared of when they get older.",
+"total": 100,
+"clusters": [
+{
+"label": "darkness",
+"n": 26,
+"answers": [
+"dark",
+"darkness",
+"shadow"
+]
+},
+{
+"label": "ghosts",
+"n": 14,
+"answers": [
+"ghost",
+"ghost in the closet",
+"ghosts",
+"the ghosts"
+]
+},
+{
+"label": "death",
+"n": 12,
+"answers": [
+"dead",
+"death",
+"die alone",
+"to die",
+"to the dead"
+]
+},
+{
+"label": "clowns",
+"n": 9,
+"answers": [
+"clown",
+"clowns",
+"the clowns"
+]
+},
+{
+"label": "monsters",
+"n": 9,
+"answers": [
+"closet monster",
+"monster",
+"monsters",
+"monsters in the closet"
+]
+},
+{
+"label": "boogeyman",
+"n": 8,
+"answers": [
+"boogeyman",
+"the boogeyman"
+]
+},
+{
+"label": "spiders",
+"n": 5,
+"answers": [
+"spiders"
+]
+},
+{
+"label": "dogs",
+"n": 2,
+"answers": [
+"animals",
+"dogs"
+]
+},
+{
+"label": "films",
+"n": 2,
+"answers": [
+"films",
+"movies"
+]
+}
+]
+},
+{
+"id": "r2q42",
+"q": "Name something that would make someone change their return flight.",
+"total": 99,
+"clusters": [
+{
+"label": "emergency",
+"n": 33,
+"answers": [
+"a love",
+"a message from someone important",
+"a person",
+"an emergency",
+"birth of a son",
+"death of a family member",
+"emergency",
+"family",
+"family death",
+"family disease",
+"family emergency",
+"family problem",
+"felt in love",
+"girlfriend",
+"he lost a family member",
+"his poor little angel stays",
+"loss of a relative",
+"love",
+"miss someone",
+"the death of a relative",
+"unexpected",
+"urgency"
+]
+},
+{
+"label": "weather",
+"n": 29,
+"answers": [
+"bad weather",
+"blizzard",
+"calamity",
+"harsh weather",
+"hurricanes",
+"snow storm",
+"storm",
+"weather"
+]
+},
+{
+"label": "disease",
+"n": 7,
+"answers": [
+"cold",
+"disease",
+"get sick",
+"sickness"
+]
+},
+{
+"label": "forget something",
+"n": 6,
+"answers": [
+"forget something",
+"forget the passport",
+"forget your phone",
+"time"
+]
+},
+{
+"label": "delay",
+"n": 6,
+"answers": [
+"bad service",
+"delay",
+"lag",
+"repentance",
+"the hour of arrival"
+]
+},
+{
+"label": "work",
+"n": 6,
+"answers": [
+"found job",
+"have to do another thing",
+"impromptu work meeting",
+"work"
+]
+},
+{
+"label": "lost money",
+"n": 3,
+"answers": [
+"cheaper seats",
+"lack of money",
+"lost money"
+]
+}
+]
+},
+{
+"id": "r2q43",
+"q": "Name something a delivery person might see in someone's yard that would prevent them from delivering a package.",
+"total": 99,
+"clusters": [
+{
+"label": "dog",
+"n": 61,
+"answers": [
+"a bad dog",
+"a big dog",
+"a danger dog",
+"a dog",
+"angry dog",
+"big and angry dogs",
+"dog",
+"dogs",
+"furious dog",
+"mad dog",
+"one dog",
+"rabid dog"
+]
+},
+{
+"label": "a dead body",
+"n": 6,
+"answers": [
+"a dead",
+"a dead body",
+"a murder",
+"dead person"
+]
+},
+{
+"label": "tree",
+"n": 4,
+"answers": [
+"a cave",
+"bag grass",
+"long grass",
+"tree"
+]
+},
+{
+"label": "wild animal",
+"n": 3,
+"answers": [
+"fish",
+"snake",
+"wild animal"
+]
+},
+{
+"label": "closed gate",
+"n": 3,
+"answers": [
+"closed",
+"closed bars",
+"closed gate",
+"don't delivery"
+]
+},
+{
+"label": "naked people",
+"n": 3,
+"answers": [
+"naked people",
+"nudes",
+"sons"
+]
+},
+{
+"label": "gun",
+"n": 2,
+"answers": [
+"gun",
+"guns"
+]
+},
+{
+"label": "dog poop",
+"n": 2,
+"answers": [
+"dog poop",
+"excrement"
+]
+},
+{
+"label": "traffic",
+"n": 2,
+"answers": [
+"traffic"
+]
+},
+{
+"label": "trash",
+"n": 2,
+"answers": [
+"the bottles",
+"trash"
+]
+}
+]
+},
+{
+"id": "r2q44",
+"q": "Tell me something a poor person might have which is smaller than most peoples.",
+"total": 99,
+"clusters": [
+{
+"label": "house",
+"n": 23,
+"answers": [
+"a house",
+"home",
+"house",
+"room"
+]
+},
+{
+"label": "money",
+"n": 20,
+"answers": [
+"250 million",
+"bank account",
+"cash",
+"coin",
+"coins",
+"gold",
+"money",
+"money in the bank",
+"wallet"
+]
+},
+{
+"label": "food",
+"n": 9,
+"answers": [
+"food",
+"nutrition",
+"stomach",
+"their stomach"
+]
+},
+{
+"label": "love",
+"n": 8,
+"answers": [
+"hope",
+"love",
+"poor mind",
+"problems",
+"self esteem",
+"sentiments"
+]
+},
+{
+"label": "humility",
+"n": 8,
+"answers": [
+"humility"
+]
+},
+{
+"label": "dog",
+"n": 6,
+"answers": [
+"a cat",
+"cat",
+"dog"
+]
+},
+{
+"label": "shoes",
+"n": 5,
+"answers": [
+"clothing",
+"pants",
+"shoe",
+"shoes"
+]
+},
+{
+"label": "chair",
+"n": 3,
+"answers": [
+"bed",
+"chair"
+]
+},
+{
+"label": "tv",
+"n": 3,
+"answers": [
+"tv"
+]
+},
+{
+"label": "car",
+"n": 2,
+"answers": [
+"a car",
+"car"
+]
+}
+]
+},
+{
+"id": "r2q45",
+"q": "Name something in your life that could cause you to lose weight.",
+"total": 100,
+"clusters": [
+{
+"label": "exercise",
+"n": 35,
+"answers": [
+"basketball",
+"exercise",
+"gym",
+"physical exercise",
+"ride the bicycle",
+"run",
+"sport",
+"sports.",
+"to run",
+"training",
+"treadmill",
+"walk"
+]
+},
+{
+"label": "diet",
+"n": 30,
+"answers": [
+"diet",
+"food",
+"have no time to lunch",
+"hungry",
+"lemons",
+"lettuce",
+"not to eat",
+"stop eating",
+"stop eating sugar",
+"vegetables"
+]
+},
+{
+"label": "depression",
+"n": 12,
+"answers": [
+"death of relative",
+"depression",
+"disappointments",
+"losing someone close",
+"sadness"
+]
+},
+{
+"label": "illness",
+"n": 6,
+"answers": [
+"disease",
+"illness",
+"tenia"
+]
+},
+{
+"label": "drugs",
+"n": 4,
+"answers": [
+"amino acids",
+"drugs",
+"fiber",
+"herbalife"
+]
+},
+{
+"label": "stress",
+"n": 4,
+"answers": [
+"stress"
+]
+},
+{
+"label": "sex",
+"n": 3,
+"answers": [
+"relationship",
+"sex"
+]
+}
+]
+},
+{
+"id": "r2q46",
+"q": "Name a reason why you might give a waiter a good tip.",
+"total": 100,
+"clusters": [
+{
+"label": "good service",
+"n": 36,
+"answers": [
+"excellent service",
+"for good service",
+"getting better",
+"good service",
+"good services",
+"great service",
+"service",
+"very good service",
+"work"
+]
+},
+{
+"label": "good attention",
+"n": 29,
+"answers": [
+"attention",
+"attention service",
+"attention.",
+"be attentive to your customers",
+"buena atencion",
+"for being attentive and kind",
+"good attention",
+"great attention"
+]
+},
+{
+"label": "nice",
+"n": 9,
+"answers": [
+"good conduct",
+"good manners",
+"good person",
+"he is a good person",
+"if they are kind to me",
+"it was kind to me",
+"kind person",
+"kindness",
+"nice"
+]
+},
+{
+"label": "smile",
+"n": 8,
+"answers": [
+"amiability",
+"family",
+"friendliness",
+"friendly",
+"smile"
+]
+},
+{
+"label": "fast service",
+"n": 5,
+"answers": [
+"efficient",
+"fast service",
+"speed"
+]
+},
+{
+"label": "beauty",
+"n": 2,
+"answers": [
+"beauty"
+]
+},
+{
+"label": "courtesy",
+"n": 2,
+"answers": [
+"because they lives basically of waiter",
+"courtesy"
+]
+},
+{
+"label": "good deal",
+"n": 2,
+"answers": [
+"good deal"
+]
+}
+]
+},
+{
+"id": "r2q47",
+"q": "Name something that you might break on purpose.",
+"total": 100,
+"clusters": [
+{
+"label": "glass",
+"n": 40,
+"answers": [
+"a cup",
+"a dish",
+"a glass",
+"a plate",
+"bottle",
+"crockery",
+"cup",
+"emergency glass",
+"glass",
+"glass plate",
+"plate",
+"wooden chopsticks"
+]
+},
+{
+"label": "paper",
+"n": 8,
+"answers": [
+"a letter",
+"envelope",
+"paper",
+"paper sheet"
+]
+},
+{
+"label": "eggs",
+"n": 6,
+"answers": [
+"eggs"
+]
+},
+{
+"label": "pencil",
+"n": 6,
+"answers": [
+"pencil"
+]
+},
+{
+"label": "vase",
+"n": 6,
+"answers": [
+"flower vase",
+"jars",
+"vase"
+]
+},
+{
+"label": "cookie",
+"n": 5,
+"answers": [
+"cookie",
+"spaghetti"
+]
+},
+{
+"label": "mirror",
+"n": 4,
+"answers": [
+"a mirror",
+"mirror"
+]
+},
+{
+"label": "phone",
+"n": 4,
+"answers": [
+"cell phone",
+"phone"
+]
+},
+{
+"label": "balloon",
+"n": 3,
+"answers": [
+"a balloon",
+"balloon"
+]
+},
+{
+"label": "ice",
+"n": 3,
+"answers": [
+"ice"
+]
+},
+{
+"label": "a box",
+"n": 2,
+"answers": [
+"a box",
+"a packing"
+]
+}
+]
+},
+{
+"id": "r2q49",
+"q": "Name a place where you might have a long conversation with someone who works there.",
+"total": 99,
+"clusters": [
+{
+"label": "bar",
+"n": 31,
+"answers": [
+"a bar",
+"bar",
+"cafe",
+"cafes",
+"cafeteria",
+"coffee",
+"coffee shop",
+"dining room",
+"in a bar",
+"in the disco",
+"kfc",
+"mcdonald",
+"mcdonalds",
+"nightclub",
+"pub",
+"restaurant"
+]
+},
+{
+"label": "hospital",
+"n": 14,
+"answers": [
+"counselor",
+"doctor office",
+"hospital",
+"psychiatric hospital",
+"psychologist",
+"therapist"
+]
+},
+{
+"label": "bank",
+"n": 12,
+"answers": [
+"a bank",
+"bank",
+"the bank"
+]
+},
+{
+"label": "park",
+"n": 10,
+"answers": [
+"amusement park",
+"beach",
+"forest",
+"garden",
+"park",
+"square"
+]
+},
+{
+"label": "office",
+"n": 9,
+"answers": [
+"google",
+"human resources",
+"insurance companies",
+"nasa",
+"office",
+"the office"
+]
+},
+{
+"label": "mall",
+"n": 7,
+"answers": [
+"center mall",
+"cloth store",
+"clothing store",
+"mall",
+"store",
+"supermarket",
+"walmart"
+]
+},
+{
+"label": "movie theater",
+"n": 3,
+"answers": [
+"cine",
+"movie theater",
+"theater"
+]
+}
+]
+}
+]

@@ -23,7 +23,27 @@ def serve():
     return httpd
 
 URL = f'http://localhost:{PORT}/index.html'
-GAMES = ['password', 'island', 'bridges', 'algebra', 'loop', 'detective', 'shape', 'balance', 'reverse', 'links']
+GAMES = ['password', 'island', 'bridges', 'algebra', 'loop', 'detective', 'shape', 'balance', 'reverse', 'links',
+         'wordcount', 'wordgrid', 'threads', 'trails', 'wordrush', 'catlogic', 'survey']
+
+async def open_game(page, g):
+    await page.locator(f'.gtile:has(.gc-name:text-is("{NAMES[g]}"))').click()
+NAMES = {'password': 'Password', 'island': 'The Island', 'bridges': 'Word Bridges', 'algebra': 'Algebra Arcade', 'loop': 'Loop Logic',
+         'detective': 'Word Detective', 'shape': 'Shape Shift', 'balance': 'Balance', 'reverse': 'Reverse Engineer', 'links': 'Word Links',
+         'wordcount': 'Word Count', 'wordgrid': 'Word Grid', 'threads': 'Common Threads', 'trails': 'Word Trails', 'wordrush': 'Word Rush',
+         'catlogic': 'Cat Logic', 'survey': 'Survey Says'}
+
+async def type_word(page, w):
+    for ch in w:
+        await page.locator(f'.kbk[aria-label="{ch.upper()}"]').click()
+    await page.locator('.kbk.wide:has-text("Enter")').click(); await page.wait_for_timeout(60)
+
+async def trace_path(page, path):
+    cells = page.locator('.tr-cell')
+    for i in path:
+        b = await cells.nth(i).bounding_box()
+        await page.mouse.click(b['x'] + b['width'] / 2, b['y'] + b['height'] / 2)
+    await page.locator('.tr-controls button:has-text("Enter")').click(); await page.wait_for_timeout(60)
 
 async def cur(page, expr):
     return await page.evaluate('(() => { const c = PL._cur(); return ' + expr + '; })()')
@@ -119,6 +139,44 @@ async def solve_current(page, g, with_wrong=False):
             for q, mi in enumerate(p['answer']):
                 await page.locator('.srow.col').nth(q).locator('.btn').nth(mi).click()
             await page.click('.reverse button.wide.primary')
+    elif g in ('wordgrid', 'wordcount'):
+        if with_wrong:
+            wrong = await page.evaluate('''() => { const c = PL._cur(), p = c.p.qs ? c.p.qs[c.rec.gs.i] : c.p;
+                for (const g of PL.five.data().guess) { if (g !== p.w && (!p.pool || (g.split('').every(x => p.pool.includes(x)) && !PL.five.repeats(g)))) return g; } }''')
+            await type_word(page, wrong)
+        await type_word(page, p['w'])
+    elif g == 'threads':
+        for grp in p['groups']:
+            for w in grp['words']:
+                await page.locator(f'.th-tile:text-is("{w}")').click()
+            await page.locator('.th-actions button:has-text("Submit")').click(); await page.wait_for_timeout(80)
+    elif g == 'trails':
+        for pl in p['words']:
+            await trace_path(page, pl['path'])
+    elif g == 'wordrush':
+        if await page.locator('button:has-text("Start untimed")').count():
+            await page.click('button:has-text("Start untimed")'); await page.wait_for_timeout(80)
+        w = p['common'][0] if p.get('common') else p['words'][0]
+        path = await page.evaluate('''(w) => { const c = PL._cur(), p = c.p, cols = p.size; let res = null;
+            (function find(pos, k, used) { if (res) return; const L = p.letters[pos].toLowerCase(); if (w.substr(k, L.length) !== L) return;
+              used.push(pos); if (k + L.length === w.length) { res = used.slice(); return; }
+              for (let j = 0; j < p.letters.length; j++) if (used.indexOf(j) < 0 && PL.trace.adj(pos, j, cols)) find(j, k + L.length, used);
+              used.pop(); })
+            ; for (let i = 0; i < p.letters.length && !res; i++) (function f(){ const used=[]; (function find(pos, k){ if (res) return; const L = p.letters[pos].toLowerCase(); if (w.substr(k, L.length) !== L) return; used.push(pos); if (k + L.length === w.length) { res = used.slice(); return; } for (let j = 0; j < p.letters.length; j++) if (used.indexOf(j) < 0 && PL.trace.adj(pos, j, cols)) find(j, k + L.length); used.pop(); })(i, 0); })();
+            return res; }''', w)
+        await trace_path(page, path)
+        b = page.locator('button:has-text("Finish round")'); await b.click(); await page.locator('button:has-text("Tap again to finish")').click()
+    elif g == 'catlogic':
+        n = p['n']
+        for r, c in enumerate(p['sol']):
+            cell = page.locator('.cl-cell').nth(r * n + c)
+            await cell.click(); await cell.click(); await page.wait_for_timeout(30)
+    elif g == 'survey':
+        if with_wrong:
+            await page.fill('#sv-in', 'zzqqxx'); await page.press('#sv-in', 'Enter'); await page.wait_for_timeout(60)
+        for c in p['board']:
+            if await page.locator('.summary').count(): break
+            await page.fill('#sv-in', c['label']); await page.press('#sv-in', 'Enter'); await page.wait_for_timeout(60)
     elif g == 'links':
         for li in p['order']:
             L = p['links'][li]
@@ -138,9 +196,9 @@ async def main():
         errs = []
         page.on('pageerror', lambda e: errs.append(str(e)))
         page.on('console', lambda m: errs.append(m.text) if m.type == 'error' else None)
-        await page.goto(URL); await page.wait_for_selector('.games .gcard')
-        check(await page.locator('.games .gcard').count() == 10, 'home shows 10 games')
-        names = await page.locator('.games .gc-name').all_inner_texts()
+        await page.goto(URL); await page.wait_for_selector('.gtile')
+        check(await page.locator('.gtile').count() == 17, 'home shows 17 games')
+        names = await page.locator('.gtile .gc-name').all_inner_texts()
         check('Logic Lab' not in names and 'Reverse Engineer' in names and 'Word Links' in names, 'Logic Lab removed, new games present')
         await page.screenshot(path=f'{OUT}/home.png', full_page=True)
 
@@ -148,7 +206,7 @@ async def main():
         only = os.environ.get('E2E_GAMES')
         for gi, g in enumerate(GAMES):
             if only and g not in only.split(','): continue
-            await page.locator('.games .gcard').nth(gi).click(); await page.wait_for_selector('#gamebody')
+            await open_game(page, g); await page.wait_for_selector('#gamebody')
             ids = []
             for k in range(5):
                 await page.wait_for_selector('#gamebody'); await page.wait_for_timeout(120)
@@ -157,6 +215,8 @@ async def main():
                 ms0 = await cur(page, 'c.rec.activeMs')
                 check(ms0 < 1500, f'{g} #{k+1}: fresh timer ({int(ms0)} ms)')
                 if k == 1:  # use a hint on the second puzzle
+                    if g == 'wordrush' and await page.locator('button:has-text("Start untimed")').count():
+                        await page.click('button:has-text("Start untimed")'); await page.wait_for_timeout(80)
                     await page.click('#hintbtn'); await page.wait_for_timeout(80)
                     check(await cur(page, 'c.rec.hints') >= 1, f'{g}: hint recorded')
                 await page.wait_for_timeout(1100)
@@ -182,13 +242,13 @@ async def main():
             await go_home(page)
 
         # ---- give up, leave/return, reload/resume ----
-        await page.locator('.games .gcard').nth(2).click(); await page.wait_for_selector('#bridge-in')
+        await open_game(page, 'bridges'); await page.wait_for_selector('#bridge-in')
         sol = await cur(page, 'c.p.solution'); rid = await cur(page, 'c.rec.id')
         await page.fill('#bridge-in', sol[1]); await page.press('#bridge-in', 'Enter'); await page.wait_for_timeout(1500)
         await go_home(page)
         check(await page.locator('.resume').count() >= 1, 'leaving keeps the puzzle resumable')
         await page.reload(); await page.wait_for_selector('.games')
-        await page.locator('.games .gcard').nth(2).click(); await page.wait_for_selector('#bridge-in')
+        await open_game(page, 'bridges'); await page.wait_for_selector('#bridge-in')
         check(await cur(page, 'c.rec.id') == rid and len(await cur(page, 'c.rec.gs.path')) == 2, 'reload resumes the same attempt with its moves')
         await page.click('summary[aria-label="More actions"]'); await page.click('text=Give up'); await page.click('text=Tap again to give up and see the solution')
         await page.wait_for_selector('.summary'); check('Not solved' in await page.locator('.summary h2').inner_text(), 'give up records a failure')
@@ -200,7 +260,7 @@ async def main():
         check(await cur(page, 'c.rec.activeMs') > b2, 'resume restarts the clock')
 
         # ---- calculator & scratchpad ----
-        await go_home(page); await page.locator('.games .gcard').nth(3).click(); await page.wait_for_selector('#gamebody')
+        await go_home(page); await open_game(page, 'algebra'); await page.wait_for_selector('#gamebody')
         await page.click('[aria-label="Calculator"]'); await page.wait_for_selector('.calc-pad')
         for k in ['3', '÷', '4', '+', '1', 'a/b', '6', '=']:
             await page.locator('.ckey', has_text=k).first.click() if k not in ('+', '÷', '=') else await page.locator(f'.ckey[aria-label="{k}"]').click()
@@ -218,7 +278,7 @@ async def main():
         await page.click('.dock button:has-text("Close")')
 
         # ---- Island ordinary input ----
-        await go_home(page); await page.locator('.games .gcard').nth(1).click(); await page.wait_for_selector('#isl-in')
+        await go_home(page); await open_game(page, 'island'); await page.wait_for_selector('#isl-in')
         before = len(await cur(page, 'c.rec.gs.log'))
         for w in ['tacos', 'a fireplace', 'Ice Cream!', 'mice', 'the Eiffel tower']:
             await page.fill('#isl-in', w); await page.press('#isl-in', 'Enter'); await page.wait_for_timeout(80)
@@ -228,18 +288,18 @@ async def main():
 
         # ---- daily quiz ----
         await go_home(page); await page.click('.daily-card'); await page.wait_for_selector('.dlist')
-        check(await page.locator('.dlist .gcard').count() == 10, 'daily quiz has 10 puzzles')
+        check(await page.locator('.dlist .gcard').count() == 17, 'daily quiz has 17 puzzles')
         for i, g in enumerate(GAMES[:3]):
             await page.locator('.dlist .gcard').nth(i).click(); await page.wait_for_selector('#gamebody'); await page.wait_for_timeout(300)
             await solve_current(page, g); await page.wait_for_selector('.summary')
             sc = await page.locator('.summary .sum-score').inner_text(); check('/ 100' in sc, f'daily {g} scored out of 100 ({sc.strip()})')
             await page.click('.summary .btn.primary'); await page.wait_for_selector('.dlist')
         lv0 = await page.evaluate("PL.model.rating('password').level")
-        check('/ 1000' in await page.locator('.daily-head').inner_text(), 'daily total out of 1000')
+        check('/ 1700' in await page.locator('.daily-head').inner_text(), 'daily total out of 1700')
         await page.screenshot(path=f'{OUT}/daily.png', full_page=True)
 
         # ---- tools keep the question visible; calculator chaining ----
-        await go_home(page); await page.locator('.games .gcard').nth(3).click(); await page.wait_for_selector('#gamebody')
+        await go_home(page); await open_game(page, 'algebra'); await page.wait_for_selector('#gamebody')
         await page.click('[aria-label="Calculator"]'); await page.wait_for_selector('.dock .calc-pad')
         prob = await page.locator('.gamebody .prob').first.bounding_box(); dock = await page.locator('.dock').bounding_box()
         check(prob and prob['y'] >= 0 and prob['y'] + 20 < dock['y'], 'question stays visible above the open calculator')
@@ -257,7 +317,7 @@ async def main():
         await page.evaluate("PL.model.clearActive('reverse')")
         found = False
         for attempt in range(25):
-            await page.locator('.games .gcard').nth(8).click(); await page.wait_for_selector('#gamebody')
+            await open_game(page, 'reverse'); await page.wait_for_selector('#gamebody')
             if await cur(page, 'c.p.type') == 'seq': found = True; break
             await page.click('summary[aria-label="More actions"]'); await page.click('text=Skip this puzzle'); await page.wait_for_timeout(150)
             await go_home(page)
@@ -284,9 +344,9 @@ async def main():
         # ---- offline reload (service worker) ----
         await page.goto(URL); await page.wait_for_timeout(1500)
         await page.evaluate('navigator.serviceWorker.ready'); await page.reload(); await page.wait_for_timeout(800)
-        await ctx.set_offline(True); await page.reload(); await page.wait_for_selector('.games .gcard', timeout=8000)
-        check(await page.locator('.games .gcard').count() == 10, 'app loads offline from the service worker cache')
-        await page.locator('.games .gcard').nth(4).click(); await page.wait_for_selector('#gamebody')
+        await ctx.set_offline(True); await page.reload(); await page.wait_for_selector('.gtile', timeout=8000)
+        check(await page.locator('.gtile').count() == 17, 'app loads offline from the service worker cache')
+        await open_game(page, 'loop'); await page.wait_for_selector('#gamebody')
         check(await page.locator('#gamebody .loop').count() == 1, 'a new puzzle can be started offline')
         await ctx.set_offline(False)
 

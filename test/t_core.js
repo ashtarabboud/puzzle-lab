@@ -2,7 +2,7 @@
 const fs=require('fs'),vm=require('vm');
 const ctx={console,Math,JSON,Date,Object,Array,String,Number,Set,Error};vm.createContext(ctx);
 vm.runInContext('var PL={data:{},games:{}};'+fs.readFileSync('src/core/base.js','utf8'),ctx);
-vm.runInContext('var mem={};PL.SCHEMA=2;PL.store={get:function(k){return mem[k]},put:function(k,v){if(v&&typeof v==="object")v.u=Date.now();mem[k]=v},del:function(k){delete mem[k]},keys:function(p){return Object.keys(mem).filter(function(k){return k.indexOf(p)===0})},raw:function(){return mem},replaceAll:function(o){mem=o;}};'+fs.readFileSync('src/core/model.js','utf8'),ctx);
+vm.runInContext('var mem={};PL.SCHEMA=3;PL.store={get:function(k){return mem[k]},put:function(k,v){if(v&&typeof v==="object")v.u=Date.now();mem[k]=v},del:function(k){delete mem[k]},keys:function(p){return Object.keys(mem).filter(function(k){return k.indexOf(p)===0})},raw:function(){return mem},replaceAll:function(o){mem=o;}};'+fs.readFileSync('src/core/model.js','utf8'),ctx);
 const PL=ctx.PL,M=PL.model;let bad=0;const ok=(c,m)=>{if(!c){bad++;console.log('FAIL',m);}};
 // stub games for daily scoring benchmark
 PL.order.concat(PL.retired).forEach(g=>{PL.games[g]={benchmark:()=>100,generate:()=>({g}),init:()=>({})};});
@@ -24,7 +24,7 @@ s=M.dailyScore('bridges',5,100,true,400000);ok(s.score===80,'slow perfect = 80 g
 s=M.dailyScore('bridges',5,50,true,50000);ok(s.score===50,'half quality fast = 0.8*50+0.2*50 = 50 got '+s.score);
 s=M.dailyScore('bridges',5,0,false,10000);ok(s.score===0,'unsolved = 0');
 // 7. ten-game daily with max 1000; old nine-game days keep 900
-const d=M.ensureDaily('2026-10-25');ok(d.games.length===10&&d.max===1000&&d.games.indexOf('logic')<0,'new daily has 10 games');
+const d=M.ensureDaily('2026-10-25');ok(d.games.length===PL.order.length&&d.max===PL.order.length*100&&d.games.indexOf('logic')<0,'new daily has every active game');
 PL.store.put('day:2026-10-20',{date:'2026-10-20',diff:'Easy',levels:{},puzzles:{},prog:Object.fromEntries(PL.OLD_DAILY_ORDER.map(g=>[g,{done:true,score:80,outcome:'solved',activeMs:1000}])),complete:true,total:720});
 const od=M.daily('2026-10-20');ok(od.max===900&&od.games.length===9,'old day keeps 900');ok(M.dailyTotals(od).score===720&&Math.round(M.dayPct(od))===80,'old day 80%');
 // 8. migration of a v1 core and import of a v1 export
@@ -33,6 +33,6 @@ ok(!M.validateImport(v1),'v1 export accepted');
 // import into a fresh store
 vm.runInContext('mem={}',ctx);const counts=M.importData(v1,'merge');
 ok(counts.attempts===1,'attempt imported');ok(!PL.store.get('act:logic'),'retired active dropped');
-const c=M.core();ok(c.schema===2,'schema migrated');ok(c.ratings.password.level===5,'rating preserved');ok(c.ratings.reverse&&c.ratings.links,'new ratings');ok(c.settings.excluded.indexOf('logic')<0,'excluded cleaned');
+const c=M.core();ok(c.schema===3,'schema migrated');ok(c.ratings.password.level===5,'rating preserved');ok(c.ratings.reverse&&c.ratings.links,'new ratings');ok(c.settings.excluded.indexOf('logic')<0,'excluded cleaned');
 ok(M.daily('2026-10-19').max===900,'imported old day migrated');
 console.log('bad',bad);

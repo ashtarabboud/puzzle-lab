@@ -16,6 +16,7 @@
       core.schema = 2;
       if (core.settings && core.settings.excluded) core.settings.excluded = core.settings.excluded.filter(function (g) { return PL.order.indexOf(g) >= 0; });
     }
+    if (core.schema < 3) core.schema = 3; // v3: seven new games (ratings created below at the default level, independent of other games)
     var d = defaultCore();
     core.settings = Object.assign({}, d.settings, core.settings || {});
     core.ratings = core.ratings || {};
@@ -134,15 +135,16 @@
     if (d) return d;
     var diff = M.dailyDifficulty(date), levels = {}, puzzles = {}, prog = {};
     var rng = PL.rng('daily-mix:' + date);
-    var games = PL.order.slice();
+    var games = PL.order.slice(), skipped = [];
     games.forEach(function (g) {
       levels[g] = diff === 'Mixed' ? rng.pick([2, 5, 8]) : LEVEL[diff];
       var seed = 'daily:' + date + ':' + g, p = null;
       for (var t = 0; t < 4 && !p; t++) { try { p = PL.games[g].generate(levels[g], PL.rng(seed + (t ? ':' + t : '')), { daily: true }); if (t) seed += ':' + t; } catch (e) { p = null; } }
-      if (!p) throw new Error('Could not build the daily ' + g + ' puzzle');
+      if (!p) { skipped.push(g); return; } // a game whose daily puzzle cannot be built is left out of that day (max adjusts)
       puzzles[g] = { puzzle: p, seed: seed };
       prog[g] = { gs: null, activeMs: 0, hints: 0, wrong: 0, done: false };
     });
+    games = games.filter(function (g) { return skipped.indexOf(g) < 0; });
     d = { date: date, diff: diff, games: games, max: games.length * 100, levels: levels, puzzles: puzzles, prog: prog, created: Date.now(), complete: false, v: GEN_VERSION };
     M.saveDaily(d);
     return d;

@@ -13,7 +13,14 @@
     shape: 'M4 4h8v8H4zM12 8h8v8h-8zM4 12h8v8H4z',
     balance: 'M12 4v16M5 20h14M4 9h16M4 9l-2 6h6zM20 9l-2 6h6z',
     reverse: 'M20 12H6M10 7l-5 5 5 5M20 5v14',
-    links: 'M9 15l6-6M7.5 11.5l-2 2a3.5 3.5 0 0 0 5 5l2-2M16.5 12.5l2-2a3.5 3.5 0 0 0-5-5l-2 2'
+    links: 'M9 15l6-6M7.5 11.5l-2 2a3.5 3.5 0 0 0 5 5l2-2M16.5 12.5l2-2a3.5 3.5 0 0 0-5-5l-2 2',
+    wordcount: 'M3 6h4v4H3zM10 6h4v4h-4zM17 6h4v4h-4zM5 17h2M11 15v4M17 15l2 2-2 2',
+    wordgrid: 'M3 4h5v5H3zM9.5 4h5v5h-5zM16 4h5v5h-5zM3 15h5v5H3zM9.5 15h5v5h-5zM16 15h5v5h-5z',
+    threads: 'M4 5h4v4H4zM10 5h4v4h-4zM16 5h4v4h-4zM4 15h16v4H4z',
+    trails: 'M5 19l4-5 3 3 4-6 3 3M5 5h.01M12 5h.01M19 5h.01',
+    wordrush: 'M13 3L5 14h6l-1 7 8-11h-6z',
+    catlogic: 'M5 5l3 3h8l3-3v9a7 6 0 0 1-14 0zM9.5 12h.01M14.5 12h.01',
+    survey: 'M4 6h12M4 12h9M4 18h6M18 14v6M15 17h6'
   };
   function icon(g, cls) { return PL.svg('svg', { viewBox: '0 0 24 24', class: 'gicon ' + (cls || ''), 'aria-hidden': 'true' }, PL.svg('path', { d: ICONS[g] || ICONS.logic })); }
 
@@ -59,20 +66,24 @@
     return h('main', { class: 'page home' },
       h('div', { class: 'brand' }, h('h1', null, 'Puzzle Lab'), h('button', { class: 'iconbtn', 'aria-label': 'Settings and data', onclick: function () { go({ name: 'settings' }); } }, PL.svg('svg', { viewBox: '0 0 24 24', class: 'gicon' }, PL.svg('path', { d: 'M4 7h10M18 7h2M4 17h4M12 17h8M14 4v6M8 14v6' })))),
       h('button', { class: 'daily-card', onclick: function () { go({ name: 'daily' }); } },
-        h('div', null, h('div', { class: 'eyebrow' }, 'Daily Mini Quiz · ' + fmtDate(today)), h('div', { class: 'dc-title' }, d && d.complete ? 'Done — ' + dt.score + ' / ' + d.max : d && dt.done ? dt.done + ' of ' + dt.n + ' solved' : 'Ten puzzles, one from each game'),
+        h('div', null, h('div', { class: 'eyebrow' }, 'Daily Mini Quiz · ' + fmtDate(today)), h('div', { class: 'dc-title' }, d && d.complete ? 'Done — ' + dt.score + ' / ' + d.max : d && dt.done ? dt.done + ' of ' + dt.n + ' solved' : PL.order.length + ' puzzles, one from each game'),
           h('div', { class: 'muted small' }, diff + ' day' + (d && d.complete ? ' · ' + PL.fmtTime(dt.ms) : ''))),
-        h('div', { class: 'dc-dots' }, (d ? d.games : PL.order).map(function (g) { var pr = d && d.prog[g]; return h('span', { class: 'dc-dot' + (pr && pr.done ? (pr.outcome === 'solved' ? ' ok' : ' bad') : pr && pr.gs ? ' part' : '') }); }))),
+        h('div', { class: 'dc-dots', style: { 'grid-template-columns': 'repeat(' + (d ? d.games : PL.order).length + ', 1fr)' } }, (d ? d.games : PL.order).map(function (g) { var pr = d && d.prog[g]; return h('span', { class: 'dc-dot' + (pr && pr.done ? (pr.outcome === 'solved' ? ' ok' : ' bad') : pr && pr.gs ? ' part' : '') }); }))),
       h('div', { class: 'quick' },
         h('button', { class: 'btn', onclick: function () { go({ name: 'shuffle' }); } }, 'Shuffle'),
         h('button', { class: 'btn', onclick: function () { go({ name: 'stats' }); } }, 'Statistics'),
         h('button', { class: 'btn', onclick: function () { go({ name: 'history' }); } }, 'History')),
       M.settings().timed ? h('div', { class: 'notice' }, 'Timed mode is on for new puzzles. Timed results are kept separately. ', h('button', { class: 'linkbtn', onclick: function () { M.setSetting('timed', false); render(); } }, 'Turn off')) : null,
-      h('ul', { class: 'games' }, PL.order.map(function (g) {
-        var G = PL.games[g], r = M.rating(g), act = M.active(g);
-        return h('li', null, h('button', { class: 'gcard', onclick: function () { startUnlimited(g); } },
-          icon(g), h('div', { class: 'gc-text' }, h('div', { class: 'gc-name' }, G.name), h('div', { class: 'gc-blurb' }, G.blurb)),
-          h('div', { class: 'gc-meta' }, h('span', { class: 'lvl' }, 'Lv ' + r.level), act ? h('span', { class: 'resume' }, 'Resume') : null)));
-      })),
+      PL.groups.map(function (grp) {
+        return h('section', { class: 'ggroup' }, h('h2', { class: 'ggroup-h' }, grp.name),
+          h('ul', { class: 'games tiles2' }, grp.games.map(function (g) {
+            var G = PL.games[g], r = M.rating(g), act = M.active(g);
+            return h('li', null, h('button', { class: 'gtile', onclick: function () { startUnlimited(g); }, 'aria-label': G.name + ', level ' + r.level + (act ? ', in progress' : '') },
+              h('div', { class: 'gt-top' }, icon(g), h('span', { class: 'lvl' }, 'Lv ' + r.level)),
+              h('div', { class: 'gc-name' }, G.name),
+              h('div', { class: 'gt-blurb' }, act ? h('span', { class: 'resume' }, 'Resume') : G.blurb)));
+          })));
+      }),
       h('footer', { class: 'foot muted small' }, syncLine(st)));
   }
   function syncLine(st) {
@@ -332,7 +343,7 @@
         h('dl', { class: 'kv' }, [['Total', t.score + ' / ' + d.max + ' (' + myPct + '%)'], ['Active time', PL.fmtTime(t.ms)], ['Hints', t.hints], ['Incorrect attempts', t.wrong],
           ['Your average on ' + d.diff + ' days', avgPrev != null ? avgPrev + '% (' + PL.plural(prev.length, 'day') + ')' : 'First ' + d.diff + ' day'],
           ['Previous best on ' + d.diff + ' days', bestPrev != null ? bestPrev + '%' + (myPct > bestPrev ? ' — new personal best!' : '') : '—']].map(function (r) { return [h('dt', null, r[0]), h('dd', null, String(r[1]))]; }))) : null,
-      d.games.length !== PL.order.length ? h('div', { class: 'notice' }, 'This quiz is from before the update: nine games, scored out of 900.') : null,
+      d.games.length !== PL.order.length ? h('div', { class: 'notice' }, 'This quiz is from an earlier version: ' + d.games.length + ' games, scored out of ' + d.max + '.') : null,
       h('ul', { class: 'dlist' }, d.games.map(function (g) {
         var G = PL.games[g], pr = d.prog[g];
         var status = pr.done ? (pr.outcome === 'solved' ? pr.score + ' pts' : 'Not solved · ' + (pr.score || 0) + ' pts') : pr.gs ? 'In progress · ' + PL.fmtTime(pr.activeMs) : d.diff === 'Mixed' ? diffName(d.levels[g]) : '';

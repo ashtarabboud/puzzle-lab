@@ -2,7 +2,15 @@
 var PL = (typeof PL !== 'undefined') ? PL : {};
 PL.data = PL.data || {};
 PL.games = PL.games || {};
-PL.order = ['password', 'island', 'bridges', 'algebra', 'loop', 'detective', 'shape', 'balance', 'reverse', 'links'];
+PL.order = ['password', 'island', 'bridges', 'algebra', 'loop', 'detective', 'shape', 'balance', 'reverse', 'links',
+  'wordcount', 'wordgrid', 'threads', 'trails', 'wordrush', 'catlogic', 'survey'];
+PL.groups = [
+  { name: 'Word games', games: ['password', 'wordgrid', 'threads', 'trails', 'wordrush', 'links', 'bridges', 'survey'] },
+  { name: 'Logic & deduction', games: ['island', 'wordcount', 'detective', 'catlogic'] },
+  { name: 'Math & reasoning', games: ['algebra', 'balance', 'reverse'] },
+  { name: 'Visual & spatial', games: ['loop', 'shape'] }
+];
+PL.DAILY_V2_ORDER = ['password', 'island', 'bridges', 'algebra', 'loop', 'detective', 'shape', 'balance', 'reverse', 'links'];
 PL.retired = ['logic']; // kept only so historical records can still be reviewed
 PL.OLD_DAILY_ORDER = ['password', 'island', 'logic', 'bridges', 'algebra', 'loop', 'detective', 'shape', 'balance'];
 

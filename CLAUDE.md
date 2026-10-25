@@ -8,7 +8,11 @@ The owner works only from an iPhone: never ask them to run commands, edit files,
   `model.js` (ratings/adaptive difficulty, attempts, daily quiz, migrations, import/export), `scratch.js`, `calc.js`, `app.js` (UI shell).
 - `src/games/<id>.js` one engine per game. Interface: `generate(level, rng, ctx)`, `init(p)`, `view(api)`, `hint(p, gs)` →
   `{msg, gs?, noCount?, after?}`, `evaluate(p, gs, ctx)` → `{quality, metrics, lines}`, `review(p, gs)`, `stats(atts)`, `benchmark(lv)`, `timeLimit(lv)`.
-- Active games: `PL.order` in base.js. `logic.js` is retired (kept only to review old records).
+- Active games: `PL.order` in base.js (17 games), grouped on the home screen by `PL.groups`. `logic.js` is retired (kept only to review old records).
+- `src/core/multi.js` turns Algebra Arcade, Balance and Word Links into five-question sessions (daily puzzles stay single; old single-question records still work).
+- `src/core/dock.js` hosts the scratchpad and calculator in a bottom panel so the puzzle stays visible.
+- Shared game helpers: `src/games/_five.js` (Word Grid/Word Count), `src/games/_trace.js` (letter-grid tracing for Word Rush/Word Trails).
+- Data provenance and licences: `data/README.md`. Survey Says must only use real, licensed survey data (currently ProtoQA crowdsourced, CC BY 4.0).
 - `data/*.json` curated banks; `src/data/words.js` and `src/data/lexicon.js` are generated (`npm run data`).
 - `tools/build.js` → `dist/` (hashed assets, manifest, service worker). `public/` holds icons and fonts.
 
