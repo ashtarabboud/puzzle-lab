@@ -2,26 +2,19 @@
 (function () {
   var h = PL.h;
   var openState = null;
+  /* The scratchpad renders into the docked tool panel (see dock.js); the puzzle stays visible above it. */
   PL.scratch = {
     isOpen: function () { return !!openState; },
-    open: function (key, title) {
-      if (openState) PL.scratch.close();
+    open: function (key) { PL.dock.open('scratch', key); },
+    close: function () { PL.dock.close(); },
+    mount: function (container, key) {
+      if (openState) PL.scratch.unmount();
       var data = PL.model.scratch(key);
-      var st = { key: key, data: data, tab: data.lastTab || 'draw', tool: 'pen', redo: [] };
-      openState = st;
-      var sheet = h('div', { class: 'sheet', role: 'dialog', 'aria-label': 'Scratchpad' });
-      var backdrop = h('div', { class: 'sheet-bg', onclick: function () { PL.scratch.close(); } });
-      st.el = sheet; st.bg = backdrop;
-      document.body.appendChild(backdrop); document.body.appendChild(sheet);
+      openState = { key: key, data: data, tab: data.lastTab || 'draw', tool: 'pen', redo: [], el: container };
       render();
-      document.body.classList.add('sheet-open');
     },
-    close: function () {
-      if (!openState) return;
-      save(true);
-      openState.el.remove(); openState.bg.remove(); openState = null;
-      document.body.classList.remove('sheet-open');
-    }
+    unmount: function () { if (!openState) return; save(true); openState = null; },
+    refresh: function () { if (openState && openState.tab === 'draw') render(); }
   };
   var saveT = null;
   function save(now) {
@@ -38,13 +31,13 @@
     var tabs = h('div', { class: 'seg sheet-tabs' }, [['draw', 'Draw'], ['text', 'Text'], ['grid', 'Grid']].map(function (t) {
       return h('button', { class: 'segb' + (st.tab === t[0] ? ' on' : ''), onclick: function () { st.tab = t[0]; save(); render(); } }, t[1]);
     }));
-    el.appendChild(h('div', { class: 'sheet-head' }, h('div', { class: 'sheet-grab', 'aria-hidden': 'true' }), h('div', { class: 'sheet-bar' }, h('b', null, 'Scratchpad'), tabs, h('button', { class: 'btn ghost sm', onclick: PL.scratch.close }, 'Done'))));
+    el.appendChild(h('div', { class: 'dock-subbar' }, tabs));
     var body = h('div', { class: 'sheet-body' });
     el.appendChild(body);
     if (st.tab === 'draw') drawTab(body, st);
     else if (st.tab === 'text') textTab(body, st);
     else gridTab(body, st);
-    el.appendChild(h('div', { class: 'muted small sheet-foot' }, 'Saved with this puzzle. Using the scratchpad never affects your score.'));
+
   }
   function textTab(body, st) {
     var ta = h('textarea', { id: 'scr-text', class: 'txt area scr-text', placeholder: 'Notes, calculations, hypotheses…', spellcheck: 'false' }, st.data.text || '');

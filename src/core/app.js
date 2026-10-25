@@ -127,8 +127,7 @@
   var persistT = null;
   function persistSoon() { clearTimeout(persistT); var sid = cur && cur.sid; persistT = setTimeout(function () { if (cur && cur.sid === sid) persistRec(); }, 800); }
   function leavePlay() {
-    if (PL.scratch.isOpen()) PL.scratch.close();
-    if (PL.calcSheet && PL.calcSheet.isOpen()) PL.calcSheet.close();
+    if (PL.dock.isOpen()) PL.dock.close();
     clearTimeout(persistT);
     if (cur && !cur.done) { tickNow(); persistRec(); }
     cur = null;
@@ -168,14 +167,15 @@
       cur.done ? null : h('button', { class: 'iconbtn', 'aria-label': cur.paused ? 'Resume' : 'Pause', onclick: function () { tickNow(); cur.paused = !cur.paused; persistRec(); render(); } }, PL.svg('svg', { viewBox: '0 0 24 24', class: 'gicon' }, PL.svg('path', { d: cur.paused ? 'M8 5l11 7-11 7z' : 'M8 5v14M16 5v14' }))));
     wrap.appendChild(topbar(h('div', null, h('div', { class: 'tb-name' }, G.name), h('div', { class: 'tb-meta' }, meta)), function () { go(cur && cur.kind !== 'unlimited' ? { name: 'daily', date: cur.d && cur.d.date } : { name: 'home' }); }, right));
     var tools = h('div', { class: 'toolbar' },
-      h('button', { class: 'btn sm', onclick: function () { PL.scratch.open(scratchKey(), G.name); } }, 'Scratchpad'),
-      isMath() ? h('button', { class: 'btn sm', 'aria-label': 'Calculator', onclick: function () { PL.calcSheet.open(scratchKey()); } }, 'Calculator') : null,
+      h('button', { class: 'btn sm', onclick: function () { PL.dock.open('scratch', scratchKey(), { math: isMath() }); } }, 'Scratchpad'),
+      isMath() ? h('button', { class: 'btn sm', 'aria-label': 'Calculator', onclick: function () { PL.dock.open('calc', scratchKey(), { math: true }); } }, 'Calculator') : null,
       cur.done ? null : h('button', { id: 'hintbtn', class: 'btn sm', onclick: doHint }, 'Hint' + (rec.hints ? ' (' + rec.hints + ')' : '')),
       h('details', { class: 'rules' }, h('summary', { class: 'btn sm ghost' }, 'Rules'), h('div', { class: 'rules-pop' }, G.rules)),
       cur.done ? null : h('details', { class: 'more' }, h('summary', { class: 'btn sm ghost', 'aria-label': 'More actions' }, '•••'),
         h('div', { class: 'more-pop' },
           cur.kind === 'unlimited' ? h('button', { class: 'linkbtn', onclick: skip }, rec.touched || rec.activeMs > 30000 ? 'Skip this puzzle (counts as abandoned)' : 'Skip this puzzle') : null,
-          h('button', { class: 'linkbtn', onclick: function () { if (this.dataset.armed) finish('failed'); else { this.dataset.armed = 1; this.textContent = 'Tap again to give up and see the solution'; } } }, 'Give up'))));
+          G.giveUpLabel && G.giveUpLabel(cur.p) ? h('button', { class: 'linkbtn', onclick: function () { if (!this.dataset.armed) { this.dataset.armed = 1; this.textContent = 'Tap again to give up on this question'; return; } this.closest('details').open = false; giveUpQuestion(); } }, G.giveUpLabel(cur.p)) : null,
+          h('button', { class: 'linkbtn', onclick: function () { if (this.dataset.armed) finish('failed'); else { this.dataset.armed = 1; this.textContent = G.multi && cur.p.qs ? 'Tap again to end the whole game now' : 'Tap again to give up and see the solution'; } } }, G.multi && cur.p.qs ? 'End this game' : 'Give up'))));
     wrap.appendChild(tools);
     if (cur.hint) wrap.appendChild(h('div', { class: 'hintbox', role: 'status' }, h('span', null, cur.hint), h('button', { class: 'linkbtn', onclick: function () { cur.hint = null; render(); } }, 'Dismiss')));
     if (cur.done && cur.summary) wrap.appendChild(summaryCard());
@@ -195,6 +195,7 @@
     var live = function () { return cur === session && !session.done; };
     return {
       p: cur.p, gs: rec.gs, level: cur.level, daily: cur.kind !== 'unlimited', done: cur.done,
+      activeMs: function () { if (cur === session) tickNow(); return rec.activeMs || 0; },
       update: function (gs) { if (!live()) { if (cur === session) rerenderBody(); return; } rec.gs = gs; rec.touched = true; persistSoon(); rerenderBody(); },
       save: function (gs) { if (!live()) return; rec.gs = gs; rec.touched = true; persistSoon(); },
       wrong: function (n) { if (!live()) return; rec.wrong = (rec.wrong || 0) + (n || 1); rec.touched = true; },
@@ -220,6 +221,10 @@
     cur.hint = res.msg; persistRec(); render();
     if (res.after === 'solved') finish('solved');
   }
+  function giveUpQuestion() {
+    var G = PL.games[cur.g], api = makeApi();
+    if (G.giveUp && G.giveUp(cur.p, cur.rec.gs, api)) { cur.rec.touched = true; persistRec(); rerenderBody(); }
+  }
   function skip() {
     var rec = cur.rec;
     var outcome = (!rec.touched && rec.activeMs < 30000) ? 'skipped' : 'abandoned';
@@ -238,7 +243,7 @@
       outcome: outcome, perf: perf, quality: ev.quality, metrics: ev.metrics, lines: ev.lines, hints: rec.hints || 0, wrong: rec.wrong || 0, hintLog: rec.hintLog || [],
       puzzle: p, seed: rec.seed, fp: rec.fp || null, gs: rec.gs, gen: PL.GEN_VERSION, scratchKey: scratchKey() };
     cur.done = true; rec.done = true; // stops the clock and blocks any further writes from this session
-    var sum = { outcome: outcome, perf: perf, lines: ev.lines, ms: rec.activeMs, hints: att.hints, wrong: att.wrong };
+    var sum = { outcome: outcome, perf: perf, lines: ev.lines, ms: rec.activeMs, hints: att.hints, wrong: att.wrong, title: ev.title };
     if (cur.kind === 'unlimited') {
       M.saveAttempt(att); M.clearActive(cur.g);
       if (M.eligible(att)) { var ad = M.adapt(cur.g); sum.adapt = ad; }
@@ -263,7 +268,7 @@
   }
   function summaryCard() {
     var s = cur.summary, G = PL.games[cur.g];
-    var title = s.outcome === 'solved' ? 'Solved' : s.outcome === 'timeout' ? 'Time is up' : s.outcome === 'abandoned' ? 'Abandoned' : s.outcome === 'skipped' ? 'Skipped' : 'Not solved';
+    var title = s.title && (s.outcome === 'solved' || s.outcome === 'failed') ? s.title : s.outcome === 'solved' ? 'Solved' : s.outcome === 'timeout' ? 'Time is up' : s.outcome === 'abandoned' ? 'Abandoned' : s.outcome === 'skipped' ? 'Skipped' : 'Not solved';
     var rows = [['Active time', PL.fmtTime(s.ms)], ['Hints', s.hints]].concat(s.lines || []);
     var adapt = null;
     if (s.adapt) {

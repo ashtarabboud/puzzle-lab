@@ -30,7 +30,7 @@ async def cur(page, expr):
 
 async def solve_current(page, g, with_wrong=False):
     """Solve the puzzle on screen through the UI (shape uses a placement hook because drag is pointer-gesture based)."""
-    p = await cur(page, 'c.p')
+    p = await cur(page, 'c.p.qs ? c.p.qs[c.rec.gs.i] : c.p')
     if g == 'password':
         for i, w in enumerate(p['words']):
             if with_wrong and i == 0:
@@ -53,13 +53,13 @@ async def solve_current(page, g, with_wrong=False):
             if with_wrong: await page.locator('.opts .btn').nth((p['ans'] + 1) % len(p['opts'])).click(); await page.wait_for_timeout(60)
             await page.locator('.opts .btn').nth(p['ans']).click()
         else:
-            a = await cur(page, 'PL.qstr(c.p.ans)')
+            a = await cur(page, 'PL.qstr((c.p.qs ? c.p.qs[c.rec.gs.i] : c.p).ans)')
             if with_wrong:
                 await page.fill('#alg-1', '99999');
                 if p['format'] == 'multi': await page.fill('#alg-2', '1')
                 await page.click('.alg-form button[type=submit]'); await page.wait_for_timeout(60)
             await page.fill('#alg-1', a)
-            if p['format'] == 'multi': await page.fill('#alg-2', await cur(page, 'PL.qstr(c.p.ans2)'))
+            if p['format'] == 'multi': await page.fill('#alg-2', await cur(page, 'PL.qstr((c.p.qs ? c.p.qs[c.rec.gs.i] : c.p).ans2)'))
             await page.click('.alg-form button[type=submit]')
     elif g == 'loop':
         for e, v in enumerate(p['sol']):
@@ -96,16 +96,16 @@ async def solve_current(page, g, with_wrong=False):
         elif t == 'multi':
             await page.locator('.opts .btn').nth(p['answer']).click()
         elif t == 'seq':
-            pool = await cur(page, 'c.rec.gs.pool')
-            used = set()
-            for pos, sym in enumerate(p['answer']):
-                i = next(j for j, x in enumerate(pool) if x == sym and j not in used); used.add(i)
-                # chips are rendered for unused tiles only, in pool order
-                visible = [j for j in range(len(pool)) if j not in used or j == i]
-                chip_index = sorted([j for j in range(len(pool)) if j not in (used - {i})]).index(i)
-                await page.locator('.reverse .chips .chip').nth(chip_index).click()
-                await page.locator('.re-slot').nth(pos).click()
-            await page.click('.reverse button.primary')
+            row = await cur(page, 'c.rec.gs.tws ? c.rec.gs.tws.rows[0] : c.p.final')
+            target = p['answer']; row = list(row)
+            tiles = page.locator('.tws-row').first.locator('.tws-tile')
+            for i in range(len(target)):
+                if row[i] == target[i]: continue
+                j = next(j for j in range(i + 1, len(row)) if row[j] == target[i])
+                await tiles.nth(i).click(); await tiles.nth(j).click(); await page.wait_for_timeout(40)
+                row[i], row[j] = row[j], row[i]
+                tiles = page.locator('.tws-row').first.locator('.tws-tile')
+            await page.locator('.tws-row').first.locator('button:has-text("Check")').click()
         elif t == 'grid':
             cells = await cur(page, 'c.rec.gs.cells'); target = p['answer']; n = len(cells)
             for i in range(n):
@@ -114,11 +114,11 @@ async def solve_current(page, g, with_wrong=False):
                 grid = page.locator('.re-boards > div').nth(1).locator('.re-cell')
                 await grid.nth(i).click(); await grid.nth(j).click()
                 cells[i], cells[j] = cells[j], cells[i]
-            await page.click('.reverse button.primary')
+            await page.click('.reverse button:has-text("Check this board")')
         elif t == 'missing':
             for q, mi in enumerate(p['answer']):
                 await page.locator('.srow.col').nth(q).locator('.btn').nth(mi).click()
-            await page.click('.reverse button.primary')
+            await page.click('.reverse button.wide.primary')
     elif g == 'links':
         for li in p['order']:
             L = p['links'][li]
@@ -160,9 +160,15 @@ async def main():
                     await page.click('#hintbtn'); await page.wait_for_timeout(80)
                     check(await cur(page, 'c.rec.hints') >= 1, f'{g}: hint recorded')
                 await page.wait_for_timeout(1100)
-                await solve_current(page, g, with_wrong=(k == 2))
+                multi = await cur(page, '!!c.p.qs')
+                for qi in range(5 if multi else 1):
+                    await solve_current(page, g, with_wrong=(k == 2 and qi == 0))
+                    if multi and qi < 4:
+                        await page.wait_for_selector('.q-result', timeout=8000)
+                        await page.click('.q-result .btn'); await page.wait_for_timeout(80)
                 await page.wait_for_selector('.summary', timeout=8000)
-                check('Solved' in await page.locator('.summary h2').inner_text(), f'{g} #{k+1}: solved')
+                title = await page.locator('.summary h2').inner_text()
+                check(('5 of 5 correct' in title) if multi else ('Solved' in title), f'{g} #{k+1}: solved ({title})')
                 ms1 = await cur(page, 'c.rec.activeMs'); await page.wait_for_timeout(1300); ms2 = await cur(page, 'c.rec.activeMs')
                 check(ms1 == ms2, f'{g} #{k+1}: timer stopped on completion')
                 ids.append(rid)
@@ -200,8 +206,8 @@ async def main():
             await page.locator('.ckey', has_text=k).first.click() if k not in ('+', '÷', '=') else await page.locator(f'.ckey[aria-label="{k}"]').click()
         res = await page.locator('.calc-res').inner_text(); check('11/12' in res, 'calculator: 3÷4+1/6 = 11/12 (' + res + ')')
         await page.screenshot(path=f'{OUT}/calculator.png')
-        await page.click('.calc-sheet >> text=Done')
-        await page.click('text=Scratchpad'); await page.wait_for_selector('.scr-canvas')
+        await page.click('.dock button:has-text("Close")')
+        await page.click('.toolbar button:has-text("Scratchpad")'); await page.wait_for_selector('.scr-canvas')
         box = await page.locator('.scr-canvas').bounding_box()
         await page.mouse.move(box['x'] + 40, box['y'] + 40); await page.mouse.down()
         for i in range(12): await page.mouse.move(box['x'] + 40 + i * 12, box['y'] + 40 + i * 6)
@@ -209,7 +215,7 @@ async def main():
         key = await cur(page, 'c.rec.id')
         check(await page.evaluate(f"PL.model.scratch('{key}').draw.length") == 1, 'scratchpad stroke saved')
         await page.screenshot(path=f'{OUT}/scratchpad.png')
-        await page.click('.sheet-bar >> text=Done')
+        await page.click('.dock button:has-text("Close")')
 
         # ---- Island ordinary input ----
         await go_home(page); await page.locator('.games .gcard').nth(1).click(); await page.wait_for_selector('#isl-in')
@@ -231,6 +237,44 @@ async def main():
         lv0 = await page.evaluate("PL.model.rating('password').level")
         check('/ 1000' in await page.locator('.daily-head').inner_text(), 'daily total out of 1000')
         await page.screenshot(path=f'{OUT}/daily.png', full_page=True)
+
+        # ---- tools keep the question visible; calculator chaining ----
+        await go_home(page); await page.locator('.games .gcard').nth(3).click(); await page.wait_for_selector('#gamebody')
+        await page.click('[aria-label="Calculator"]'); await page.wait_for_selector('.dock .calc-pad')
+        prob = await page.locator('.gamebody .prob').first.bounding_box(); dock = await page.locator('.dock').bounding_box()
+        check(prob and prob['y'] >= 0 and prob['y'] + 20 < dock['y'], 'question stays visible above the open calculator')
+        for k in ['5', '+', '5', '=', '÷', '2', '=']:
+            await page.locator(f'.dock .ckey[aria-label="{k}"]').click()
+        res = await page.locator('.calc-res').inner_text(); check(res.strip() == '= 5', 'calculator chains 5 + 5 = ÷ 2 = → 5 (' + res + ')')
+        await page.click('.dock .segb:has-text("Scratchpad")'); await page.wait_for_selector('.dock .scr-canvas')
+        check(await page.locator('.gamebody .prob').first.is_visible(), 'question visible with scratchpad open')
+        before_ms = await cur(page, 'c.rec.activeMs'); await page.wait_for_timeout(1200)
+        check(await cur(page, 'c.rec.activeMs') > before_ms, 'timer keeps running while tools are open')
+        await page.screenshot(path=f'{OUT}/dock.png')
+        await page.click('.dock button:has-text("Close")')
+        # ---- Reverse Engineer tile drag ----
+        await go_home(page)
+        await page.evaluate("PL.model.clearActive('reverse')")
+        found = False
+        for attempt in range(25):
+            await page.locator('.games .gcard').nth(8).click(); await page.wait_for_selector('#gamebody')
+            if await cur(page, 'c.p.type') == 'seq': found = True; break
+            await page.click('summary[aria-label="More actions"]'); await page.click('text=Skip this puzzle'); await page.wait_for_timeout(150)
+            await go_home(page)
+        if found:
+            row0 = await cur(page, 'c.rec.gs.tws ? c.rec.gs.tws.rows[0].join("") : c.p.final.join("")')
+            tiles = page.locator('.tws-row').first.locator('.tws-tile')
+            b0 = await tiles.nth(0).bounding_box(); b2 = await tiles.nth(2).bounding_box()
+            await page.mouse.move(b0['x'] + 10, b0['y'] + 20); await page.mouse.down()
+            for i in range(8): await page.mouse.move(b0['x'] + 10 + (b2['x'] - b0['x'] + 12) * (i + 1) / 8, b0['y'] + 20)
+            await page.mouse.up(); await page.wait_for_timeout(150)
+            row1 = await cur(page, 'c.rec.gs.tws.rows[0].join("")')
+            check(row1 == row0[1:3] + row0[0] + row0[3:], f'dragging a tile moves it ({row0} → {row1})')
+            await page.click('.workspace button:has-text("Undo")'); await page.wait_for_timeout(80)
+            check(await cur(page, 'c.rec.gs.tws.rows[0].join("")') == row0, 'workspace undo')
+            check(await cur(page, 'c.rec.hints') == 0 and await cur(page, 'c.rec.wrong') == 0, 'workspace use is not a hint or attempt')
+            await page.screenshot(path=f'{OUT}/reverse_ws.png', full_page=True)
+        else: check(False, 'found a sequence puzzle to test dragging')
 
         # ---- stats pages render ----
         await go_home(page); await page.click('text=Statistics'); await page.wait_for_selector('.tiles')

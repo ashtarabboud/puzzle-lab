@@ -66,49 +66,84 @@
     return res;
   }
   function fmt(v) {
-    if (v.q) { if (v.q.d === 1) return String(v.q.n); var dec = v.q.n / v.q.d; return PL.qstr(v.q) + ' ≈ ' + (Math.round(dec * 1e8) / 1e8); }
+    if (v.q) {
+      if (v.q.d === 1) return String(v.q.n);
+      var dd = v.q.d; while (dd % 2 === 0) dd /= 2; while (dd % 5 === 0) dd /= 5;
+      var dec = v.q.n / v.q.d;
+      if (dd === 1 && String(dec).length <= 12) return String(dec); // terminating decimal: show it exactly (7.5)
+      return PL.qstr(v.q) + ' ≈ ' + (Math.round(dec * 1e8) / 1e8);
+    }
     if (!isFinite(v.f)) return 'Error';
     return String(Math.round(v.f * 1e10) / 1e10);
   }
   PL.calc = { evaluate: function (s) { return fmt(parse(s)); }, parse: parse };
 
-  /* ---- calculator sheet ---- */
-  var openC = null;
+  /* ---- calculator state machine ----
+     A freshly typed expression is evaluated with normal precedence (5 + 5 ÷ 2 = 7.5).
+     After "=", the result becomes the accumulator: an operator key continues from it (5 + 5 = then ÷ 2 = gives 5),
+     while a digit, decimal point, "(" or "√" starts a new expression. */
+  function resultToken(r) { // exact value as an expression fragment; fractions and negatives are bracketed
+    var v = r.split(' ≈')[0];
+    return /^-?\d+$/.test(v) && v[0] !== '-' ? v : '(' + v + ')';
+  }
+  var OPS = { '+': 1, '−': 1, '×': 1, '÷': 1, '^': 1, '/': 1 };
+  function newState() { return { expr: '', result: '', acc: null, justEval: false, err: false }; }
+  function press(st, k) {
+    if (k === 'AC') { st.expr = ''; st.result = ''; st.acc = null; st.justEval = false; return; }
+    if (k === 'CE') { // clear the current entry: the trailing number (or the whole pending result)
+      if (st.justEval) { st.expr = ''; st.result = ''; st.justEval = false; return; }
+      var m = st.expr.match(/(\d*\.?\d*)$/); st.expr = st.expr.slice(0, st.expr.length - (m && m[1] ? m[1].length : 1)); return;
+    }
+    if (k === '⌫') { if (st.justEval) { st.justEval = false; st.result = ''; return; } st.expr = st.expr.slice(0, -1); return; }
+    if (k === '=') {
+      if (!st.expr) return;
+      try { var r = PL.calc.evaluate(st.expr); st.result = r; st.acc = r; st.justEval = true; st.err = false; st.lastExpr = st.expr; return r; }
+      catch (e) { st.result = e.message; st.err = true; st.justEval = false; return null; }
+    }
+    if (k === 'ans') { if (st.acc == null) return; if (st.justEval) { st.expr = ''; st.justEval = false; } st.expr += resultToken(st.acc); return; }
+    if (st.justEval) {
+      st.justEval = false;
+      if (OPS[k]) st.expr = resultToken(st.acc); // continue from the result
+      else st.expr = '';                          // start fresh
+      st.result = '';
+    }
+    st.expr += k;
+  }
+  PL.calc.newState = newState; PL.calc.press = press;
+  /* convenience for tests: run a sequence of keys and return the last displayed result */
+  PL.calc.run = function (keys) { var st = newState(); keys.forEach(function (k) { press(st, k); }); return st; };
+
+  /* ---- calculator UI (rendered inside the docked tool panel) ---- */
+  var cs = null;
   PL.calcSheet = {
-    isOpen: function () { return !!openC; },
-    open: function (key) {
-      if (openC) PL.calcSheet.close();
-      var st = { key: key, expr: '', hist: (PL.model.scratch(key).calc || []).slice(-8), result: '' };
-      openC = st;
-      st.bg = h('div', { class: 'sheet-bg', onclick: PL.calcSheet.close });
-      st.el = h('div', { class: 'sheet calc-sheet', role: 'dialog', 'aria-label': 'Calculator' });
-      document.body.appendChild(st.bg); document.body.appendChild(st.el); document.body.classList.add('sheet-open');
+    isOpen: function () { return !!cs; },
+    open: function (key) { PL.dock.open('calc', key); },
+    close: function () { PL.dock.close(); },
+    mount: function (container, key) {
+      var saved = PL.model.scratch(key);
+      cs = { key: key, el: container, st: Object.assign(newState(), saved.calcState || {}), hist: (saved.calc || []).slice(-12) };
       render();
     },
-    close: function () { if (!openC) return; openC.el.remove(); openC.bg.remove(); openC = null; document.body.classList.remove('sheet-open'); }
+    unmount: function () { if (cs) persist(); cs = null; }
   };
-  function persist() { var d = PL.model.scratch(openC.key); d.calc = openC.hist.slice(-20); PL.model.saveScratch(openC.key, d); }
+  function persist() { var d = PL.model.scratch(cs.key); d.calc = cs.hist.slice(-20); d.calcState = { expr: cs.st.expr, result: cs.st.result, acc: cs.st.acc, justEval: cs.st.justEval }; PL.model.saveScratch(cs.key, d); }
   function render() {
-    var st = openC; st.el.innerHTML = '';
-    var disp = h('div', { class: 'calc-disp' }, h('div', { class: 'calc-expr mono' }, st.expr || '0'), h('div', { class: 'calc-res mono' }, st.result));
-    var press = function (k) {
-      if (k === 'C') { st.expr = ''; st.result = ''; }
-      else if (k === '⌫') st.expr = st.expr.slice(0, -1);
-      else if (k === '=') {
-        if (!st.expr) return;
-        try { var r = PL.calc.evaluate(st.expr); st.result = '= ' + r; st.hist.push({ e: st.expr, r: r }); persist(); }
-        catch (e) { st.result = e.message; }
-      } else if (k === 'ans') { var last = st.hist[st.hist.length - 1]; if (last) st.expr += '(' + last.r.split(' ≈')[0] + ')'; }
-      else st.expr += k;
-      render();
-    };
-    var keys = ['C', '(', ')', '⌫', '7', '8', '9', '÷', '4', '5', '6', '×', '1', '2', '3', '−', '0', '.', '^', '+', '√', '/', 'ans', '='];
+    var c = cs, st = c.st; c.el.innerHTML = '';
+    var shown = st.justEval ? (st.lastExpr || '') : st.expr;
+    var disp = h('div', { class: 'calc-disp' },
+      h('div', { class: 'calc-expr mono' + (st.justEval ? ' dim' : '') }, shown || '0'),
+      h('div', { class: 'calc-res mono' + (st.err ? ' err' : '') }, st.result ? (st.err ? st.result : '= ' + st.result) : (st.acc != null ? 'Ans = ' + st.acc : '')));
+    var keys = ['AC', 'CE', '⌫', '(', ')', '7', '8', '9', '÷', '√', '4', '5', '6', '×', '^', '1', '2', '3', '−', '/', '0', '.', 'ans', '+', '='];
+    var labels = { '/': 'a/b', 'ans': 'Ans' };
     var pad = h('div', { class: 'calc-pad' }, keys.map(function (k) {
-      return h('button', { class: 'ckey' + (k === '=' ? ' eq' : /[÷×−+^\/]/.test(k) ? ' op' : ''), 'aria-label': k === '/' ? 'fraction bar' : k, onclick: function () { press(k); } }, k === '/' ? 'a/b' : k);
+      return h('button', { class: 'ckey' + (k === '=' ? ' eq' : OPS[k] ? ' op' : /^(AC|CE|⌫)$/.test(k) ? ' fn' : ''), 'aria-label': k === '/' ? 'fraction bar' : k === 'CE' ? 'clear entry' : k === 'AC' ? 'clear all' : k === '⌫' ? 'delete' : k, onclick: function () {
+        var r = press(st, k);
+        if (k === '=' && r != null) { c.hist.push({ e: st.lastExpr, r: r }); }
+        persist(); render();
+      } }, labels[k] || k);
     }));
-    st.el.appendChild(h('div', { class: 'sheet-head' }, h('div', { class: 'sheet-grab' }), h('div', { class: 'sheet-bar' }, h('b', null, 'Calculator'), h('button', { class: 'btn ghost sm', onclick: PL.calcSheet.close }, 'Done'))));
-    st.el.appendChild(h('div', { class: 'sheet-body' }, disp, pad,
-      st.hist.length ? h('div', { class: 'calc-hist' }, st.hist.slice().reverse().map(function (x) { return h('button', { class: 'linkbtn mono small', onclick: function () { st.expr = x.e; st.result = '= ' + x.r; render(); } }, x.e + ' = ' + x.r); })) : null,
-      h('div', { class: 'muted small' }, 'Fractions stay exact (3/4 + 1/6 = 11/12). Using the calculator never affects your score.')));
+    c.el.appendChild(h('div', { class: 'sheet-body calc-body' }, disp, pad,
+      c.hist.length ? h('div', { class: 'calc-hist' }, c.hist.slice().reverse().map(function (x) { return h('button', { class: 'linkbtn mono small', onclick: function () { st.expr = x.e; st.justEval = false; st.result = ''; persist(); render(); } }, x.e + ' = ' + x.r); })) : null,
+      h('div', { class: 'muted small' }, 'After =, an operator continues from the answer; a number starts fresh. AC clears all, CE clears the current entry. Using the calculator never affects your score.')));
   }
 })();

@@ -13,7 +13,7 @@ for(const t of ['num','seq','grid','missing','multi','constraint'])for(const lv 
   const gs=G.init(p);
   if(t==='num'||t==='constraint'){gs.input=String(p.answer);if(!G._check(p,gs))bad++;gs.input=String(p.answer+1);if(G._check(p,gs))bad++;}
   if(t==='multi'){if(p.mode==='list'){gs.input=p.answer.slice().reverse().join(' , ');if(!G._check(p,gs))bad++;gs.input=p.answer.slice(1).join(',');if(G._check(p,gs))bad++;}else{gs.choice=p.answer;if(!G._check(p,gs))bad++;}}
-  if(t==='seq'){p.answer.forEach((sym,i)=>{gs.slots[i]=gs.pool.indexOf(sym);});if(!G._check(p,gs))bad++;}
+  if(t==='seq'){gs.guess=p.answer.slice();if(!G._check(p,gs))bad++;gs.guess=p.final.slice();if(p.final.join('')!==p.answer.join('')&&G._check(p,gs))bad++;}
   if(t==='grid'){gs.cells=p.answer.slice();if(!G._check(p,gs))bad++;}
   if(t==='missing'){gs.picks=p.answer.slice();if(!G._check(p,gs))bad++;}
   // hints never repeat and are consistent

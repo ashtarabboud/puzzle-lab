@@ -1,5 +1,5 @@
 // Password, Detective, Loop Logic, Shape Shift, Calculator
-const PL=require('./load.js')(['core/base.js','data/words.js','../data/password_a.json','../data/password_b.json','games/password.js','games/detective.js','games/loop.js','games/shape.js','core/calc.js']);
+const PL=require('./load.js')(['core/base.js','data/words.js','../data/password_v2_a.json','../data/password_v2_b.json','games/password.js','games/detective.js','games/loop.js','games/shape.js','core/calc.js']);
 let bad=0;const ok=(c,m)=>{if(!c){bad++;console.log('FAIL',m);}};
 const P=PL.games.password;
 for(let lv=1;lv<=10;lv++){const p=P.generate(lv,PL.rng('pw'+lv));ok(p.words.length===10&&new Set(p.words.map(w=>w.w)).size===10,'10 distinct words');}

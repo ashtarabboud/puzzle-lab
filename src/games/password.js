@@ -4,7 +4,9 @@
   var BANK = null;
   function bank() {
     if (BANK) return BANK;
-    BANK = (PL.data.password_a || []).concat(PL.data.password_b || []);
+    // v3 bank (curated for natural, contemporary associations); the v1 bank is only used if v3 is missing
+    BANK = (PL.data.password_v2_a || []).concat(PL.data.password_v2_b || []);
+    if (!BANK.length) BANK = (PL.data.password_a || []).concat(PL.data.password_b || []);
     return BANK;
   }
   PL.passwordBank = bank;
