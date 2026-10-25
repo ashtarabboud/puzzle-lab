@@ -27,6 +27,13 @@ for(const id of ['wordgrid','wordcount'])for(let lv=1;lv<=10;lv++){const G=PL.ga
 for(const lv of [1,5,8,10]){const G=PL.games.wordrush;const p=G.generate(lv,PL.rng('wr'+lv));ok(p.words.every(w=>G._firstCell(p,w)!=null&&PL.dict.has(w)),'rush words traceable');ok(p.common.length>=15,'rush board has words '+p.common.length);}
 // Word Trails: verified full-cover boards
 for(const lv of [1,4,8,10])for(let k=0;k<5;k++){const G=PL.games.trails;const p=G.generate(lv,PL.rng('tr'+lv+k),{});ok(G._verify(p),'trails board verified');ok(p.letters.length===p.C*p.R,'all cells filled');}
+// Word Count: per-cell marks are independent; old per-letter marks are converted; hints are kept apart
+{const W=PL.games.wordcount;const gs={rows:[{g:'nouns',c:[1,1,3]},{g:'manor',c:[0,2,3]}],cur:'',mk:{n:3,o:2},told:['N is in the word.'],markMode:true};
+ W._upgrade(gs);ok(!gs.mk&&gs.cm[0][0]===0&&gs.cm[0][1]===3&&gs.cm[1][3]===3&&gs.hin.join()==='n','old letter marks converted per cell; hint letters kept apart');
+ gs.cm[0][0]=2;gs.cm[1][2]=1;ok(gs.cm[0][0]===2&&gs.cm[1][2]===1,'two Ns hold different marks');
+ gs.hin=[];ok(W._letterState(gs,'n')==='in','keyboard summary: any green wins');gs.cm[1][2]=0;ok(W._letterState(gs,'n')==='maybe','then yellow');
+ gs.ws=[[{l:'',m:0},{l:'a',m:1},{l:'',m:0},{l:'e',m:3},{l:'',m:0}]];ok(W._letterState(gs,'e')==='out','working-row marks count too');
+ ok(gs.ws[0].map(c=>c.l||'_').join(' ')==='_ a _ e _','blanks are kept');}
 // Cat Logic: unique solutions
 for(const lv of [1,4,7,10])for(let k=0;k<3;k++){const G=PL.games.catlogic;const p=G.generate(lv,PL.rng('cl'+lv+k));const c=G._count(p.n,p.reg,3);ok(c.count===1&&c.sol.join()===p.sol.join(),'cat logic unique');
   const gs=G.init(p);let n=0;while(!G._solved(p,gs)&&n<30){const hh=G.hint(p,gs);if(hh.after==='solved')break;if(gs.hintCell!=null&&!hh.gs){} if(hh.msg.indexOf('only the highlighted')>=0){gs.s[gs.hintCell]=2;} n++;}ok(G._solved(p,gs),'cat logic hints lead to the solution');}

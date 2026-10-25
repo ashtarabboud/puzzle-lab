@@ -39,7 +39,7 @@
   if (typeof document !== 'undefined' && document.addEventListener) document.addEventListener('keydown', function (e) {
     if (!keyHandler || !document.querySelector('.five')) return;
     if (e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return;
-    if (e.key === 'Enter') { e.preventDefault(); keyHandler('enter'); } else if (e.key === 'Backspace') { e.preventDefault(); keyHandler('del'); } else if (/^[a-zA-Z]$/.test(e.key)) keyHandler(e.key.toLowerCase());
+    if (e.key === 'Enter') { e.preventDefault(); keyHandler('enter'); } else if (e.key === 'Backspace') { e.preventDefault(); keyHandler('del'); } else if (e.key === ' ') { e.preventDefault(); keyHandler('blank'); } else if (/^[a-zA-Z]$/.test(e.key)) keyHandler(e.key.toLowerCase());
   });
   function streaks(atts) {
     var cur = 0, best = 0;

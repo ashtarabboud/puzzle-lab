@@ -401,9 +401,23 @@ body.dock-open .toast { bottom: calc(var(--dock-h) + 12px); }
 .kbk { flex: 1 1 0; max-width: 40px; min-width: 0; height: 50px; border: 0; border-radius: 6px; background: var(--soft); font-weight: 700; font-size: 15px; cursor: pointer; color: var(--ink); padding: 0; }
 .kbk.wide { flex: 1.6 1 0; max-width: 64px; font-size: 13px; }
 .kbk.off { opacity: 0.25; }
-.kbk.maybe, .wc-l.maybe { background: var(--marker-soft); color: var(--ink); box-shadow: inset 0 0 0 2px var(--marker); }
-.kbk.out, .wc-l.out { background: var(--muted); color: var(--paper); }
-.kbk.in, .wc-l.in { background: var(--good); color: #fff; }
+.kbk.maybe { background: var(--marker-soft); color: var(--ink); box-shadow: inset 0 0 0 2px var(--marker); }
+.kbk.out { background: var(--bad-soft); color: var(--bad); box-shadow: inset 0 0 0 2px var(--bad); }
+.kbk.in { background: var(--good); color: #fff; }
+/* Word Count: your own per-letter marks (never game feedback) */
+.wc-l.m1 { background: var(--good); border-color: var(--good); color: #fff; }
+.wc-l.m2 { background: var(--marker); border-color: var(--marker); color: #fff; }
+.wc-l.m3 { background: var(--bad-soft); border-color: var(--bad); color: var(--bad); text-decoration: line-through; text-decoration-thickness: 2px; }
+.wc-l.ws.blank { color: var(--muted); }
+.wc-l.editing { outline: 3px solid var(--accent); outline-offset: 1px; }
+.wc-row.cur.idle { opacity: 0.55; }
+.wc-tools { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.wc-tool { min-height: 36px; padding: 4px 12px; border-radius: 18px; border: 2px solid var(--line); background: var(--card); font-weight: 700; font-size: 14px; cursor: pointer; }
+.wc-tool.t1 { border-color: var(--good); color: var(--good); } .wc-tool.t2 { border-color: var(--marker); color: var(--marker); }
+.wc-tool.t3 { border-color: var(--bad); color: var(--bad); } .wc-tool.t4 { color: var(--muted); }
+.wc-tool.on.t1 { background: var(--good); color: #fff; } .wc-tool.on.t2 { background: var(--marker); color: #fff; }
+.wc-tool.on.t3 { background: var(--bad); color: #fff; } .wc-tool.on.t4 { background: var(--soft); color: var(--ink); border-color: var(--ink); }
+.wc-ws { display: flex; flex-direction: column; gap: 6px; border: 1px dashed var(--line); border-radius: var(--r); padding: 8px 10px; }
 .wc-legend { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; color: var(--muted); }
 .wc-rows { display: flex; flex-direction: column; gap: 6px; }
 .wc-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
