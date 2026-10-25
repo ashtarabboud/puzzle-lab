@@ -286,14 +286,38 @@ async def main():
         check(all(x in after for x in ['tacos', 'fireplace', 'ice cream', 'mice']), 'Island accepts plurals, articles and phrases: ' + ', '.join(after[before:]))
         await page.screenshot(path=f'{OUT}/island.png', full_page=True)
 
-        # ---- daily quiz ----
+        # ---- daily quiz: shuffled order, Next Puzzle through all games ----
         await go_home(page); await page.click('.daily-card'); await page.wait_for_selector('.dlist')
         check(await page.locator('.dlist .gcard').count() == 17, 'daily quiz has 17 puzzles')
-        for i, g in enumerate(GAMES[:3]):
-            await page.locator('.dlist .gcard').nth(i).click(); await page.wait_for_selector('#gamebody'); await page.wait_for_timeout(300)
+        order = await page.evaluate("PL.model.dayOrder(PL.model.daily(PL.dateKey()))")
+        check(len(set(order)) == 17 and order != GAMES, 'daily order is shuffled and covers every game once')
+        shown = await page.locator('.dlist .gc-name').all_inner_texts()
+        check(shown == [NAMES[g] for g in order], 'overview lists the games in the day’s order')
+        await page.click('#daily-continue'); await page.wait_for_selector('#gamebody')
+        seq = []
+        for k in range(17):
+            g = await cur(page, 'c.g'); seq.append(g)
+            if g == 'password':
+                check(await cur(page, 'c.p.n') == 5, 'daily Password has five words')
+            await page.wait_for_timeout(200)
             await solve_current(page, g); await page.wait_for_selector('.summary')
-            sc = await page.locator('.summary .sum-score').inner_text(); check('/ 100' in sc, f'daily {g} scored out of 100 ({sc.strip()})')
-            await page.click('.summary .btn.primary'); await page.wait_for_selector('.dlist')
+            sc = await page.locator('.summary .sum-score').inner_text()
+            if '/ 100' not in sc: check(False, f'daily {g} scored out of 100 ({sc.strip()})')
+            if g == 'password':
+                check(await page.locator('.summary dt', has_text='Total clues').count() == 1 and await page.locator('.summary dd', has_text='clue').count() >= 5, 'five-word Password summary')
+            if k == 2:  # close and reopen mid-way: same order, continue where we left off
+                await page.reload(); await page.wait_for_selector('.gtile'); await page.click('.daily-card'); await page.wait_for_selector('.dlist')
+                check(await page.evaluate("PL.model.dayOrder(PL.model.daily(PL.dateKey()))") == order, 'order unchanged after reopening the app')
+                await page.click('#daily-continue'); await page.wait_for_selector('#gamebody'); continue
+            if k < 16:
+                if await page.locator('#next-daily').count() != 1:
+                    check(False, f"Next puzzle offered after {g} (buttons: {await page.locator('.summary .row-actions').inner_text()})"); break
+                await page.click('#next-daily'); await page.wait_for_selector('#gamebody')
+            else:
+                check(await page.locator('#next-daily').count() == 0 and await page.locator('.summary .btn.primary:has-text("See daily results")').count() == 1, 'after the last puzzle: daily results')
+                await page.click('.summary .btn.primary'); await page.wait_for_selector('.dlist')
+        check(seq == order, 'Next puzzle followed the stored order through all 17 games')
+        check(await page.evaluate("PL.model.daily(PL.dateKey()).complete") and await page.locator('.daily h3:has-text("Results")').count() == 1, 'daily quiz complete with results')
         lv0 = await page.evaluate("PL.model.rating('password').level")
         check('/ 1700' in await page.locator('.daily-head').inner_text(), 'daily total out of 1700')
         await page.screenshot(path=f'{OUT}/daily.png', full_page=True)

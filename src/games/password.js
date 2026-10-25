@@ -28,7 +28,7 @@
     return rng.shuffle(out);
   }
   function generate(level, rng, ctx) {
-    var n = ctx && ctx.daily ? 1 : 10;
+    var n = ctx && ctx.daily ? 5 : 10; // daily: five words, one combined score out of 100
     var ws = pickWords(level, rng, n, ctx && ctx.seenWords);
     return { n: n, words: ws.map(function (e) { return { w: e.w, alts: e.alts || [], clues: e.clues, d: e.d, def: e.def }; }) };
   }
@@ -83,7 +83,7 @@
       h('div', { class: 'lbl' }, p.n > 1 ? 'Total clues: ' + total + ' (best possible ' + p.n + ')' : 'Result'),
       h('table', { class: 'pwtable' }, p.words.map(function (w, k) {
         var r = gs.res[k];
-        return h('tr', null, h('td', { class: 'mono' }, w.w), h('td', null, r.solved ? 'clue ' + r.shown : r.passed ? 'passed (+' + UNSOLVED + ')' : '—'), h('td', { class: 'muted' }, r.wrong ? r.wrong + ' wrong' : ''));
+        return h('tr', null, h('td', { class: 'mono' }, w.w), h('td', null, r.solved ? 'clue ' + r.shown : r.passed ? 'passed (+' + UNSOLVED + ')' : '—'), h('td', { class: 'muted' }, [r.wrong ? r.wrong + ' wrong' : '', r.hints ? PL.plural(r.hints, 'letter hint') : ''].filter(Boolean).join(' · ')));
       })));
   }
   /* Letter hints are separate from the association clues: each one reveals one more letter of the secret word
@@ -111,8 +111,9 @@
     var q = PL.mean(per);
     var total = gs.res.reduce(function (a, x) { return a + clueScore(x); }, 0);
     var solvedN = gs.res.filter(function (r) { return r.solved; }).length;
-    return { quality: Math.round(q), metrics: { total: total, solved: solvedN, n: p.n, perWord: gs.res.map(function (r, k) { return { w: p.words[k].w, clues: r.shown, solved: r.solved, wrong: r.wrong }; }), firstClue: gs.res.filter(function (r) { return r.solved && r.shown === 1; }).length, avgClues: PL.mean(gs.res.filter(function (r) { return r.solved; }).map(function (r) { return r.shown; })) },
-      lines: [['Total clues', total + (p.n > 1 ? ' (lower is better)' : '')], ['Words solved', solvedN + '/' + p.n], ['Wrong guesses', gs.res.reduce(function (a, r) { return a + r.wrong; }, 0)]] };
+    return { quality: Math.round(q), metrics: { total: total, solved: solvedN, n: p.n, perWord: gs.res.map(function (r, k) { return { w: p.words[k].w, clues: r.shown, solved: r.solved, wrong: r.wrong, hints: r.hints || 0, passed: !!r.passed }; }), firstClue: gs.res.filter(function (r) { return r.solved && r.shown === 1; }).length, avgClues: PL.mean(gs.res.filter(function (r) { return r.solved; }).map(function (r) { return r.shown; })) },
+      lines: [['Total clues', total + (p.n > 1 ? ' (lower is better)' : '')], ['Words solved', solvedN + '/' + p.n], ['Wrong guesses', gs.res.reduce(function (a, r) { return a + r.wrong; }, 0)]]
+        .concat(p.n <= 5 && p.n > 1 ? gs.res.map(function (r, k) { return [p.words[k].w, r.solved ? 'clue ' + r.shown + (r.wrong ? ' · ' + r.wrong + ' wrong' : '') + (r.hints ? ' · ' + PL.plural(r.hints, 'letter hint') : '') : r.passed ? 'passed' : 'not reached']; }) : []) };
   }
   function review(p, gs) {
     return h('div', { class: 'review' }, p.words.map(function (w, k) {
@@ -138,7 +139,7 @@
     id: 'password', name: 'Password', blurb: 'Guess secret words from clues revealed one at a time.',
     rules: 'Clues for a secret word appear one at a time, from subtle to obvious. Guess whenever you like or ask for the next clue. A full game has ten words; your score is the total number of clues you needed (lower is better). Passing a word costs ' + UNSOLVED + ' clues.',
     generate: generate, init: init, view: view, hint: hint, evaluate: evaluate, review: review, stats: stats,
-    benchmark: function (lv, daily) { return daily ? 45 + lv * 6 : 400 + lv * 30; }, timeLimit: function (lv) { return 600; },
+    benchmark: function (lv, daily, p) { return daily ? (45 + lv * 6) * ((p && p.n) || 5) : 400 + lv * 30; }, timeLimit: function (lv) { return 600; },
     _matches: matches
   };
 })();

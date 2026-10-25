@@ -43,6 +43,22 @@ ok(M.daily('2026-10-19').max===900,'imported old day migrated');
  ok(M.exportData().data[r.archive],'archive included in exports');
  play('bridges',90);const u=M.undoFreshStart();ok(u.attempts===6&&M.attempts().length===7,'undo restores old results and keeps new ones');ok(M.rating('algebra').level===lvl,'undo restores levels');
  ok(M.daily('2026-10-25').games.length===PL.order.length,'today keeps the rebuilt quiz after undo');ok(M.active('loop'),'undo restores unfinished puzzle');ok(!PL.store.keys('arc:').length,'archive consumed');}
+// Daily order: shuffled per date, stable, stored; started days never change; Next follows the order
+{const D='2026-11-02';PL.dateKey=()=>D;const d=M.ensureDaily(D);ok(d.order&&d.order.length===d.games.length&&new Set(d.order).size===d.games.length,'order covers every game once');
+ ok(d.order.join()!==d.games.join(),'order is shuffled');const d2=M.ensureDaily(D);ok(d2.order.join()===d.order.join(),'same order on reopening');
+ ok(M.nextDailyGame(d,null)===d.order[0]&&M.nextDailyGame(d,d.order[0])===d.order[1],'next follows the order');
+ d.prog[d.order[1]].done=true;ok(M.nextDailyGame(d,d.order[0])===d.order[2],'finished games are skipped');
+ d.order.forEach(g=>d.prog[g].done=true);d.prog[d.order[0]].done=false;ok(M.nextDailyGame(d,d.order[5])===d.order[0],'wraps round to an earlier unfinished game');
+ d.prog[d.order[0]].done=true;ok(M.nextDailyGame(d,d.order[0])===null,'none left → results');
+ // a day created before (no order) that has progress keeps its games and order
+ const O='2026-11-03';PL.dateKey=()=>O;M.saveDaily({date:O,diff:'Easy',games:['loop','bridges','algebra'],max:300,levels:{loop:2,bridges:2,algebra:2},puzzles:{loop:{puzzle:{g:'loop'}},bridges:{puzzle:{g:'bridges'}},algebra:{puzzle:{g:'algebra'}}},prog:{loop:{gs:{},done:false,activeMs:5},bridges:{done:false},algebra:{done:false}},complete:false});
+ const od=M.ensureDaily(O);ok(M.dayOrder(od).join()==='loop,bridges,algebra'&&od.fmt===1,'a started older day keeps its order');
+ const N='2026-11-04';PL.dateKey=()=>N;M.saveDaily({date:N,diff:'Easy',games:['loop','bridges','algebra'],max:300,levels:{loop:2,bridges:2,algebra:2},puzzles:{loop:{puzzle:{g:'loop'}},bridges:{puzzle:{g:'bridges'}},algebra:{puzzle:{g:'algebra'}}},prog:{loop:{done:false},bridges:{done:false},algebra:{done:false}},complete:false});
+ const nd=M.ensureDaily(N);ok(nd.fmt===2&&nd.order.length===3,'an unstarted older day gets a shuffled order');}
+// today's quiz wrongly closed after nine puzzles is reopened; a past day is left alone
+{const T='2026-11-05';PL.dateKey=()=>T;const d=M.ensureDaily(T);d.games.slice(0,9).forEach(g=>{d.prog[g].done=true;d.prog[g].score=50;});d.complete=true;d.total=450;M.saveDaily(d);
+ const r=M.ensureDaily(T);ok(!r.complete&&r.total===undefined&&r.games.filter(g=>r.prog[g].done).length===9,'today reopened, finished puzzles kept');
+ PL.dateKey=()=>'2026-11-06';const past=M.ensureDaily(T);ok(past.complete===false,'unchanged when viewed later');}
 // Word Rush v1 → v2: re-score unlimited rounds (originals kept), never dailies, and recalibrate the level by replay
 {let n0=0;PL.games.wordrush={rescore:a=>(a.metrics&&a.metrics.sv>=2)?null:{quality:55,perf:55,metrics:{sv:2,mode:'timed'},v1:{quality:a.quality,perf:a.perf,target:9}}};
  const r=M.rating('wordrush');r.level=3;const c=M.core();c.ratings.wordrush={level:6,highest:6,changes:[{t:1,from:5,to:6}],since:0};M.saveCore(c);

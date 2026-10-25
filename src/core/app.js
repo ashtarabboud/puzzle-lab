@@ -279,14 +279,14 @@
       else sum.note = att.timed ? 'Timed result: kept separately and not used for difficulty.' : outcome === 'skipped' ? 'Skipped before you started: not counted toward difficulty.' : '';
       var c = M.core(); c.shuffle.recent = (c.shuffle.recent || []).concat([cur.g]).slice(-6); M.saveCore(c);
     } else if (cur.kind === 'daily') {
-      var ds = M.dailyScore(cur.g, cur.level, ev.quality, outcome === 'solved', rec.activeMs);
+      var ds = M.dailyScore(cur.g, cur.level, ev.quality, outcome === 'solved', rec.activeMs, p);
       rec.done = true; rec.outcome = outcome; rec.quality = ds.quality; rec.timeScore = ds.time; rec.score = ds.score; rec.endedAt = att.endedAt;
       att.dailyDate = cur.d.date; att.dailyDiff = cur.d.diff; att.dailyScore = ds;
       M.saveAttempt(att);
       var tt = M.dailyTotals(cur.d);
-      if (tt.done === 9 && !cur.d.complete) { cur.d.complete = true; cur.d.total = tt.score; cur.d.completedAt = Date.now(); }
+      if (tt.done === tt.n && !cur.d.complete) { cur.d.complete = true; cur.d.total = tt.score; cur.d.completedAt = Date.now(); }
       M.saveDaily(cur.d);
-      sum.daily = ds; sum.dayDone = cur.d.complete;
+      sum.daily = ds; sum.dayDone = cur.d.complete; sum.nextDaily = cur.d.complete ? null : M.nextDailyGame(cur.d, cur.g);
     } else {
       M.saveAttempt(att);
       sum.note = 'Practice replay: recorded in your history, not in statistics or the official daily score.';
@@ -307,14 +307,15 @@
     var next = cur.kind === 'unlimited' ? h('button', { class: 'btn primary', onclick: function () {
       var g = cur.g, sh = cur.rec.shuffle; cur = null;
       if (sh) startShuffle(); else startUnlimited(g);
-    } }, cur.rec.shuffle ? 'Next shuffle' : 'Next puzzle') : cur.kind === 'daily' ? h('button', { class: 'btn primary', onclick: function () { go({ name: 'daily', date: cur.d.date }); } }, s.dayDone ? 'See daily results' : 'Back to the daily quiz') : h('button', { class: 'btn primary', onclick: function () { go({ name: 'daily', date: cur.d.date }); } }, 'Back');
+    } }, cur.rec.shuffle ? 'Next shuffle' : 'Next puzzle') : cur.kind === 'daily' ? (s.nextDaily ? h('button', { class: 'btn primary', id: 'next-daily', onclick: function () { var g2 = s.nextDaily, dd = cur.d.date; cur = null; screen.date = dd; startDaily(g2, false); } }, 'Next puzzle: ' + PL.games[s.nextDaily].name)
+        : h('button', { class: 'btn primary', onclick: function () { go({ name: 'daily', date: cur.d.date }); } }, s.dayDone ? 'See daily results' : 'Back to the daily quiz')) : h('button', { class: 'btn primary', onclick: function () { go({ name: 'daily', date: cur.d.date }); } }, 'Back');
     return h('section', { class: 'card summary ' + (s.outcome === 'solved' ? 'ok' : 'bad') },
       h('div', { class: 'sum-head' }, h('h2', null, title), h('div', { class: 'sum-score' }, s.daily ? h('span', null, h('b', null, String(s.daily.score)), ' / 100') : h('span', null, h('b', null, String(Math.round(s.perf))), ' performance'))),
       s.daily ? h('div', { class: 'muted small' }, 'Quality ' + s.daily.quality + ' × 0.8 + time credit ' + s.daily.time + ' × 0.2 (benchmark ' + PL.fmtTime(s.daily.bench * 1000) + ')') : null,
       h('dl', { class: 'kv' }, rows.map(function (r) { return [h('dt', null, r[0]), h('dd', null, String(r[1]))]; })),
       adapt ? h('div', { class: 'adapt' }, adapt) : null,
       s.note ? h('div', { class: 'muted small' }, s.note) : null,
-      h('div', { class: 'row-actions' }, next, cur.showReview ? null : h('button', { class: 'btn', onclick: function () { cur.showReview = true; render(); setTimeout(function () { var r = document.querySelector('.play .card:last-child'); if (r) r.scrollIntoView({ behavior: 'smooth' }); }, 50); } }, 'Review solution'),
+      h('div', { class: 'row-actions' }, next, s.nextDaily ? h('button', { class: 'btn', onclick: function () { go({ name: 'daily', date: cur.d.date }); } }, 'Daily overview') : null, cur.showReview ? null : h('button', { class: 'btn', onclick: function () { cur.showReview = true; render(); setTimeout(function () { var r = document.querySelector('.play .card:last-child'); if (r) r.scrollIntoView({ behavior: 'smooth' }); }, 50); } }, 'Review solution'),
         h('button', { class: 'btn ghost', onclick: function () { go({ name: 'gstats', g: cur.g }); } }, G.name + ' stats')));
   }
 
@@ -355,6 +356,7 @@
     return h('main', { class: 'page daily' }, topbar('Daily Mini Quiz', function () { go({ name: 'home' }); }),
       h('div', { class: 'daily-head' }, h('div', null, h('div', { class: 'eyebrow' }, fmtDate(date)), h('h2', null, d.diff + ' day')),
         h('div', { class: 'sum-score' }, h('b', null, String(t.score)), ' / ' + d.max)),
+      isToday && !d.complete && M.nextDailyGame(d, null) ? h('button', { class: 'btn primary wide', id: 'daily-continue', onclick: function () { startDaily(M.nextDailyGame(d, null), false); } }, M.dayStarted(d) ? 'Continue: ' + PL.games[M.nextDailyGame(d, null)].name : 'Start with ' + PL.games[M.nextDailyGame(d, null)].name) : null,
       !isToday && !d.complete ? h('div', { class: 'notice' }, 'This day’s quiz was not finished. Only the current day’s quiz can be played for an official score.') : null,
       d.complete ? h('section', { class: 'card' },
         h('h3', null, 'Results'),
@@ -362,17 +364,17 @@
           ['Your average on ' + d.diff + ' days', avgPrev != null ? avgPrev + '% (' + PL.plural(prev.length, 'day') + ')' : 'First ' + d.diff + ' day'],
           ['Previous best on ' + d.diff + ' days', bestPrev != null ? bestPrev + '%' + (myPct > bestPrev ? ' — new personal best!' : '') : '—']].map(function (r) { return [h('dt', null, r[0]), h('dd', null, String(r[1]))]; }))) : null,
       d.games.length !== PL.order.length ? h('div', { class: 'notice' }, 'This quiz is from an earlier version: ' + d.games.length + ' games, scored out of ' + d.max + '.') : null,
-      h('ul', { class: 'dlist' }, d.games.map(function (g) {
+      h('ul', { class: 'dlist' }, M.dayOrder(d).map(function (g, k) {
         var G = PL.games[g], pr = d.prog[g];
         var status = pr.done ? (pr.outcome === 'solved' ? pr.score + ' pts' : 'Not solved · ' + (pr.score || 0) + ' pts') : pr.gs ? 'In progress · ' + PL.fmtTime(pr.activeMs) : d.diff === 'Mixed' ? diffName(d.levels[g]) : '';
         return h('li', null, h('button', { class: 'gcard' + (pr.done ? ' done' : ''), disabled: !isToday && !pr.done, onclick: function () { if (pr.done) { reviewDaily(d, g); } else startDaily(g, false); } },
-          icon(g), h('div', { class: 'gc-text' }, h('div', { class: 'gc-name' }, G.name), h('div', { class: 'gc-blurb' }, status || 'Not started')),
+          h('span', { class: 'dnum mono' }, String(k + 1)), icon(g), h('div', { class: 'gc-text' }, h('div', { class: 'gc-name' }, G.name), h('div', { class: 'gc-blurb' }, status || 'Not started')),
           pr.done ? h('span', { class: 'mark ' + (pr.outcome === 'solved' ? 'ok' : 'bad') }, pr.outcome === 'solved' ? '✓' : '×') : null));
       })),
       h('details', { class: 'card' }, h('summary', null, 'How daily scoring works'),
         h('p', { class: 'small' }, 'Each puzzle is worth up to 100 points: 80% solution quality and 20% time. Quality reflects the game (clues used in Password, moves versus the shortest route in Word Bridges, information cost in Word Detective, wrong answers and hints elsewhere). Time credit is full at or under a benchmark for that game and difficulty, falls linearly to zero at four times the benchmark, and is multiplied by your quality, so rushing a sloppy answer earns little. Unsolved puzzles get no time credit. Only active time counts: the clock stops when you pause, leave the puzzle or close the app. There is no time limit.'),
         h('p', { class: 'small muted' }, 'Formula: score = round(0.8·Q + 0.2·T), T = (solved ? 100·clamp((4B − t)/(3B), 0, 1) : 0) · Q/100. Benchmarks are provisional and will be recalibrated as data accumulates.')),
-      h('p', { class: 'muted small' }, 'Play the puzzles in any order and leave whenever you like; progress is saved. Daily results never change your unlimited-play levels.'));
+      h('p', { class: 'muted small' }, 'Today’s order is shuffled once for the day and stays the same; after each puzzle, Next puzzle takes you to the next unfinished one. You can still tap any game to play it first. Progress is saved. Daily results never change your unlimited-play levels.'));
   }
   function reviewDaily(d, g) {
     var pr = d.prog[g], G = PL.games[g];

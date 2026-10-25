@@ -3,7 +3,7 @@ const PL=require('./load.js')(['core/base.js','data/words.js','../data/password_
 let bad=0;const ok=(c,m)=>{if(!c){bad++;console.log('FAIL',m);}};
 const P=PL.games.password;
 for(let lv=1;lv<=10;lv++){const p=P.generate(lv,PL.rng('pw'+lv));ok(p.words.length===10&&new Set(p.words.map(w=>w.w)).size===10,'10 distinct words');}
-const pd=P.generate(5,PL.rng('d'),{daily:true});ok(pd.n===1,'daily 1 word');
+const pd=P.generate(5,PL.rng('d'),{daily:true});ok(pd.n===5&&new Set(pd.words.map(w=>w.w)).size===5,'daily has five different words');{const gs=P.init(pd);gs.res[0].solved=true;gs.res[0].shown=1;gs.res[1].solved=true;gs.res[1].shown=3;gs.res[1].hints=1;gs.res[2].passed=true;const ev=P.evaluate(pd,gs,{});ok(ev.quality===Math.round((100+62)/5)&&ev.metrics.perWord[1].hints===1&&ev.lines.length===8,'one combined score out of 100, per-word clues and hints');ok(P.benchmark(5,true,pd)===5*P.benchmark(5,true,{n:1}),'daily time benchmark scales with words');}
 // letter hints: progressive, never the whole word, never repeating
 {const p=P.generate(4,PL.rng('h'));const gs=P.init(p);const seen=new Set();let last='';for(let i=0;i<20;i++){const r=P.hint(p,gs);if(r.noCount)break;ok(!seen.has(r.msg),'no repeat');seen.add(r.msg);last=r.msg;}
  const w=p.words[0].w;ok(last.replace('Letters:','').replace(/[^A-Z]/g,'').length===w.length-1,'reveals all but one letter: '+last+' for '+w);}

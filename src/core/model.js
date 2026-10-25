@@ -168,23 +168,49 @@
     return d;
   };
   M.daily = function (date) { return M.migrateDay(S().get('day:' + date)); };
+  /* Daily order: each new day gets its own shuffled order (seeded by the date, stored on the day, so it never changes
+     while the day lasts). Days created before this have no order and keep the fixed order they were shown in. */
+  M.dayOrder = function (d) { var o = (d.order || []).filter(function (g) { return d.games.indexOf(g) >= 0; }); return o.length === d.games.length ? o : d.games.slice(); };
+  M.dayStarted = function (d) { return d.games.some(function (g) { var pr = d.prog[g]; return pr && (pr.gs || pr.done || pr.activeMs); }); };
+  M.nextDailyGame = function (d, after) { // the next unfinished game in the day's order after `after`, wrapping round; null when all are done
+    var o = M.dayOrder(d), i = o.indexOf(after);
+    for (var k = 1; k <= o.length; k++) { var g = o[(i + k + o.length) % o.length]; if (g !== after && !d.prog[g].done) return g; }
+    return null;
+  };
+  function dailyPuzzle(date, g, level) {
+    var seed = 'daily:' + date + ':' + g, p = null;
+    for (var t = 0; t < 4 && !p; t++) { try { p = PL.games[g].generate(level, PL.rng(seed + (t ? ':' + t : '')), { daily: true }); if (t) seed += ':' + t; } catch (e) { p = null; } }
+    return p ? { puzzle: p, seed: seed } : null;
+  }
+  /* A day created earlier today that nobody has started yet is brought up to the current format (shuffled order,
+     five-word Password). A day that has been started is never changed: same puzzles, same order. */
+  M.upgradeDay = function (d) {
+    if (!d) return d;
+    // today's quiz was marked finished after nine puzzles by an old check, even with games left: reopen it (scores kept)
+    if (d.complete && d.date === PL.dateKey() && d.games.some(function (g) { return !d.prog[g].done; })) { d.complete = false; delete d.total; delete d.completedAt; d.reopened = Date.now(); M.saveDaily(d); }
+    if (d.fmt >= 2 || d.complete) return d;
+    if (M.dayStarted(d)) { d.fmt = 1; M.saveDaily(d); return d; }
+    d.order = PL.rng('daily-order:' + d.date).shuffle(d.games.slice());
+    if (d.puzzles.password && (d.puzzles.password.puzzle.n || 1) < 5) { var np = dailyPuzzle(d.date, 'password', d.levels.password); if (np) d.puzzles.password = np; }
+    d.fmt = 2; M.saveDaily(d);
+    return d;
+  };
   M.saveDaily = function (d) { S().put('day:' + d.date, d); };
   M.ensureDaily = function (date) {
     var d = M.daily(date);
-    if (d) return d;
+    if (d) return date === PL.dateKey() ? M.upgradeDay(d) : d;
     var diff = M.dailyDifficulty(date), levels = {}, puzzles = {}, prog = {};
     var rng = PL.rng('daily-mix:' + date);
     var games = PL.order.slice(), skipped = [];
     games.forEach(function (g) {
       levels[g] = diff === 'Mixed' ? rng.pick([2, 5, 8]) : LEVEL[diff];
-      var seed = 'daily:' + date + ':' + g, p = null;
-      for (var t = 0; t < 4 && !p; t++) { try { p = PL.games[g].generate(levels[g], PL.rng(seed + (t ? ':' + t : '')), { daily: true }); if (t) seed += ':' + t; } catch (e) { p = null; } }
-      if (!p) { skipped.push(g); return; } // a game whose daily puzzle cannot be built is left out of that day (max adjusts)
-      puzzles[g] = { puzzle: p, seed: seed };
+      var dp = dailyPuzzle(date, g, levels[g]);
+      if (!dp) { skipped.push(g); return; } // a game whose daily puzzle cannot be built is left out of that day (max adjusts)
+      puzzles[g] = dp;
       prog[g] = { gs: null, activeMs: 0, hints: 0, wrong: 0, done: false };
     });
     games = games.filter(function (g) { return skipped.indexOf(g) < 0; });
-    d = { date: date, diff: diff, games: games, max: games.length * 100, levels: levels, puzzles: puzzles, prog: prog, created: Date.now(), complete: false, v: GEN_VERSION };
+    d = { date: date, diff: diff, games: games, order: PL.rng('daily-order:' + date).shuffle(games.slice()), fmt: 2, max: games.length * 100, levels: levels, puzzles: puzzles, prog: prog, created: Date.now(), complete: false, v: GEN_VERSION };
     M.saveDaily(d);
     return d;
   };
@@ -193,8 +219,8 @@
      T = (solved ? 100 × clamp((4B − t) / 3B, 0, 1) : 0) × Q / 100, with t the active seconds and B the benchmark
      seconds for that game and level (full time credit at or under B, none at 4B or beyond). Scaling T by Q means
      fast but sloppy answers earn little time credit, and unsolved puzzles earn none. */
-  M.dailyScore = function (g, level, quality, solved, activeMs) {
-    var B = PL.games[g].benchmark(level, true), t = activeMs / 1000;
+  M.dailyScore = function (g, level, quality, solved, activeMs, p) {
+    var B = PL.games[g].benchmark(level, true, p), t = activeMs / 1000;
     var T = solved ? 100 * PL.clamp((4 * B - t) / (3 * B), 0, 1) : 0;
     T = T * quality / 100;
     return { score: Math.round(0.8 * quality + 0.2 * T), time: Math.round(T), quality: Math.round(quality), bench: B };
