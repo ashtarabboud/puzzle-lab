@@ -1,0 +1,8696 @@
+[
+ {
+  "a": "NEWS",
+  "b": "PAPER",
+  "text": "newspaper",
+  "alts": [
+   "news paper"
+  ],
+  "easy": "Something you read with your morning coffee",
+  "hard": "Its ink comes off on your fingers"
+ },
+ {
+  "a": "WALL",
+  "b": "PAPER",
+  "text": "wallpaper",
+  "alts": [
+   "wall paper"
+  ],
+  "easy": "Patterned covering pasted onto the inside of rooms",
+  "hard": "Decorators hang it in long rolls"
+ },
+ {
+  "a": "SAND",
+  "b": "PAPER",
+  "text": "sandpaper",
+  "alts": [
+   "sand paper"
+  ],
+  "easy": "Gritty sheet used to smooth wood",
+  "hard": "A carpenter's abrasive friend"
+ },
+ {
+  "a": "TOILET",
+  "b": "PAPER",
+  "text": "toilet paper",
+  "alts": [
+   "toiletpaper"
+  ],
+  "easy": "Bathroom roll everyone panic-bought in 2020",
+  "hard": "Running out of it is a small disaster"
+ },
+ {
+  "a": "FLY",
+  "b": "PAPER",
+  "text": "flypaper",
+  "alts": [
+   "fly paper"
+  ],
+  "easy": "Sticky strip that catches buzzing insects",
+  "hard": "A ribbon of glue hanging in the kitchen"
+ },
+ {
+  "a": "PAPER",
+  "b": "WEIGHT",
+  "text": "paperweight",
+  "alts": [
+   "paper weight"
+  ],
+  "easy": "Heavy object that stops documents blowing away",
+  "hard": "A glass dome sitting on a desk"
+ },
+ {
+  "a": "PAPER",
+  "b": "PLATE",
+  "text": "paper plate",
+  "alts": [
+   "paperplate"
+  ],
+  "easy": "Disposable dish for picnics and parties",
+  "hard": "How to skip washing up after a barbecue"
+ },
+ {
+  "a": "PAPER",
+  "b": "BACK",
+  "text": "paperback",
+  "alts": [
+   "paper back"
+  ],
+  "easy": "Cheap softcover edition of a novel",
+  "hard": "What you pack for the beach read"
+ },
+ {
+  "a": "PAPER",
+  "b": "WORK",
+  "text": "paperwork",
+  "alts": [
+   "paper work"
+  ],
+  "easy": "Forms and admin that pile up",
+  "hard": "The tedious side of every job"
+ },
+ {
+  "a": "PAPER",
+  "b": "CLIP",
+  "text": "paper clip",
+  "alts": [
+   "paperclip"
+  ],
+  "easy": "Bent wire that holds sheets together",
+  "hard": "Office stationery once turned into a cartoon assistant"
+ },
+ {
+  "a": "PAPER",
+  "b": "TOWEL",
+  "text": "paper towel",
+  "alts": [
+   "papertowel"
+  ],
+  "easy": "Kitchen roll sheet for wiping spills",
+  "hard": "Disposable alternative to a dish cloth"
+ },
+ {
+  "a": "PAPER",
+  "b": "TRAIL",
+  "text": "paper trail",
+  "alts": [
+   "papertrail"
+  ],
+  "easy": "Documents that show what someone did",
+  "hard": "Investigators follow it to find the money"
+ },
+ {
+  "a": "PAPER",
+  "b": "BAG",
+  "text": "paper bag",
+  "alts": [
+   "paperbag"
+  ],
+  "easy": "Brown sack from the grocery store",
+  "hard": "You supposedly can't fight your way out of one"
+ },
+ {
+  "a": "PAPER",
+  "b": "CUP",
+  "text": "paper cup",
+  "alts": [
+   "papercup"
+  ],
+  "easy": "Disposable vessel at a water cooler",
+  "hard": "Throwaway container for takeaway coffee"
+ },
+ {
+  "a": "CAMP",
+  "b": "FIRE",
+  "text": "campfire",
+  "alts": [
+   "camp fire"
+  ],
+  "easy": "Outdoor blaze for toasting marshmallows",
+  "hard": "Scouts sing songs around it"
+ },
+ {
+  "a": "BON",
+  "b": "FIRE",
+  "text": "bonfire",
+  "alts": [
+   "bon fire"
+  ],
+  "easy": "Large outdoor blaze at a celebration",
+  "hard": "Guy Fawkes burns on top of one"
+ },
+ {
+  "a": "WILD",
+  "b": "FIRE",
+  "text": "wildfire",
+  "alts": [
+   "wild fire"
+  ],
+  "easy": "Uncontrolled blaze sweeping through forest",
+  "hard": "Rumours are said to spread like this"
+ },
+ {
+  "a": "GUN",
+  "b": "FIRE",
+  "text": "gunfire",
+  "alts": [
+   "gun fire"
+  ],
+  "easy": "Sound of shots being shot",
+  "hard": "Bangs heard on a battlefield"
+ },
+ {
+  "a": "CROSS",
+  "b": "FIRE",
+  "text": "crossfire",
+  "alts": [
+   "cross fire"
+  ],
+  "easy": "Shots coming from two directions",
+  "hard": "Innocents get caught in it"
+ },
+ {
+  "a": "BACK",
+  "b": "FIRE",
+  "text": "backfire",
+  "alts": [
+   "back fire"
+  ],
+  "easy": "Plan that goes wrong for its maker",
+  "hard": "An engine bang, or a scheme gone wrong"
+ },
+ {
+  "a": "CEASE",
+  "b": "FIRE",
+  "text": "ceasefire",
+  "alts": [
+   "cease fire"
+  ],
+  "easy": "Agreement to stop shooting",
+  "hard": "A truce declared by warring sides"
+ },
+ {
+  "a": "FIRE",
+  "b": "PLACE",
+  "text": "fireplace",
+  "alts": [
+   "fire place"
+  ],
+  "easy": "Hearth in a living room wall",
+  "hard": "Where Santa lands after the chimney"
+ },
+ {
+  "a": "FIRE",
+  "b": "WORK",
+  "text": "firework",
+  "alts": [
+   "fire work"
+  ],
+  "easy": "Rocket that explodes in coloured sparks",
+  "hard": "It lights up the sky on New Year's Eve"
+ },
+ {
+  "a": "FIRE",
+  "b": "MAN",
+  "text": "fireman",
+  "alts": [
+   "fire man"
+  ],
+  "easy": "Person who puts out blazes",
+  "hard": "Hero who rescues cats from trees"
+ },
+ {
+  "a": "FIRE",
+  "b": "FLY",
+  "text": "firefly",
+  "alts": [
+   "fire fly"
+  ],
+  "easy": "Insect that glows in the dark",
+  "hard": "A beetle with a built-in lantern"
+ },
+ {
+  "a": "FIRE",
+  "b": "TRUCK",
+  "text": "fire truck",
+  "alts": [
+   "firetruck"
+  ],
+  "easy": "Red emergency vehicle with a ladder",
+  "hard": "It races to blazes with sirens wailing"
+ },
+ {
+  "a": "FIRE",
+  "b": "ALARM",
+  "text": "fire alarm",
+  "alts": [
+   "firealarm"
+  ],
+  "easy": "Bell that rings when smoke is detected",
+  "hard": "It sends everyone out onto the street"
+ },
+ {
+  "a": "FIRE",
+  "b": "WOOD",
+  "text": "firewood",
+  "alts": [
+   "fire wood"
+  ],
+  "easy": "Logs for burning in a stove",
+  "hard": "Chopped timber stacked for winter"
+ },
+ {
+  "a": "FIRE",
+  "b": "BALL",
+  "text": "fireball",
+  "alts": [
+   "fire ball"
+  ],
+  "easy": "Huge burst of flame from an explosion",
+  "hard": "A blazing sphere in an action film"
+ },
+ {
+  "a": "FIRE",
+  "b": "LIGHT",
+  "text": "firelight",
+  "alts": [
+   "fire light"
+  ],
+  "easy": "Glow cast by flames in a hearth",
+  "hard": "Cosy flickering illumination on a winter night"
+ },
+ {
+  "a": "FIRE",
+  "b": "SIDE",
+  "text": "fireside",
+  "alts": [
+   "fire side"
+  ],
+  "easy": "Area right next to a hearth",
+  "hard": "Where grandpa tells stories on cold evenings"
+ },
+ {
+  "a": "FIRE",
+  "b": "ESCAPE",
+  "text": "fire escape",
+  "alts": [
+   "fireescape"
+  ],
+  "easy": "Metal stairway on the outside of a building",
+  "hard": "Emergency exit zigzagging down a brick wall"
+ },
+ {
+  "a": "FIRE",
+  "b": "DRILL",
+  "text": "fire drill",
+  "alts": [
+   "firedrill"
+  ],
+  "easy": "Practice evacuation of a building",
+  "hard": "Rehearsal for leaving school in a hurry"
+ },
+ {
+  "a": "FIRE",
+  "b": "WALL",
+  "text": "firewall",
+  "alts": [
+   "fire wall"
+  ],
+  "easy": "Network barrier against hackers",
+  "hard": "Security software that blocks intruders"
+ },
+ {
+  "a": "FIRE",
+  "b": "POWER",
+  "text": "firepower",
+  "alts": [
+   "fire power"
+  ],
+  "easy": "Destructive capacity of weapons",
+  "hard": "What an army brings to the battle"
+ },
+ {
+  "a": "NOTE",
+  "b": "BOOK",
+  "text": "notebook",
+  "alts": [
+   "note book"
+  ],
+  "easy": "Pad of paper for jotting things",
+  "hard": "A lined companion for lectures"
+ },
+ {
+  "a": "COOK",
+  "b": "BOOK",
+  "text": "cookbook",
+  "alts": [
+   "cook book"
+  ],
+  "easy": "A collection of recipes bound together",
+  "hard": "A volume you consult before dinner parties"
+ },
+ {
+  "a": "TEXT",
+  "b": "BOOK",
+  "text": "textbook",
+  "alts": [
+   "text book"
+  ],
+  "easy": "Volume used for studying a school subject",
+  "hard": "A heavy school volume full of lessons"
+ },
+ {
+  "a": "HAND",
+  "b": "BOOK",
+  "text": "handbook",
+  "alts": [
+   "hand book"
+  ],
+  "easy": "A guide containing instructions and reference facts",
+  "hard": "A manual given to new employees"
+ },
+ {
+  "a": "GUIDE",
+  "b": "BOOK",
+  "text": "guidebook",
+  "alts": [
+   "guide book"
+  ],
+  "easy": "Tourist's volume about a destination",
+  "hard": "What a traveller reads before sightseeing"
+ },
+ {
+  "a": "SCRAP",
+  "b": "BOOK",
+  "text": "scrapbook",
+  "alts": [
+   "scrap book"
+  ],
+  "easy": "Album for pasting cuttings and keepsakes",
+  "hard": "A crafty home for ticket stubs"
+ },
+ {
+  "a": "STORY",
+  "b": "BOOK",
+  "text": "storybook",
+  "alts": [
+   "story book"
+  ],
+  "easy": "Children's volume of tales and pictures",
+  "hard": "A fairy-tale ending is described as this"
+ },
+ {
+  "a": "WORK",
+  "b": "BOOK",
+  "text": "workbook",
+  "alts": [
+   "work book"
+  ],
+  "easy": "Exercise pad with spaces for written answers",
+  "hard": "Pupils fill in its blank pages"
+ },
+ {
+  "a": "LOG",
+  "b": "BOOK",
+  "text": "logbook",
+  "alts": [
+   "log book"
+  ],
+  "easy": "Official record of a journey",
+  "hard": "A captain writes daily entries in it"
+ },
+ {
+  "a": "PASS",
+  "b": "BOOK",
+  "text": "passbook",
+  "alts": [
+   "pass book"
+  ],
+  "easy": "Small savings account record",
+  "hard": "Old-fashioned savings record stamped by a bank teller"
+ },
+ {
+  "a": "BOOK",
+  "b": "CASE",
+  "text": "bookcase",
+  "alts": [
+   "book case"
+  ],
+  "easy": "Furniture with shelves for reading matter",
+  "hard": "A library in miniature in your lounge"
+ },
+ {
+  "a": "BOOK",
+  "b": "MARK",
+  "text": "bookmark",
+  "alts": [
+   "book mark"
+  ],
+  "easy": "Strip that keeps your place in a novel",
+  "hard": "Also a saved website in your browser"
+ },
+ {
+  "a": "BOOK",
+  "b": "SHOP",
+  "text": "bookshop",
+  "alts": [
+   "book shop"
+  ],
+  "easy": "Store that sells novels",
+  "hard": "Where you browse paperbacks for hours"
+ },
+ {
+  "a": "BOOK",
+  "b": "WORM",
+  "text": "bookworm",
+  "alts": [
+   "book worm"
+  ],
+  "easy": "Person who loves reading",
+  "hard": "Someone always found with a novel"
+ },
+ {
+  "a": "BOOK",
+  "b": "SHELF",
+  "text": "bookshelf",
+  "alts": [
+   "book shelf"
+  ],
+  "easy": "Single plank holding reading matter",
+  "hard": "Where literature collects dust"
+ },
+ {
+  "a": "BOOK",
+  "b": "STORE",
+  "text": "bookstore",
+  "alts": [
+   "book store"
+  ],
+  "easy": "Shop that sells novels",
+  "hard": "A place to browse bestsellers"
+ },
+ {
+  "a": "BOOK",
+  "b": "CLUB",
+  "text": "book club",
+  "alts": [
+   "bookclub"
+  ],
+  "easy": "Group that meets to discuss novels",
+  "hard": "Monthly gathering with wine and literature"
+ },
+ {
+  "a": "BOOK",
+  "b": "END",
+  "text": "bookend",
+  "alts": [
+   "book end"
+  ],
+  "easy": "Support propping up a row of novels on a shelf",
+  "hard": "Used in pairs on a shelf"
+ },
+ {
+  "a": "RAIN",
+  "b": "WATER",
+  "text": "rainwater",
+  "alts": [
+   "rain water"
+  ],
+  "easy": "What collects in a garden barrel",
+  "hard": "Free supply that falls from clouds"
+ },
+ {
+  "a": "SEA",
+  "b": "WATER",
+  "text": "seawater",
+  "alts": [
+   "sea water"
+  ],
+  "easy": "Salty liquid of the ocean",
+  "hard": "You shouldn't drink it if shipwrecked"
+ },
+ {
+  "a": "SALT",
+  "b": "WATER",
+  "text": "saltwater",
+  "alts": [
+   "salt water"
+  ],
+  "easy": "Briny liquid, like the ocean's",
+  "hard": "Habitat of a marine fish"
+ },
+ {
+  "a": "FRESH",
+  "b": "WATER",
+  "text": "freshwater",
+  "alts": [
+   "fresh water"
+  ],
+  "easy": "Liquid of lakes and rivers, not salty",
+  "hard": "Habitat of trout and pike"
+ },
+ {
+  "a": "DISH",
+  "b": "WATER",
+  "text": "dishwater",
+  "alts": [
+   "dish water"
+  ],
+  "easy": "Soapy liquid in the sink after washing up",
+  "hard": "Dull tea is said to look like this"
+ },
+ {
+  "a": "BACK",
+  "b": "WATER",
+  "text": "backwater",
+  "alts": [
+   "back water"
+  ],
+  "easy": "Quiet isolated place far from action",
+  "hard": "A sleepy town where nothing happens"
+ },
+ {
+  "a": "UNDER",
+  "b": "WATER",
+  "text": "underwater",
+  "alts": [
+   "under water"
+  ],
+  "easy": "Beneath the surface of the sea",
+  "hard": "Where divers and submarines go"
+ },
+ {
+  "a": "WATER",
+  "b": "FALL",
+  "text": "waterfall",
+  "alts": [
+   "water fall"
+  ],
+  "easy": "Cascade of a river over a cliff",
+  "hard": "Niagara is a famous one"
+ },
+ {
+  "a": "WATER",
+  "b": "MELON",
+  "text": "watermelon",
+  "alts": [
+   "water melon"
+  ],
+  "easy": "Large green fruit with red flesh",
+  "hard": "A juicy summer fruit full of seeds"
+ },
+ {
+  "a": "WATER",
+  "b": "BOTTLE",
+  "text": "water bottle",
+  "alts": [
+   "waterbottle"
+  ],
+  "easy": "Drink container for the gym",
+  "hard": "What hikers refill at fountains"
+ },
+ {
+  "a": "WATER",
+  "b": "PROOF",
+  "text": "waterproof",
+  "alts": [
+   "water proof"
+  ],
+  "easy": "Able to keep out wetness",
+  "hard": "Description of a good rain jacket"
+ },
+ {
+  "a": "WATER",
+  "b": "FRONT",
+  "text": "waterfront",
+  "alts": [
+   "water front"
+  ],
+  "easy": "Area along a harbour or river",
+  "hard": "Where the trendy bars are by the docks"
+ },
+ {
+  "a": "WATER",
+  "b": "MARK",
+  "text": "watermark",
+  "alts": [
+   "water mark"
+  ],
+  "easy": "Faint design on a banknote",
+  "hard": "Seen when you hold a note to the light"
+ },
+ {
+  "a": "WATER",
+  "b": "BED",
+  "text": "waterbed",
+  "alts": [
+   "water bed"
+  ],
+  "easy": "Mattress filled with liquid",
+  "hard": "A sloshy sleeping surface from the 1970s"
+ },
+ {
+  "a": "WATER",
+  "b": "PARK",
+  "text": "water park",
+  "alts": [
+   "waterpark"
+  ],
+  "easy": "Leisure place with slides and pools",
+  "hard": "Summer fun with flumes and wave pools"
+ },
+ {
+  "a": "WATER",
+  "b": "MILL",
+  "text": "watermill",
+  "alts": [
+   "water mill"
+  ],
+  "easy": "Building where a river turns a wheel",
+  "hard": "An old grain grinder by a stream"
+ },
+ {
+  "a": "WATER",
+  "b": "TOWER",
+  "text": "water tower",
+  "alts": [
+   "watertower"
+  ],
+  "easy": "Tall tank supplying a town",
+  "hard": "A raised reservoir seen above small towns"
+ },
+ {
+  "a": "WATER",
+  "b": "SIDE",
+  "text": "waterside",
+  "alts": [
+   "water side"
+  ],
+  "easy": "Edge of a lake or river",
+  "hard": "Location of many pubs beside a river"
+ },
+ {
+  "a": "WATER",
+  "b": "WHEEL",
+  "text": "waterwheel",
+  "alts": [
+   "water wheel"
+  ],
+  "easy": "Paddled rotor turned by a stream",
+  "hard": "Ancient source of power on a river"
+ },
+ {
+  "a": "WATER",
+  "b": "LINE",
+  "text": "waterline",
+  "alts": [
+   "water line"
+  ],
+  "easy": "Level where a ship's hull meets the sea",
+  "hard": "A mark that rises as a boat is loaded"
+ },
+ {
+  "a": "WATER",
+  "b": "TABLE",
+  "text": "water table",
+  "alts": [
+   "watertable"
+  ],
+  "easy": "Level below which ground is saturated",
+  "hard": "What a well digger needs to reach"
+ },
+ {
+  "a": "SUN",
+  "b": "LIGHT",
+  "text": "sunlight",
+  "alts": [
+   "sun light"
+  ],
+  "easy": "Brightness from our nearest star",
+  "hard": "Plants turn toward it"
+ },
+ {
+  "a": "MOON",
+  "b": "LIGHT",
+  "text": "moonlight",
+  "alts": [
+   "moon light"
+  ],
+  "easy": "Silvery glow on a clear night",
+  "hard": "Romantic illumination for night walks"
+ },
+ {
+  "a": "DAY",
+  "b": "LIGHT",
+  "text": "daylight",
+  "alts": [
+   "day light"
+  ],
+  "easy": "Natural brightness before dusk",
+  "hard": "Clocks are changed to save it"
+ },
+ {
+  "a": "FLASH",
+  "b": "LIGHT",
+  "text": "flashlight",
+  "alts": [
+   "flash light"
+  ],
+  "easy": "Battery torch you carry",
+  "hard": "Handy in a power cut"
+ },
+ {
+  "a": "SPOT",
+  "b": "LIGHT",
+  "text": "spotlight",
+  "alts": [
+   "spot light"
+  ],
+  "easy": "Bright beam on a performer",
+  "hard": "Centre of attention on stage"
+ },
+ {
+  "a": "HEAD",
+  "b": "LIGHT",
+  "text": "headlight",
+  "alts": [
+   "head light"
+  ],
+  "easy": "Lamp at the front of a car",
+  "hard": "Deer freeze when caught in one"
+ },
+ {
+  "a": "CANDLE",
+  "b": "LIGHT",
+  "text": "candlelight",
+  "alts": [
+   "candle light"
+  ],
+  "easy": "Glow from a burning wick",
+  "hard": "Romantic illumination for a dinner for two"
+ },
+ {
+  "a": "STAR",
+  "b": "LIGHT",
+  "text": "starlight",
+  "alts": [
+   "star light"
+  ],
+  "easy": "Twinkling glow from distant suns",
+  "hard": "What shines on a clear night with no moon"
+ },
+ {
+  "a": "STREET",
+  "b": "LIGHT",
+  "text": "streetlight",
+  "alts": [
+   "street light"
+  ],
+  "easy": "Lamp along a road at night",
+  "hard": "It flickers on at dusk in town"
+ },
+ {
+  "a": "FLOOD",
+  "b": "LIGHT",
+  "text": "floodlight",
+  "alts": [
+   "flood light"
+  ],
+  "easy": "Powerful lamp illuminating a stadium",
+  "hard": "Makes evening football matches possible"
+ },
+ {
+  "a": "TRAFFIC",
+  "b": "LIGHT",
+  "text": "traffic light",
+  "alts": [
+   "trafficlight"
+  ],
+  "easy": "Signal that turns red, amber and green",
+  "hard": "It controls a busy junction"
+ },
+ {
+  "a": "NIGHT",
+  "b": "LIGHT",
+  "text": "night light",
+  "alts": [
+   "nightlight"
+  ],
+  "easy": "Dim lamp for a child's bedroom",
+  "hard": "It keeps the monsters away"
+ },
+ {
+  "a": "GREEN",
+  "b": "LIGHT",
+  "text": "green light",
+  "alts": [
+   "greenlight"
+  ],
+  "easy": "Signal to go ahead",
+  "hard": "Official permission to begin a project"
+ },
+ {
+  "a": "RED",
+  "b": "LIGHT",
+  "text": "red light",
+  "alts": [
+   "redlight"
+  ],
+  "easy": "Signal telling drivers to stop",
+  "hard": "Running one gets you a fine"
+ },
+ {
+  "a": "HIGH",
+  "b": "LIGHT",
+  "text": "highlight",
+  "alts": [
+   "high light"
+  ],
+  "easy": "Best moment of an event",
+  "hard": "The part shown in a sports recap"
+ },
+ {
+  "a": "SKY",
+  "b": "LIGHT",
+  "text": "skylight",
+  "alts": [
+   "sky light"
+  ],
+  "easy": "Window set into a roof",
+  "hard": "Lets the sun into an attic room"
+ },
+ {
+  "a": "LIGHT",
+  "b": "HOUSE",
+  "text": "lighthouse",
+  "alts": [
+   "light house"
+  ],
+  "easy": "Coastal tower warning ships",
+  "hard": "Its keeper lives by the rocks"
+ },
+ {
+  "a": "LIGHT",
+  "b": "BULB",
+  "text": "light bulb",
+  "alts": [
+   "lightbulb"
+  ],
+  "easy": "Glass globe screwed into a lamp",
+  "hard": "Cartoon symbol for a bright idea"
+ },
+ {
+  "a": "LIGHT",
+  "b": "WEIGHT",
+  "text": "lightweight",
+  "alts": [
+   "light weight"
+  ],
+  "easy": "Not heavy at all",
+  "hard": "A boxer in a lower division"
+ },
+ {
+  "a": "LIGHT",
+  "b": "YEAR",
+  "text": "light year",
+  "alts": [
+   "lightyear"
+  ],
+  "easy": "Distance a beam travels in twelve months",
+  "hard": "Astronomers measure huge distances with it"
+ },
+ {
+  "a": "LIGHT",
+  "b": "SWITCH",
+  "text": "light switch",
+  "alts": [
+   "lightswitch"
+  ],
+  "easy": "Wall button for turning lamps on",
+  "hard": "You flick it when entering a dark room"
+ },
+ {
+  "a": "FOOT",
+  "b": "BALL",
+  "text": "football",
+  "alts": [
+   "foot ball"
+  ],
+  "easy": "Sport with goals and a round leather sphere",
+  "hard": "What they call the beautiful game"
+ },
+ {
+  "a": "BASKET",
+  "b": "BALL",
+  "text": "basketball",
+  "alts": [
+   "basket ball"
+  ],
+  "easy": "Sport played with hoops",
+  "hard": "Michael Jordan's game on the court"
+ },
+ {
+  "a": "SNOW",
+  "b": "BALL",
+  "text": "snowball",
+  "alts": [
+   "snow ball"
+  ],
+  "easy": "Packed white sphere thrown in winter",
+  "hard": "It grows when rolled downhill"
+ },
+ {
+  "a": "BASE",
+  "b": "BALL",
+  "text": "baseball",
+  "alts": [
+   "base ball"
+  ],
+  "easy": "American sport with bats and a diamond",
+  "hard": "The game of the World Series"
+ },
+ {
+  "a": "EYE",
+  "b": "BALL",
+  "text": "eyeball",
+  "alts": [
+   "eye ball"
+  ],
+  "easy": "Round organ of sight",
+  "hard": "To stare at someone intently"
+ },
+ {
+  "a": "MEAT",
+  "b": "BALL",
+  "text": "meatball",
+  "alts": [
+   "meat ball"
+  ],
+  "easy": "Minced beef sphere in spaghetti sauce",
+  "hard": "Swedish furniture stores serve them"
+ },
+ {
+  "a": "HAND",
+  "b": "BALL",
+  "text": "handball",
+  "alts": [
+   "hand ball"
+  ],
+  "easy": "Foul in soccer for touching",
+  "hard": "Also an indoor Olympic team sport"
+ },
+ {
+  "a": "NET",
+  "b": "BALL",
+  "text": "netball",
+  "alts": [
+   "net ball"
+  ],
+  "easy": "Court game similar to shooting hoops, without dribbling",
+  "hard": "Popular school sport with no dribbling"
+ },
+ {
+  "a": "VOLLEY",
+  "b": "BALL",
+  "text": "volleyball",
+  "alts": [
+   "volley ball"
+  ],
+  "easy": "Sport where players hit a sphere over a high net",
+  "hard": "Played on beaches in bikinis"
+ },
+ {
+  "a": "BEACH",
+  "b": "BALL",
+  "text": "beach ball",
+  "alts": [
+   "beachball"
+  ],
+  "easy": "Inflatable toy for the seaside",
+  "hard": "Colourful plastic sphere bounced on sand"
+ },
+ {
+  "a": "GOLF",
+  "b": "BALL",
+  "text": "golf ball",
+  "alts": [
+   "golfball"
+  ],
+  "easy": "Small dimpled sphere hit with clubs",
+  "hard": "You tee it up on the green"
+ },
+ {
+  "a": "BALL",
+  "b": "ROOM",
+  "text": "ballroom",
+  "alts": [
+   "ball room"
+  ],
+  "easy": "Large hall for formal dancing",
+  "hard": "Where the waltz and foxtrot happen"
+ },
+ {
+  "a": "BALL",
+  "b": "GAME",
+  "text": "ball game",
+  "alts": [
+   "ballgame"
+  ],
+  "easy": "Any sport involving a round object",
+  "hard": "A whole new situation, idiomatically"
+ },
+ {
+  "a": "BALL",
+  "b": "PARK",
+  "text": "ballpark",
+  "alts": [
+   "ball park"
+  ],
+  "easy": "Stadium where America's pitchers and batters play",
+  "hard": "A rough estimate figure"
+ },
+ {
+  "a": "BALL",
+  "b": "GOWN",
+  "text": "ball gown",
+  "alts": [
+   "ballgown"
+  ],
+  "easy": "Long formal dress for a dance",
+  "hard": "What Cinderella wore at midnight"
+ },
+ {
+  "a": "BALL",
+  "b": "POINT",
+  "text": "ballpoint",
+  "alts": [
+   "ball point"
+  ],
+  "easy": "Common type of pen",
+  "hard": "A biro, essentially, for everyday writing"
+ },
+ {
+  "a": "BALL",
+  "b": "BOY",
+  "text": "ball boy",
+  "alts": [
+   "ballboy"
+  ],
+  "easy": "Child who fetches stray shots at tennis",
+  "hard": "He scurries across the court at Wimbledon"
+ },
+ {
+  "a": "GREEN",
+  "b": "HOUSE",
+  "text": "greenhouse",
+  "alts": [
+   "green house"
+  ],
+  "easy": "Glass building for growing plants",
+  "hard": "Gases blamed for warming the planet are named after it"
+ },
+ {
+  "a": "FARM",
+  "b": "HOUSE",
+  "text": "farmhouse",
+  "alts": [
+   "farm house"
+  ],
+  "easy": "Home on agricultural land",
+  "hard": "A rustic kitchen table style is named after it"
+ },
+ {
+  "a": "TREE",
+  "b": "HOUSE",
+  "text": "treehouse",
+  "alts": [
+   "tree house"
+  ],
+  "easy": "Wooden den among branches",
+  "hard": "Children's hideout up in an oak"
+ },
+ {
+  "a": "DOG",
+  "b": "HOUSE",
+  "text": "doghouse",
+  "alts": [
+   "dog house"
+  ],
+  "easy": "Kennel for a pet",
+  "hard": "Where you're in after forgetting an anniversary"
+ },
+ {
+  "a": "BIRD",
+  "b": "HOUSE",
+  "text": "birdhouse",
+  "alts": [
+   "bird house"
+  ],
+  "easy": "Small wooden box for nesting songsters",
+  "hard": "Wren home nailed to a post"
+ },
+ {
+  "a": "CLUB",
+  "b": "HOUSE",
+  "text": "clubhouse",
+  "alts": [
+   "club house"
+  ],
+  "easy": "Building used by members of a sports team",
+  "hard": "Golfers have a drink there afterwards"
+ },
+ {
+  "a": "WARE",
+  "b": "HOUSE",
+  "text": "warehouse",
+  "alts": [
+   "ware house"
+  ],
+  "easy": "Large building for storing goods",
+  "hard": "A huge shed in an industrial estate"
+ },
+ {
+  "a": "BOAT",
+  "b": "HOUSE",
+  "text": "boathouse",
+  "alts": [
+   "boat house"
+  ],
+  "easy": "Shed by a river for rowing craft",
+  "hard": "Where rowers store their sculls"
+ },
+ {
+  "a": "COURT",
+  "b": "HOUSE",
+  "text": "courthouse",
+  "alts": [
+   "court house"
+  ],
+  "easy": "Building where trials happen",
+  "hard": "Where a judge sits in session"
+ },
+ {
+  "a": "PLAY",
+  "b": "HOUSE",
+  "text": "playhouse",
+  "alts": [
+   "play house"
+  ],
+  "easy": "Toy home for children",
+  "hard": "Also a name for a small theatre"
+ },
+ {
+  "a": "SCHOOL",
+  "b": "HOUSE",
+  "text": "schoolhouse",
+  "alts": [
+   "school house"
+  ],
+  "easy": "Building where lessons were taught",
+  "hard": "Little red one from frontier days"
+ },
+ {
+  "a": "GUEST",
+  "b": "HOUSE",
+  "text": "guesthouse",
+  "alts": [
+   "guest house"
+  ],
+  "easy": "Small hotel or B&B",
+  "hard": "Where you stay on a seaside break"
+ },
+ {
+  "a": "POWER",
+  "b": "HOUSE",
+  "text": "powerhouse",
+  "alts": [
+   "power house"
+  ],
+  "easy": "Strong and energetic force",
+  "hard": "Biology's nickname for a mitochondrion"
+ },
+ {
+  "a": "STORE",
+  "b": "HOUSE",
+  "text": "storehouse",
+  "alts": [
+   "store house"
+  ],
+  "easy": "Building where supplies are kept",
+  "hard": "A depot full of goods"
+ },
+ {
+  "a": "TOWN",
+  "b": "HOUSE",
+  "text": "townhouse",
+  "alts": [
+   "town house"
+  ],
+  "easy": "Tall terraced home in a city",
+  "hard": "Several storeys on a narrow urban plot"
+ },
+ {
+  "a": "OUT",
+  "b": "HOUSE",
+  "text": "outhouse",
+  "alts": [
+   "out house"
+  ],
+  "easy": "Outdoor toilet shed in the garden",
+  "hard": "A loo at the bottom of the garden"
+ },
+ {
+  "a": "HOUSE",
+  "b": "WORK",
+  "text": "housework",
+  "alts": [
+   "house work"
+  ],
+  "easy": "Cleaning, dusting and laundry",
+  "hard": "Chores done around the home"
+ },
+ {
+  "a": "HOUSE",
+  "b": "BOAT",
+  "text": "houseboat",
+  "alts": [
+   "house boat"
+  ],
+  "easy": "Barge people live on",
+  "hard": "A floating home on a canal"
+ },
+ {
+  "a": "HOUSE",
+  "b": "FLY",
+  "text": "housefly",
+  "alts": [
+   "house fly"
+  ],
+  "easy": "Common buzzing insect indoors",
+  "hard": "It lands on your food in summer"
+ },
+ {
+  "a": "HOUSE",
+  "b": "PLANT",
+  "text": "houseplant",
+  "alts": [
+   "house plant"
+  ],
+  "easy": "Greenery kept in a pot indoors",
+  "hard": "A fern on the windowsill"
+ },
+ {
+  "a": "HOUSE",
+  "b": "HOLD",
+  "text": "household",
+  "alts": [
+   "house hold"
+  ],
+  "easy": "Everyone living under one roof",
+  "hard": "A family and its home"
+ },
+ {
+  "a": "HOUSE",
+  "b": "MATE",
+  "text": "housemate",
+  "alts": [
+   "house mate"
+  ],
+  "easy": "Person you share a home with",
+  "hard": "Someone who steals your milk"
+ },
+ {
+  "a": "HOUSE",
+  "b": "PARTY",
+  "text": "house party",
+  "alts": [
+   "houseparty"
+  ],
+  "easy": "Celebration held in someone's home",
+  "hard": "Music and guests in every room"
+ },
+ {
+  "a": "HOUSE",
+  "b": "KEY",
+  "text": "house key",
+  "alts": [
+   "housekey"
+  ],
+  "easy": "What unlocks your front door",
+  "hard": "You check your pocket for it when leaving"
+ },
+ {
+  "a": "HOUSE",
+  "b": "COAT",
+  "text": "housecoat",
+  "alts": [
+   "house coat"
+  ],
+  "easy": "Loose robe worn at home",
+  "hard": "A dressing gown for doing chores"
+ },
+ {
+  "a": "FRONT",
+  "b": "DOOR",
+  "text": "front door",
+  "alts": [
+   "frontdoor"
+  ],
+  "easy": "Main entrance of a home",
+  "hard": "Where visitors knock and ring"
+ },
+ {
+  "a": "BACK",
+  "b": "DOOR",
+  "text": "back door",
+  "alts": [
+   "backdoor"
+  ],
+  "easy": "Rear entrance of a house",
+  "hard": "A secret way into a computer system"
+ },
+ {
+  "a": "TRAP",
+  "b": "DOOR",
+  "text": "trapdoor",
+  "alts": [
+   "trap door"
+  ],
+  "easy": "Hatch in a floor or ceiling",
+  "hard": "Villains drop heroes through one"
+ },
+ {
+  "a": "NEXT",
+  "b": "DOOR",
+  "text": "next door",
+  "alts": [
+   "nextdoor"
+  ],
+  "easy": "In the neighbouring house",
+  "hard": "Where the neighbours live"
+ },
+ {
+  "a": "OUT",
+  "b": "DOOR",
+  "text": "outdoor",
+  "alts": [
+   "out door"
+  ],
+  "easy": "Taking place in the open air",
+  "hard": "Like a picnic or a hike"
+ },
+ {
+  "a": "IN",
+  "b": "DOOR",
+  "text": "indoor",
+  "alts": [
+   "in door"
+  ],
+  "easy": "Happening inside a building",
+  "hard": "Like an ice rink or a gym"
+ },
+ {
+  "a": "STAGE",
+  "b": "DOOR",
+  "text": "stage door",
+  "alts": [
+   "stagedoor"
+  ],
+  "easy": "Theatre entrance used by actors and crew",
+  "hard": "Where fans wait for autographs"
+ },
+ {
+  "a": "DOOR",
+  "b": "BELL",
+  "text": "doorbell",
+  "alts": [
+   "door bell"
+  ],
+  "easy": "Button visitors press when they call",
+  "hard": "It rings when someone calls"
+ },
+ {
+  "a": "DOOR",
+  "b": "STEP",
+  "text": "doorstep",
+  "alts": [
+   "door step"
+  ],
+  "easy": "Raised slab in front of an entrance",
+  "hard": "Where milk bottles were left"
+ },
+ {
+  "a": "DOOR",
+  "b": "WAY",
+  "text": "doorway",
+  "alts": [
+   "door way"
+  ],
+  "easy": "Opening for an entrance",
+  "hard": "You stand in it during an earthquake"
+ },
+ {
+  "a": "DOOR",
+  "b": "KNOB",
+  "text": "doorknob",
+  "alts": [
+   "door knob"
+  ],
+  "easy": "Round handle you turn",
+  "hard": "You grip it to get into a room"
+ },
+ {
+  "a": "DOOR",
+  "b": "MAN",
+  "text": "doorman",
+  "alts": [
+   "door man"
+  ],
+  "easy": "Attendant at a hotel entrance",
+  "hard": "A uniformed figure who hails taxis"
+ },
+ {
+  "a": "DOOR",
+  "b": "MAT",
+  "text": "doormat",
+  "alts": [
+   "door mat"
+  ],
+  "easy": "Rug for wiping your shoes",
+  "hard": "A person who lets others walk over them"
+ },
+ {
+  "a": "DOOR",
+  "b": "STOP",
+  "text": "doorstop",
+  "alts": [
+   "door stop"
+  ],
+  "easy": "Wedge that keeps an entrance open",
+  "hard": "A very thick book is jokingly called one"
+ },
+ {
+  "a": "SUN",
+  "b": "FLOWER",
+  "text": "sunflower",
+  "alts": [
+   "sun flower"
+  ],
+  "easy": "Tall yellow bloom that follows the daylight",
+  "hard": "Van Gogh painted a vase of them"
+ },
+ {
+  "a": "SUN",
+  "b": "BURN",
+  "text": "sunburn",
+  "alts": [
+   "sun burn"
+  ],
+  "easy": "Red, sore skin after too long at the beach",
+  "hard": "Painful result of forgetting your lotion"
+ },
+ {
+  "a": "SUN",
+  "b": "GLASSES",
+  "text": "sunglasses",
+  "alts": [
+   "sun glasses"
+  ],
+  "easy": "Dark lenses worn on bright days",
+  "hard": "Shades worn by film stars"
+ },
+ {
+  "a": "SUN",
+  "b": "RISE",
+  "text": "sunrise",
+  "alts": [
+   "sun rise"
+  ],
+  "easy": "Dawn appearance over the horizon",
+  "hard": "Early birds watch it with coffee"
+ },
+ {
+  "a": "SUN",
+  "b": "SET",
+  "text": "sunset",
+  "alts": [
+   "sun set"
+  ],
+  "easy": "Evening descent below the horizon",
+  "hard": "Cowboys ride off into it"
+ },
+ {
+  "a": "SUN",
+  "b": "SHINE",
+  "text": "sunshine",
+  "alts": [
+   "sun shine"
+  ],
+  "easy": "Warm rays on a bright day",
+  "hard": "What you might call a cheerful person"
+ },
+ {
+  "a": "SUN",
+  "b": "DIAL",
+  "text": "sundial",
+  "alts": [
+   "sun dial"
+  ],
+  "easy": "Garden clock using a shadow",
+  "hard": "Time-teller that fails on cloudy days"
+ },
+ {
+  "a": "SUN",
+  "b": "DAY",
+  "text": "sunday",
+  "alts": [
+   "sun day"
+  ],
+  "easy": "Day of rest at the end of the weekend",
+  "hard": "Roast dinner and church, traditionally"
+ },
+ {
+  "a": "SUN",
+  "b": "BATHE",
+  "text": "sunbathe",
+  "alts": [
+   "sun bathe"
+  ],
+  "easy": "Lie on a beach to get a tan",
+  "hard": "Bake on a lounger by the pool"
+ },
+ {
+  "a": "SUN",
+  "b": "BEAM",
+  "text": "sunbeam",
+  "alts": [
+   "sun beam"
+  ],
+  "easy": "Single ray of daylight",
+  "hard": "A shaft of brightness through clouds"
+ },
+ {
+  "a": "SUN",
+  "b": "TAN",
+  "text": "suntan",
+  "alts": [
+   "sun tan"
+  ],
+  "easy": "Bronzed skin from sunny holidays",
+  "hard": "A golden glow brought home from Spain"
+ },
+ {
+  "a": "SUN",
+  "b": "DOWN",
+  "text": "sundown",
+  "alts": [
+   "sun down"
+  ],
+  "easy": "Time of evening dusk",
+  "hard": "Vampires wait for it"
+ },
+ {
+  "a": "SUN",
+  "b": "ROOF",
+  "text": "sunroof",
+  "alts": [
+   "sun roof"
+  ],
+  "easy": "Opening panel on top of a car",
+  "hard": "Let the breeze in while driving"
+ },
+ {
+  "a": "SUN",
+  "b": "SCREEN",
+  "text": "sunscreen",
+  "alts": [
+   "sun screen"
+  ],
+  "easy": "Lotion that protects skin from UV",
+  "hard": "You slap it on before swimming"
+ },
+ {
+  "a": "SUN",
+  "b": "STROKE",
+  "text": "sunstroke",
+  "alts": [
+   "sun stroke"
+  ],
+  "easy": "Illness from too much heat and rays",
+  "hard": "Dizziness after hours in the desert"
+ },
+ {
+  "a": "SUN",
+  "b": "LAMP",
+  "text": "sunlamp",
+  "alts": [
+   "sun lamp"
+  ],
+  "easy": "Bulb used for artificial tanning",
+  "hard": "Fake beach rays in a salon"
+ },
+ {
+  "a": "HONEY",
+  "b": "MOON",
+  "text": "honeymoon",
+  "alts": [
+   "honey moon"
+  ],
+  "easy": "Holiday after a wedding",
+  "hard": "First trip as newlyweds"
+ },
+ {
+  "a": "FULL",
+  "b": "MOON",
+  "text": "full moon",
+  "alts": [
+   "fullmoon"
+  ],
+  "easy": "Complete bright disc in the night sky",
+  "hard": "When werewolves come out"
+ },
+ {
+  "a": "HALF",
+  "b": "MOON",
+  "text": "half moon",
+  "alts": [
+   "halfmoon"
+  ],
+  "easy": "Semicircular shape in the night sky",
+  "hard": "Shape of a crescent-like fingernail base"
+ },
+ {
+  "a": "BLUE",
+  "b": "MOON",
+  "text": "blue moon",
+  "alts": [
+   "bluemoon"
+  ],
+  "easy": "Rare second full one in a month",
+  "hard": "Once in a ..., meaning very rarely"
+ },
+ {
+  "a": "NEW",
+  "b": "MOON",
+  "text": "new moon",
+  "alts": [
+   "newmoon"
+  ],
+  "easy": "Phase when the lunar disc is dark",
+  "hard": "Start of the lunar cycle"
+ },
+ {
+  "a": "MOON",
+  "b": "BEAM",
+  "text": "moonbeam",
+  "alts": [
+   "moon beam"
+  ],
+  "easy": "Ray of silvery night light",
+  "hard": "Pale shaft through a window at midnight"
+ },
+ {
+  "a": "MOON",
+  "b": "WALK",
+  "text": "moonwalk",
+  "alts": [
+   "moon walk"
+  ],
+  "easy": "Michael Jackson's backward-gliding dance",
+  "hard": "Also what Armstrong did in 1969"
+ },
+ {
+  "a": "MOON",
+  "b": "SHINE",
+  "text": "moonshine",
+  "alts": [
+   "moon shine"
+  ],
+  "easy": "Illegally distilled liquor from the hills",
+  "hard": "Hillbilly hooch made in the woods"
+ },
+ {
+  "a": "MOON",
+  "b": "STONE",
+  "text": "moonstone",
+  "alts": [
+   "moon stone"
+  ],
+  "easy": "Milky, pearly gem with a soft sheen",
+  "hard": "A June birth gem with a shimmering glow"
+ },
+ {
+  "a": "MOON",
+  "b": "LIT",
+  "text": "moonlit",
+  "alts": [
+   "moon lit"
+  ],
+  "easy": "Bathed in silvery night glow",
+  "hard": "Describing a romantic night walk"
+ },
+ {
+  "a": "PAN",
+  "b": "CAKE",
+  "text": "pancake",
+  "alts": [
+   "pan cake"
+  ],
+  "easy": "Flat breakfast treat flipped in a skillet",
+  "hard": "Tossed on Shrove Tuesday"
+ },
+ {
+  "a": "CUP",
+  "b": "CAKE",
+  "text": "cupcake",
+  "alts": [
+   "cup cake"
+  ],
+  "easy": "Small iced bun in a paper case",
+  "hard": "A frosted treat at a bake sale"
+ },
+ {
+  "a": "CHEESE",
+  "b": "CAKE",
+  "text": "cheesecake",
+  "alts": [
+   "cheese cake"
+  ],
+  "easy": "Dessert with a biscuit base",
+  "hard": "Creamy New York-style dessert"
+ },
+ {
+  "a": "FISH",
+  "b": "CAKE",
+  "text": "fish cake",
+  "alts": [
+   "fishcake"
+  ],
+  "easy": "Patty of minced seafood and potato",
+  "hard": "Breaded patty in a chippy"
+ },
+ {
+  "a": "SPONGE",
+  "b": "CAKE",
+  "text": "sponge cake",
+  "alts": [
+   "spongecake"
+  ],
+  "easy": "Light airy baked dessert",
+  "hard": "Victoria's favourite bake with jam inside"
+ },
+ {
+  "a": "CAKE",
+  "b": "WALK",
+  "text": "cakewalk",
+  "alts": [
+   "cake walk"
+  ],
+  "easy": "Something very easy to do",
+  "hard": "A doddle, a breeze, child's play"
+ },
+ {
+  "a": "CAKE",
+  "b": "SHOP",
+  "text": "cake shop",
+  "alts": [
+   "cakeshop"
+  ],
+  "easy": "Bakery specialising in sweet treats",
+  "hard": "Where you order a wedding tier"
+ },
+ {
+  "a": "CAKE",
+  "b": "STAND",
+  "text": "cake stand",
+  "alts": [
+   "cakestand"
+  ],
+  "easy": "Raised plate for displaying desserts",
+  "hard": "Centrepiece of an afternoon tea"
+ },
+ {
+  "a": "CAKE",
+  "b": "TIN",
+  "text": "cake tin",
+  "alts": [
+   "caketin"
+  ],
+  "easy": "Metal container for baking a sponge",
+  "hard": "Mould that gives a bake its shape"
+ },
+ {
+  "a": "SUMMER",
+  "b": "TIME",
+  "text": "summertime",
+  "alts": [
+   "summer time"
+  ],
+  "easy": "The warm season of the year",
+  "hard": "And the living is easy, as Gershwin sang"
+ },
+ {
+  "a": "BED",
+  "b": "TIME",
+  "text": "bedtime",
+  "alts": [
+   "bed time"
+  ],
+  "easy": "Hour children must go to sleep",
+  "hard": "Story-reading moment each night"
+ },
+ {
+  "a": "LUNCH",
+  "b": "TIME",
+  "text": "lunchtime",
+  "alts": [
+   "lunch time"
+  ],
+  "easy": "The midday break for a meal",
+  "hard": "When the office empties at noon"
+ },
+ {
+  "a": "OVER",
+  "b": "TIME",
+  "text": "overtime",
+  "alts": [
+   "over time"
+  ],
+  "easy": "Extra hours worked beyond your shift",
+  "hard": "Extra period when a game is tied"
+ },
+ {
+  "a": "LIFE",
+  "b": "TIME",
+  "text": "lifetime",
+  "alts": [
+   "life time"
+  ],
+  "easy": "Duration of someone's existence",
+  "hard": "Achievement awards honour a whole one"
+ },
+ {
+  "a": "DAY",
+  "b": "TIME",
+  "text": "daytime",
+  "alts": [
+   "day time"
+  ],
+  "easy": "The hours of light before dusk",
+  "hard": "When the nocturnal animals sleep"
+ },
+ {
+  "a": "NIGHT",
+  "b": "TIME",
+  "text": "nighttime",
+  "alts": [
+   "night time"
+  ],
+  "easy": "The hours of darkness after dusk",
+  "hard": "When owls go out hunting"
+ },
+ {
+  "a": "HALF",
+  "b": "TIME",
+  "text": "half-time",
+  "alts": [
+   "half time",
+   "halftime"
+  ],
+  "easy": "Break in the middle of a match",
+  "hard": "When players get oranges"
+ },
+ {
+  "a": "TEA",
+  "b": "TIME",
+  "text": "teatime",
+  "alts": [
+   "tea time"
+  ],
+  "easy": "Afternoon hour for a cuppa",
+  "hard": "When scones appear at four"
+ },
+ {
+  "a": "PLAY",
+  "b": "TIME",
+  "text": "playtime",
+  "alts": [
+   "play time"
+  ],
+  "easy": "Break for children to have fun",
+  "hard": "Break spent on the school swings"
+ },
+ {
+  "a": "DINNER",
+  "b": "TIME",
+  "text": "dinnertime",
+  "alts": [
+   "dinner time"
+  ],
+  "easy": "Hour of the evening meal",
+  "hard": "When everyone gathers at the table"
+ },
+ {
+  "a": "SPRING",
+  "b": "TIME",
+  "text": "springtime",
+  "alts": [
+   "spring time"
+  ],
+  "easy": "Season of blossom and lambs",
+  "hard": "Season when daffodils and lambs appear"
+ },
+ {
+  "a": "TIME",
+  "b": "TABLE",
+  "text": "timetable",
+  "alts": [
+   "time table"
+  ],
+  "easy": "Schedule of trains or lessons",
+  "hard": "A grid showing when things happen"
+ },
+ {
+  "a": "TIME",
+  "b": "ZONE",
+  "text": "time zone",
+  "alts": [
+   "timezone"
+  ],
+  "easy": "Region sharing the same clock hour",
+  "hard": "Crossing many causes jet lag"
+ },
+ {
+  "a": "TIME",
+  "b": "LINE",
+  "text": "timeline",
+  "alts": [
+   "time line"
+  ],
+  "easy": "Chronological sequence of events",
+  "hard": "A history chart along a wall"
+ },
+ {
+  "a": "TIME",
+  "b": "BOMB",
+  "text": "time bomb",
+  "alts": [
+   "timebomb"
+  ],
+  "easy": "Explosive set to go off later",
+  "hard": "A crisis waiting to happen"
+ },
+ {
+  "a": "TIME",
+  "b": "PIECE",
+  "text": "timepiece",
+  "alts": [
+   "time piece"
+  ],
+  "easy": "A clock or a watch",
+  "hard": "An antique on grandfather's mantel"
+ },
+ {
+  "a": "TIME",
+  "b": "OUT",
+  "text": "timeout",
+  "alts": [
+   "time out"
+  ],
+  "easy": "Short break called in a game",
+  "hard": "Naughty-step punishment for kids"
+ },
+ {
+  "a": "TIME",
+  "b": "KEEPER",
+  "text": "timekeeper",
+  "alts": [
+   "time keeper"
+  ],
+  "easy": "Person who records match duration",
+  "hard": "Official with a stopwatch"
+ },
+ {
+  "a": "TIME",
+  "b": "TRAVEL",
+  "text": "time travel",
+  "alts": [
+   "timetravel"
+  ],
+  "easy": "Journey to past or future",
+  "hard": "What the DeLorean made possible"
+ },
+ {
+  "a": "TIME",
+  "b": "SHARE",
+  "text": "timeshare",
+  "alts": [
+   "time share"
+  ],
+  "easy": "Part ownership of a holiday flat, used in turns",
+  "hard": "Salesmen pitch these at resorts"
+ },
+ {
+  "a": "FORE",
+  "b": "HEAD",
+  "text": "forehead",
+  "alts": [
+   "fore head"
+  ],
+  "easy": "Part of the face above the eyebrows",
+  "hard": "Where a fever is checked by hand"
+ },
+ {
+  "a": "BIG",
+  "b": "HEAD",
+  "text": "bighead",
+  "alts": [
+   "big head"
+  ],
+  "easy": "Conceited, arrogant show-off",
+  "hard": "Someone too pleased with themselves"
+ },
+ {
+  "a": "BED",
+  "b": "HEAD",
+  "text": "bedhead",
+  "alts": [
+   "bed head"
+  ],
+  "easy": "Messy hair after sleeping",
+  "hard": "The look of just waking up"
+ },
+ {
+  "a": "HOT",
+  "b": "HEAD",
+  "text": "hothead",
+  "alts": [
+   "hot head"
+  ],
+  "easy": "Person quick to lose their temper",
+  "hard": "Someone with a very short fuse"
+ },
+ {
+  "a": "SKIN",
+  "b": "HEAD",
+  "text": "skinhead",
+  "alts": [
+   "skin head"
+  ],
+  "easy": "Person with a shaved scalp",
+  "hard": "A cropped youth subculture of the 1970s"
+ },
+ {
+  "a": "FIGURE",
+  "b": "HEAD",
+  "text": "figurehead",
+  "alts": [
+   "figure head"
+  ],
+  "easy": "Leader in name only",
+  "hard": "Carved wooden lady on a ship's bow"
+ },
+ {
+  "a": "LETTER",
+  "b": "HEAD",
+  "text": "letterhead",
+  "alts": [
+   "letter head"
+  ],
+  "easy": "Printed company name atop stationery",
+  "hard": "Official logo on business paper"
+ },
+ {
+  "a": "SPEAR",
+  "b": "HEAD",
+  "text": "spearhead",
+  "alts": [
+   "spear head"
+  ],
+  "easy": "Lead an attack or campaign",
+  "hard": "The pointed tip of a charge"
+ },
+ {
+  "a": "HEAD",
+  "b": "ACHE",
+  "text": "headache",
+  "alts": [
+   "head ache"
+  ],
+  "easy": "Pain in the skull",
+  "hard": "What aspirin is for"
+ },
+ {
+  "a": "HEAD",
+  "b": "BAND",
+  "text": "headband",
+  "alts": [
+   "head band"
+  ],
+  "easy": "Strip of fabric worn across the brow",
+  "hard": "Sweat-catcher for tennis players"
+ },
+ {
+  "a": "HEAD",
+  "b": "LINE",
+  "text": "headline",
+  "alts": [
+   "head line"
+  ],
+  "easy": "Big title on a front page",
+  "hard": "It grabs readers' attention at the newsstand"
+ },
+ {
+  "a": "HEAD",
+  "b": "MASTER",
+  "text": "headmaster",
+  "alts": [
+   "head master"
+  ],
+  "easy": "Man in charge of a school",
+  "hard": "Pupils are sent to his office"
+ },
+ {
+  "a": "HEAD",
+  "b": "PHONES",
+  "text": "headphones",
+  "alts": [
+   "head phones"
+  ],
+  "easy": "Device for listening to music privately",
+  "hard": "Cans worn on a commute"
+ },
+ {
+  "a": "HEAD",
+  "b": "QUARTERS",
+  "text": "headquarters",
+  "alts": [
+   "head quarters"
+  ],
+  "easy": "Main office of an organisation",
+  "hard": "HQ, in military terms"
+ },
+ {
+  "a": "HEAD",
+  "b": "STONE",
+  "text": "headstone",
+  "alts": [
+   "head stone"
+  ],
+  "easy": "Grave marker in a churchyard",
+  "hard": "Memorial in a churchyard"
+ },
+ {
+  "a": "HEAD",
+  "b": "START",
+  "text": "head start",
+  "alts": [
+   "headstart"
+  ],
+  "easy": "An early advantage over rivals",
+  "hard": "A lead given before the race begins"
+ },
+ {
+  "a": "HEAD",
+  "b": "WAY",
+  "text": "headway",
+  "alts": [
+   "head way"
+  ],
+  "easy": "Progress made towards a goal",
+  "hard": "Ships make it through rough seas"
+ },
+ {
+  "a": "HEAD",
+  "b": "BOARD",
+  "text": "headboard",
+  "alts": [
+   "head board"
+  ],
+  "easy": "Panel at the top of a bed",
+  "hard": "What you lean on while reading in bed"
+ },
+ {
+  "a": "HEAD",
+  "b": "LAND",
+  "text": "headland",
+  "alts": [
+   "head land"
+  ],
+  "easy": "Cliff jutting into the sea",
+  "hard": "A promontory on the coast"
+ },
+ {
+  "a": "HEAD",
+  "b": "ROOM",
+  "text": "headroom",
+  "alts": [
+   "head room"
+  ],
+  "easy": "Space above your crown",
+  "hard": "Tall drivers need lots in a car"
+ },
+ {
+  "a": "HEAD",
+  "b": "SCARF",
+  "text": "headscarf",
+  "alts": [
+   "head scarf"
+  ],
+  "easy": "Square of cloth worn over the hair",
+  "hard": "The Queen wore one at Balmoral"
+ },
+ {
+  "a": "HEAD",
+  "b": "WIND",
+  "text": "headwind",
+  "alts": [
+   "head wind"
+  ],
+  "easy": "Breeze blowing against you",
+  "hard": "It slows a cyclist down"
+ },
+ {
+  "a": "HEAD",
+  "b": "LOCK",
+  "text": "headlock",
+  "alts": [
+   "head lock"
+  ],
+  "easy": "Wrestling hold around the neck",
+  "hard": "Grip used in schoolyard scuffles"
+ },
+ {
+  "a": "SECOND",
+  "b": "HAND",
+  "text": "secondhand",
+  "alts": [
+   "second hand"
+  ],
+  "easy": "Previously owned by someone else",
+  "hard": "Description of a charity shop coat"
+ },
+ {
+  "a": "SHORT",
+  "b": "HAND",
+  "text": "shorthand",
+  "alts": [
+   "short hand"
+  ],
+  "easy": "Quick writing method for secretaries",
+  "hard": "Pitman's speedy squiggles for secretaries"
+ },
+ {
+  "a": "BACK",
+  "b": "HAND",
+  "text": "backhand",
+  "alts": [
+   "back hand"
+  ],
+  "easy": "Tennis stroke across the body",
+  "hard": "Stroke Federer was famous for"
+ },
+ {
+  "a": "FARM",
+  "b": "HAND",
+  "text": "farmhand",
+  "alts": [
+   "farm hand"
+  ],
+  "easy": "Worker on a ranch",
+  "hard": "He mucks out the stables"
+ },
+ {
+  "a": "UNDER",
+  "b": "HAND",
+  "text": "underhand",
+  "alts": [
+   "under hand"
+  ],
+  "easy": "Sneaky, secretive and deceitful",
+  "hard": "Also a way to throw a softball"
+ },
+ {
+  "a": "DECK",
+  "b": "HAND",
+  "text": "deckhand",
+  "alts": [
+   "deck hand"
+  ],
+  "easy": "Sailor who does manual work aboard",
+  "hard": "He swabs the ship's planks"
+ },
+ {
+  "a": "HAND",
+  "b": "BAG",
+  "text": "handbag",
+  "alts": [
+   "hand bag"
+  ],
+  "easy": "Purse carried by a woman",
+  "hard": "Where you'll find her lipstick and keys"
+ },
+ {
+  "a": "HAND",
+  "b": "SHAKE",
+  "text": "handshake",
+  "alts": [
+   "hand shake"
+  ],
+  "easy": "Greeting that seals a deal",
+  "hard": "Gripping palms when meeting"
+ },
+ {
+  "a": "HAND",
+  "b": "WRITING",
+  "text": "handwriting",
+  "alts": [
+   "hand writing"
+  ],
+  "easy": "Style of script made with a pen",
+  "hard": "Doctors are known for terrible ones"
+ },
+ {
+  "a": "HAND",
+  "b": "CUFF",
+  "text": "handcuff",
+  "alts": [
+   "hand cuff"
+  ],
+  "easy": "Restraint used by police",
+  "hard": "Metal bracelets for a suspect"
+ },
+ {
+  "a": "HAND",
+  "b": "STAND",
+  "text": "handstand",
+  "alts": [
+   "hand stand"
+  ],
+  "easy": "Balancing upside down on your palms",
+  "hard": "A gymnast's inverted pose"
+ },
+ {
+  "a": "HAND",
+  "b": "MADE",
+  "text": "handmade",
+  "alts": [
+   "hand made"
+  ],
+  "easy": "Crafted by a person, not machines",
+  "hard": "Like an artisan's pottery"
+ },
+ {
+  "a": "HAND",
+  "b": "RAIL",
+  "text": "handrail",
+  "alts": [
+   "hand rail"
+  ],
+  "easy": "Bar to hold on stairs",
+  "hard": "Safety support on a staircase"
+ },
+ {
+  "a": "HAND",
+  "b": "SOME",
+  "text": "handsome",
+  "alts": [
+   "hand some"
+  ],
+  "easy": "Good-looking, usually said of a man",
+  "hard": "Tall, dark and ..."
+ },
+ {
+  "a": "HAND",
+  "b": "OUT",
+  "text": "handout",
+  "alts": [
+   "hand out"
+  ],
+  "easy": "Leaflet given at a lecture",
+  "hard": "Free gift, or charity given"
+ },
+ {
+  "a": "HAND",
+  "b": "BRAKE",
+  "text": "handbrake",
+  "alts": [
+   "hand brake"
+  ],
+  "easy": "Lever that holds a parked car",
+  "hard": "Lever you pull before a hill start"
+ },
+ {
+  "a": "BARE",
+  "b": "FOOT",
+  "text": "barefoot",
+  "alts": [
+   "bare foot"
+  ],
+  "easy": "Without shoes or socks",
+  "hard": "How you walk on a beach"
+ },
+ {
+  "a": "CLUB",
+  "b": "FOOT",
+  "text": "club foot",
+  "alts": [
+   "clubfoot"
+  ],
+  "easy": "Congenital twisted ankle condition",
+  "hard": "Birth defect Lord Byron had"
+ },
+ {
+  "a": "BIG",
+  "b": "FOOT",
+  "text": "bigfoot",
+  "alts": [
+   "big foot"
+  ],
+  "easy": "Hairy ape-man of American legend",
+  "hard": "Sasquatch, by another name"
+ },
+ {
+  "a": "FOOT",
+  "b": "PRINT",
+  "text": "footprint",
+  "alts": [
+   "foot print"
+  ],
+  "easy": "Mark left in sand or mud",
+  "hard": "Your carbon one should be small"
+ },
+ {
+  "a": "FOOT",
+  "b": "STEP",
+  "text": "footstep",
+  "alts": [
+   "foot step"
+  ],
+  "easy": "Sound of someone walking",
+  "hard": "Follow in someone's, like a parent"
+ },
+ {
+  "a": "FOOT",
+  "b": "NOTE",
+  "text": "footnote",
+  "alts": [
+   "foot note"
+  ],
+  "easy": "Small reference at the page bottom",
+  "hard": "A minor detail in history"
+ },
+ {
+  "a": "FOOT",
+  "b": "PATH",
+  "text": "footpath",
+  "alts": [
+   "foot path"
+  ],
+  "easy": "Trail for walkers across fields",
+  "hard": "Public right of way across a field"
+ },
+ {
+  "a": "FOOT",
+  "b": "WEAR",
+  "text": "footwear",
+  "alts": [
+   "foot wear"
+  ],
+  "easy": "Shoes, boots and sandals",
+  "hard": "What a cobbler repairs"
+ },
+ {
+  "a": "FOOT",
+  "b": "HILL",
+  "text": "foothill",
+  "alts": [
+   "foot hill"
+  ],
+  "easy": "Low slope at the base of mountains",
+  "hard": "Where the climb begins in the Himalayas"
+ },
+ {
+  "a": "FOOT",
+  "b": "LIGHTS",
+  "text": "footlights",
+  "alts": [
+   "foot lights"
+  ],
+  "easy": "Lamps along the front of a stage",
+  "hard": "Theatre glow at actors' toes"
+ },
+ {
+  "a": "FOOT",
+  "b": "BRIDGE",
+  "text": "footbridge",
+  "alts": [
+   "foot bridge"
+  ],
+  "easy": "Narrow crossing for walkers",
+  "hard": "Span over a railway for pedestrians"
+ },
+ {
+  "a": "FOOT",
+  "b": "STOOL",
+  "text": "footstool",
+  "alts": [
+   "foot stool"
+  ],
+  "easy": "Low seat for resting your feet",
+  "hard": "An ottoman by the armchair"
+ },
+ {
+  "a": "FOOT",
+  "b": "WORK",
+  "text": "footwork",
+  "alts": [
+   "foot work"
+  ],
+  "easy": "Nimble movement of a boxer or dancer",
+  "hard": "Quick steps in the ring"
+ },
+ {
+  "a": "HORSE",
+  "b": "BACK",
+  "text": "horseback",
+  "alts": [
+   "horse back"
+  ],
+  "easy": "Riding on a steed",
+  "hard": "How cowboys travel the range"
+ },
+ {
+  "a": "HUNCH",
+  "b": "BACK",
+  "text": "hunchback",
+  "alts": [
+   "hunch back"
+  ],
+  "easy": "Person with a curved spine",
+  "hard": "Quasimodo of Notre-Dame, famously"
+ },
+ {
+  "a": "FULL",
+  "b": "BACK",
+  "text": "fullback",
+  "alts": [
+   "full back"
+  ],
+  "easy": "Defensive player in football",
+  "hard": "He guards the line near the goal"
+ },
+ {
+  "a": "COME",
+  "b": "BACK",
+  "text": "comeback",
+  "alts": [
+   "come back"
+  ],
+  "easy": "Return to former success",
+  "hard": "A rally from behind to win"
+ },
+ {
+  "a": "FEED",
+  "b": "BACK",
+  "text": "feedback",
+  "alts": [
+   "feed back"
+  ],
+  "easy": "Comments on your performance",
+  "hard": "Also a squeal from a speaker"
+ },
+ {
+  "a": "SET",
+  "b": "BACK",
+  "text": "setback",
+  "alts": [
+   "set back"
+  ],
+  "easy": "Something that delays progress",
+  "hard": "A blow to your plans"
+ },
+ {
+  "a": "DRAW",
+  "b": "BACK",
+  "text": "drawback",
+  "alts": [
+   "draw back"
+  ],
+  "easy": "A disadvantage of something",
+  "hard": "The downside, the catch"
+ },
+ {
+  "a": "CASH",
+  "b": "BACK",
+  "text": "cashback",
+  "alts": [
+   "cash back"
+  ],
+  "easy": "Money refunded on a purchase",
+  "hard": "Supermarket till extra money"
+ },
+ {
+  "a": "FLASH",
+  "b": "BACK",
+  "text": "flashback",
+  "alts": [
+   "flash back"
+  ],
+  "easy": "Scene from an earlier time in a film",
+  "hard": "A sudden vivid memory"
+ },
+ {
+  "a": "QUARTER",
+  "b": "BACK",
+  "text": "quarterback",
+  "alts": [
+   "quarter back"
+  ],
+  "easy": "American football's main passer",
+  "hard": "Tom Brady's position on the field"
+ },
+ {
+  "a": "BACK",
+  "b": "PACK",
+  "text": "backpack",
+  "alts": [
+   "back pack"
+  ],
+  "easy": "Bag carried on the shoulders",
+  "hard": "Students lug textbooks in it"
+ },
+ {
+  "a": "BACK",
+  "b": "BONE",
+  "text": "backbone",
+  "alts": [
+   "back bone"
+  ],
+  "easy": "The spine running down your body",
+  "hard": "Courage and strength of character"
+ },
+ {
+  "a": "BACK",
+  "b": "GROUND",
+  "text": "background",
+  "alts": [
+   "back ground"
+  ],
+  "easy": "Behind the main subject in a picture",
+  "hard": "Your upbringing and history"
+ },
+ {
+  "a": "BACK",
+  "b": "YARD",
+  "text": "backyard",
+  "alts": [
+   "back yard"
+  ],
+  "easy": "Garden behind a home",
+  "hard": "Not in my ..., say the protesters"
+ },
+ {
+  "a": "BACK",
+  "b": "STAGE",
+  "text": "backstage",
+  "alts": [
+   "back stage"
+  ],
+  "easy": "Behind the scenes at a theatre",
+  "hard": "Where the dressing rooms are"
+ },
+ {
+  "a": "BACK",
+  "b": "STROKE",
+  "text": "backstroke",
+  "alts": [
+   "back stroke"
+  ],
+  "easy": "Swimming style done face up",
+  "hard": "Olympic race done face up"
+ },
+ {
+  "a": "BACK",
+  "b": "SEAT",
+  "text": "backseat",
+  "alts": [
+   "back seat"
+  ],
+  "easy": "Rear part of a car",
+  "hard": "Where drivers say kids should sit"
+ },
+ {
+  "a": "BACK",
+  "b": "LASH",
+  "text": "backlash",
+  "alts": [
+   "back lash"
+  ],
+  "easy": "Strong negative public reaction",
+  "hard": "Outcry after a controversial decision"
+ },
+ {
+  "a": "BACK",
+  "b": "LOG",
+  "text": "backlog",
+  "alts": [
+   "back log"
+  ],
+  "easy": "Pile of unfinished tasks",
+  "hard": "Work that builds up during holidays"
+ },
+ {
+  "a": "BACK",
+  "b": "SIDE",
+  "text": "backside",
+  "alts": [
+   "back side"
+  ],
+  "easy": "The bottom you sit on",
+  "hard": "What you sit on, politely put"
+ },
+ {
+  "a": "BACK",
+  "b": "SLIDE",
+  "text": "backslide",
+  "alts": [
+   "back slide"
+  ],
+  "easy": "Return to bad habits",
+  "hard": "Relapse after a diet"
+ },
+ {
+  "a": "BACK",
+  "b": "SPACE",
+  "text": "backspace",
+  "alts": [
+   "back space"
+  ],
+  "easy": "Key that deletes the last character",
+  "hard": "Keyboard button for fixing typos"
+ },
+ {
+  "a": "BACK",
+  "b": "TRACK",
+  "text": "backtrack",
+  "alts": [
+   "back track"
+  ],
+  "easy": "Retreat from a statement",
+  "hard": "Retrace your steps or retract a claim"
+ },
+ {
+  "a": "BACK",
+  "b": "BENCH",
+  "text": "backbench",
+  "alts": [
+   "back bench"
+  ],
+  "easy": "Seats for MPs without ministerial jobs",
+  "hard": "Rebels sit here in Parliament"
+ },
+ {
+  "a": "SEA",
+  "b": "HORSE",
+  "text": "seahorse",
+  "alts": [
+   "sea horse"
+  ],
+  "easy": "Tiny fish whose male gives birth",
+  "hard": "A curly-tailed marine creature"
+ },
+ {
+  "a": "RACE",
+  "b": "HORSE",
+  "text": "racehorse",
+  "alts": [
+   "race horse"
+  ],
+  "easy": "Thoroughbred that runs at the derby",
+  "hard": "A steed you bet on"
+ },
+ {
+  "a": "WORK",
+  "b": "HORSE",
+  "text": "workhorse",
+  "alts": [
+   "work horse"
+  ],
+  "easy": "Reliable, tireless person or machine",
+  "hard": "Old faithful that does the heavy lifting"
+ },
+ {
+  "a": "HOBBY",
+  "b": "HORSE",
+  "text": "hobby horse",
+  "alts": [
+   "hobbyhorse"
+  ],
+  "easy": "Stick toy with a head",
+  "hard": "A pet topic someone always rides"
+ },
+ {
+  "a": "CART",
+  "b": "HORSE",
+  "text": "carthorse",
+  "alts": [
+   "cart horse"
+  ],
+  "easy": "Strong animal that pulls wagons",
+  "hard": "A Shire or Clydesdale"
+ },
+ {
+  "a": "ROCKING",
+  "b": "HORSE",
+  "text": "rocking horse",
+  "alts": [
+   "rockinghorse"
+  ],
+  "easy": "Wooden toy steed in a nursery",
+  "hard": "A swaying wooden pony"
+ },
+ {
+  "a": "HORSE",
+  "b": "SHOE",
+  "text": "horseshoe",
+  "alts": [
+   "horse shoe"
+  ],
+  "easy": "U-shaped iron on a hoof",
+  "hard": "Hung upright for good luck"
+ },
+ {
+  "a": "HORSE",
+  "b": "POWER",
+  "text": "horsepower",
+  "alts": [
+   "horse power"
+  ],
+  "easy": "Unit of engine output",
+  "hard": "A car advert boasts about it"
+ },
+ {
+  "a": "HORSE",
+  "b": "PLAY",
+  "text": "horseplay",
+  "alts": [
+   "horse play"
+  ],
+  "easy": "Rough, boisterous messing about",
+  "hard": "Rowdy antics that end in tears"
+ },
+ {
+  "a": "HORSE",
+  "b": "RADISH",
+  "text": "horseradish",
+  "alts": [
+   "horse radish"
+  ],
+  "easy": "Hot condiment served with roast beef",
+  "hard": "A fiery root sauce"
+ },
+ {
+  "a": "HORSE",
+  "b": "FLY",
+  "text": "horsefly",
+  "alts": [
+   "horse fly"
+  ],
+  "easy": "Biting insect near stables",
+  "hard": "Big painful bug by the river"
+ },
+ {
+  "a": "HORSE",
+  "b": "RACE",
+  "text": "horse race",
+  "alts": [
+   "horserace"
+  ],
+  "easy": "Event where jockeys compete",
+  "hard": "A tight contest between two candidates"
+ },
+ {
+  "a": "HORSE",
+  "b": "HAIR",
+  "text": "horsehair",
+  "alts": [
+   "horse hair"
+  ],
+  "easy": "Coarse fibre from manes used in stuffing",
+  "hard": "Old sofas were padded with it"
+ },
+ {
+  "a": "HORSE",
+  "b": "BOX",
+  "text": "horsebox",
+  "alts": [
+   "horse box"
+  ],
+  "easy": "Trailer for transporting steeds",
+  "hard": "Vehicle seen arriving at gymkhanas"
+ },
+ {
+  "a": "SNOW",
+  "b": "MAN",
+  "text": "snowman",
+  "alts": [
+   "snow man"
+  ],
+  "easy": "Figure with a carrot nose built in winter",
+  "hard": "Frosty, the jolly one in the song"
+ },
+ {
+  "a": "SNOW",
+  "b": "FLAKE",
+  "text": "snowflake",
+  "alts": [
+   "snow flake"
+  ],
+  "easy": "Six-sided ice crystal falling from clouds",
+  "hard": "No two are said to be alike"
+ },
+ {
+  "a": "SNOW",
+  "b": "STORM",
+  "text": "snowstorm",
+  "alts": [
+   "snow storm"
+  ],
+  "easy": "Blizzard of white flakes",
+  "hard": "Weather that closes schools in January"
+ },
+ {
+  "a": "SNOW",
+  "b": "BOARD",
+  "text": "snowboard",
+  "alts": [
+   "snow board"
+  ],
+  "easy": "Single plank for gliding down slopes",
+  "hard": "A ski alternative favoured by teenagers"
+ },
+ {
+  "a": "SNOW",
+  "b": "DRIFT",
+  "text": "snowdrift",
+  "alts": [
+   "snow drift"
+  ],
+  "easy": "Bank of white powder piled by wind",
+  "hard": "It can bury a parked car overnight"
+ },
+ {
+  "a": "SNOW",
+  "b": "PLOUGH",
+  "text": "snowplough",
+  "alts": [
+   "snow plough"
+  ],
+  "easy": "Vehicle that clears icy roads",
+  "hard": "A truck with a big blade in winter"
+ },
+ {
+  "a": "SNOW",
+  "b": "SHOE",
+  "text": "snowshoe",
+  "alts": [
+   "snow shoe"
+  ],
+  "easy": "Racket-like footwear for deep powder",
+  "hard": "Helps you walk without sinking in winter"
+ },
+ {
+  "a": "SNOW",
+  "b": "FALL",
+  "text": "snowfall",
+  "alts": [
+   "snow fall"
+  ],
+  "easy": "Amount of white flakes that come down",
+  "hard": "Measured in inches by forecasters"
+ },
+ {
+  "a": "SNOW",
+  "b": "DROP",
+  "text": "snowdrop",
+  "alts": [
+   "snow drop"
+  ],
+  "easy": "Small white flower of late winter",
+  "hard": "One of the first blooms of the year"
+ },
+ {
+  "a": "SNOW",
+  "b": "MOBILE",
+  "text": "snowmobile",
+  "alts": [
+   "snow mobile"
+  ],
+  "easy": "Motorised sled for icy terrain",
+  "hard": "Arctic transport on skis and tracks"
+ },
+ {
+  "a": "SNOW",
+  "b": "GLOBE",
+  "text": "snow globe",
+  "alts": [
+   "snowglobe"
+  ],
+  "easy": "Glass dome you shake to see flakes",
+  "hard": "A souvenir with a tiny swirling blizzard"
+ },
+ {
+  "a": "SNOW",
+  "b": "WHITE",
+  "text": "snow white",
+  "alts": [
+   "snowwhite"
+  ],
+  "easy": "Fairy-tale princess with seven dwarfs",
+  "hard": "She bit a poisoned apple"
+ },
+ {
+  "a": "SNOW",
+  "b": "BLIND",
+  "text": "snow-blind",
+  "alts": [
+   "snow blind",
+   "snowblind"
+  ],
+  "easy": "Dazzled by glare off white powder",
+  "hard": "Temporary sight loss for polar explorers"
+ },
+ {
+  "a": "RAIN",
+  "b": "BOW",
+  "text": "rainbow",
+  "alts": [
+   "rain bow"
+  ],
+  "easy": "Arc of colours after a shower",
+  "hard": "There's a pot of gold at its end"
+ },
+ {
+  "a": "RAIN",
+  "b": "COAT",
+  "text": "raincoat",
+  "alts": [
+   "rain coat"
+  ],
+  "easy": "Waterproof jacket for wet days",
+  "hard": "A mac you wear on drizzly days"
+ },
+ {
+  "a": "RAIN",
+  "b": "DROP",
+  "text": "raindrop",
+  "alts": [
+   "rain drop"
+  ],
+  "easy": "Single bead falling from a cloud",
+  "hard": "It patters on the windowpane"
+ },
+ {
+  "a": "RAIN",
+  "b": "FALL",
+  "text": "rainfall",
+  "alts": [
+   "rain fall"
+  ],
+  "easy": "Amount of precipitation in a region",
+  "hard": "Measured by a gauge in millimetres"
+ },
+ {
+  "a": "RAIN",
+  "b": "FOREST",
+  "text": "rainforest",
+  "alts": [
+   "rain forest"
+  ],
+  "easy": "Dense tropical jungle like the Amazon",
+  "hard": "Habitat of the Amazon's jaguars"
+ },
+ {
+  "a": "RAIN",
+  "b": "STORM",
+  "text": "rainstorm",
+  "alts": [
+   "rain storm"
+  ],
+  "easy": "Heavy downpour with wind",
+  "hard": "Weather that floods the gutters"
+ },
+ {
+  "a": "RAIN",
+  "b": "CHECK",
+  "text": "rain check",
+  "alts": [
+   "raincheck"
+  ],
+  "easy": "Postponement of an offer",
+  "hard": "What you take when you can't make it"
+ },
+ {
+  "a": "RAIN",
+  "b": "DANCE",
+  "text": "rain dance",
+  "alts": [
+   "raindance"
+  ],
+  "easy": "Ritual performed to end a drought",
+  "hard": "Ceremony to summon a downpour"
+ },
+ {
+  "a": "ACID",
+  "b": "RAIN",
+  "text": "acid rain",
+  "alts": [
+   "acidrain"
+  ],
+  "easy": "Polluted precipitation that harms forests",
+  "hard": "Industrial emissions falling from the sky"
+ },
+ {
+  "a": "SUPER",
+  "b": "STAR",
+  "text": "superstar",
+  "alts": [
+   "super star"
+  ],
+  "easy": "A hugely famous celebrity",
+  "hard": "A household-name performer or athlete"
+ },
+ {
+  "a": "POP",
+  "b": "STAR",
+  "text": "pop star",
+  "alts": [
+   "popstar"
+  ],
+  "easy": "A famous chart-topping singer",
+  "hard": "Idol on teenagers' bedroom posters"
+ },
+ {
+  "a": "LODE",
+  "b": "STAR",
+  "text": "lodestar",
+  "alts": [
+   "lode star"
+  ],
+  "easy": "A guiding principle or inspiration",
+  "hard": "Polaris, which guided navigators"
+ },
+ {
+  "a": "FILM",
+  "b": "STAR",
+  "text": "film star",
+  "alts": [
+   "filmstar"
+  ],
+  "easy": "A famous movie actor",
+  "hard": "A Hollywood celebrity on the red carpet"
+ },
+ {
+  "a": "ROCK",
+  "b": "STAR",
+  "text": "rock star",
+  "alts": [
+   "rockstar"
+  ],
+  "easy": "A famous guitar-band musician",
+  "hard": "Someone who trashes hotel rooms, supposedly"
+ },
+ {
+  "a": "SHOOTING",
+  "b": "STAR",
+  "text": "shooting star",
+  "alts": [
+   "shootingstar"
+  ],
+  "easy": "Meteor streaking across the night sky",
+  "hard": "You make a wish when you see one"
+ },
+ {
+  "a": "SEA",
+  "b": "STAR",
+  "text": "sea star",
+  "alts": [
+   "seastar"
+  ],
+  "easy": "A five-armed marine creature",
+  "hard": "Marine biologists' preferred name for this echinoderm"
+ },
+ {
+  "a": "NORTH",
+  "b": "STAR",
+  "text": "north star",
+  "alts": [
+   "northstar"
+  ],
+  "easy": "Polaris, used for navigation",
+  "hard": "Sailors steered by this fixed point"
+ },
+ {
+  "a": "STAR",
+  "b": "FISH",
+  "text": "starfish",
+  "alts": [
+   "star fish"
+  ],
+  "easy": "Five-armed creature on the seabed",
+  "hard": "It can regrow a lost arm"
+ },
+ {
+  "a": "STAR",
+  "b": "DUST",
+  "text": "stardust",
+  "alts": [
+   "star dust"
+  ],
+  "easy": "Sparkling cosmic particles in space",
+  "hard": "Magical glitter in fairy tales"
+ },
+ {
+  "a": "STAR",
+  "b": "SHIP",
+  "text": "starship",
+  "alts": [
+   "star ship"
+  ],
+  "easy": "Spacecraft in science fiction",
+  "hard": "The Enterprise, for example"
+ },
+ {
+  "a": "STAR",
+  "b": "GAZER",
+  "text": "stargazer",
+  "alts": [
+   "star gazer"
+  ],
+  "easy": "An amateur astronomer with a telescope",
+  "hard": "Someone with a telescope on a clear night"
+ },
+ {
+  "a": "STAR",
+  "b": "STRUCK",
+  "text": "starstruck",
+  "alts": [
+   "star struck"
+  ],
+  "easy": "Overwhelmed by meeting a celebrity",
+  "hard": "Tongue-tied in front of your idol"
+ },
+ {
+  "a": "STAR",
+  "b": "LIT",
+  "text": "starlit",
+  "alts": [
+   "star lit"
+  ],
+  "easy": "Illuminated by twinkling night sky",
+  "hard": "A clear romantic night"
+ },
+ {
+  "a": "STAR",
+  "b": "SIGN",
+  "text": "star sign",
+  "alts": [
+   "starsign"
+  ],
+  "easy": "Zodiac symbol based on your birthday",
+  "hard": "Leo, Virgo or Pisces, for example"
+ },
+ {
+  "a": "BLACK",
+  "b": "EYE",
+  "text": "black eye",
+  "alts": [
+   "blackeye"
+  ],
+  "easy": "Bruise around the socket",
+  "hard": "A shiner after a punch"
+ },
+ {
+  "a": "RED",
+  "b": "EYE",
+  "text": "red-eye",
+  "alts": [
+   "red eye",
+   "redeye"
+  ],
+  "easy": "An overnight flight that leaves you tired",
+  "hard": "A tired-making late-night journey"
+ },
+ {
+  "a": "PRIVATE",
+  "b": "EYE",
+  "text": "private eye",
+  "alts": [
+   "privateeye"
+  ],
+  "easy": "A detective for hire",
+  "hard": "A gumshoe like Philip Marlowe"
+ },
+ {
+  "a": "EYE",
+  "b": "BROW",
+  "text": "eyebrow",
+  "alts": [
+   "eye brow"
+  ],
+  "easy": "Arch of hair above the lid",
+  "hard": "You raise one in suspicion"
+ },
+ {
+  "a": "EYE",
+  "b": "LASH",
+  "text": "eyelash",
+  "alts": [
+   "eye lash"
+  ],
+  "easy": "Hair on the edge of a lid",
+  "hard": "You make a wish when it falls"
+ },
+ {
+  "a": "EYE",
+  "b": "LID",
+  "text": "eyelid",
+  "alts": [
+   "eye lid"
+  ],
+  "easy": "Skin flap that closes over vision",
+  "hard": "It droops when you're sleepy"
+ },
+ {
+  "a": "EYE",
+  "b": "SIGHT",
+  "text": "eyesight",
+  "alts": [
+   "eye sight"
+  ],
+  "easy": "The ability to see clearly",
+  "hard": "An optician tests it"
+ },
+ {
+  "a": "EYE",
+  "b": "SORE",
+  "text": "eyesore",
+  "alts": [
+   "eye sore"
+  ],
+  "easy": "Ugly building that spoils a view",
+  "hard": "A blot on the landscape"
+ },
+ {
+  "a": "EYE",
+  "b": "WITNESS",
+  "text": "eyewitness",
+  "alts": [
+   "eye witness"
+  ],
+  "easy": "Person who saw a crime happen",
+  "hard": "Testifies about what they observed"
+ },
+ {
+  "a": "EYE",
+  "b": "LINER",
+  "text": "eyeliner",
+  "alts": [
+   "eye liner"
+  ],
+  "easy": "Make-up drawn along the lashes",
+  "hard": "Cleopatra's dramatic cosmetic flick"
+ },
+ {
+  "a": "EYE",
+  "b": "DROPS",
+  "text": "eye drops",
+  "alts": [
+   "eyedrops"
+  ],
+  "easy": "Liquid squeezed into irritated vision organs",
+  "hard": "Remedy for itchy hay fever"
+ },
+ {
+  "a": "EYE",
+  "b": "CONTACT",
+  "text": "eye contact",
+  "alts": [
+   "eyecontact"
+  ],
+  "easy": "Looking directly at someone",
+  "hard": "Shy people avoid it"
+ },
+ {
+  "a": "EYE",
+  "b": "SHADOW",
+  "text": "eyeshadow",
+  "alts": [
+   "eye shadow"
+  ],
+  "easy": "Coloured powder on lids",
+  "hard": "Make-up in a palette of shades"
+ },
+ {
+  "a": "EYE",
+  "b": "OPENER",
+  "text": "eye-opener",
+  "alts": [
+   "eye opener",
+   "eyeopener"
+  ],
+  "easy": "Surprising revelation",
+  "hard": "A shocking experience that teaches you"
+ },
+ {
+  "a": "KEY",
+  "b": "BOARD",
+  "text": "keyboard",
+  "alts": [
+   "key board"
+  ],
+  "easy": "Typing panel of a computer",
+  "hard": "Rows of letters and numbers you press"
+ },
+ {
+  "a": "KEY",
+  "b": "HOLE",
+  "text": "keyhole",
+  "alts": [
+   "key hole"
+  ],
+  "easy": "Slot in a lock",
+  "hard": "Nosy people peek through it"
+ },
+ {
+  "a": "KEY",
+  "b": "NOTE",
+  "text": "keynote",
+  "alts": [
+   "key note"
+  ],
+  "easy": "Main speech at a conference",
+  "hard": "Address that sets the theme of an event"
+ },
+ {
+  "a": "KEY",
+  "b": "RING",
+  "text": "keyring",
+  "alts": [
+   "key ring"
+  ],
+  "easy": "Loop holding your door unlockers",
+  "hard": "Souvenir fob in your pocket"
+ },
+ {
+  "a": "KEY",
+  "b": "STONE",
+  "text": "keystone",
+  "alts": [
+   "key stone"
+  ],
+  "easy": "Central wedge at the top of an arch",
+  "hard": "The crucial piece holding everything together"
+ },
+ {
+  "a": "KEY",
+  "b": "PAD",
+  "text": "keypad",
+  "alts": [
+   "key pad"
+  ],
+  "easy": "Panel of number buttons",
+  "hard": "Where you punch in a PIN"
+ },
+ {
+  "a": "KEY",
+  "b": "WORD",
+  "text": "keyword",
+  "alts": [
+   "key word"
+  ],
+  "easy": "An important search term",
+  "hard": "What you type into Google"
+ },
+ {
+  "a": "KEY",
+  "b": "CARD",
+  "text": "key card",
+  "alts": [
+   "keycard"
+  ],
+  "easy": "Plastic pass that opens a hotel room",
+  "hard": "Swipe it at the door"
+ },
+ {
+  "a": "SKATE",
+  "b": "BOARD",
+  "text": "skateboard",
+  "alts": [
+   "skate board"
+  ],
+  "easy": "Plank on wheels for tricks",
+  "hard": "Tony Hawk's ride for tricks"
+ },
+ {
+  "a": "SURF",
+  "b": "BOARD",
+  "text": "surfboard",
+  "alts": [
+   "surf board"
+  ],
+  "easy": "Long plank for riding waves",
+  "hard": "Gear for Hawaii's beaches"
+ },
+ {
+  "a": "DASH",
+  "b": "BOARD",
+  "text": "dashboard",
+  "alts": [
+   "dash board"
+  ],
+  "easy": "Panel of dials in a car",
+  "hard": "Where the speedometer sits"
+ },
+ {
+  "a": "CHALK",
+  "b": "BOARD",
+  "text": "chalkboard",
+  "alts": [
+   "chalk board"
+  ],
+  "easy": "Black slate for teachers",
+  "hard": "Screech of fingernails on it"
+ },
+ {
+  "a": "CARD",
+  "b": "BOARD",
+  "text": "cardboard",
+  "alts": [
+   "card board"
+  ],
+  "easy": "Stiff brown packaging material",
+  "hard": "Boxes are made of it"
+ },
+ {
+  "a": "BILL",
+  "b": "BOARD",
+  "text": "billboard",
+  "alts": [
+   "bill board"
+  ],
+  "easy": "A large roadside advertisement",
+  "hard": "A giant poster by the motorway"
+ },
+ {
+  "a": "CUP",
+  "b": "BOARD",
+  "text": "cupboard",
+  "alts": [
+   "cup board"
+  ],
+  "easy": "Cabinet for storing dishes",
+  "hard": "Harry Potter lived under the stairs in one"
+ },
+ {
+  "a": "BLACK",
+  "b": "BOARD",
+  "text": "blackboard",
+  "alts": [
+   "black board"
+  ],
+  "easy": "Dark slate on a classroom wall",
+  "hard": "Teacher writes on it with chalk"
+ },
+ {
+  "a": "CLIP",
+  "b": "BOARD",
+  "text": "clipboard",
+  "alts": [
+   "clip board"
+  ],
+  "easy": "Writing support with a spring clamp",
+  "hard": "Carried by a surveyor or a nurse"
+ },
+ {
+  "a": "FLOOR",
+  "b": "BOARD",
+  "text": "floorboard",
+  "alts": [
+   "floor board"
+  ],
+  "easy": "Plank underfoot that creaks",
+  "hard": "It creaks when you sneak about"
+ },
+ {
+  "a": "SIDE",
+  "b": "BOARD",
+  "text": "sideboard",
+  "alts": [
+   "side board"
+  ],
+  "easy": "A dining room cabinet",
+  "hard": "Long cabinet for fine china in a dining room"
+ },
+ {
+  "a": "SCORE",
+  "b": "BOARD",
+  "text": "scoreboard",
+  "alts": [
+   "score board"
+  ],
+  "easy": "Display of points in a match",
+  "hard": "Giant screen at a stadium"
+ },
+ {
+  "a": "SPRING",
+  "b": "BOARD",
+  "text": "springboard",
+  "alts": [
+   "spring board"
+  ],
+  "easy": "Diving plank that bounces",
+  "hard": "A launch pad for a career"
+ },
+ {
+  "a": "DART",
+  "b": "BOARD",
+  "text": "dartboard",
+  "alts": [
+   "dart board"
+  ],
+  "easy": "Target in a pub game",
+  "hard": "Circle hanging on a pub wall"
+ },
+ {
+  "a": "BOARD",
+  "b": "GAME",
+  "text": "board game",
+  "alts": [
+   "boardgame"
+  ],
+  "easy": "Chess, Monopoly or Scrabble",
+  "hard": "Family entertainment on a rainy day"
+ },
+ {
+  "a": "BOARD",
+  "b": "ROOM",
+  "text": "boardroom",
+  "alts": [
+   "board room"
+  ],
+  "easy": "Where company directors meet",
+  "hard": "Setting for executive decisions"
+ },
+ {
+  "a": "BOARD",
+  "b": "WALK",
+  "text": "boardwalk",
+  "alts": [
+   "board walk"
+  ],
+  "easy": "Wooden path along a beach",
+  "hard": "A Monopoly property next to Park Place"
+ },
+ {
+  "a": "BOARD",
+  "b": "MEETING",
+  "text": "board meeting",
+  "alts": [
+   "boardmeeting"
+  ],
+  "easy": "Gathering of company directors",
+  "hard": "Executives around a long table"
+ },
+ {
+  "a": "DEAD",
+  "b": "LINE",
+  "text": "deadline",
+  "alts": [
+   "dead line"
+  ],
+  "easy": "Time by which work must be done",
+  "hard": "Journalists race against it"
+ },
+ {
+  "a": "PIPE",
+  "b": "LINE",
+  "text": "pipeline",
+  "alts": [
+   "pipe line"
+  ],
+  "easy": "Long tube carrying oil or gas",
+  "hard": "Projects in development are said to be in it"
+ },
+ {
+  "a": "COAST",
+  "b": "LINE",
+  "text": "coastline",
+  "alts": [
+   "coast line"
+  ],
+  "easy": "Edge where land meets sea",
+  "hard": "Jagged outline of Norway's fjords on a map"
+ },
+ {
+  "a": "SKY",
+  "b": "LINE",
+  "text": "skyline",
+  "alts": [
+   "sky line"
+  ],
+  "easy": "Outline of tall buildings against the horizon",
+  "hard": "Manhattan's is famous worldwide"
+ },
+ {
+  "a": "HOT",
+  "b": "LINE",
+  "text": "hotline",
+  "alts": [
+   "hot line"
+  ],
+  "easy": "Telephone number for urgent help",
+  "hard": "Direct phone link between leaders"
+ },
+ {
+  "a": "GUIDE",
+  "b": "LINE",
+  "text": "guideline",
+  "alts": [
+   "guide line"
+  ],
+  "easy": "A rule or recommendation",
+  "hard": "Advice about how to proceed"
+ },
+ {
+  "a": "CLOTHES",
+  "b": "LINE",
+  "text": "clothesline",
+  "alts": [
+   "clothes line"
+  ],
+  "easy": "Rope for drying laundry",
+  "hard": "Pegs hang shirts on it in the garden"
+ },
+ {
+  "a": "HAIR",
+  "b": "LINE",
+  "text": "hairline",
+  "alts": [
+   "hair line"
+  ],
+  "easy": "Edge where locks meet the forehead",
+  "hard": "It recedes with age"
+ },
+ {
+  "a": "FINISH",
+  "b": "LINE",
+  "text": "finish line",
+  "alts": [
+   "finishline"
+  ],
+  "easy": "End of a race",
+  "hard": "Runners break the tape here"
+ },
+ {
+  "a": "BOTTOM",
+  "b": "LINE",
+  "text": "bottom line",
+  "alts": [
+   "bottomline"
+  ],
+  "easy": "Final total or key fact",
+  "hard": "The crux of the matter"
+ },
+ {
+  "a": "STORY",
+  "b": "LINE",
+  "text": "storyline",
+  "alts": [
+   "story line"
+  ],
+  "easy": "Plot of a novel or film",
+  "hard": "The sequence of events in a soap opera"
+ },
+ {
+  "a": "LIFE",
+  "b": "LINE",
+  "text": "lifeline",
+  "alts": [
+   "life line"
+  ],
+  "easy": "Rope thrown to save someone",
+  "hard": "A help option on a quiz show"
+ },
+ {
+  "a": "PUNCH",
+  "b": "LINE",
+  "text": "punchline",
+  "alts": [
+   "punch line"
+  ],
+  "easy": "Funny end of a joke",
+  "hard": "The bit that gets the laugh"
+ },
+ {
+  "a": "FRONT",
+  "b": "LINE",
+  "text": "front line",
+  "alts": [
+   "frontline"
+  ],
+  "easy": "Area of fighting nearest the enemy",
+  "hard": "Where soldiers face danger"
+ },
+ {
+  "a": "TOUCH",
+  "b": "LINE",
+  "text": "touchline",
+  "alts": [
+   "touch line"
+  ],
+  "easy": "Side boundary of a football pitch",
+  "hard": "Where managers pace and shout"
+ },
+ {
+  "a": "LINE",
+  "b": "UP",
+  "text": "line-up",
+  "alts": [
+   "line up",
+   "lineup"
+  ],
+  "easy": "List of performers or players",
+  "hard": "A row of suspects at the police station"
+ },
+ {
+  "a": "LINE",
+  "b": "DANCE",
+  "text": "line dance",
+  "alts": [
+   "linedance"
+  ],
+  "easy": "Country dance done in neat rows of people",
+  "hard": "Cowboy-booted steps danced in formation"
+ },
+ {
+  "a": "LINE",
+  "b": "BACKER",
+  "text": "linebacker",
+  "alts": [
+   "line backer"
+  ],
+  "easy": "American football defensive player",
+  "hard": "He tackles the running back"
+ },
+ {
+  "a": "CHECK",
+  "b": "POINT",
+  "text": "checkpoint",
+  "alts": [
+   "check point"
+  ],
+  "easy": "Barrier where travellers are inspected",
+  "hard": "Border guards stop cars here"
+ },
+ {
+  "a": "VIEW",
+  "b": "POINT",
+  "text": "viewpoint",
+  "alts": [
+   "view point"
+  ],
+  "easy": "An opinion or perspective",
+  "hard": "A place to admire the scenery"
+ },
+ {
+  "a": "STAND",
+  "b": "POINT",
+  "text": "standpoint",
+  "alts": [
+   "stand point"
+  ],
+  "easy": "Position from which you see an issue",
+  "hard": "Perspective in an argument"
+ },
+ {
+  "a": "GUN",
+  "b": "POINT",
+  "text": "gunpoint",
+  "alts": [
+   "gun point"
+  ],
+  "easy": "Under threat of a firearm",
+  "hard": "How a robber holds up a bank"
+ },
+ {
+  "a": "MATCH",
+  "b": "POINT",
+  "text": "match point",
+  "alts": [
+   "matchpoint"
+  ],
+  "easy": "Moment one rally from winning",
+  "hard": "Tense moment at Wimbledon"
+ },
+ {
+  "a": "WEAK",
+  "b": "POINT",
+  "text": "weak point",
+  "alts": [
+   "weakpoint"
+  ],
+  "easy": "A flaw or vulnerability",
+  "hard": "Achilles' heel, for example"
+ },
+ {
+  "a": "POINT",
+  "b": "BLANK",
+  "text": "point-blank",
+  "alts": [
+   "point blank",
+   "pointblank"
+  ],
+  "easy": "At very close range",
+  "hard": "A refusal given directly and bluntly"
+ },
+ {
+  "a": "POINT",
+  "b": "LESS",
+  "text": "pointless",
+  "alts": [
+   "point less"
+  ],
+  "easy": "Having no purpose at all",
+  "hard": "A waste of time"
+ },
+ {
+  "a": "TURNING",
+  "b": "POINT",
+  "text": "turning point",
+  "alts": [
+   "turningpoint"
+  ],
+  "easy": "Moment of decisive change",
+  "hard": "Where history changed course"
+ },
+ {
+  "a": "HOME",
+  "b": "WORK",
+  "text": "homework",
+  "alts": [
+   "home work"
+  ],
+  "easy": "School assignment done after class",
+  "hard": "The dog supposedly ate it"
+ },
+ {
+  "a": "NET",
+  "b": "WORK",
+  "text": "network",
+  "alts": [
+   "net work"
+  ],
+  "easy": "System of connected things",
+  "hard": "You do this at business events"
+ },
+ {
+  "a": "TEAM",
+  "b": "WORK",
+  "text": "teamwork",
+  "alts": [
+   "team work"
+  ],
+  "easy": "Cooperating as a group",
+  "hard": "What makes the dream come true, in the slogan"
+ },
+ {
+  "a": "ART",
+  "b": "WORK",
+  "text": "artwork",
+  "alts": [
+   "art work"
+  ],
+  "easy": "A painting or illustration",
+  "hard": "Pieces hanging in a gallery"
+ },
+ {
+  "a": "CLOCK",
+  "b": "WORK",
+  "text": "clockwork",
+  "alts": [
+   "clock work"
+  ],
+  "easy": "A wind-up gearing mechanism",
+  "hard": "Things running smoothly are said to go like this"
+ },
+ {
+  "a": "NEEDLE",
+  "b": "WORK",
+  "text": "needlework",
+  "alts": [
+   "needle work"
+  ],
+  "easy": "Sewing and embroidery as a craft",
+  "hard": "A craft done with thread"
+ },
+ {
+  "a": "WOOD",
+  "b": "WORK",
+  "text": "woodwork",
+  "alts": [
+   "wood work"
+  ],
+  "easy": "Carpentry class at school",
+  "hard": "Where crawling things come out of"
+ },
+ {
+  "a": "GROUND",
+  "b": "WORK",
+  "text": "groundwork",
+  "alts": [
+   "ground work"
+  ],
+  "easy": "Preparation for future plans",
+  "hard": "Foundations laid before the project"
+ },
+ {
+  "a": "LEG",
+  "b": "WORK",
+  "text": "legwork",
+  "alts": [
+   "leg work"
+  ],
+  "easy": "Tedious practical tasks behind a project",
+  "hard": "Footslogging done by detectives"
+ },
+ {
+  "a": "GUESS",
+  "b": "WORK",
+  "text": "guesswork",
+  "alts": [
+   "guess work"
+  ],
+  "easy": "Estimation without real knowledge",
+  "hard": "Unscientific conjecture, a stab in the dark"
+ },
+ {
+  "a": "WORK",
+  "b": "SHOP",
+  "text": "workshop",
+  "alts": [
+   "work shop"
+  ],
+  "easy": "Room where things are made or repaired",
+  "hard": "Santa's elves toil in one"
+ },
+ {
+  "a": "WORK",
+  "b": "OUT",
+  "text": "workout",
+  "alts": [
+   "work out"
+  ],
+  "easy": "An exercise session at the gym",
+  "hard": "A sweaty hour at the gym"
+ },
+ {
+  "a": "WORK",
+  "b": "PLACE",
+  "text": "workplace",
+  "alts": [
+   "work place"
+  ],
+  "easy": "Where you do your job",
+  "hard": "An office or factory"
+ },
+ {
+  "a": "WORK",
+  "b": "LOAD",
+  "text": "workload",
+  "alts": [
+   "work load"
+  ],
+  "easy": "Amount of tasks assigned",
+  "hard": "Heavy one before the holidays"
+ },
+ {
+  "a": "WORK",
+  "b": "FORCE",
+  "text": "workforce",
+  "alts": [
+   "work force"
+  ],
+  "easy": "All the employees of a company",
+  "hard": "Staff at a factory"
+ },
+ {
+  "a": "WORK",
+  "b": "MATE",
+  "text": "workmate",
+  "alts": [
+   "work mate"
+  ],
+  "easy": "A colleague at your job",
+  "hard": "The person at the next desk"
+ },
+ {
+  "a": "WORK",
+  "b": "BENCH",
+  "text": "workbench",
+  "alts": [
+   "work bench"
+  ],
+  "easy": "Sturdy table for carpentry",
+  "hard": "Where a handyman keeps his vice"
+ },
+ {
+  "a": "WORK",
+  "b": "SHEET",
+  "text": "worksheet",
+  "alts": [
+   "work sheet"
+  ],
+  "easy": "Page of exercises for pupils",
+  "hard": "Handout to fill in during class"
+ },
+ {
+  "a": "RAIL",
+  "b": "ROAD",
+  "text": "railroad",
+  "alts": [
+   "rail road"
+  ],
+  "easy": "Track for trains in America",
+  "hard": "To force a decision through"
+ },
+ {
+  "a": "SLIP",
+  "b": "ROAD",
+  "text": "slip road",
+  "alts": [
+   "sliproad"
+  ],
+  "easy": "Ramp onto or off a motorway",
+  "hard": "Short lane joining the highway"
+ },
+ {
+  "a": "MAIN",
+  "b": "ROAD",
+  "text": "main road",
+  "alts": [
+   "mainroad"
+  ],
+  "easy": "Busiest route through a town",
+  "hard": "The high street's traffic artery"
+ },
+ {
+  "a": "SIDE",
+  "b": "ROAD",
+  "text": "side road",
+  "alts": [
+   "sideroad"
+  ],
+  "easy": "Minor route off a main highway",
+  "hard": "A quiet street away from traffic"
+ },
+ {
+  "a": "ROAD",
+  "b": "BLOCK",
+  "text": "roadblock",
+  "alts": [
+   "road block"
+  ],
+  "easy": "Barrier set up by police",
+  "hard": "An obstacle to progress"
+ },
+ {
+  "a": "ROAD",
+  "b": "WORKS",
+  "text": "roadworks",
+  "alts": [
+   "road works"
+  ],
+  "easy": "Repairs causing traffic cones and delays",
+  "hard": "Why the motorway is down to one lane"
+ },
+ {
+  "a": "ROAD",
+  "b": "SIDE",
+  "text": "roadside",
+  "alts": [
+   "road side"
+  ],
+  "easy": "Edge of a highway",
+  "hard": "Where you'd find a burger van or a breakdown"
+ },
+ {
+  "a": "ROAD",
+  "b": "MAP",
+  "text": "road map",
+  "alts": [
+   "roadmap"
+  ],
+  "easy": "A plan showing routes",
+  "hard": "A plan for reaching a goal"
+ },
+ {
+  "a": "ROAD",
+  "b": "TRIP",
+  "text": "road trip",
+  "alts": [
+   "roadtrip"
+  ],
+  "easy": "Long car journey for fun",
+  "hard": "Thelma and Louise took one"
+ },
+ {
+  "a": "ROAD",
+  "b": "RAGE",
+  "text": "road rage",
+  "alts": [
+   "roadrage"
+  ],
+  "easy": "Anger of drivers at others",
+  "hard": "Shouting and honking in traffic"
+ },
+ {
+  "a": "ROAD",
+  "b": "SIGN",
+  "text": "road sign",
+  "alts": [
+   "roadsign"
+  ],
+  "easy": "Board giving directions to drivers",
+  "hard": "It shows the speed limit"
+ },
+ {
+  "a": "ROAD",
+  "b": "HOG",
+  "text": "road hog",
+  "alts": [
+   "roadhog"
+  ],
+  "easy": "A selfish, inconsiderate driver",
+  "hard": "Someone hogging the middle lane"
+ },
+ {
+  "a": "ROAD",
+  "b": "RUNNER",
+  "text": "roadrunner",
+  "alts": [
+   "road runner"
+  ],
+  "easy": "Fast desert bird of cartoons",
+  "hard": "Wile E. Coyote never caught it"
+ },
+ {
+  "a": "COUNTRY",
+  "b": "SIDE",
+  "text": "countryside",
+  "alts": [
+   "country side"
+  ],
+  "easy": "Rural fields and villages",
+  "hard": "Rolling green landscape beyond the city limits"
+ },
+ {
+  "a": "SEA",
+  "b": "SIDE",
+  "text": "seaside",
+  "alts": [
+   "sea side"
+  ],
+  "easy": "Coast where people go on holiday",
+  "hard": "Buckets, spades and piers"
+ },
+ {
+  "a": "OUT",
+  "b": "SIDE",
+  "text": "outside",
+  "alts": [
+   "out side"
+  ],
+  "easy": "Not indoors; in the open",
+  "hard": "Where children are told to go and play"
+ },
+ {
+  "a": "IN",
+  "b": "SIDE",
+  "text": "inside",
+  "alts": [
+   "in side"
+  ],
+  "easy": "Within a building or container",
+  "hard": "The interior of anything"
+ },
+ {
+  "a": "HILL",
+  "b": "SIDE",
+  "text": "hillside",
+  "alts": [
+   "hill side"
+  ],
+  "easy": "Slope of a rise in the land",
+  "hard": "Where sheep graze on a gradient"
+ },
+ {
+  "a": "BED",
+  "b": "SIDE",
+  "text": "bedside",
+  "alts": [
+   "bed side"
+  ],
+  "easy": "Next to where you sleep",
+  "hard": "A doctor's good manner is named for it"
+ },
+ {
+  "a": "RING",
+  "b": "SIDE",
+  "text": "ringside",
+  "alts": [
+   "ring side"
+  ],
+  "easy": "Seats closest to a boxing match",
+  "hard": "Best view of a prize fight"
+ },
+ {
+  "a": "UP",
+  "b": "SIDE",
+  "text": "upside",
+  "alts": [
+   "up side"
+  ],
+  "easy": "The positive aspect of something",
+  "hard": "The silver lining to a bad situation"
+ },
+ {
+  "a": "DOWN",
+  "b": "SIDE",
+  "text": "downside",
+  "alts": [
+   "down side"
+  ],
+  "easy": "The negative aspect of something",
+  "hard": "The catch or drawback"
+ },
+ {
+  "a": "LAKE",
+  "b": "SIDE",
+  "text": "lakeside",
+  "alts": [
+   "lake side"
+  ],
+  "easy": "Shore of an inland body of water",
+  "hard": "Location of a waterfront cabin"
+ },
+ {
+  "a": "SIDE",
+  "b": "WALK",
+  "text": "sidewalk",
+  "alts": [
+   "side walk"
+  ],
+  "easy": "American name for the pavement along a street",
+  "hard": "Where pedestrians stroll in New York"
+ },
+ {
+  "a": "SIDE",
+  "b": "KICK",
+  "text": "sidekick",
+  "alts": [
+   "side kick"
+  ],
+  "easy": "Helpful companion of a hero",
+  "hard": "Robin to Batman, or Watson to Holmes"
+ },
+ {
+  "a": "SIDE",
+  "b": "LINE",
+  "text": "sideline",
+  "alts": [
+   "side line"
+  ],
+  "easy": "Secondary job or edge of the pitch",
+  "hard": "Where injured players watch from"
+ },
+ {
+  "a": "SIDE",
+  "b": "SHOW",
+  "text": "sideshow",
+  "alts": [
+   "side show"
+  ],
+  "easy": "Minor attraction at a fair",
+  "hard": "A distraction from the main event"
+ },
+ {
+  "a": "SIDE",
+  "b": "STEP",
+  "text": "sidestep",
+  "alts": [
+   "side step"
+  ],
+  "easy": "Avoid a question or tackle",
+  "hard": "Dodge a tackle or a question neatly"
+ },
+ {
+  "a": "SIDE",
+  "b": "BURNS",
+  "text": "sideburns",
+  "alts": [
+   "side burns"
+  ],
+  "easy": "Hair grown down the cheeks",
+  "hard": "Elvis's distinctive facial hair"
+ },
+ {
+  "a": "SIDE",
+  "b": "CAR",
+  "text": "sidecar",
+  "alts": [
+   "side car"
+  ],
+  "easy": "Passenger pod attached to a motorbike",
+  "hard": "Also a brandy cocktail"
+ },
+ {
+  "a": "SIDE",
+  "b": "TRACK",
+  "text": "sidetrack",
+  "alts": [
+   "side track"
+  ],
+  "easy": "Distract from the main topic",
+  "hard": "Lead a conversation astray"
+ },
+ {
+  "a": "SIDE",
+  "b": "EFFECT",
+  "text": "side effect",
+  "alts": [
+   "sideeffect"
+  ],
+  "easy": "Unwanted result of a medicine",
+  "hard": "Drowsiness listed on a leaflet"
+ },
+ {
+  "a": "SIDE",
+  "b": "SADDLE",
+  "text": "sidesaddle",
+  "alts": [
+   "side saddle"
+  ],
+  "easy": "Riding with both legs on one flank",
+  "hard": "How Victorian ladies rode"
+ },
+ {
+  "a": "MILE",
+  "b": "STONE",
+  "text": "milestone",
+  "alts": [
+   "mile stone"
+  ],
+  "easy": "Significant stage in progress",
+  "hard": "A baby's first step is one"
+ },
+ {
+  "a": "GALL",
+  "b": "STONE",
+  "text": "gallstone",
+  "alts": [
+   "gall stone"
+  ],
+  "easy": "Painful lump formed in an organ",
+  "hard": "Removed by surgery near the liver"
+ },
+ {
+  "a": "COBBLE",
+  "b": "STONE",
+  "text": "cobblestone",
+  "alts": [
+   "cobble stone"
+  ],
+  "easy": "Rounded paving rock on old streets",
+  "hard": "Bumpy surface of a medieval lane"
+ },
+ {
+  "a": "LIME",
+  "b": "STONE",
+  "text": "limestone",
+  "alts": [
+   "lime stone"
+  ],
+  "easy": "A pale sedimentary rock",
+  "hard": "The white cliffs material, roughly"
+ },
+ {
+  "a": "SAND",
+  "b": "STONE",
+  "text": "sandstone",
+  "alts": [
+   "sand stone"
+  ],
+  "easy": "A soft, gritty rock",
+  "hard": "Petra's carved cliffs are made of it"
+ },
+ {
+  "a": "GRAVE",
+  "b": "STONE",
+  "text": "gravestone",
+  "alts": [
+   "grave stone"
+  ],
+  "easy": "Marker in a cemetery",
+  "hard": "Engraved memorial in a cemetery"
+ },
+ {
+  "a": "BRIM",
+  "b": "STONE",
+  "text": "brimstone",
+  "alts": [
+   "brim stone"
+  ],
+  "easy": "Sulphur, associated with hell",
+  "hard": "Fire and ... preached from the pulpit"
+ },
+ {
+  "a": "TOMB",
+  "b": "STONE",
+  "text": "tombstone",
+  "alts": [
+   "tomb stone"
+  ],
+  "easy": "Memorial slab over a grave",
+  "hard": "Arizona town of the OK Corral"
+ },
+ {
+  "a": "STEPPING",
+  "b": "STONE",
+  "text": "stepping stone",
+  "alts": [
+   "steppingstone"
+  ],
+  "easy": "Rock you hop across a stream on",
+  "hard": "A step towards a bigger goal"
+ },
+ {
+  "a": "CORNER",
+  "b": "STONE",
+  "text": "cornerstone",
+  "alts": [
+   "corner stone"
+  ],
+  "easy": "Fundamental basis of something",
+  "hard": "Foundation block laid at a ceremony"
+ },
+ {
+  "a": "STONE",
+  "b": "WALL",
+  "text": "stonewall",
+  "alts": [
+   "stone wall"
+  ],
+  "easy": "Refuse to answer questions",
+  "hard": "Delay tactics in an inquiry"
+ },
+ {
+  "a": "STONE",
+  "b": "AGE",
+  "text": "stone age",
+  "alts": [
+   "stoneage"
+  ],
+  "easy": "Prehistoric era of flint tools",
+  "hard": "When cavemen lived with flint tools"
+ },
+ {
+  "a": "STONE",
+  "b": "WARE",
+  "text": "stoneware",
+  "alts": [
+   "stone ware"
+  ],
+  "easy": "Durable glazed pottery",
+  "hard": "Glazed jugs and mugs"
+ },
+ {
+  "a": "STONE",
+  "b": "FRUIT",
+  "text": "stone fruit",
+  "alts": [
+   "stonefruit"
+  ],
+  "easy": "Peach, plum or cherry",
+  "hard": "Fruit with a hard pit in the middle"
+ },
+ {
+  "a": "STONE",
+  "b": "MASON",
+  "text": "stonemason",
+  "alts": [
+   "stone mason"
+  ],
+  "easy": "Craftsman who cuts rock",
+  "hard": "He carves cathedral gargoyles"
+ },
+ {
+  "a": "WHITE",
+  "b": "GOLD",
+  "text": "white gold",
+  "alts": [
+   "whitegold"
+  ],
+  "easy": "Pale precious alloy for rings",
+  "hard": "A pale metal for wedding bands"
+ },
+ {
+  "a": "GOLD",
+  "b": "FISH",
+  "text": "goldfish",
+  "alts": [
+   "gold fish"
+  ],
+  "easy": "Orange pet in a bowl",
+  "hard": "Said to have a three-second memory"
+ },
+ {
+  "a": "GOLD",
+  "b": "MINE",
+  "text": "goldmine",
+  "alts": [
+   "gold mine"
+  ],
+  "easy": "Source of great wealth",
+  "hard": "A very profitable business"
+ },
+ {
+  "a": "GOLD",
+  "b": "SMITH",
+  "text": "goldsmith",
+  "alts": [
+   "gold smith"
+  ],
+  "easy": "Craftsman of precious jewellery",
+  "hard": "Maker of ornate rings and chalices"
+ },
+ {
+  "a": "GOLD",
+  "b": "RUSH",
+  "text": "gold rush",
+  "alts": [
+   "goldrush"
+  ],
+  "easy": "Stampede of prospectors to the Klondike",
+  "hard": "California in 1849, for prospectors"
+ },
+ {
+  "a": "GOLD",
+  "b": "MEDAL",
+  "text": "gold medal",
+  "alts": [
+   "goldmedal"
+  ],
+  "easy": "First prize at the Olympics",
+  "hard": "What the champion wears on the podium"
+ },
+ {
+  "a": "GOLD",
+  "b": "DUST",
+  "text": "gold dust",
+  "alts": [
+   "golddust"
+  ],
+  "easy": "Something very rare and sought after",
+  "hard": "Tickets as scarce as this"
+ },
+ {
+  "a": "GOLD",
+  "b": "FINCH",
+  "text": "goldfinch",
+  "alts": [
+   "gold finch"
+  ],
+  "easy": "A colourful small songbird",
+  "hard": "Small bird with a red face and yellow wings"
+ },
+ {
+  "a": "GOLD",
+  "b": "CREST",
+  "text": "goldcrest",
+  "alts": [
+   "gold crest"
+  ],
+  "easy": "Britain's smallest bird species",
+  "hard": "Tiny bird with a yellow crown stripe"
+ },
+ {
+  "a": "SAIL",
+  "b": "BOAT",
+  "text": "sailboat",
+  "alts": [
+   "sail boat"
+  ],
+  "easy": "Craft powered by wind",
+  "hard": "A yacht with canvas"
+ },
+ {
+  "a": "ROW",
+  "b": "BOAT",
+  "text": "rowboat",
+  "alts": [
+   "row boat"
+  ],
+  "easy": "Small craft propelled by oars",
+  "hard": "Paddle across a pond in it"
+ },
+ {
+  "a": "LIFE",
+  "b": "BOAT",
+  "text": "lifeboat",
+  "alts": [
+   "life boat"
+  ],
+  "easy": "Rescue craft on a ship",
+  "hard": "There weren't enough on the Titanic"
+ },
+ {
+  "a": "SPEED",
+  "b": "BOAT",
+  "text": "speedboat",
+  "alts": [
+   "speed boat"
+  ],
+  "easy": "A fast motor craft",
+  "hard": "Bond's choice for a river chase"
+ },
+ {
+  "a": "GRAVY",
+  "b": "BOAT",
+  "text": "gravy boat",
+  "alts": [
+   "gravyboat"
+  ],
+  "easy": "Jug for pouring sauce at Sunday lunch",
+  "hard": "Sauce vessel on a roast table"
+ },
+ {
+  "a": "STEAM",
+  "b": "BOAT",
+  "text": "steamboat",
+  "alts": [
+   "steam boat"
+  ],
+  "easy": "Paddle vessel powered by a boiler",
+  "hard": "Mississippi paddle vessel of old"
+ },
+ {
+  "a": "BOAT",
+  "b": "YARD",
+  "text": "boatyard",
+  "alts": [
+   "boat yard"
+  ],
+  "easy": "Place where small craft are built",
+  "hard": "A shipwright's waterfront workplace"
+ },
+ {
+  "a": "BOAT",
+  "b": "RACE",
+  "text": "boat race",
+  "alts": [
+   "boatrace"
+  ],
+  "easy": "Oxford versus Cambridge on the Thames",
+  "hard": "Annual rowing contest between universities"
+ },
+ {
+  "a": "BOAT",
+  "b": "SHOW",
+  "text": "boat show",
+  "alts": [
+   "boatshow"
+  ],
+  "easy": "Exhibition of yachts for sale",
+  "hard": "Marina fair displaying cruisers"
+ },
+ {
+  "a": "WAR",
+  "b": "SHIP",
+  "text": "warship",
+  "alts": [
+   "war ship"
+  ],
+  "easy": "Naval vessel armed for battle",
+  "hard": "A battlecruiser or destroyer"
+ },
+ {
+  "a": "FRIEND",
+  "b": "SHIP",
+  "text": "friendship",
+  "alts": [
+   "friend ship"
+  ],
+  "easy": "The bond between pals",
+  "hard": "The relationship between pals"
+ },
+ {
+  "a": "SPACE",
+  "b": "SHIP",
+  "text": "spaceship",
+  "alts": [
+   "space ship"
+  ],
+  "easy": "Craft for travelling beyond Earth",
+  "hard": "Flying saucer of the movies"
+ },
+ {
+  "a": "FLAG",
+  "b": "SHIP",
+  "text": "flagship",
+  "alts": [
+   "flag ship"
+  ],
+  "easy": "Leading vessel or most important store",
+  "hard": "Prime branch of a retail chain"
+ },
+ {
+  "a": "LEADER",
+  "b": "SHIP",
+  "text": "leadership",
+  "alts": [
+   "leader ship"
+  ],
+  "easy": "Ability to guide a team",
+  "hard": "Quality a captain needs"
+ },
+ {
+  "a": "OWNER",
+  "b": "SHIP",
+  "text": "ownership",
+  "alts": [
+   "owner ship"
+  ],
+  "easy": "Legal possession of something",
+  "hard": "What a deed proves"
+ },
+ {
+  "a": "MEMBER",
+  "b": "SHIP",
+  "text": "membership",
+  "alts": [
+   "member ship"
+  ],
+  "easy": "Belonging to a club",
+  "hard": "Annual gym fee buys this"
+ },
+ {
+  "a": "CHAMPION",
+  "b": "SHIP",
+  "text": "championship",
+  "alts": [
+   "champion ship"
+  ],
+  "easy": "Tournament to find a winner",
+  "hard": "Contest for a title"
+ },
+ {
+  "a": "SHIP",
+  "b": "WRECK",
+  "text": "shipwreck",
+  "alts": [
+   "ship wreck"
+  ],
+  "easy": "Remains of a sunken vessel",
+  "hard": "Robinson Crusoe survived one"
+ },
+ {
+  "a": "SHIP",
+  "b": "YARD",
+  "text": "shipyard",
+  "alts": [
+   "ship yard"
+  ],
+  "easy": "Place where vessels are built",
+  "hard": "Belfast's built the Titanic"
+ },
+ {
+  "a": "SHIP",
+  "b": "MATE",
+  "text": "shipmate",
+  "alts": [
+   "ship mate"
+  ],
+  "easy": "A fellow sailor",
+  "hard": "Your crew companion aboard"
+ },
+ {
+  "a": "SHIP",
+  "b": "SHAPE",
+  "text": "shipshape",
+  "alts": [
+   "ship shape"
+  ],
+  "easy": "Neat and in good order",
+  "hard": "Tidy, as on a well-run vessel"
+ },
+ {
+  "a": "MAIN",
+  "b": "LAND",
+  "text": "mainland",
+  "alts": [
+   "main land"
+  ],
+  "easy": "Principal landmass, not the islands",
+  "hard": "Where ferries from Skye arrive"
+ },
+ {
+  "a": "HOME",
+  "b": "LAND",
+  "text": "homeland",
+  "alts": [
+   "home land"
+  ],
+  "easy": "Country of your birth",
+  "hard": "Where expats feel they belong"
+ },
+ {
+  "a": "FARM",
+  "b": "LAND",
+  "text": "farmland",
+  "alts": [
+   "farm land"
+  ],
+  "easy": "Agricultural fields for crops",
+  "hard": "Acres for crops and cattle"
+ },
+ {
+  "a": "WONDER",
+  "b": "LAND",
+  "text": "wonderland",
+  "alts": [
+   "wonder land"
+  ],
+  "easy": "Magical place Alice visited",
+  "hard": "A winter scene of enchantment"
+ },
+ {
+  "a": "WASTE",
+  "b": "LAND",
+  "text": "wasteland",
+  "alts": [
+   "waste land"
+  ],
+  "easy": "A barren, abandoned area",
+  "hard": "Desolate terrain in a T.S. Eliot poem"
+ },
+ {
+  "a": "GRASS",
+  "b": "LAND",
+  "text": "grassland",
+  "alts": [
+   "grass land"
+  ],
+  "easy": "Open prairie or savannah",
+  "hard": "Where bison and zebra graze"
+ },
+ {
+  "a": "DREAM",
+  "b": "LAND",
+  "text": "dreamland",
+  "alts": [
+   "dream land"
+  ],
+  "easy": "Imaginary place of sleep",
+  "hard": "Where you go when you drift off"
+ },
+ {
+  "a": "HIGH",
+  "b": "LAND",
+  "text": "highland",
+  "alts": [
+   "high land"
+  ],
+  "easy": "A mountainous region",
+  "hard": "Scottish region of games and cattle"
+ },
+ {
+  "a": "WOOD",
+  "b": "LAND",
+  "text": "woodland",
+  "alts": [
+   "wood land"
+  ],
+  "easy": "Area covered with trees",
+  "hard": "Where you take a forest walk"
+ },
+ {
+  "a": "LAND",
+  "b": "LORD",
+  "text": "landlord",
+  "alts": [
+   "land lord"
+  ],
+  "easy": "Person you pay rent to",
+  "hard": "Owner of your flat"
+ },
+ {
+  "a": "LAND",
+  "b": "MARK",
+  "text": "landmark",
+  "alts": [
+   "land mark"
+  ],
+  "easy": "A famous, recognisable building",
+  "hard": "Big Ben is one"
+ },
+ {
+  "a": "LAND",
+  "b": "SLIDE",
+  "text": "landslide",
+  "alts": [
+   "land slide"
+  ],
+  "easy": "Collapse of a hillside",
+  "hard": "An overwhelming election victory"
+ },
+ {
+  "a": "LAND",
+  "b": "SCAPE",
+  "text": "landscape",
+  "alts": [
+   "land scape"
+  ],
+  "easy": "Wide view of scenery",
+  "hard": "Painting orientation wider than tall"
+ },
+ {
+  "a": "LAND",
+  "b": "FILL",
+  "text": "landfill",
+  "alts": [
+   "land fill"
+  ],
+  "easy": "Site where rubbish is buried",
+  "hard": "Dump for household waste"
+ },
+ {
+  "a": "LAND",
+  "b": "LINE",
+  "text": "landline",
+  "alts": [
+   "land line"
+  ],
+  "easy": "Phone connected by a cable",
+  "hard": "The home phone nobody answers"
+ },
+ {
+  "a": "LAND",
+  "b": "MINE",
+  "text": "landmine",
+  "alts": [
+   "land mine"
+  ],
+  "easy": "Hidden explosive buried in the ground",
+  "hard": "Charity campaigns to ban them"
+ },
+ {
+  "a": "LAND",
+  "b": "OWNER",
+  "text": "landowner",
+  "alts": [
+   "land owner"
+  ],
+  "easy": "Person who holds property",
+  "hard": "Lord of the estate"
+ },
+ {
+  "a": "SEA",
+  "b": "SHELL",
+  "text": "seashell",
+  "alts": [
+   "sea shell"
+  ],
+  "easy": "Empty mollusc case found on a beach",
+  "hard": "She sells them on the seashore"
+ },
+ {
+  "a": "SEA",
+  "b": "FOOD",
+  "text": "seafood",
+  "alts": [
+   "sea food"
+  ],
+  "easy": "Fish and shellfish dishes",
+  "hard": "Prawns, lobster and crab"
+ },
+ {
+  "a": "SEA",
+  "b": "GULL",
+  "text": "seagull",
+  "alts": [
+   "sea gull"
+  ],
+  "easy": "Coastal bird that steals chips",
+  "hard": "Squawking bird at the pier"
+ },
+ {
+  "a": "SEA",
+  "b": "WEED",
+  "text": "seaweed",
+  "alts": [
+   "sea weed"
+  ],
+  "easy": "Marine algae on a beach",
+  "hard": "Slippery green fronds on rocks"
+ },
+ {
+  "a": "SEA",
+  "b": "SICK",
+  "text": "seasick",
+  "alts": [
+   "sea sick"
+  ],
+  "easy": "Nauseous on a boat",
+  "hard": "Queasy on a rough crossing"
+ },
+ {
+  "a": "SEA",
+  "b": "LION",
+  "text": "sea lion",
+  "alts": [
+   "sealion"
+  ],
+  "easy": "A barking marine mammal",
+  "hard": "Performer in an aquarium show"
+ },
+ {
+  "a": "SEA",
+  "b": "SHORE",
+  "text": "seashore",
+  "alts": [
+   "sea shore"
+  ],
+  "easy": "The coastline where waves break",
+  "hard": "Where she sells shells"
+ },
+ {
+  "a": "SEA",
+  "b": "BED",
+  "text": "seabed",
+  "alts": [
+   "sea bed"
+  ],
+  "easy": "The floor of the ocean",
+  "hard": "Where sunken wrecks lie"
+ },
+ {
+  "a": "SEA",
+  "b": "LEVEL",
+  "text": "sea level",
+  "alts": [
+   "sealevel"
+  ],
+  "easy": "Baseline for measuring altitude",
+  "hard": "It rises as ice caps melt"
+ },
+ {
+  "a": "SEA",
+  "b": "BIRD",
+  "text": "seabird",
+  "alts": [
+   "sea bird"
+  ],
+  "easy": "Ocean-going flyer like a gannet",
+  "hard": "Puffins, gannets and albatrosses"
+ },
+ {
+  "a": "SEA",
+  "b": "FRONT",
+  "text": "seafront",
+  "alts": [
+   "sea front"
+  ],
+  "easy": "Promenade along a coast",
+  "hard": "Where you walk with an ice cream"
+ },
+ {
+  "a": "SEA",
+  "b": "PLANE",
+  "text": "seaplane",
+  "alts": [
+   "sea plane"
+  ],
+  "easy": "Aircraft that lands on water",
+  "hard": "Flying boat with floats"
+ },
+ {
+  "a": "SEA",
+  "b": "SALT",
+  "text": "sea salt",
+  "alts": [
+   "seasalt"
+  ],
+  "easy": "Coarse flakes from evaporated brine",
+  "hard": "Gourmet seasoning from the coast"
+ },
+ {
+  "a": "DEEP",
+  "b": "SEA",
+  "text": "deep sea",
+  "alts": [
+   "deepsea"
+  ],
+  "easy": "Ocean depths far below the surface",
+  "hard": "Where anglerfish dwell in darkness"
+ },
+ {
+  "a": "AIR",
+  "b": "PORT",
+  "text": "airport",
+  "alts": [
+   "air port"
+  ],
+  "easy": "Place where planes take off",
+  "hard": "Terminal, runway and duty free"
+ },
+ {
+  "a": "AIR",
+  "b": "PLANE",
+  "text": "airplane",
+  "alts": [
+   "air plane"
+  ],
+  "easy": "Flying vehicle with wings",
+  "hard": "A jumbo jet, for example"
+ },
+ {
+  "a": "AIR",
+  "b": "LINE",
+  "text": "airline",
+  "alts": [
+   "air line"
+  ],
+  "easy": "A company operating flights",
+  "hard": "A carrier like Qantas or Emirates"
+ },
+ {
+  "a": "AIR",
+  "b": "BAG",
+  "text": "airbag",
+  "alts": [
+   "air bag"
+  ],
+  "easy": "Cushion that inflates in a crash",
+  "hard": "Car safety device in the wheel"
+ },
+ {
+  "a": "AIR",
+  "b": "MAIL",
+  "text": "airmail",
+  "alts": [
+   "air mail"
+  ],
+  "easy": "Post sent by plane",
+  "hard": "Blue envelopes with red and blue borders"
+ },
+ {
+  "a": "AIR",
+  "b": "CRAFT",
+  "text": "aircraft",
+  "alts": [
+   "air craft"
+  ],
+  "easy": "Any flying machine at all",
+  "hard": "Planes, gliders and helicopters"
+ },
+ {
+  "a": "AIR",
+  "b": "FIELD",
+  "text": "airfield",
+  "alts": [
+   "air field"
+  ],
+  "easy": "A small landing strip",
+  "hard": "Base for light aircraft"
+ },
+ {
+  "a": "AIR",
+  "b": "SHIP",
+  "text": "airship",
+  "alts": [
+   "air ship"
+  ],
+  "easy": "A blimp or zeppelin",
+  "hard": "The Hindenburg was one"
+ },
+ {
+  "a": "AIR",
+  "b": "TIME",
+  "text": "airtime",
+  "alts": [
+   "air time"
+  ],
+  "easy": "Broadcast slot on radio or TV",
+  "hard": "Exposure given to a news story"
+ },
+ {
+  "a": "AIR",
+  "b": "WAVES",
+  "text": "airwaves",
+  "alts": [
+   "air waves"
+  ],
+  "easy": "The radio broadcasting medium",
+  "hard": "Signals that carry the DJ's show"
+ },
+ {
+  "a": "AIR",
+  "b": "BORNE",
+  "text": "airborne",
+  "alts": [
+   "air borne"
+  ],
+  "easy": "Flying, aloft in the sky",
+  "hard": "Description of a virus spread by sneezes"
+ },
+ {
+  "a": "AIR",
+  "b": "LOCK",
+  "text": "airlock",
+  "alts": [
+   "air lock"
+  ],
+  "easy": "Sealed chamber in a spacecraft",
+  "hard": "Astronauts pass through it to spacewalk"
+ },
+ {
+  "a": "AIR",
+  "b": "BASE",
+  "text": "airbase",
+  "alts": [
+   "air base"
+  ],
+  "easy": "A military flying station",
+  "hard": "Home of fighter jets"
+ },
+ {
+  "a": "HOT",
+  "b": "AIR",
+  "text": "hot air",
+  "alts": [
+   "hotair"
+  ],
+  "easy": "Empty, boastful talk",
+  "hard": "Balloons rise on it"
+ },
+ {
+  "a": "FRESH",
+  "b": "AIR",
+  "text": "fresh air",
+  "alts": [
+   "freshair"
+  ],
+  "easy": "Clean outdoor breath of the countryside",
+  "hard": "What a country walk gives you"
+ },
+ {
+  "a": "OPEN",
+  "b": "AIR",
+  "text": "open-air",
+  "alts": [
+   "open air",
+   "openair"
+  ],
+  "easy": "Held outdoors, not in a building",
+  "hard": "Like a summer theatre in a park"
+ },
+ {
+  "a": "MID",
+  "b": "AIR",
+  "text": "midair",
+  "alts": [
+   "mid air"
+  ],
+  "easy": "High above the ground",
+  "hard": "Where a juggler's balls hang"
+ },
+ {
+  "a": "BLACK",
+  "b": "BIRD",
+  "text": "blackbird",
+  "alts": [
+   "black bird"
+  ],
+  "easy": "Dark songster with a yellow beak",
+  "hard": "Four and twenty baked in a pie"
+ },
+ {
+  "a": "SONG",
+  "b": "BIRD",
+  "text": "songbird",
+  "alts": [
+   "song bird"
+  ],
+  "easy": "Feathered creature known for its tune",
+  "hard": "A nightingale or a thrush"
+ },
+ {
+  "a": "HUMMING",
+  "b": "BIRD",
+  "text": "hummingbird",
+  "alts": [
+   "humming bird"
+  ],
+  "easy": "Tiny feathered creature that hovers",
+  "hard": "Its wings beat in a blur"
+ },
+ {
+  "a": "LOVE",
+  "b": "BIRD",
+  "text": "lovebird",
+  "alts": [
+   "love bird"
+  ],
+  "easy": "A small, affectionate parrot",
+  "hard": "A smitten couple, informally"
+ },
+ {
+  "a": "JAIL",
+  "b": "BIRD",
+  "text": "jailbird",
+  "alts": [
+   "jail bird"
+  ],
+  "easy": "A prisoner or convict",
+  "hard": "Habitual inmate behind bars"
+ },
+ {
+  "a": "EARLY",
+  "b": "BIRD",
+  "text": "early bird",
+  "alts": [
+   "earlybird"
+  ],
+  "easy": "Person who gets up at dawn",
+  "hard": "It catches the worm, they say"
+ },
+ {
+  "a": "BIRD",
+  "b": "CAGE",
+  "text": "birdcage",
+  "alts": [
+   "bird cage"
+  ],
+  "easy": "Wire enclosure for a budgie",
+  "hard": "Where a canary lives"
+ },
+ {
+  "a": "BIRD",
+  "b": "SONG",
+  "text": "birdsong",
+  "alts": [
+   "bird song"
+  ],
+  "easy": "Chirping heard at dawn",
+  "hard": "The sound of the dawn chorus"
+ },
+ {
+  "a": "BIRD",
+  "b": "BATH",
+  "text": "birdbath",
+  "alts": [
+   "bird bath"
+  ],
+  "easy": "Garden basin for sparrows",
+  "hard": "Stone dish on a lawn pedestal"
+ },
+ {
+  "a": "BIRD",
+  "b": "SEED",
+  "text": "birdseed",
+  "alts": [
+   "bird seed"
+  ],
+  "easy": "Food for the feeder",
+  "hard": "Millet scattered for sparrows"
+ },
+ {
+  "a": "BIRD",
+  "b": "WATCHING",
+  "text": "birdwatching",
+  "alts": [
+   "bird watching"
+  ],
+  "easy": "Hobby of spotting feathered friends",
+  "hard": "Twitchers' pastime with binoculars"
+ },
+ {
+  "a": "HOT",
+  "b": "DOG",
+  "text": "hot dog",
+  "alts": [
+   "hotdog"
+  ],
+  "easy": "Sausage in a bun",
+  "hard": "Ballpark snack with mustard"
+ },
+ {
+  "a": "WATCH",
+  "b": "DOG",
+  "text": "watchdog",
+  "alts": [
+   "watch dog"
+  ],
+  "easy": "Guard animal or regulator",
+  "hard": "An organisation that monitors industry"
+ },
+ {
+  "a": "UNDER",
+  "b": "DOG",
+  "text": "underdog",
+  "alts": [
+   "under dog"
+  ],
+  "easy": "Competitor expected to lose",
+  "hard": "David against Goliath, for instance"
+ },
+ {
+  "a": "SHEEP",
+  "b": "DOG",
+  "text": "sheepdog",
+  "alts": [
+   "sheep dog"
+  ],
+  "easy": "A collie herding flocks",
+  "hard": "Working pet at a farm trial"
+ },
+ {
+  "a": "LAP",
+  "b": "DOG",
+  "text": "lapdog",
+  "alts": [
+   "lap dog"
+  ],
+  "easy": "A small, pampered pet",
+  "hard": "Someone who obeys slavishly"
+ },
+ {
+  "a": "TOP",
+  "b": "DOG",
+  "text": "top dog",
+  "alts": [
+   "topdog"
+  ],
+  "easy": "The boss, the leader",
+  "hard": "Winner in a hierarchy"
+ },
+ {
+  "a": "SEA",
+  "b": "DOG",
+  "text": "sea dog",
+  "alts": [
+   "seadog"
+  ],
+  "easy": "An old experienced sailor",
+  "hard": "Salty veteran of the waves"
+ },
+ {
+  "a": "GUIDE",
+  "b": "DOG",
+  "text": "guide dog",
+  "alts": [
+   "guidedog"
+  ],
+  "easy": "Trained helper for the blind",
+  "hard": "Labrador in a harness"
+ },
+ {
+  "a": "DOG",
+  "b": "FIGHT",
+  "text": "dogfight",
+  "alts": [
+   "dog fight"
+  ],
+  "easy": "Aerial combat between fighter planes",
+  "hard": "Spitfire versus Messerschmitt overhead"
+ },
+ {
+  "a": "DOG",
+  "b": "SLED",
+  "text": "dogsled",
+  "alts": [
+   "dog sled"
+  ],
+  "easy": "Vehicle pulled by huskies",
+  "hard": "Transport at the Iditarod"
+ },
+ {
+  "a": "DOG",
+  "b": "TAG",
+  "text": "dog tag",
+  "alts": [
+   "dogtag"
+  ],
+  "easy": "A soldier's identity disc",
+  "hard": "Metal ID worn around a neck"
+ },
+ {
+  "a": "DOG",
+  "b": "FISH",
+  "text": "dogfish",
+  "alts": [
+   "dog fish"
+  ],
+  "easy": "A small type of shark",
+  "hard": "Rock salmon in a chippy"
+ },
+ {
+  "a": "DOG",
+  "b": "EARED",
+  "text": "dog-eared",
+  "alts": [
+   "dog eared",
+   "dogeared"
+  ],
+  "easy": "Having folded page corners",
+  "hard": "Description of a well-thumbed novel"
+ },
+ {
+  "a": "DOG",
+  "b": "FOOD",
+  "text": "dog food",
+  "alts": [
+   "dogfood"
+  ],
+  "easy": "Canned meat for a pet",
+  "hard": "What fills a canine bowl"
+ },
+ {
+  "a": "DOG",
+  "b": "LEG",
+  "text": "dogleg",
+  "alts": [
+   "dog leg"
+  ],
+  "easy": "Sharp bend in a golf hole",
+  "hard": "A zigzag in a road"
+ },
+ {
+  "a": "WILD",
+  "b": "CAT",
+  "text": "wildcat",
+  "alts": [
+   "wild cat"
+  ],
+  "easy": "Untamed feline of the Highlands",
+  "hard": "An unofficial strike, or an untamed feline"
+ },
+ {
+  "a": "TOM",
+  "b": "CAT",
+  "text": "tomcat",
+  "alts": [
+   "tom cat"
+  ],
+  "easy": "A male feline",
+  "hard": "A prowling male moggy out at night"
+ },
+ {
+  "a": "BOB",
+  "b": "CAT",
+  "text": "bobcat",
+  "alts": [
+   "bob cat"
+  ],
+  "easy": "The North American lynx",
+  "hard": "A short-tailed wild feline"
+ },
+ {
+  "a": "COPY",
+  "b": "CAT",
+  "text": "copycat",
+  "alts": [
+   "copy cat"
+  ],
+  "easy": "An imitator who copies others",
+  "hard": "Child who repeats everything you do"
+ },
+ {
+  "a": "FAT",
+  "b": "CAT",
+  "text": "fat cat",
+  "alts": [
+   "fatcat"
+  ],
+  "easy": "A wealthy, overpaid executive",
+  "hard": "Boss with a huge bonus"
+ },
+ {
+  "a": "POLE",
+  "b": "CAT",
+  "text": "polecat",
+  "alts": [
+   "pole cat"
+  ],
+  "easy": "A smelly weasel-like animal",
+  "hard": "The ferret's wild relative"
+ },
+ {
+  "a": "CAT",
+  "b": "FISH",
+  "text": "catfish",
+  "alts": [
+   "cat fish"
+  ],
+  "easy": "A whiskered bottom-feeder",
+  "hard": "Someone faking an online dating profile"
+ },
+ {
+  "a": "CAT",
+  "b": "WALK",
+  "text": "catwalk",
+  "alts": [
+   "cat walk"
+  ],
+  "easy": "Runway at a fashion show",
+  "hard": "Where models strut their stuff"
+ },
+ {
+  "a": "CAT",
+  "b": "NAP",
+  "text": "catnap",
+  "alts": [
+   "cat nap"
+  ],
+  "easy": "A brief daytime doze",
+  "hard": "A forty-winks moment on the sofa"
+ },
+ {
+  "a": "CAT",
+  "b": "FLAP",
+  "text": "cat flap",
+  "alts": [
+   "catflap"
+  ],
+  "easy": "Small swinging door for pets",
+  "hard": "Puss's private entrance in the back door"
+ },
+ {
+  "a": "CAT",
+  "b": "CALL",
+  "text": "catcall",
+  "alts": [
+   "cat call"
+  ],
+  "easy": "Whistle or jeer at someone",
+  "hard": "Rude shout from builders"
+ },
+ {
+  "a": "CAT",
+  "b": "NIP",
+  "text": "catnip",
+  "alts": [
+   "cat nip"
+  ],
+  "easy": "Herb felines go crazy for",
+  "hard": "Plant that makes pets roll around"
+ },
+ {
+  "a": "MARKET",
+  "b": "PLACE",
+  "text": "marketplace",
+  "alts": [
+   "market place"
+  ],
+  "easy": "Square where traders sell goods",
+  "hard": "An online platform for buying and selling"
+ },
+ {
+  "a": "BIRTH",
+  "b": "PLACE",
+  "text": "birthplace",
+  "alts": [
+   "birth place"
+  ],
+  "easy": "Town where someone was born",
+  "hard": "Stratford, for Shakespeare"
+ },
+ {
+  "a": "COMMON",
+  "b": "PLACE",
+  "text": "commonplace",
+  "alts": [
+   "common place"
+  ],
+  "easy": "Ordinary and everyday",
+  "hard": "Not at all unusual or remarkable"
+ },
+ {
+  "a": "PLACE",
+  "b": "MAT",
+  "text": "place mat",
+  "alts": [
+   "placemat"
+  ],
+  "easy": "Table protector under a plate",
+  "hard": "Little rug for each diner"
+ },
+ {
+  "a": "PLACE",
+  "b": "NAME",
+  "text": "place name",
+  "alts": [
+   "placename"
+  ],
+  "easy": "What a town or village is called",
+  "hard": "What a map label gives you"
+ },
+ {
+  "a": "PLACE",
+  "b": "CARD",
+  "text": "place card",
+  "alts": [
+   "placecard"
+  ],
+  "easy": "Name tag on a wedding table",
+  "hard": "Shows guests where to sit"
+ },
+ {
+  "a": "POST",
+  "b": "MAN",
+  "text": "postman",
+  "alts": [
+   "post man"
+  ],
+  "easy": "Person who delivers letters",
+  "hard": "Pat, with his black and white cat"
+ },
+ {
+  "a": "MILK",
+  "b": "MAN",
+  "text": "milkman",
+  "alts": [
+   "milk man"
+  ],
+  "easy": "An early-morning dairy deliverer",
+  "hard": "He clinks bottles on the doorstep at dawn"
+ },
+ {
+  "a": "CAVE",
+  "b": "MAN",
+  "text": "caveman",
+  "alts": [
+   "cave man"
+  ],
+  "easy": "Prehistoric human in an animal skin",
+  "hard": "A club-carrying Neanderthal"
+ },
+ {
+  "a": "SALES",
+  "b": "MAN",
+  "text": "salesman",
+  "alts": [
+   "sales man"
+  ],
+  "easy": "Person who sells for a living",
+  "hard": "Death of a ..., Arthur Miller wrote"
+ },
+ {
+  "a": "SPOKES",
+  "b": "MAN",
+  "text": "spokesman",
+  "alts": [
+   "spokes man"
+  ],
+  "easy": "Person who speaks for an organisation",
+  "hard": "Mouthpiece at a press conference"
+ },
+ {
+  "a": "GUN",
+  "b": "MAN",
+  "text": "gunman",
+  "alts": [
+   "gun man"
+  ],
+  "easy": "An armed attacker",
+  "hard": "Shooter in a hostage situation"
+ },
+ {
+  "a": "CHAIR",
+  "b": "MAN",
+  "text": "chairman",
+  "alts": [
+   "chair man"
+  ],
+  "easy": "Head of a company board",
+  "hard": "He presides over the meeting"
+ },
+ {
+  "a": "MAN",
+  "b": "HOLE",
+  "text": "manhole",
+  "alts": [
+   "man hole"
+  ],
+  "easy": "Opening to a sewer in the road",
+  "hard": "Its round cover sits in the street"
+ },
+ {
+  "a": "MAN",
+  "b": "KIND",
+  "text": "mankind",
+  "alts": [
+   "man kind"
+  ],
+  "easy": "The whole human race",
+  "hard": "One giant leap for it"
+ },
+ {
+  "a": "MAN",
+  "b": "POWER",
+  "text": "manpower",
+  "alts": [
+   "man power"
+  ],
+  "easy": "Number of workers available",
+  "hard": "Staff available for a job"
+ },
+ {
+  "a": "MAN",
+  "b": "HUNT",
+  "text": "manhunt",
+  "alts": [
+   "man hunt"
+  ],
+  "easy": "Large search for a fugitive",
+  "hard": "Police pursuit of an escaped convict"
+ },
+ {
+  "a": "MAN",
+  "b": "MADE",
+  "text": "man-made",
+  "alts": [
+   "man made",
+   "manmade"
+  ],
+  "easy": "Artificial, not natural",
+  "hard": "Like nylon or a reservoir, not from nature"
+ },
+ {
+  "a": "BUTTER",
+  "b": "FLY",
+  "text": "butterfly",
+  "alts": [
+   "butter fly"
+  ],
+  "easy": "A colourful winged insect",
+  "hard": "A swimming stroke with both arms"
+ },
+ {
+  "a": "DRAGON",
+  "b": "FLY",
+  "text": "dragonfly",
+  "alts": [
+   "dragon fly"
+  ],
+  "easy": "Darting insect by ponds",
+  "hard": "Iridescent hunter with four wings"
+ },
+ {
+  "a": "FLY",
+  "b": "OVER",
+  "text": "flyover",
+  "alts": [
+   "fly over"
+  ],
+  "easy": "Bridge carrying one road above another",
+  "hard": "An elevated motorway junction"
+ },
+ {
+  "a": "FLY",
+  "b": "PAST",
+  "text": "flypast",
+  "alts": [
+   "fly past"
+  ],
+  "easy": "Formation of planes over a ceremony",
+  "hard": "The Red Arrows doing one for the Queen"
+ },
+ {
+  "a": "FLY",
+  "b": "WHEEL",
+  "text": "flywheel",
+  "alts": [
+   "fly wheel"
+  ],
+  "easy": "Heavy rotating disc storing energy",
+  "hard": "Spinning mass in an engine"
+ },
+ {
+  "a": "FLY",
+  "b": "WEIGHT",
+  "text": "flyweight",
+  "alts": [
+   "fly weight"
+  ],
+  "easy": "The lightest boxing division",
+  "hard": "Boxing class for the smallest fighters"
+ },
+ {
+  "a": "SEA",
+  "b": "WALL",
+  "text": "sea wall",
+  "alts": [
+   "seawall"
+  ],
+  "easy": "A barrier against waves",
+  "hard": "Coastal defence on a promenade"
+ },
+ {
+  "a": "WALL",
+  "b": "FLOWER",
+  "text": "wallflower",
+  "alts": [
+   "wall flower"
+  ],
+  "easy": "Shy person at a party",
+  "hard": "Someone who doesn't dance"
+ },
+ {
+  "a": "WALL",
+  "b": "CHART",
+  "text": "wall chart",
+  "alts": [
+   "wallchart"
+  ],
+  "easy": "Large poster of information",
+  "hard": "Classroom periodic table on display"
+ },
+ {
+  "a": "WALL",
+  "b": "STREET",
+  "text": "wall street",
+  "alts": [
+   "wallstreet"
+  ],
+  "easy": "New York's financial district",
+  "hard": "American stock market by name"
+ },
+ {
+  "a": "WALL",
+  "b": "SOCKET",
+  "text": "wall socket",
+  "alts": [
+   "wallsocket"
+  ],
+  "easy": "An electrical outlet",
+  "hard": "Where you plug in your charger"
+ },
+ {
+  "a": "WILL",
+  "b": "POWER",
+  "text": "willpower",
+  "alts": [
+   "will power"
+  ],
+  "easy": "Self-control to resist temptation",
+  "hard": "What you need to stick to a diet"
+ },
+ {
+  "a": "SUPER",
+  "b": "POWER",
+  "text": "superpower",
+  "alts": [
+   "super power"
+  ],
+  "easy": "Ability like flying or invisibility",
+  "hard": "A dominant nation like the USA"
+ },
+ {
+  "a": "BRAIN",
+  "b": "POWER",
+  "text": "brainpower",
+  "alts": [
+   "brain power"
+  ],
+  "easy": "Intellectual capacity",
+  "hard": "Mental muscle for solving puzzles and riddles"
+ },
+ {
+  "a": "POWER",
+  "b": "PLANT",
+  "text": "power plant",
+  "alts": [
+   "powerplant"
+  ],
+  "easy": "A station generating electricity",
+  "hard": "A coal or nuclear generator"
+ },
+ {
+  "a": "POWER",
+  "b": "CUT",
+  "text": "power cut",
+  "alts": [
+   "powercut"
+  ],
+  "easy": "A blackout of electricity",
+  "hard": "When the lights suddenly go out"
+ },
+ {
+  "a": "POWER",
+  "b": "POINT",
+  "text": "power point",
+  "alts": [
+   "powerpoint"
+  ],
+  "easy": "An electrical socket on the wall",
+  "hard": "Wall outlet, in Australia"
+ },
+ {
+  "a": "POWER",
+  "b": "LINE",
+  "text": "power line",
+  "alts": [
+   "powerline"
+  ],
+  "easy": "An overhead electricity cable",
+  "hard": "Wires strung between pylons"
+ },
+ {
+  "a": "FAIR",
+  "b": "PLAY",
+  "text": "fair play",
+  "alts": [
+   "fairplay"
+  ],
+  "easy": "Sportsmanship in a game",
+  "hard": "Sticking to the rules and being sporting"
+ },
+ {
+  "a": "ROLE",
+  "b": "PLAY",
+  "text": "role-play",
+  "alts": [
+   "role play",
+   "roleplay"
+  ],
+  "easy": "Acting out a scenario",
+  "hard": "Practising an interview by pretending"
+ },
+ {
+  "a": "SCREEN",
+  "b": "PLAY",
+  "text": "screenplay",
+  "alts": [
+   "screen play"
+  ],
+  "easy": "Script of a film",
+  "hard": "What a scriptwriter delivers"
+ },
+ {
+  "a": "FOUL",
+  "b": "PLAY",
+  "text": "foul play",
+  "alts": [
+   "foulplay"
+  ],
+  "easy": "Criminal violence or cheating",
+  "hard": "Police suspect it in a death"
+ },
+ {
+  "a": "PLAY",
+  "b": "GROUND",
+  "text": "playground",
+  "alts": [
+   "play ground"
+  ],
+  "easy": "Area with swings and slides",
+  "hard": "The school break-time space"
+ },
+ {
+  "a": "PLAY",
+  "b": "MATE",
+  "text": "playmate",
+  "alts": [
+   "play mate"
+  ],
+  "easy": "Child's companion in games",
+  "hard": "Friend you build forts with"
+ },
+ {
+  "a": "PLAY",
+  "b": "BOY",
+  "text": "playboy",
+  "alts": [
+   "play boy"
+  ],
+  "easy": "A rich, pleasure-seeking man",
+  "hard": "Wealthy womaniser with a yacht"
+ },
+ {
+  "a": "PLAY",
+  "b": "GROUP",
+  "text": "playgroup",
+  "alts": [
+   "play group"
+  ],
+  "easy": "An informal preschool session",
+  "hard": "Toddler gathering in a church hall"
+ },
+ {
+  "a": "PLAY",
+  "b": "OFF",
+  "text": "play-off",
+  "alts": [
+   "play off",
+   "playoff"
+  ],
+  "easy": "Extra match to decide a winner",
+  "hard": "A post-season knockout contest"
+ },
+ {
+  "a": "PLAY",
+  "b": "LIST",
+  "text": "playlist",
+  "alts": [
+   "play list"
+  ],
+  "easy": "Selection of songs queued up in order",
+  "hard": "Your running mix on Spotify"
+ },
+ {
+  "a": "PLAY",
+  "b": "PEN",
+  "text": "playpen",
+  "alts": [
+   "play pen"
+  ],
+  "easy": "Enclosure for a toddler",
+  "hard": "Baby cage in the lounge"
+ },
+ {
+  "a": "PLAY",
+  "b": "WRIGHT",
+  "text": "playwright",
+  "alts": [
+   "play wright"
+  ],
+  "easy": "An author of dramas",
+  "hard": "Shakespeare's profession, or Arthur Miller's"
+ },
+ {
+  "a": "FAIR",
+  "b": "GROUND",
+  "text": "fairground",
+  "alts": [
+   "fair ground"
+  ],
+  "easy": "Site of rides and candyfloss",
+  "hard": "Where the dodgems are"
+ },
+ {
+  "a": "VIDEO",
+  "b": "GAME",
+  "text": "video game",
+  "alts": [
+   "videogame"
+  ],
+  "easy": "Electronic entertainment on a console",
+  "hard": "Mario or Fortnite, for example"
+ },
+ {
+  "a": "END",
+  "b": "GAME",
+  "text": "endgame",
+  "alts": [
+   "end game"
+  ],
+  "easy": "Final stage of a chess match",
+  "hard": "Last phase of a strategy"
+ },
+ {
+  "a": "FAIR",
+  "b": "GAME",
+  "text": "fair game",
+  "alts": [
+   "fairgame"
+  ],
+  "easy": "Legitimate target for criticism",
+  "hard": "Anyone in public life is considered this"
+ },
+ {
+  "a": "WAITING",
+  "b": "GAME",
+  "text": "waiting game",
+  "alts": [
+   "waitinggame"
+  ],
+  "easy": "Strategy of holding out",
+  "hard": "Patience as a tactic"
+ },
+ {
+  "a": "GAME",
+  "b": "SHOW",
+  "text": "game show",
+  "alts": [
+   "gameshow"
+  ],
+  "easy": "TV quiz with prizes",
+  "hard": "Who Wants to Be a Millionaire, for example"
+ },
+ {
+  "a": "GAME",
+  "b": "PLAN",
+  "text": "game plan",
+  "alts": [
+   "gameplan"
+  ],
+  "easy": "A strategy for winning",
+  "hard": "The coach's tactics before the match"
+ },
+ {
+  "a": "GAME",
+  "b": "KEEPER",
+  "text": "gamekeeper",
+  "alts": [
+   "game keeper"
+  ],
+  "easy": "Person who looks after an estate's wildlife",
+  "hard": "Poachers' enemy on a country estate"
+ },
+ {
+  "a": "BATH",
+  "b": "ROOM",
+  "text": "bathroom",
+  "alts": [
+   "bath room"
+  ],
+  "easy": "Space with a tub and toilet",
+  "hard": "Where you brush your teeth"
+ },
+ {
+  "a": "BED",
+  "b": "ROOM",
+  "text": "bedroom",
+  "alts": [
+   "bed room"
+  ],
+  "easy": "Where you sleep at night",
+  "hard": "Sanctuary with a wardrobe"
+ },
+ {
+  "a": "CLASS",
+  "b": "ROOM",
+  "text": "classroom",
+  "alts": [
+   "class room"
+  ],
+  "easy": "Where lessons are taught",
+  "hard": "Desks and a whiteboard"
+ },
+ {
+  "a": "CHAT",
+  "b": "ROOM",
+  "text": "chat room",
+  "alts": [
+   "chatroom"
+  ],
+  "easy": "Online space for discussions",
+  "hard": "Early internet hangout for strangers"
+ },
+ {
+  "a": "SHOW",
+  "b": "ROOM",
+  "text": "showroom",
+  "alts": [
+   "show room"
+  ],
+  "easy": "Shop displaying cars or furniture",
+  "hard": "Where you test the sofas"
+ },
+ {
+  "a": "STORE",
+  "b": "ROOM",
+  "text": "storeroom",
+  "alts": [
+   "store room"
+  ],
+  "easy": "A space for keeping supplies",
+  "hard": "A walk-in cupboard full of stock"
+ },
+ {
+  "a": "LIVING",
+  "b": "ROOM",
+  "text": "living room",
+  "alts": [
+   "livingroom"
+  ],
+  "easy": "Lounge with the sofa and TV",
+  "hard": "Where the family relaxes"
+ },
+ {
+  "a": "DINING",
+  "b": "ROOM",
+  "text": "dining room",
+  "alts": [
+   "diningroom"
+  ],
+  "easy": "Where formal meals are eaten",
+  "hard": "Where the big table and best china live"
+ },
+ {
+  "a": "WAITING",
+  "b": "ROOM",
+  "text": "waiting room",
+  "alts": [
+   "waitingroom"
+  ],
+  "easy": "Lobby at a surgery",
+  "hard": "Where you read old magazines before the doctor"
+ },
+ {
+  "a": "LEG",
+  "b": "ROOM",
+  "text": "legroom",
+  "alts": [
+   "leg room"
+  ],
+  "easy": "Space for your knees on a plane",
+  "hard": "Tall passengers pay for extra"
+ },
+ {
+  "a": "ROOM",
+  "b": "MATE",
+  "text": "roommate",
+  "alts": [
+   "room mate"
+  ],
+  "easy": "Person you share sleeping quarters with",
+  "hard": "Dorm companion at college"
+ },
+ {
+  "a": "ROOM",
+  "b": "SERVICE",
+  "text": "room service",
+  "alts": [
+   "roomservice"
+  ],
+  "easy": "Hotel meals delivered to your door",
+  "hard": "Breakfast in bed at a hotel"
+ },
+ {
+  "a": "FLOWER",
+  "b": "BED",
+  "text": "flowerbed",
+  "alts": [
+   "flower bed"
+  ],
+  "easy": "Garden patch for blooms",
+  "hard": "Where tulips are planted"
+ },
+ {
+  "a": "SICK",
+  "b": "BED",
+  "text": "sickbed",
+  "alts": [
+   "sick bed"
+  ],
+  "easy": "Where an invalid lies",
+  "hard": "A patient's resting place"
+ },
+ {
+  "a": "HOT",
+  "b": "BED",
+  "text": "hotbed",
+  "alts": [
+   "hot bed"
+  ],
+  "easy": "Place where something thrives",
+  "hard": "Breeding ground for unrest"
+ },
+ {
+  "a": "RIVER",
+  "b": "BED",
+  "text": "riverbed",
+  "alts": [
+   "river bed"
+  ],
+  "easy": "Bottom of a stream",
+  "hard": "Dry in a drought"
+ },
+ {
+  "a": "BUNK",
+  "b": "BED",
+  "text": "bunk bed",
+  "alts": [
+   "bunkbed"
+  ],
+  "easy": "Stacked sleeping frames for kids",
+  "hard": "Kids fight over the top one"
+ },
+ {
+  "a": "SOFA",
+  "b": "BED",
+  "text": "sofa bed",
+  "alts": [
+   "sofabed"
+  ],
+  "easy": "Couch that unfolds for guests",
+  "hard": "Folding sleeper in a spare room"
+ },
+ {
+  "a": "BED",
+  "b": "ROCK",
+  "text": "bedrock",
+  "alts": [
+   "bed rock"
+  ],
+  "easy": "A solid foundation",
+  "hard": "Underlying principles of a belief"
+ },
+ {
+  "a": "BED",
+  "b": "SIT",
+  "text": "bedsit",
+  "alts": [
+   "bed sit"
+  ],
+  "easy": "A one-room rented flat",
+  "hard": "A student's tiny studio"
+ },
+ {
+  "a": "BED",
+  "b": "SPREAD",
+  "text": "bedspread",
+  "alts": [
+   "bed spread"
+  ],
+  "easy": "Decorative cover on a mattress",
+  "hard": "Quilt laid over the duvet"
+ },
+ {
+  "a": "BED",
+  "b": "BUG",
+  "text": "bedbug",
+  "alts": [
+   "bed bug"
+  ],
+  "easy": "Biting insect in mattresses",
+  "hard": "Don't let them bite"
+ },
+ {
+  "a": "BED",
+  "b": "PAN",
+  "text": "bedpan",
+  "alts": [
+   "bed pan"
+  ],
+  "easy": "Hospital toilet for patients who can't get up",
+  "hard": "Unpleasant item a nurse empties"
+ },
+ {
+  "a": "BED",
+  "b": "SHEET",
+  "text": "bedsheet",
+  "alts": [
+   "bed sheet"
+  ],
+  "easy": "Linen on a mattress",
+  "hard": "Cotton layer you sleep on"
+ },
+ {
+  "a": "BIRTH",
+  "b": "DAY",
+  "text": "birthday",
+  "alts": [
+   "birth day"
+  ],
+  "easy": "Annual celebration of being born",
+  "hard": "Candles and cake each year"
+ },
+ {
+  "a": "WEEK",
+  "b": "DAY",
+  "text": "weekday",
+  "alts": [
+   "week day"
+  ],
+  "easy": "Any one from Monday to Friday",
+  "hard": "Not Saturday or Sunday, but a working one"
+ },
+ {
+  "a": "DOOMS",
+  "b": "DAY",
+  "text": "doomsday",
+  "alts": [
+   "dooms day"
+  ],
+  "easy": "End of the world",
+  "hard": "Apocalyptic judgement at the end of time"
+ },
+ {
+  "a": "MID",
+  "b": "DAY",
+  "text": "midday",
+  "alts": [
+   "mid day"
+  ],
+  "easy": "Noon, twelve o'clock",
+  "hard": "When the clock strikes twelve"
+ },
+ {
+  "a": "PAY",
+  "b": "DAY",
+  "text": "payday",
+  "alts": [
+   "pay day"
+  ],
+  "easy": "When your monthly wages arrive",
+  "hard": "When the monthly wages finally arrive"
+ },
+ {
+  "a": "DAY",
+  "b": "DREAM",
+  "text": "daydream",
+  "alts": [
+   "day dream"
+  ],
+  "easy": "A pleasant waking fantasy",
+  "hard": "What you do staring out of the window"
+ },
+ {
+  "a": "DAY",
+  "b": "BREAK",
+  "text": "daybreak",
+  "alts": [
+   "day break"
+  ],
+  "easy": "Dawn, first light",
+  "hard": "The first light of morning"
+ },
+ {
+  "a": "DAY",
+  "b": "TRIP",
+  "text": "day trip",
+  "alts": [
+   "daytrip"
+  ],
+  "easy": "Excursion with no overnight stay",
+  "hard": "Outing to the coast and back"
+ },
+ {
+  "a": "DAY",
+  "b": "BED",
+  "text": "daybed",
+  "alts": [
+   "day bed"
+  ],
+  "easy": "A couch for lounging",
+  "hard": "A sofa that doubles as a resting spot"
+ },
+ {
+  "a": "MID",
+  "b": "NIGHT",
+  "text": "midnight",
+  "alts": [
+   "mid night"
+  ],
+  "easy": "Twelve o'clock after dark",
+  "hard": "When Cinderella's coach turns back"
+ },
+ {
+  "a": "FORT",
+  "b": "NIGHT",
+  "text": "fortnight",
+  "alts": [
+   "fort night"
+  ],
+  "easy": "A period of two weeks",
+  "hard": "A period of fourteen days"
+ },
+ {
+  "a": "OVER",
+  "b": "NIGHT",
+  "text": "overnight",
+  "alts": [
+   "over night"
+  ],
+  "easy": "Through the hours of darkness",
+  "hard": "A sudden success happens like this"
+ },
+ {
+  "a": "LATE",
+  "b": "NIGHT",
+  "text": "late-night",
+  "alts": [
+   "late night",
+   "latenight"
+  ],
+  "easy": "Happening in the small hours",
+  "hard": "Like a chat show after the news"
+ },
+ {
+  "a": "NIGHT",
+  "b": "CLUB",
+  "text": "nightclub",
+  "alts": [
+   "night club"
+  ],
+  "easy": "Venue for dancing until dawn",
+  "hard": "Bouncers guard its door"
+ },
+ {
+  "a": "NIGHT",
+  "b": "MARE",
+  "text": "nightmare",
+  "alts": [
+   "night mare"
+  ],
+  "easy": "A frightening dream",
+  "hard": "A terrible, awful experience"
+ },
+ {
+  "a": "NIGHT",
+  "b": "GOWN",
+  "text": "nightgown",
+  "alts": [
+   "night gown"
+  ],
+  "easy": "Long garment worn in bed",
+  "hard": "Victorian sleeping attire for ladies"
+ },
+ {
+  "a": "NIGHT",
+  "b": "FALL",
+  "text": "nightfall",
+  "alts": [
+   "night fall"
+  ],
+  "easy": "Dusk, when it gets dark",
+  "hard": "When darkness descends on the land"
+ },
+ {
+  "a": "NIGHT",
+  "b": "SHIFT",
+  "text": "night shift",
+  "alts": [
+   "nightshift"
+  ],
+  "easy": "Working hours while others sleep",
+  "hard": "Graveyard hours at a factory"
+ },
+ {
+  "a": "NIGHT",
+  "b": "LIFE",
+  "text": "nightlife",
+  "alts": [
+   "night life"
+  ],
+  "easy": "Bars and clubs in a city",
+  "hard": "What Ibiza is famous for"
+ },
+ {
+  "a": "NIGHT",
+  "b": "CAP",
+  "text": "nightcap",
+  "alts": [
+   "night cap"
+  ],
+  "easy": "A drink before bed",
+  "hard": "A last whisky before sleep"
+ },
+ {
+  "a": "NIGHT",
+  "b": "OWL",
+  "text": "night owl",
+  "alts": [
+   "nightowl"
+  ],
+  "easy": "Person who stays up late",
+  "hard": "The opposite of an early riser"
+ },
+ {
+  "a": "GOLF",
+  "b": "CLUB",
+  "text": "golf club",
+  "alts": [
+   "golfclub"
+  ],
+  "easy": "Iron or wood used on a course",
+  "hard": "Iron or wood carried by a caddie"
+ },
+ {
+  "a": "FAN",
+  "b": "CLUB",
+  "text": "fan club",
+  "alts": [
+   "fanclub"
+  ],
+  "easy": "Society of devoted admirers",
+  "hard": "Group devoted to a boy band"
+ },
+ {
+  "a": "CLUB",
+  "b": "SANDWICH",
+  "text": "club sandwich",
+  "alts": [
+   "clubsandwich"
+  ],
+  "easy": "Triple-decker bread snack with bacon",
+  "hard": "Toothpick-skewered lunch with bacon"
+ },
+ {
+  "a": "SWEET",
+  "b": "SHOP",
+  "text": "sweet shop",
+  "alts": [
+   "sweetshop"
+  ],
+  "easy": "A store selling candy",
+  "hard": "Jars of pick and mix"
+ },
+ {
+  "a": "TEA",
+  "b": "SHOP",
+  "text": "tea shop",
+  "alts": [
+   "teashop"
+  ],
+  "easy": "Café serving scones and cuppas",
+  "hard": "Genteel spot for afternoon refreshment"
+ },
+ {
+  "a": "GIFT",
+  "b": "SHOP",
+  "text": "gift shop",
+  "alts": [
+   "giftshop"
+  ],
+  "easy": "A store selling souvenirs",
+  "hard": "Where every museum exits"
+ },
+ {
+  "a": "PET",
+  "b": "SHOP",
+  "text": "pet shop",
+  "alts": [
+   "petshop"
+  ],
+  "easy": "Store selling hamsters and fish",
+  "hard": "Where you buy a goldfish bowl"
+ },
+ {
+  "a": "CHIP",
+  "b": "SHOP",
+  "text": "chip shop",
+  "alts": [
+   "chipshop"
+  ],
+  "easy": "Takeaway selling battered cod and fries",
+  "hard": "The chippy, where cod comes battered"
+ },
+ {
+  "a": "SHOP",
+  "b": "LIFT",
+  "text": "shoplift",
+  "alts": [
+   "shop lift"
+  ],
+  "easy": "Steal from a store",
+  "hard": "Pocket goods without paying"
+ },
+ {
+  "a": "SHOP",
+  "b": "KEEPER",
+  "text": "shopkeeper",
+  "alts": [
+   "shop keeper"
+  ],
+  "easy": "Owner of a small store",
+  "hard": "Mr Benn's fez seller"
+ },
+ {
+  "a": "SHOP",
+  "b": "FLOOR",
+  "text": "shop floor",
+  "alts": [
+   "shopfloor"
+  ],
+  "easy": "The factory production area",
+  "hard": "Where the workers are"
+ },
+ {
+  "a": "CAR",
+  "b": "PARK",
+  "text": "car park",
+  "alts": [
+   "carpark"
+  ],
+  "easy": "Place to leave your vehicle",
+  "hard": "A multi-storey place to leave your motor"
+ },
+ {
+  "a": "THEME",
+  "b": "PARK",
+  "text": "theme park",
+  "alts": [
+   "themepark"
+  ],
+  "easy": "Amusement complex with rides",
+  "hard": "Disney World, for one"
+ },
+ {
+  "a": "NATIONAL",
+  "b": "PARK",
+  "text": "national park",
+  "alts": [
+   "nationalpark"
+  ],
+  "easy": "A protected natural area",
+  "hard": "Yellowstone or the Lake District"
+ },
+ {
+  "a": "PARK",
+  "b": "LAND",
+  "text": "parkland",
+  "alts": [
+   "park land"
+  ],
+  "easy": "Grassy grounds of an estate",
+  "hard": "Open grounds with scattered trees"
+ },
+ {
+  "a": "PARK",
+  "b": "BENCH",
+  "text": "park bench",
+  "alts": [
+   "parkbench"
+  ],
+  "easy": "Seat in a public green space",
+  "hard": "Where pensioners feed pigeons"
+ },
+ {
+  "a": "BLUE",
+  "b": "BELL",
+  "text": "bluebell",
+  "alts": [
+   "blue bell"
+  ],
+  "easy": "A spring woodland flower",
+  "hard": "Carpets of violet in May woods"
+ },
+ {
+  "a": "COW",
+  "b": "BELL",
+  "text": "cowbell",
+  "alts": [
+   "cow bell"
+  ],
+  "easy": "Clanking alpine neckwear for cattle",
+  "hard": "Percussion that needs more of it"
+ },
+ {
+  "a": "DUMB",
+  "b": "BELL",
+  "text": "dumbbell",
+  "alts": [
+   "dumb bell"
+  ],
+  "easy": "Hand weight at the gym",
+  "hard": "Short bar with weights on each end"
+ },
+ {
+  "a": "BAR",
+  "b": "BELL",
+  "text": "barbell",
+  "alts": [
+   "bar bell"
+  ],
+  "easy": "Long weightlifting rod with plates",
+  "hard": "Loaded with plates for squats"
+ },
+ {
+  "a": "BELL",
+  "b": "BOY",
+  "text": "bellboy",
+  "alts": [
+   "bell boy"
+  ],
+  "easy": "A hotel porter",
+  "hard": "Young man carrying luggage"
+ },
+ {
+  "a": "BELL",
+  "b": "TOWER",
+  "text": "bell tower",
+  "alts": [
+   "belltower"
+  ],
+  "easy": "Belfry of a church",
+  "hard": "Where Quasimodo rang the chimes"
+ },
+ {
+  "a": "BELL",
+  "b": "HOP",
+  "text": "bellhop",
+  "alts": [
+   "bell hop"
+  ],
+  "easy": "Hotel porter in America",
+  "hard": "A uniformed luggage carrier"
+ },
+ {
+  "a": "COFFEE",
+  "b": "TABLE",
+  "text": "coffee table",
+  "alts": [
+   "coffeetable"
+  ],
+  "easy": "Low piece of furniture in the lounge",
+  "hard": "Where glossy books sit"
+ },
+ {
+  "a": "TURN",
+  "b": "TABLE",
+  "text": "turntable",
+  "alts": [
+   "turn table"
+  ],
+  "easy": "A record player platter",
+  "hard": "A DJ scratches on one"
+ },
+ {
+  "a": "ROUND",
+  "b": "TABLE",
+  "text": "round table",
+  "alts": [
+   "roundtable"
+  ],
+  "easy": "Discussion with equal participants",
+  "hard": "Arthur's knights sat at one"
+ },
+ {
+  "a": "TABLE",
+  "b": "CLOTH",
+  "text": "tablecloth",
+  "alts": [
+   "table cloth"
+  ],
+  "easy": "Covering for a dining surface",
+  "hard": "A magician whips it away"
+ },
+ {
+  "a": "TABLE",
+  "b": "SPOON",
+  "text": "tablespoon",
+  "alts": [
+   "table spoon"
+  ],
+  "easy": "A large measuring utensil",
+  "hard": "Recipe unit bigger than a tea one"
+ },
+ {
+  "a": "TABLE",
+  "b": "TENNIS",
+  "text": "table tennis",
+  "alts": [
+   "tabletennis"
+  ],
+  "easy": "Ping-pong, played indoors",
+  "hard": "Indoor bat-and-ball game over a small net"
+ },
+ {
+  "a": "TABLE",
+  "b": "TOP",
+  "text": "tabletop",
+  "alts": [
+   "table top"
+  ],
+  "easy": "Surface of a piece of furniture",
+  "hard": "A miniature game played at home"
+ },
+ {
+  "a": "LUNCH",
+  "b": "BOX",
+  "text": "lunchbox",
+  "alts": [
+   "lunch box"
+  ],
+  "easy": "Container for a packed meal",
+  "hard": "What a child takes to school"
+ },
+ {
+  "a": "POST",
+  "b": "BOX",
+  "text": "postbox",
+  "alts": [
+   "post box"
+  ],
+  "easy": "Red pillar for letters",
+  "hard": "Where you drop your mail"
+ },
+ {
+  "a": "JUKE",
+  "b": "BOX",
+  "text": "jukebox",
+  "alts": [
+   "juke box"
+  ],
+  "easy": "A coin-operated music machine",
+  "hard": "Diner machine playing hits"
+ },
+ {
+  "a": "SAND",
+  "b": "BOX",
+  "text": "sandbox",
+  "alts": [
+   "sand box"
+  ],
+  "easy": "A children's play pit",
+  "hard": "A safe testing area for code"
+ },
+ {
+  "a": "BALLOT",
+  "b": "BOX",
+  "text": "ballot box",
+  "alts": [
+   "ballotbox"
+  ],
+  "easy": "Container for votes in an election",
+  "hard": "Where democracy is decided"
+ },
+ {
+  "a": "SOAP",
+  "b": "BOX",
+  "text": "soapbox",
+  "alts": [
+   "soap box"
+  ],
+  "easy": "Platform for an impromptu speech",
+  "hard": "Where a ranter stands"
+ },
+ {
+  "a": "TOOL",
+  "b": "BOX",
+  "text": "toolbox",
+  "alts": [
+   "tool box"
+  ],
+  "easy": "Case of spanners and hammers",
+  "hard": "A handyman's kit of spanners"
+ },
+ {
+  "a": "SHOE",
+  "b": "BOX",
+  "text": "shoebox",
+  "alts": [
+   "shoe box"
+  ],
+  "easy": "Cardboard container for footwear",
+  "hard": "A tiny apartment, figuratively"
+ },
+ {
+  "a": "BOX",
+  "b": "ROOM",
+  "text": "box room",
+  "alts": [
+   "boxroom"
+  ],
+  "easy": "Tiny spare bedroom upstairs",
+  "hard": "The smallest sleeping space in the house"
+ },
+ {
+  "a": "BOX",
+  "b": "OFFICE",
+  "text": "box office",
+  "alts": [
+   "boxoffice"
+  ],
+  "easy": "Ticket window at a theatre",
+  "hard": "Where a hit film earns millions"
+ },
+ {
+  "a": "BOX",
+  "b": "SET",
+  "text": "box set",
+  "alts": [
+   "boxset"
+  ],
+  "easy": "Complete series of a TV show",
+  "hard": "Something to binge-watch all weekend"
+ },
+ {
+  "a": "BIRTH",
+  "b": "MARK",
+  "text": "birthmark",
+  "alts": [
+   "birth mark"
+  ],
+  "easy": "Patch of coloured skin present since infancy",
+  "hard": "Harry Potter's scar isn't one, but it's like it"
+ },
+ {
+  "a": "TRADE",
+  "b": "MARK",
+  "text": "trademark",
+  "alts": [
+   "trade mark"
+  ],
+  "easy": "A registered brand symbol",
+  "hard": "A signature feature of someone"
+ },
+ {
+  "a": "QUESTION",
+  "b": "MARK",
+  "text": "question mark",
+  "alts": [
+   "questionmark"
+  ],
+  "easy": "Punctuation at the end of a query",
+  "hard": "A curly symbol of doubt"
+ },
+ {
+  "a": "HALL",
+  "b": "MARK",
+  "text": "hallmark",
+  "alts": [
+   "hall mark"
+  ],
+  "easy": "Stamp on silver showing purity",
+  "hard": "A distinctive feature or characteristic"
+ },
+ {
+  "a": "BENCH",
+  "b": "MARK",
+  "text": "benchmark",
+  "alts": [
+   "bench mark"
+  ],
+  "easy": "A standard for comparison",
+  "hard": "A reference point to measure against"
+ },
+ {
+  "a": "TIDE",
+  "b": "MARK",
+  "text": "tidemark",
+  "alts": [
+   "tide mark"
+  ],
+  "easy": "Line left by high water",
+  "hard": "Ring around the bath"
+ },
+ {
+  "a": "MARK",
+  "b": "DOWN",
+  "text": "markdown",
+  "alts": [
+   "mark down"
+  ],
+  "easy": "A price reduction",
+  "hard": "A discount in the sales"
+ },
+ {
+  "a": "SPELL",
+  "b": "CHECK",
+  "text": "spellcheck",
+  "alts": [
+   "spell check"
+  ],
+  "easy": "Software that finds typos",
+  "hard": "Red squiggly underline in a document"
+ },
+ {
+  "a": "PAY",
+  "b": "CHECK",
+  "text": "paycheck",
+  "alts": [
+   "pay check"
+  ],
+  "easy": "A salary payment",
+  "hard": "What you live from"
+ },
+ {
+  "a": "CHECK",
+  "b": "MATE",
+  "text": "checkmate",
+  "alts": [
+   "check mate"
+  ],
+  "easy": "Winning move in chess",
+  "hard": "The king is trapped"
+ },
+ {
+  "a": "CHECK",
+  "b": "OUT",
+  "text": "checkout",
+  "alts": [
+   "check out"
+  ],
+  "easy": "Till at a supermarket",
+  "hard": "Where you pay at the supermarket"
+ },
+ {
+  "a": "CHECK",
+  "b": "LIST",
+  "text": "checklist",
+  "alts": [
+   "check list"
+  ],
+  "easy": "Items to tick off one by one",
+  "hard": "A pilot's pre-flight run-through"
+ },
+ {
+  "a": "CHECK",
+  "b": "UP",
+  "text": "checkup",
+  "alts": [
+   "check up"
+  ],
+  "easy": "A routine medical examination",
+  "hard": "An annual visit to the doctor"
+ },
+ {
+  "a": "CHECK",
+  "b": "IN",
+  "text": "check-in",
+  "alts": [
+   "check in",
+   "checkin"
+  ],
+  "easy": "Registration at a hotel or airport",
+  "hard": "Desk where you drop your bag"
+ },
+ {
+  "a": "CHAT",
+  "b": "SHOW",
+  "text": "chat show",
+  "alts": [
+   "chatshow"
+  ],
+  "easy": "TV programme with celebrity interviews",
+  "hard": "Graham Norton hosts one"
+ },
+ {
+  "a": "ROAD",
+  "b": "SHOW",
+  "text": "roadshow",
+  "alts": [
+   "road show"
+  ],
+  "easy": "Touring exhibition that travels between towns",
+  "hard": "Antiques appraisal programme on tour"
+ },
+ {
+  "a": "SLIDE",
+  "b": "SHOW",
+  "text": "slideshow",
+  "alts": [
+   "slide show"
+  ],
+  "easy": "Sequence of images projected",
+  "hard": "Holiday photos presented on a projector"
+ },
+ {
+  "a": "TALK",
+  "b": "SHOW",
+  "text": "talk show",
+  "alts": [
+   "talkshow"
+  ],
+  "easy": "Interview programme on TV",
+  "hard": "Oprah's genre of television"
+ },
+ {
+  "a": "SHOW",
+  "b": "CASE",
+  "text": "showcase",
+  "alts": [
+   "show case"
+  ],
+  "easy": "A display of talents",
+  "hard": "A glass display cabinet"
+ },
+ {
+  "a": "SHOW",
+  "b": "DOWN",
+  "text": "showdown",
+  "alts": [
+   "show down"
+  ],
+  "easy": "A final confrontation",
+  "hard": "Gunfight at high noon"
+ },
+ {
+  "a": "SHOW",
+  "b": "BUSINESS",
+  "text": "show business",
+  "alts": [
+   "showbusiness"
+  ],
+  "easy": "The entertainment industry as a whole",
+  "hard": "There's no trade like it, sang Ethel Merman"
+ },
+ {
+  "a": "SHOW",
+  "b": "TIME",
+  "text": "showtime",
+  "alts": [
+   "show time"
+  ],
+  "easy": "When a performance begins",
+  "hard": "Curtains up, the performance begins"
+ },
+ {
+  "a": "SHOW",
+  "b": "GIRL",
+  "text": "showgirl",
+  "alts": [
+   "show girl"
+  ],
+  "easy": "Feathered dancer in Vegas",
+  "hard": "Copacabana's Lola was one"
+ },
+ {
+  "a": "HOT",
+  "b": "SPRING",
+  "text": "hot spring",
+  "alts": [
+   "hotspring"
+  ],
+  "easy": "A natural warm pool",
+  "hard": "A Japanese onsen's source"
+ },
+ {
+  "a": "OFF",
+  "b": "SPRING",
+  "text": "offspring",
+  "alts": [
+   "off spring"
+  ],
+  "easy": "Children or young of a parent",
+  "hard": "Young of a parent"
+ },
+ {
+  "a": "SPRING",
+  "b": "CLEAN",
+  "text": "spring clean",
+  "alts": [
+   "springclean"
+  ],
+  "easy": "Thorough tidy of the house",
+  "hard": "Annual purge of clutter"
+ },
+ {
+  "a": "SPRING",
+  "b": "ROLL",
+  "text": "spring roll",
+  "alts": [
+   "springroll"
+  ],
+  "easy": "Crispy fried Chinese starter",
+  "hard": "Rolled pastry filled with vegetables"
+ },
+ {
+  "a": "SPRING",
+  "b": "WATER",
+  "text": "spring water",
+  "alts": [
+   "springwater"
+  ],
+  "easy": "A bottled mineral drink",
+  "hard": "Pure liquid bubbling up from underground"
+ },
+ {
+  "a": "SWEET",
+  "b": "TOOTH",
+  "text": "sweet tooth",
+  "alts": [
+   "sweettooth"
+  ],
+  "easy": "Craving for sugary treats",
+  "hard": "Why you can't resist dessert"
+ },
+ {
+  "a": "WISDOM",
+  "b": "TOOTH",
+  "text": "wisdom tooth",
+  "alts": [
+   "wisdomtooth"
+  ],
+  "easy": "Molar that often needs removing",
+  "hard": "Last one to come through, in your late teens"
+ },
+ {
+  "a": "TOOTH",
+  "b": "BRUSH",
+  "text": "toothbrush",
+  "alts": [
+   "tooth brush"
+  ],
+  "easy": "Bristled stick for cleaning your teeth",
+  "hard": "Used twice daily over the sink"
+ },
+ {
+  "a": "TOOTH",
+  "b": "PASTE",
+  "text": "toothpaste",
+  "alts": [
+   "tooth paste"
+  ],
+  "easy": "Minty gel squeezed from a tube",
+  "hard": "Hard to put back once it's out"
+ },
+ {
+  "a": "TOOTH",
+  "b": "PICK",
+  "text": "toothpick",
+  "alts": [
+   "tooth pick"
+  ],
+  "easy": "Little wooden stick for cleaning between teeth",
+  "hard": "Skewer holding a club sandwich together"
+ },
+ {
+  "a": "TOOTH",
+  "b": "ACHE",
+  "text": "toothache",
+  "alts": [
+   "tooth ache"
+  ],
+  "easy": "Pain in a molar",
+  "hard": "Why you call the dentist urgently"
+ },
+ {
+  "a": "TOOTH",
+  "b": "FAIRY",
+  "text": "tooth fairy",
+  "alts": [
+   "toothfairy"
+  ],
+  "easy": "Night visitor who leaves coins under pillows",
+  "hard": "Childhood myth that buys milk teeth"
+ },
+ {
+  "a": "HAIR",
+  "b": "BRUSH",
+  "text": "hairbrush",
+  "alts": [
+   "hair brush"
+  ],
+  "easy": "Bristled tool for untangling locks",
+  "hard": "What you drag through tangles each morning"
+ },
+ {
+  "a": "PAINT",
+  "b": "BRUSH",
+  "text": "paintbrush",
+  "alts": [
+   "paint brush"
+  ],
+  "easy": "Tool for applying colour to canvas",
+  "hard": "An artist dips it in oils"
+ },
+ {
+  "a": "BRUSH",
+  "b": "WOOD",
+  "text": "brushwood",
+  "alts": [
+   "brush wood"
+  ],
+  "easy": "Broken twigs and branches",
+  "hard": "Kindling gathered in a forest"
+ },
+ {
+  "a": "HAIR",
+  "b": "CUT",
+  "text": "haircut",
+  "alts": [
+   "hair cut"
+  ],
+  "easy": "Trim at the barber's",
+  "hard": "A new look from the salon"
+ },
+ {
+  "a": "HAIR",
+  "b": "SPRAY",
+  "text": "hairspray",
+  "alts": [
+   "hair spray"
+  ],
+  "easy": "Aerosol that holds a style",
+  "hard": "Sticky mist for big 80s styles"
+ },
+ {
+  "a": "HAIR",
+  "b": "DRYER",
+  "text": "hairdryer",
+  "alts": [
+   "hair dryer"
+  ],
+  "easy": "Blower for drying locks",
+  "hard": "Noisy appliance after a shower"
+ },
+ {
+  "a": "HAIR",
+  "b": "PIN",
+  "text": "hairpin",
+  "alts": [
+   "hair pin"
+  ],
+  "easy": "Clip holding a bun in place",
+  "hard": "A very tight bend on a mountain road"
+ },
+ {
+  "a": "HAIR",
+  "b": "STYLE",
+  "text": "hairstyle",
+  "alts": [
+   "hair style"
+  ],
+  "easy": "Way locks are cut and arranged",
+  "hard": "A bob or a mohican"
+ },
+ {
+  "a": "HAIR",
+  "b": "DRESSER",
+  "text": "hairdresser",
+  "alts": [
+   "hair dresser"
+  ],
+  "easy": "Stylist at a salon",
+  "hard": "Person you chat to about holidays while they snip"
+ },
+ {
+  "a": "HAIR",
+  "b": "BAND",
+  "text": "hairband",
+  "alts": [
+   "hair band"
+  ],
+  "easy": "Elastic for a ponytail",
+  "hard": "Scrunchie, more or less"
+ },
+ {
+  "a": "HAIR",
+  "b": "NET",
+  "text": "hairnet",
+  "alts": [
+   "hair net"
+  ],
+  "easy": "Mesh worn by dinner ladies",
+  "hard": "Kitchen hygiene headwear for dinner ladies"
+ },
+ {
+  "a": "FISH",
+  "b": "NET",
+  "text": "fishnet",
+  "alts": [
+   "fish net"
+  ],
+  "easy": "Mesh used for catching mackerel",
+  "hard": "Stockings with a diamond pattern"
+ },
+ {
+  "a": "SAFETY",
+  "b": "NET",
+  "text": "safety net",
+  "alts": [
+   "safetynet"
+  ],
+  "easy": "Mesh under a trapeze artist",
+  "hard": "A financial fallback in hard times"
+ },
+ {
+  "a": "ICE",
+  "b": "CREAM",
+  "text": "ice cream",
+  "alts": [
+   "icecream"
+  ],
+  "easy": "Frozen dessert in a cone",
+  "hard": "A summer treat from a van"
+ },
+ {
+  "a": "ICE",
+  "b": "CUBE",
+  "text": "ice cube",
+  "alts": [
+   "icecube"
+  ],
+  "easy": "Frozen square in a drink",
+  "hard": "It clinks in a glass of cola"
+ },
+ {
+  "a": "ICE",
+  "b": "BERG",
+  "text": "iceberg",
+  "alts": [
+   "ice berg"
+  ],
+  "easy": "Floating mass that sank the Titanic",
+  "hard": "Only its tip is visible"
+ },
+ {
+  "a": "ICE",
+  "b": "SKATE",
+  "text": "ice skate",
+  "alts": [
+   "iceskate"
+  ],
+  "easy": "Bladed boot for a rink",
+  "hard": "Footwear for gliding on a frozen lake"
+ },
+ {
+  "a": "ICE",
+  "b": "BOX",
+  "text": "icebox",
+  "alts": [
+   "ice box"
+  ],
+  "easy": "An old-fashioned fridge",
+  "hard": "Cold chest for food"
+ },
+ {
+  "a": "ICE",
+  "b": "CAP",
+  "text": "ice cap",
+  "alts": [
+   "icecap"
+  ],
+  "easy": "Frozen covering at a pole",
+  "hard": "It's melting due to global warming"
+ },
+ {
+  "a": "ICE",
+  "b": "AGE",
+  "text": "ice age",
+  "alts": [
+   "iceage"
+  ],
+  "easy": "Era of glaciers covering the earth",
+  "hard": "When mammoths roamed the frozen earth"
+ },
+ {
+  "a": "ICE",
+  "b": "PACK",
+  "text": "ice pack",
+  "alts": [
+   "icepack"
+  ],
+  "easy": "Cold compress for an injury",
+  "hard": "Frozen peas will do as one"
+ },
+ {
+  "a": "DRY",
+  "b": "ICE",
+  "text": "dry ice",
+  "alts": [
+   "dryice"
+  ],
+  "easy": "Frozen carbon dioxide for stage smoke",
+  "hard": "Foggy effect at a concert"
+ },
+ {
+  "a": "BLACK",
+  "b": "ICE",
+  "text": "black ice",
+  "alts": [
+   "blackice"
+  ],
+  "easy": "Invisible frozen layer on roads",
+  "hard": "Treacherous winter driving hazard"
+ },
+ {
+  "a": "WHIPPED",
+  "b": "CREAM",
+  "text": "whipped cream",
+  "alts": [
+   "whippedcream"
+  ],
+  "easy": "Fluffy topping on desserts",
+  "hard": "Squirted from a can onto a sundae"
+ },
+ {
+  "a": "SOUR",
+  "b": "CREAM",
+  "text": "sour cream",
+  "alts": [
+   "sourcream"
+  ],
+  "easy": "Tangy dip for nachos",
+  "hard": "Dollop on a baked potato with chives"
+ },
+ {
+  "a": "SUN",
+  "b": "CREAM",
+  "text": "sun cream",
+  "alts": [
+   "suncream"
+  ],
+  "easy": "Lotion that stops burning",
+  "hard": "What you rub on at the beach"
+ },
+ {
+  "a": "CREAM",
+  "b": "CHEESE",
+  "text": "cream cheese",
+  "alts": [
+   "creamcheese"
+  ],
+  "easy": "Soft spread for bagels",
+  "hard": "What Philadelphia makes, essentially"
+ },
+ {
+  "a": "CREAM",
+  "b": "TEA",
+  "text": "cream tea",
+  "alts": [
+   "creamtea"
+  ],
+  "easy": "Scones with jam and clotted topping",
+  "hard": "Devon versus Cornwall argue about it"
+ },
+ {
+  "a": "CREAM",
+  "b": "PUFF",
+  "text": "cream puff",
+  "alts": [
+   "creampuff"
+  ],
+  "easy": "Choux pastry filled with sweet filling",
+  "hard": "A soft weakling, idiomatically"
+ },
+ {
+  "a": "COTTAGE",
+  "b": "CHEESE",
+  "text": "cottage cheese",
+  "alts": [
+   "cottagecheese"
+  ],
+  "easy": "Lumpy white dairy curds",
+  "hard": "Dieters eat it with fruit"
+ },
+ {
+  "a": "BLUE",
+  "b": "CHEESE",
+  "text": "blue cheese",
+  "alts": [
+   "bluecheese"
+  ],
+  "easy": "Veined dairy like Stilton",
+  "hard": "Pungent mouldy dairy like Roquefort"
+ },
+ {
+  "a": "CHEESE",
+  "b": "BOARD",
+  "text": "cheeseboard",
+  "alts": [
+   "cheese board"
+  ],
+  "easy": "Platter of brie and cheddar",
+  "hard": "Served with crackers after dinner"
+ },
+ {
+  "a": "CHEESE",
+  "b": "BURGER",
+  "text": "cheeseburger",
+  "alts": [
+   "cheese burger"
+  ],
+  "easy": "Patty with melted slice in a bun",
+  "hard": "A fast food classic with a slice"
+ },
+ {
+  "a": "CHEESE",
+  "b": "CLOTH",
+  "text": "cheesecloth",
+  "alts": [
+   "cheese cloth"
+  ],
+  "easy": "Loose, gauzy cotton fabric",
+  "hard": "Fabric used to strain curds"
+ },
+ {
+  "a": "GREEN",
+  "b": "TEA",
+  "text": "green tea",
+  "alts": [
+   "greentea"
+  ],
+  "easy": "An unfermented Asian brew",
+  "hard": "Matcha is a powdered form"
+ },
+ {
+  "a": "HIGH",
+  "b": "TEA",
+  "text": "high tea",
+  "alts": [
+   "hightea"
+  ],
+  "easy": "Evening meal with cakes",
+  "hard": "An elaborate afternoon spread"
+ },
+ {
+  "a": "ICED",
+  "b": "TEA",
+  "text": "iced tea",
+  "alts": [
+   "icedtea"
+  ],
+  "easy": "Chilled brew with lemon",
+  "hard": "Southern refreshment on a porch"
+ },
+ {
+  "a": "TEA",
+  "b": "POT",
+  "text": "teapot",
+  "alts": [
+   "tea pot"
+  ],
+  "easy": "Vessel for brewing a cuppa",
+  "hard": "Short and stout in a nursery rhyme"
+ },
+ {
+  "a": "TEA",
+  "b": "CUP",
+  "text": "teacup",
+  "alts": [
+   "tea cup"
+  ],
+  "easy": "Small china vessel with a saucer",
+  "hard": "A storm in one is a fuss over nothing"
+ },
+ {
+  "a": "TEA",
+  "b": "SPOON",
+  "text": "teaspoon",
+  "alts": [
+   "tea spoon"
+  ],
+  "easy": "A small stirring utensil",
+  "hard": "Recipe measure smaller than a table one"
+ },
+ {
+  "a": "TEA",
+  "b": "BAG",
+  "text": "teabag",
+  "alts": [
+   "tea bag"
+  ],
+  "easy": "Porous pouch you dunk in hot water",
+  "hard": "What you squeeze against the mug"
+ },
+ {
+  "a": "TEA",
+  "b": "TOWEL",
+  "text": "tea towel",
+  "alts": [
+   "teatowel"
+  ],
+  "easy": "Cloth for drying dishes",
+  "hard": "Souvenir with a map on it"
+ },
+ {
+  "a": "TEA",
+  "b": "PARTY",
+  "text": "tea party",
+  "alts": [
+   "teaparty"
+  ],
+  "easy": "Afternoon gathering with cakes",
+  "hard": "Mad Hatter's event; also Boston's protest"
+ },
+ {
+  "a": "TEA",
+  "b": "ROOM",
+  "text": "tearoom",
+  "alts": [
+   "tea room"
+  ],
+  "easy": "Café serving cuppas and scones",
+  "hard": "A genteel refreshment spot"
+ },
+ {
+  "a": "TEA",
+  "b": "SET",
+  "text": "tea set",
+  "alts": [
+   "teaset"
+  ],
+  "easy": "Matching pot, cups and saucers",
+  "hard": "China service for guests"
+ },
+ {
+  "a": "TEA",
+  "b": "LEAF",
+  "text": "tea leaf",
+  "alts": [
+   "tealeaf"
+  ],
+  "easy": "Brewed fragment that fortune tellers read",
+  "hard": "Cockney slang for thief"
+ },
+ {
+  "a": "CRACK",
+  "b": "POT",
+  "text": "crackpot",
+  "alts": [
+   "crack pot"
+  ],
+  "easy": "Eccentric person with crazy ideas",
+  "hard": "A nutty inventor with wild schemes"
+ },
+ {
+  "a": "JACK",
+  "b": "POT",
+  "text": "jackpot",
+  "alts": [
+   "jack pot"
+  ],
+  "easy": "Top prize in a lottery",
+  "hard": "What a slot machine pays out"
+ },
+ {
+  "a": "FLOWER",
+  "b": "POT",
+  "text": "flowerpot",
+  "alts": [
+   "flower pot"
+  ],
+  "easy": "Terracotta container for plants",
+  "hard": "Bill and Ben lived in one"
+ },
+ {
+  "a": "HOT",
+  "b": "POT",
+  "text": "hotpot",
+  "alts": [
+   "hot pot"
+  ],
+  "easy": "Lancashire stew topped with potatoes",
+  "hard": "A slow-cooked lamb casserole"
+ },
+ {
+  "a": "POT",
+  "b": "HOLE",
+  "text": "pothole",
+  "alts": [
+   "pot hole"
+  ],
+  "easy": "Crater in a road surface",
+  "hard": "It jolts your car"
+ },
+ {
+  "a": "POT",
+  "b": "LUCK",
+  "text": "potluck",
+  "alts": [
+   "pot luck"
+  ],
+  "easy": "Meal where everyone brings a dish",
+  "hard": "Take your chances with the food"
+ },
+ {
+  "a": "POT",
+  "b": "ROAST",
+  "text": "pot roast",
+  "alts": [
+   "potroast"
+  ],
+  "easy": "A slow-braised beef joint",
+  "hard": "Sunday dish cooked in a casserole"
+ },
+ {
+  "a": "POT",
+  "b": "PLANT",
+  "text": "pot plant",
+  "alts": [
+   "potplant"
+  ],
+  "easy": "Greenery in a container",
+  "hard": "A cactus on the windowsill"
+ },
+ {
+  "a": "FRYING",
+  "b": "PAN",
+  "text": "frying pan",
+  "alts": [
+   "fryingpan"
+  ],
+  "easy": "Skillet for cooking eggs",
+  "hard": "Out of it into the fire"
+ },
+ {
+  "a": "DUST",
+  "b": "PAN",
+  "text": "dustpan",
+  "alts": [
+   "dust pan"
+  ],
+  "easy": "Scoop used with a brush",
+  "hard": "The sweeping brush's companion"
+ },
+ {
+  "a": "SAUCE",
+  "b": "PAN",
+  "text": "saucepan",
+  "alts": [
+   "sauce pan"
+  ],
+  "easy": "Pot with a long handle",
+  "hard": "What you boil eggs in"
+ },
+ {
+  "a": "PAN",
+  "b": "HANDLE",
+  "text": "panhandle",
+  "alts": [
+   "pan handle"
+  ],
+  "easy": "Narrow strip of a US state",
+  "hard": "Beg for money in the street"
+ },
+ {
+  "a": "WORLD",
+  "b": "CUP",
+  "text": "world cup",
+  "alts": [
+   "worldcup"
+  ],
+  "easy": "Football's biggest international tournament",
+  "hard": "Trophy won by Brazil five times"
+ },
+ {
+  "a": "EGG",
+  "b": "CUP",
+  "text": "egg cup",
+  "alts": [
+   "eggcup"
+  ],
+  "easy": "Holder for a boiled breakfast item",
+  "hard": "Where soldiers are dipped"
+ },
+ {
+  "a": "BUTTER",
+  "b": "CUP",
+  "text": "buttercup",
+  "alts": [
+   "butter cup"
+  ],
+  "easy": "Small yellow meadow flower",
+  "hard": "Held under the chin to test liking for dairy"
+ },
+ {
+  "a": "CUP",
+  "b": "HOLDER",
+  "text": "cup holder",
+  "alts": [
+   "cupholder"
+  ],
+  "easy": "Slot for a drink in a car",
+  "hard": "Where your coffee sits while driving"
+ },
+ {
+  "a": "PEANUT",
+  "b": "BUTTER",
+  "text": "peanut butter",
+  "alts": [
+   "peanutbutter"
+  ],
+  "easy": "Spread made from ground nuts",
+  "hard": "Partner of jelly in a sandwich"
+ },
+ {
+  "a": "COCOA",
+  "b": "BUTTER",
+  "text": "cocoa butter",
+  "alts": [
+   "cocoabutter"
+  ],
+  "easy": "Fat from cacao used in lotions",
+  "hard": "Ingredient in chocolate and moisturiser"
+ },
+ {
+  "a": "BUTTER",
+  "b": "MILK",
+  "text": "buttermilk",
+  "alts": [
+   "butter milk"
+  ],
+  "easy": "Tangy liquid used in pancakes",
+  "hard": "What's left over from churning"
+ },
+ {
+  "a": "BUTTER",
+  "b": "NUT",
+  "text": "butternut",
+  "alts": [
+   "butter nut"
+  ],
+  "easy": "A pear-shaped winter squash",
+  "hard": "Orange gourd for soup"
+ },
+ {
+  "a": "BUTTER",
+  "b": "SCOTCH",
+  "text": "butterscotch",
+  "alts": [
+   "butter scotch"
+  ],
+  "easy": "Sweet made from brown sugar",
+  "hard": "A golden toffee-flavoured candy"
+ },
+ {
+  "a": "BUTTER",
+  "b": "FINGERS",
+  "text": "butterfingers",
+  "alts": [
+   "butter fingers"
+  ],
+  "easy": "Clumsy person who drops things",
+  "hard": "Taunt after a missed catch"
+ },
+ {
+  "a": "SHORT",
+  "b": "BREAD",
+  "text": "shortbread",
+  "alts": [
+   "short bread"
+  ],
+  "easy": "A buttery Scottish biscuit",
+  "hard": "A tartan-tinned treat"
+ },
+ {
+  "a": "GINGER",
+  "b": "BREAD",
+  "text": "gingerbread",
+  "alts": [
+   "ginger bread"
+  ],
+  "easy": "Spiced biscuit shaped like a man",
+  "hard": "Hansel and Gretel found a house of it"
+ },
+ {
+  "a": "SWEET",
+  "b": "BREAD",
+  "text": "sweetbread",
+  "alts": [
+   "sweet bread"
+  ],
+  "easy": "Offal from a calf's gland",
+  "hard": "A gourmet organ meat"
+ },
+ {
+  "a": "CORN",
+  "b": "BREAD",
+  "text": "cornbread",
+  "alts": [
+   "corn bread"
+  ],
+  "easy": "Southern loaf made from maize",
+  "hard": "Served with chili in Texas"
+ },
+ {
+  "a": "BREAD",
+  "b": "CRUMB",
+  "text": "breadcrumb",
+  "alts": [
+   "bread crumb"
+  ],
+  "easy": "Tiny fragment of a loaf",
+  "hard": "Hansel left a trail of them"
+ },
+ {
+  "a": "BREAD",
+  "b": "BOARD",
+  "text": "breadboard",
+  "alts": [
+   "bread board"
+  ],
+  "easy": "Wooden slab for slicing a loaf",
+  "hard": "Kitchen surface for a baguette"
+ },
+ {
+  "a": "BREAD",
+  "b": "WINNER",
+  "text": "breadwinner",
+  "alts": [
+   "bread winner"
+  ],
+  "easy": "Person who earns the family income",
+  "hard": "Main earner of a household"
+ },
+ {
+  "a": "BREAD",
+  "b": "STICK",
+  "text": "breadstick",
+  "alts": [
+   "bread stick"
+  ],
+  "easy": "Thin crunchy Italian snack",
+  "hard": "Grissini in a glass on the table"
+ },
+ {
+  "a": "EASTER",
+  "b": "EGG",
+  "text": "easter egg",
+  "alts": [
+   "easteregg"
+  ],
+  "easy": "Chocolate treat in spring",
+  "hard": "Hidden bonus in a video game"
+ },
+ {
+  "a": "NEST",
+  "b": "EGG",
+  "text": "nest egg",
+  "alts": [
+   "nestegg"
+  ],
+  "easy": "Savings for the future",
+  "hard": "Money put aside for retirement"
+ },
+ {
+  "a": "EGG",
+  "b": "SHELL",
+  "text": "eggshell",
+  "alts": [
+   "egg shell"
+  ],
+  "easy": "Fragile casing of a breakfast item",
+  "hard": "You walk on them around a moody boss"
+ },
+ {
+  "a": "EGG",
+  "b": "PLANT",
+  "text": "eggplant",
+  "alts": [
+   "egg plant"
+  ],
+  "easy": "A purple vegetable",
+  "hard": "American name for an aubergine"
+ },
+ {
+  "a": "EGG",
+  "b": "HEAD",
+  "text": "egghead",
+  "alts": [
+   "egg head"
+  ],
+  "easy": "A brainy intellectual",
+  "hard": "A boffin or a swot"
+ },
+ {
+  "a": "EGG",
+  "b": "TIMER",
+  "text": "egg timer",
+  "alts": [
+   "eggtimer"
+  ],
+  "easy": "Hourglass for boiling breakfast",
+  "hard": "Sand runs through it for three minutes"
+ },
+ {
+  "a": "NUT",
+  "b": "SHELL",
+  "text": "nutshell",
+  "alts": [
+   "nut shell"
+  ],
+  "easy": "Hard casing of a walnut",
+  "hard": "In brief, summed up in this"
+ },
+ {
+  "a": "SHELL",
+  "b": "FISH",
+  "text": "shellfish",
+  "alts": [
+   "shell fish"
+  ],
+  "easy": "Mussels, crabs and oysters",
+  "hard": "Seafood that may cause allergies"
+ },
+ {
+  "a": "SHELL",
+  "b": "SHOCK",
+  "text": "shell shock",
+  "alts": [
+   "shellshock"
+  ],
+  "easy": "Trauma suffered by soldiers",
+  "hard": "First World War combat stress"
+ },
+ {
+  "a": "MILK",
+  "b": "SHAKE",
+  "text": "milkshake",
+  "alts": [
+   "milk shake"
+  ],
+  "easy": "A frothy blended drink",
+  "hard": "A thick drink sipped through a straw"
+ },
+ {
+  "a": "MILK",
+  "b": "MAID",
+  "text": "milkmaid",
+  "alts": [
+   "milk maid"
+  ],
+  "easy": "Girl whose job was to tend dairy cows",
+  "hard": "Dairy maiden painted by Vermeer"
+ },
+ {
+  "a": "MILK",
+  "b": "TOOTH",
+  "text": "milk tooth",
+  "alts": [
+   "milktooth"
+  ],
+  "easy": "A child's first set of teeth",
+  "hard": "Left under the pillow for a coin"
+ },
+ {
+  "a": "COCONUT",
+  "b": "MILK",
+  "text": "coconut milk",
+  "alts": [
+   "coconutmilk"
+  ],
+  "easy": "Creamy base for Thai curries",
+  "hard": "Liquid from a tropical nut"
+ },
+ {
+  "a": "CRAB",
+  "b": "APPLE",
+  "text": "crab apple",
+  "alts": [
+   "crabapple"
+  ],
+  "easy": "Small sour wild fruit",
+  "hard": "Makes a tart pink jelly"
+ },
+ {
+  "a": "PINE",
+  "b": "APPLE",
+  "text": "pineapple",
+  "alts": [
+   "pine apple"
+  ],
+  "easy": "A spiky tropical fruit",
+  "hard": "The controversial pizza topping"
+ },
+ {
+  "a": "TOFFEE",
+  "b": "APPLE",
+  "text": "toffee apple",
+  "alts": [
+   "toffeeapple"
+  ],
+  "easy": "Fruit coated in hard caramel",
+  "hard": "Bonfire night treat on a stick"
+ },
+ {
+  "a": "APPLE",
+  "b": "PIE",
+  "text": "apple pie",
+  "alts": [
+   "applepie"
+  ],
+  "easy": "A classic American dessert",
+  "hard": "As American as this"
+ },
+ {
+  "a": "APPLE",
+  "b": "SAUCE",
+  "text": "apple sauce",
+  "alts": [
+   "applesauce"
+  ],
+  "easy": "Condiment served with pork",
+  "hard": "Stewed fruit puree for pork"
+ },
+ {
+  "a": "APPLE",
+  "b": "TREE",
+  "text": "apple tree",
+  "alts": [
+   "appletree"
+  ],
+  "easy": "Orchard plant that drops fruit",
+  "hard": "Newton sat under one"
+ },
+ {
+  "a": "PORK",
+  "b": "PIE",
+  "text": "pork pie",
+  "alts": [
+   "porkpie"
+  ],
+  "easy": "A cold savoury pastry",
+  "hard": "A lie, in cockney slang"
+ },
+ {
+  "a": "CUSTARD",
+  "b": "PIE",
+  "text": "custard pie",
+  "alts": [
+   "custardpie"
+  ],
+  "easy": "Dessert thrown in slapstick",
+  "hard": "Clown's weapon of choice"
+ },
+ {
+  "a": "MINCE",
+  "b": "PIE",
+  "text": "mince pie",
+  "alts": [
+   "mincepie"
+  ],
+  "easy": "A small Christmas pastry",
+  "hard": "Left out for Santa"
+ },
+ {
+  "a": "PIE",
+  "b": "CHART",
+  "text": "pie chart",
+  "alts": [
+   "piechart"
+  ],
+  "easy": "Circular graph divided into slices",
+  "hard": "A round diagram of percentages"
+ },
+ {
+  "a": "PIE",
+  "b": "CRUST",
+  "text": "pie crust",
+  "alts": [
+   "piecrust"
+  ],
+  "easy": "Pastry shell of a tart",
+  "hard": "Flaky top of a pastry dish"
+ },
+ {
+  "a": "FAMILY",
+  "b": "TREE",
+  "text": "family tree",
+  "alts": [
+   "familytree"
+  ],
+  "easy": "Diagram of your ancestors",
+  "hard": "The genealogist's chart"
+ },
+ {
+  "a": "PALM",
+  "b": "TREE",
+  "text": "palm tree",
+  "alts": [
+   "palmtree"
+  ],
+  "easy": "Tropical plant on a beach",
+  "hard": "Coconuts fall from it"
+ },
+ {
+  "a": "CHRISTMAS",
+  "b": "TREE",
+  "text": "christmas tree",
+  "alts": [
+   "christmastree"
+  ],
+  "easy": "Decorated fir in December",
+  "hard": "Presents go under it"
+ },
+ {
+  "a": "TREE",
+  "b": "TOP",
+  "text": "treetop",
+  "alts": [
+   "tree top"
+  ],
+  "easy": "The highest branches",
+  "hard": "Where the monkeys swing"
+ },
+ {
+  "a": "TREE",
+  "b": "TRUNK",
+  "text": "tree trunk",
+  "alts": [
+   "treetrunk"
+  ],
+  "easy": "Main woody stem of an oak",
+  "hard": "What you count rings on"
+ },
+ {
+  "a": "FIG",
+  "b": "LEAF",
+  "text": "fig leaf",
+  "alts": [
+   "figleaf"
+  ],
+  "easy": "Cover for a statue's modesty",
+  "hard": "Adam's first item of clothing"
+ },
+ {
+  "a": "BAY",
+  "b": "LEAF",
+  "text": "bay leaf",
+  "alts": [
+   "bayleaf"
+  ],
+  "easy": "Herb added to stews",
+  "hard": "Aromatic herb removed from a stew before serving"
+ },
+ {
+  "a": "LOOSE",
+  "b": "LEAF",
+  "text": "loose-leaf",
+  "alts": [
+   "loose leaf",
+   "looseleaf"
+  ],
+  "easy": "Sheets not bound together",
+  "hard": "Refills for a ring binder"
+ }
+]

@@ -1,0 +1,11 @@
+const w=require('wordlist-english');
+const block=new Set(`anal anus arse ass asses bastard bitch bitches bitchy bollock bollocks boner boob boobs booty butt butts clit cock cocks coon crap cum cums cunt cunts damn dick dicks dildo dyke fag fags faggot fart farts fuck fucks fucked fucker fucking gay gays homo horny jizz kike lesbo milf nazi nazis negro nigga nigger orgasm penis piss pissed poop porn porno prick pricks pube pubes puss pussy queer rape raped rapes rapist scum semen sex sexy shag shit shits shitty slut sluts smut spic spunk tit tits titty turd twat vagina wank wanker whore whores wop retard retards tranny incest hooker pimp pimps nude nudes erotic`.split(/\s+/));
+const tier=(lv)=>new Set([...w['english/'+lv],...(w['english/american/'+lv]||[])].filter(x=>/^[a-z]+$/.test(x)&&x.length>=2&&!block.has(x)));
+const t10=tier('10'),t20=tier('20'),t35=tier('35'),t40=tier('40');
+const A=[...new Set([...t10,...t20])].sort();
+const B=[...t35].filter(x=>!t10.has(x)&&!t20.has(x)).sort();
+const C=[...t40].filter(x=>!t10.has(x)&&!t20.has(x)&&!t35.has(x)).sort();
+const enc=(arr)=>{const g={};for(const x of arr)(g[x.length]=g[x.length]||[]).push(x);const o={};for(const k in g)o[k]=g[k].join('');return o;};
+const out='/* Word lists derived from SCOWL (wordlist-english). Tier A: very common, B: common, C: less common. */\nPL.data.words='+JSON.stringify({A:enc(A),B:enc(B),C:enc(C)})+';\n';
+require('fs').writeFileSync('src/data/words.js',out);
+console.log(A.length,B.length,C.length,(out.length/1024).toFixed(0)+'KB');

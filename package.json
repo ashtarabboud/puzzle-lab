@@ -1,0 +1,27 @@
+{
+  "name": "puzzle-lab",
+  "version": "1.0.0",
+  "description": "Personal puzzle arcade (installable web app)",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "data": "node tools/build-words.js && node tools/build-lexicon.js",
+    "build": "node tools/build.js",
+    "test": "node test/run-all.js",
+    "e2e": "python3 test/e2e.py",
+    "deploy": "node tools/deploy.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@fontsource/atkinson-hyperlegible": "^5.3.0",
+    "@fontsource/bricolage-grotesque": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "cmu-pronouncing-dictionary": "^3.0.0",
+    "esbuild": "^0.28.2",
+    "wordlist-english": "^1.2.1",
+    "wordnet-db": "^3.1.14"
+  },
+  "private": true
+}
