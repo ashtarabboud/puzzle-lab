@@ -1,6 +1,6 @@
 // Seven new games: Word Grid, Word Count, Word Rush, Word Trails, Cat Logic, Survey Says, Common Threads
 const fs=require('fs');
-const files=['core/base.js','data/words.js','data/five.js','games/_five.js','games/wordgrid.js','games/wordcount.js','games/_trace.js','games/wordrush.js','../data/trails.json','games/trails.js','games/catlogic.js','../data/survey.json','games/survey.js'];
+const files=['core/base.js','data/words.js','data/five.js','games/_five.js','games/wordgrid.js','games/wordcount.js','games/_trace.js','games/wordrush.js','../data/trails.json','games/trails.js','games/catlogic.js','../data/survey.json','../data/survey_ff.json','games/survey.js'];
 const hasThreads=fs.existsSync(__dirname+'/../data/threads.json');
 if(hasThreads)files.push('../data/threads.json','games/threads.js');
 const PL=require('./load.js')(files);
@@ -33,7 +33,18 @@ for(const lv of [1,4,7,10])for(let k=0;k<3;k++){const G=PL.games.catlogic;const 
 // Survey Says: real data only; matching
 const S=PL.games.survey;ok(PL.data.survey.length===52,'52 authentic survey questions');
 PL.data.survey.forEach(q=>{ok(q.total>=80&&q.clusters.every(c=>c.n>=2),'survey counts from the dataset');});
-for(let lv=1;lv<=10;lv++){const p=S.generate(lv,PL.rng('sv'+lv),{});const gs=S.init(p);p.board.forEach((c,i)=>ok(S._match(p,gs,c.label)===i||p.board[S._match(p,gs,c.label)].n>=c.n,'label matches its own slot'));ok(S._match(p,gs,'qwertyuiop')<0,'nonsense rejected');}
+// supplied Family Feud bank: every question has 3-7 answers with whole-number counts adding up to at most 100, sorted
+const B=S._bank();ok(B.ff.length>=3800,'supplied bank loaded: '+B.ff.length);ok(new Set(B.all.map(q=>q.id)).size===B.all.length,'question ids unique');
+B.ff.forEach(q=>{const t=q.clusters.reduce((s,c)=>s+c.n,0);ok(q.clusters.length>=3&&q.clusters.length<=7&&t<=100&&q.clusters.every((c,i)=>Number.isInteger(c.n)&&c.n>=1&&(i===0||c.n<=q.clusters[i-1].n)),'valid board '+q.id);
+  const p={board:q.clusters},gs=S.init(p);q.clusters.forEach((c,i)=>{const m=S._match(p,gs,c.label);ok(m===i,'label reaches its own slot: '+q.q+' / '+c.label);
+    c.answers.forEach(a=>{const m2=S._match(p,gs,a);ok(m2===i||(m2>=0&&S._norm(q.clusters[m2].label)===S._norm(a)),'accepted spelling reaches its slot: '+a);});});});
+ok(S._match({board:[{label:'7',n:68,answers:['7']},{label:'13',n:26,answers:['13']},{label:'3',n:5,answers:['3']}]},{},'seven')===0,'number words');
+ok(S._match({board:[{label:'7',n:68,answers:['7']},{label:'13',n:26,answers:['13']},{label:'3',n:5,answers:['3']}]},{},'1')<0,'numbers must match exactly');
+for(let lv=1;lv<=10;lv++)for(let k=0;k<20;k++){const p=S.generate(lv,PL.rng('ff'+lv+'-'+k),{});ok(p.board.length>=3&&p.board.length<=8&&(p.src==='ff'||p.src==='pq'),'board size');
+  if(p.src==='ff'){const q=B.ff.find(x=>x.id===p.id);ok(q&&q.clusters.length===p.board.length&&p.board.every((c,i)=>c.n===q.clusters[i].n&&c.label===q.clusters[i].label),'whole supplied board shown with its listed counts');}}
+{const seen=new Set();for(let k=0;k<40;k++)seen.add(S.generate(5,PL.rng('rep'+k),{}).src);ok(seen.has('ff'),'supplied questions are used');}
+{const recent=[];for(let k=0;k<60;k++){const p=S.generate(4,PL.rng('rc'+k),{recent:recent.slice()});ok(recent.indexOf(p.tkey)<0,'no repeat within the last 60');recent.push(p.tkey);}}
+for(let lv=1;lv<=10;lv++){const p=S.generate(lv,PL.rng('sv'+lv),{});const gs=S.init(p);p.board.forEach((c,i)=>ok(S._match(p,gs,c.label)===i||(S._match(p,gs,c.label)>=0&&p.board[S._match(p,gs,c.label)].n>=c.n),'label matches its own slot'));ok(S._match(p,gs,'qwertyuiop')<0,'nonsense rejected');}
 // Common Threads
 if(hasThreads){const T=PL.games.threads;for(let lv=1;lv<=10;lv++)for(let k=0;k<6;k++){const t0=Date.now();const p=T.generate(lv,PL.rng('th'+lv+k),{});
   const cats=p.groups.map(g=>PL.data.threads.find(c=>c.id===g.id));const words=[].concat(...p.groups.map(g=>g.words));

@@ -8,7 +8,7 @@ const json = (name) => 'PL.data["' + name + '"]=' + JSON.stringify(JSON.parse(R(
 const GAMES = ['password', 'island', 'bridges', 'algebra', 'loop', 'detective', 'shape', 'balance', 'reverse', 'links', 'logic', '_five', 'wordgrid', 'wordcount', '_trace', 'wordrush', 'trails', 'catlogic', 'survey', 'threads'];
 const hash = s => crypto.createHash('sha256').update(s).digest('hex').slice(0, 10);
 
-const dataFiles = ['src/data/words.js', 'src/data/lexicon.js', 'src/data/five.js'].map(R).concat(['password_v2_a', 'password_v2_b', 'island_vocab', 'wordlinks', 'trails', 'threads', 'survey'].filter(n => fs.existsSync(path.join(root, 'data', n + '.json'))).map(json));
+const dataFiles = ['src/data/words.js', 'src/data/lexicon.js', 'src/data/five.js'].map(R).concat(['password_v2_a', 'password_v2_b', 'island_vocab', 'wordlinks', 'trails', 'threads', 'survey', 'survey_ff'].filter(n => fs.existsSync(path.join(root, 'data', n + '.json'))).map(json));
 const data = 'var PL = (typeof PL !== "undefined") ? PL : { data: {}, games: {} }; PL.data = PL.data || {};\n' + dataFiles.join('\n;\n');
 const code = [R('src/core/base.js'), R('src/core/linalg.js'), ...GAMES.filter(g => fs.existsSync(path.join(root, 'src/games', g + '.js'))).map(g => R('src/games/' + g + '.js')),
   R('src/core/multi.js'), R('src/core/store.js'), R('src/core/model.js'), R('src/core/scratch.js'), R('src/core/calc.js'), R('src/core/dock.js'), R('src/core/app.js')].join('\n;\n');

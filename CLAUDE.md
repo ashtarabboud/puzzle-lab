@@ -12,7 +12,7 @@ The owner works only from an iPhone: never ask them to run commands, edit files,
 - `src/core/multi.js` turns Algebra Arcade, Balance and Word Links into five-question sessions (daily puzzles stay single; old single-question records still work).
 - `src/core/dock.js` hosts the scratchpad and calculator in a bottom panel so the puzzle stays visible.
 - Shared game helpers: `src/games/_five.js` (Word Grid/Word Count), `src/games/_trace.js` (letter-grid tracing for Word Rush/Word Trails).
-- Data provenance and licences: `data/README.md`. Survey Says must only use real, licensed survey data (currently ProtoQA crowdsourced, CC BY 4.0).
+- Data provenance and licences: `data/README.md`. Survey Says must only use survey data with real counts: ProtoQA crowdsourced (CC BY 4.0) and the owner-supplied Family Feud question database (`data/survey_ff.json`, from `tools/build-survey-ff.py`). Never invent counts.
 - `data/*.json` curated banks; `src/data/words.js` and `src/data/lexicon.js` are generated (`npm run data`).
 - `tools/build.js` → `dist/` (hashed assets, manifest, service worker). `public/` holds icons and fonts.
 
