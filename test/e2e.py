@@ -82,8 +82,9 @@ async def solve_current(page, g, with_wrong=False):
             if p['format'] == 'multi': await page.fill('#alg-2', await cur(page, 'PL.qstr((c.p.qs ? c.p.qs[c.rec.gs.i] : c.p).ans2)'))
             await page.click('.alg-form button[type=submit]')
     elif g == 'loop':
+        have = await cur(page, 'c.rec.gs.e')  # a hint may already have drawn a loop edge
         for e, v in enumerate(p['sol']):
-            if v: await page.locator(f'.lp-hit[data-e="{e}"]').dispatch_event('click')
+            if v and have[e] != 1: await page.locator(f'.lp-hit[data-e="{e}"]').dispatch_event('click')
         if with_wrong:
             # add a stray line then remove it again after a failed check
             extra = next(e for e, v in enumerate(p['sol']) if not v)
