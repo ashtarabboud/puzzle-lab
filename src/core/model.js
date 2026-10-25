@@ -101,17 +101,20 @@
   M.upgradeRecords = function () {
     var G = PL.games.wordrush, n = 0;
     if (G && G.rescore) M.attempts(function (a) { return a.game === 'wordrush' && a.mode === 'unlimited'; }).forEach(function (a) {
-      var r = G.rescore(a); if (!r) return;
+      var r = null; try { r = G.rescore(a); } catch (e) { r = null; } // a damaged record is left exactly as it was
+      if (!r) return;
       a.v1 = r.v1; a.quality = r.quality; a.perf = r.perf; a.metrics = Object.assign({}, a.metrics, r.metrics); a.rescoredAt = Date.now();
       a.lines = (a.lines || []).concat([['Scoring', 'Re-scored with Word Rush scoring v2: ' + r.perf + ' (was ' + r.v1.perf + ' under v1, kept on record)']]);
       M.saveAttempt(a); n++;
     });
-    if (n) {
+    var c0 = M.core(), rt0 = c0.ratings.wordrush;
+    if (rt0 && (n || (!rt0.v2cal && M.attempts(function (a) { return a.game === 'wordrush' && a.v1; }).length))) {
       var rep = M.replayLevel('wordrush'), c = M.core(), rt = c.ratings.wordrush;
       if (rep && rep.level !== rt.level) {
-        rt.changes.push({ t: Date.now(), from: rt.level, to: rep.level, reason: 'Recalibrated after re-scoring ' + PL.plural(n, 'round') + ' with Word Rush scoring v2' });
-        rt.level = rep.level; M.saveCore(c);
+        rt.changes.push({ t: Date.now(), from: rt.level, to: rep.level, reason: 'Recalibrated after re-scoring Word Rush rounds with scoring v2' });
+        rt.level = rep.level;
       }
+      rt.v2cal = true; M.saveCore(c);
     }
     return n;
   };
@@ -174,7 +177,7 @@
   M.dayStarted = function (d) { return d.games.some(function (g) { var pr = d.prog[g]; return pr && (pr.gs || pr.done || pr.activeMs); }); };
   M.nextDailyGame = function (d, after) { // the next unfinished game in the day's order after `after`, wrapping round; null when all are done
     var o = M.dayOrder(d), i = o.indexOf(after);
-    for (var k = 1; k <= o.length; k++) { var g = o[(i + k + o.length) % o.length]; if (g !== after && !d.prog[g].done) return g; }
+    for (var k = 1; k <= o.length; k++) { var g = o[(i + k + o.length) % o.length]; if (g !== after && d.prog[g] && !d.prog[g].done) return g; }
     return null;
   };
   function dailyPuzzle(date, g, level) {
@@ -187,7 +190,7 @@
   M.upgradeDay = function (d) {
     if (!d) return d;
     // today's quiz was marked finished after nine puzzles by an old check, even with games left: reopen it (scores kept)
-    if (d.complete && d.date === PL.dateKey() && d.games.some(function (g) { return !d.prog[g].done; })) { d.complete = false; delete d.total; delete d.completedAt; d.reopened = Date.now(); M.saveDaily(d); }
+    if (d.complete && d.date === PL.dateKey() && d.games.some(function (g) { return d.prog[g] && !d.prog[g].done; })) { d.complete = false; delete d.total; delete d.completedAt; d.reopened = Date.now(); M.saveDaily(d); }
     if (d.fmt >= 2 || d.complete) return d;
     if (M.dayStarted(d)) { d.fmt = 1; M.saveDaily(d); return d; }
     d.order = PL.rng('daily-order:' + d.date).shuffle(d.games.slice());

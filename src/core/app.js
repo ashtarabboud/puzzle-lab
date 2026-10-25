@@ -134,6 +134,7 @@
     screen = { name: 'play' }; render(); window.scrollTo(0, 0);
   }
   function startDaily(g, practice) {
+    if (!practice && screen.date && screen.date !== PL.dateKey()) { go({ name: 'daily', date: screen.date }); return; } // only today's quiz is scored
     var d = M.ensureDaily(screen.date || PL.dateKey());
     var pz = d.puzzles[g];
     if (practice) {
@@ -322,7 +323,7 @@
     var next = cur.kind === 'unlimited' ? h('button', { class: 'btn primary', onclick: function () {
       var g = cur.g, sh = cur.rec.shuffle; cur = null;
       if (sh) startShuffle(); else startUnlimited(g);
-    } }, cur.rec.shuffle ? 'Next shuffle' : 'Next puzzle') : cur.kind === 'daily' ? (s.nextDaily ? h('button', { class: 'btn primary', id: 'next-daily', onclick: function () { var g2 = s.nextDaily, dd = cur.d.date; cur = null; screen.date = dd; startDaily(g2, false); } }, 'Next puzzle: ' + PL.games[s.nextDaily].name)
+    } }, cur.rec.shuffle ? 'Next shuffle' : 'Next puzzle') : cur.kind === 'daily' ? (s.nextDaily ? h('button', { class: 'btn primary', id: 'next-daily', onclick: function () { var g2 = s.nextDaily, dd = cur.d.date; if (dd !== PL.dateKey()) { toast('A new day has started, so that quiz is closed.', ''); go({ name: 'daily', date: dd }); return; } cur = null; screen.date = dd; startDaily(g2, false); } }, 'Next puzzle: ' + PL.games[s.nextDaily].name)
         : h('button', { class: 'btn primary', onclick: function () { go({ name: 'daily', date: cur.d.date }); } }, s.dayDone ? 'See daily results' : 'Back to the daily quiz')) : h('button', { class: 'btn primary', onclick: function () { go({ name: 'daily', date: cur.d.date }); } }, 'Back');
     return h('section', { class: 'card summary ' + (s.outcome === 'solved' ? 'ok' : 'bad') + (PL.fx && PL.fx.once('sum:' + cur.sid) ? ' enter' : '') + (s.great ? ' great' : '') },
       s.pb ? h('div', { class: 'pb-badge' }, '★ New personal best') : null,

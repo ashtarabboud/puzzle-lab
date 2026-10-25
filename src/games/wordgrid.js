@@ -57,6 +57,7 @@
       if (over) return;
       if (k === 'enter') return submit();
       if (k === 'del') { gs.cur = gs.cur.slice(0, -1); api.save(gs); rerenderRows(); return; }
+      if (k.length !== 1) return;
       if (gs.cur.length < 5) { gs.cur += k; api.save(gs); rerenderRows(); }
     }
     X.setKeyHandler(onKey);

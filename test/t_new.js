@@ -89,13 +89,20 @@ for(let lv=1;lv<=10;lv++)for(let k=0;k<20;k++){const p=S.generate(lv,PL.rng('ff'
  const w=bd('Hat','Cane','Baton');T(w,'cat',null,'a different real word is not a typo');T(w,'cane','Cane','exact');T(w,'can',null,'can is not cane');
  const nums=bd('7','13','3');T(nums,'seven','7','number words');T(nums,'1',null,'other number');T(nums,'13th',null,'13th is an ordinal, not 13 — kept strict');
  const times=bd('10','12','11','9');T(times,'10 pm','10','unit after a number');T(times,'midnight','12','midnight = 12');T(times,'$10','10','dollar sign');
- const amb=bd('Cold Water','Hot Water','Juice');ok(M.match(amb,'water').ambiguous&&M.match(amb,'water').i<0,'ambiguous guess reveals nothing');T(amb,'cold water','Cold Water','specific guess');
+ const amb=bd('Buy Gift','Give Gift','Juice');ok(M.match(amb,'gift').ambiguous&&M.match(amb,'gift').i<0,'ambiguous guess reveals nothing');T(amb,'give gift','Give Gift','specific guess');T(bd('Cold Water','Hot Water','Juice'),'water',null,'water alone is neither');
  const kiss=[{label:'Kiss/Touch',n:40,answers:['kiss/touch','kiss']},{label:'Touch',n:30,answers:['touch']}];T(kiss,'touch','Touch','exact answer beats a shared alternative');T(kiss,'kiss','Kiss/Touch','slash alternative');
  const star=bd('R2-D2','Darth Vader','Lightsaber');T(star,'r2d2','R2-D2','spacing');T(star,'darth vadar','Darth Vader','small typo in a name');T(star,'light saber','Lightsaber','split compound');
  const tags=bd('Wrap It','Remove Price Tag','Buy It');T(tags,'wrap','Wrap It','filler pronoun');T(tags,'price tag','Remove Price Tag','shorter phrase with the same head');T(tags,'tag',null,'one word of three is too little');T(tags,'take off price tag',null,'different verb');
  const pump=bd('Pumpkin','Turkey','Leaves');T(pump,'a big pumpkin','Pumpkin','longer phrase with the same head');T(pump,'pumpkin pie',null,'pie is a different thing');
  const brush=bd('Brush Teeth','Wash Face','Shower');T(brush,'brushing teeth','Brush Teeth','verb form');T(brush,'brush your tooth','Brush Teeth','irregular plural');
  const ages=bd('Oprah','Ellen','Dr. Phil');T(ages,'oprha','Oprah','transposed letters');T(ages,'dr phil','Dr. Phil','abbreviation punctuation');T(ages,'doctor phil','Dr. Phil','dr = doctor');
+ // review findings: word forms must not turn into unrelated shorter words
+ T(bd('Hat','Scarf','Gloves'),'hating',null,'hating is not hat');T(bd('Car','Bus','Train'),'caring',null,'caring is not car');T(bd('Police','Teacher','Nurse'),'coping',null,'coping is not police');
+ T(bd('Riding','Walking','Swimming'),'ride','Riding','ride = riding');T(bd('Writing','Reading','Math'),'write','Writing','write = writing');T(bd('Losing','Winning','Playing'),'lose','Losing','lose = losing');
+ T(bd('Tired','Hungry','Sad'),'tires',null,'tires is not tired');T(bd('Tires','Brakes','Oil'),'tired',null,'tired is not tires');T(bd('Scared','Happy','Angry'),'scar',null,'scar is not scared');
+ T(bd('Shoes','Socks','Hat'),'shoe','Shoes','shoe = shoes');T(bd('Toes','Fingers','Nose'),'toe','Toes','toe = toes');T(bd('Sizes','Colors','Prices'),'size','Sizes','size = sizes');T(bd('Boxes','Bags','Cans'),'box','Boxes','box = boxes');
+ T(bd('Vitamin C','Iron','Calcium'),'ac',null,'AC is not vitamin C');T(bd('C','A','B'),'air conditioner',null,'air conditioner is not C');T(bd('Hot Dog','Burger','Pizza'),'dog',null,'dog is not hot dog');T(bd('Brush Teeth','Floss','Shower'),'tooth',null,'tooth is not brush teeth');
+ {const b=bd('Fish','Fishing','Boat');const o=[false,false,false];const r1=M.match(b,'fishing',o);o[r1.i]=true;const r2=M.match(b,'fish',o);ok(r1.i>=0&&r2.i>=0&&r1.i!==r2.i,'two answers that look alike can both be opened');}
  // the spreadsheet audit: the misspelt source answer is corrected, so the correct spelling matches it
  const src=B.ff.filter(q=>q.clusters.some(c=>/tattoo/i.test(c.label)));ok(src.length>0&&!B.ff.some(q=>q.clusters.some(c=>/\btatoo\b/i.test(c.label))),'“Tatoo” corrected in the data');
  ok(!B.ff.some(q=>q.clusters.some(c=>/^(Shit\/Sweater|Hawii|Deoderant|Underware|Saxophone4Guitar)$/.test(c.label))),'known misspellings corrected');

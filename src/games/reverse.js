@@ -282,7 +282,7 @@
      Nothing is ever recomputed or reshuffled on undo, so undo/redo always land on exactly the recorded states.
      Tiles carry stable ids (their index in the starting row), so repeated letters are tracked independently.
      All of this lives in gs, so it survives leaving and returning. */
-  var HMAX = 400;
+  var HMAX = 150;
   function snap(o) { return JSON.parse(JSON.stringify(o)); }
   function hNew(start) { return { states: [snap(start)], idx: 0 }; }
   function hCur(hs) { return hs.states[hs.idx]; }
@@ -409,6 +409,8 @@
   function evalSafe(expr) { if (!expr || !expr.trim()) return ''; try { return PL.calc.evaluate(expr); } catch (e) { return '…'; } }
   function numWorkspace(api) {
     var p = api.p, gs = api.gs, ws = ensureNums(p, gs), rows = hCur(ws.hs).rows;
+    var hb = histButtons(ws.hs, function () { api.update(gs); }, api.done);
+    function refreshHist() { hb[0].disabled = api.done || ws.hs.idx === 0; hb[1].disabled = api.done || ws.hs.idx >= ws.hs.states.length - 1; hb[2].disabled = api.done || JSON.stringify(hCur(ws.hs)) === JSON.stringify(ws.hs.states[0]); }
     var change = function (fn) { var next = snap(hCur(ws.hs)); fn(next.rows); hCommit(ws.hs, next); api.update(gs); };
     var refFinal = p.type === 'missing' ? 'Start ' + p.start + ' → end ' + p.final : p.type === 'constraint' ? p.machines.map(function (m) { return m.name + ' output ' + m.out; }).join(' · ') : 'Final result ' + p.final;
     var list = h('div', { class: 'nws-rows' });
@@ -421,10 +423,12 @@
       var edit = function (field, el) {
         if (!editing) { var next = snap(hCur(ws.hs)); next.rows[k][field] = el.value; if (hCommit(ws.hs, next)) editing = true; }
         else hCur(ws.hs).rows[k][field] = el.value;
+        refreshHist();
         if (field === 'expr') { var v = evalSafe(el.value); out.textContent = v ? '= ' + v : ''; }
         api.save(gs);
       };
-      [lab, inp].forEach(function (el) { el.addEventListener('focus', function () { editing = false; }); el.addEventListener('blur', function () { if (editing) api.update(gs); editing = false; }); });
+      // leaving a field only saves: re-rendering here would close the keyboard and swallow the tap on the next field or button
+      [lab, inp].forEach(function (el) { el.addEventListener('focus', function () { editing = false; }); el.addEventListener('blur', function () { editing = false; api.save(gs); }); });
       lab.addEventListener('input', function () { edit('label', lab); });
       inp.addEventListener('input', function () { edit('expr', inp); });
       list.appendChild(h('div', { class: 'nws-row' },
@@ -436,7 +440,7 @@
         h('div', { class: 'nws-bottom' }, inp, out)));
     });
     return h('div', { class: 'workspace' },
-      h('div', { class: 'ws-head' }, h('span', { class: 'lbl' }, 'Workspace'), h('div', { class: 'row-actions' }, histButtons(ws.hs, function () { api.update(gs); }, api.done))),
+      h('div', { class: 'ws-head' }, h('span', { class: 'lbl' }, 'Workspace'), h('div', { class: 'row-actions' }, hb)),
       h('div', { class: 'muted small' }, refFinal + '. Write one calculation per row; each row shows its value. The workspace never solves anything for you and never affects your score.'),
       list,
       h('button', { class: 'btn ghost sm', onclick: function () { change(function (R) { R.push({ label: 'Working ' + (R.length + 1), expr: '' }); }); } }, '+ Add row'));

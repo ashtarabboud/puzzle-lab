@@ -171,7 +171,9 @@ async def solve_current(page, g, with_wrong=False):
         n = p['n']
         for r, c in enumerate(p['sol']):
             cell = page.locator('.cl-cell').nth(r * n + c)
-            await cell.click(); await cell.click(); await page.wait_for_timeout(30)
+            st = await cur(page, f'c.rec.gs.s[{r * n + c}]')  # a hint may already have placed this cat
+            for _ in range((2 - st) % 3): await cell.click()
+            await page.wait_for_timeout(30)
     elif g == 'survey':
         if with_wrong:
             await page.fill('#sv-in', 'zzqqxx'); await page.press('#sv-in', 'Enter'); await page.wait_for_timeout(60)
@@ -437,6 +439,24 @@ async def main():
             check(await cur(page, B) == bh[0], 'board reset to start')
         else: check(False, 'found a board puzzle to test undo')
 
+        # ---- Reverse Engineer number workspace: moving between fields keeps focus ----
+        await go_home(page); await page.evaluate("PL.model.clearActive('reverse')")
+        found = False
+        for attempt in range(40):
+            await open_game(page, 'reverse'); await page.wait_for_selector('#gamebody')
+            if await page.locator('.nws-in').count() >= 2: found = True; break
+            await page.click('summary[aria-label="More actions"]'); await page.click('text=Skip this puzzle'); await page.wait_for_timeout(150)
+            await go_home(page)
+        if found:
+            await page.locator('.nws-in').nth(0).click(); await page.keyboard.type('12+3')
+            await page.locator('.nws-in').nth(1).click(); await page.keyboard.type('4')
+            check(await page.evaluate("document.activeElement === document.querySelectorAll('.nws-in')[1]"), 'tapping the next row keeps the keyboard there')
+            check(await page.locator('.nws-in').nth(0).input_value() == '12+3' and await page.locator('.nws-in').nth(1).input_value() == '4', 'both rows kept their typing')
+            await page.click('.workspace .ws-head button[data-act="undo"]'); await page.wait_for_timeout(80)
+            check(await page.locator('.nws-in').nth(1).input_value() == '' and await page.locator('.nws-in').nth(0).input_value() == '12+3', 'undo removes the last edit only')
+            await page.click('.workspace .ws-head button[data-act="undo"]'); await page.wait_for_timeout(80)
+            check(await page.locator('.nws-in').nth(0).input_value() == '', 'undo back to the empty start')
+        else: check(False, 'found a number puzzle to test the workspace')
         # ---- Word Count marking workspace ----
         await go_home(page); await page.evaluate("PL.model.clearActive('wordcount')")
         await open_game(page, 'wordcount'); await page.wait_for_selector('.wordcount')

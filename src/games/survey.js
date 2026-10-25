@@ -47,8 +47,8 @@
     return { id: q.id, q: q.q, total: q.total, src: 'pq', board: shown.map(function (c) { return { label: c.label, n: c.n, answers: c.answers }; }), strikes: 3, tkey: q.id };
   }
   function init(p) { return { open: p.board.map(function () { return false; }), given: p.board.map(function () { return false; }), strikes: 0, guesses: [], hintIdx: null, hintStage: 0 }; }
-  function bestMatch(p, gs, guess) { var r = SM.match(p.board, guess); return r.i; }
-  function matchInfo(p, guess) { return SM.match(p.board, guess); }
+  function bestMatch(p, gs, guess) { var r = SM.match(p.board, guess, gs && gs.open); return r.i; }
+  function matchInfo(p, guess, gs) { return SM.match(p.board, guess, gs && gs.open); }
   function points(p, gs) { return p.board.reduce(function (s, c, i) { return s + (gs.open[i] && !gs.given[i] ? c.n : 0); }, 0); }
   function boardTotal(p) { return p.board.reduce(function (s, c) { return s + c.n; }, 0); }
   function over(p, gs) { return gs.strikes >= p.strikes || gs.open.every(Boolean); }
@@ -57,8 +57,8 @@
     var inp = h('input', { id: 'sv-in', class: 'txt', type: 'text', autocomplete: 'off', autocapitalize: 'none', placeholder: 'Your answer', enterkeyhint: 'go' });
     function guess(e) {
       e.preventDefault(); var g = inp.value.trim(); if (!g) return;
-      if (gs.guesses.some(function (x) { return norm(x.g) === norm(g); })) { api.toast('Already tried.', ''); return; }
-      var m = matchInfo(p, g), i = m.i;
+      if (gs.guesses.some(function (x) { return x.g.trim().toLowerCase() === g.toLowerCase(); })) { api.toast('Already tried.', ''); return; }
+      var m = matchInfo(p, g, gs), i = m.i;
       if (m.ambiguous) { api.toast('“' + g + '” could mean more than one answer. Try being more specific.', ''); return; } // no strike
       if (i >= 0 && gs.open[i]) { api.toast('That matches “' + PL.cap(p.board[i].label) + '”, already on the board.', ''); return; }
       if (i >= 0) { gs.open[i] = true; gs.last = i; gs.guesses.push({ g: g, hit: i }); api.toast('Survey says: ' + p.board[i].n + '!' + (m.level < 4 && norm(g) !== norm(p.board[i].label) ? ' (accepted as “' + PL.cap(p.board[i].label) + '”)' : ''), 'good'); }

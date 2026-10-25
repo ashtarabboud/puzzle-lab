@@ -53,16 +53,18 @@
   ];
   var IRREG = { children: 'child', teeth: 'tooth', feet: 'foot', men: 'man', women: 'woman', mice: 'mouse', geese: 'goose', people: 'person', knives: 'knife', wives: 'wife', leaves: 'leaf', loaves: 'loaf', wolves: 'wolf', shelves: 'shelf', lives: 'life', halves: 'half', calves: 'calf' };
   var NOSTEM = { news: 1, glasses: 1, pants: 1, jeans: 1, shorts: 1, scissors: 1, series: 1, species: 1, physics: 1, mathematics: 1, politics: 1, economics: 1, gymnastics: 1, chess: 1, bus: 1, gas: 1, yes: 1, this: 1, is: 1, his: 1, was: 1, has: 1, us: 1, plus: 1, bonus: 1, virus: 1, circus: 1, cactus: 1, octopus: 1, campus: 1, status: 1, lens: 1, christmas: 1, texas: 1, vegas: 1, paris: 1, dallas: 1, mcdonalds: 1, ss: 1, kiss: 1, dress: 1, glass: 1, grass: 1, class: 1, boss: 1, tennis: 1, means: 1, always: 1, sometimes: 1 };
-  var ING_KEEP = { evening: 1, wedding: 1, nothing: 1, something: 1, anything: 1, everything: 1, ring: 1, king: 1, thing: 1, during: 1, ceiling: 1, lightning: 1, darling: 1, sterling: 1, morning: 1, spring: 1, string: 1, sing: 1, wing: 1, bring: 1, sibling: 1, pudding: 1, stuffing: 1, icing: 1, frosting: 1, clothing: 1, building: 1, painting: 1, drawing: 1, meeting: 1, feeling: 1, earring: 1, boxing: 1, bowling: 1, parking: 1, dressing: 1, kidding: 1, bedding: 1, filling: 1, topping: 1, siding: 1, flooring: 1, roofing: 1, plumbing: 1, wiring: 1, timing: 1, training: 1, setting: 1, being: 1, swing: 1, sling: 1, dumpling: 1, sapling: 1, offspring: 1, savings: 1, belongings: 1, housing: 1, crossing: 1, banking: 1, landing: 1, heading: 1, booking: 1, listing: 1, rating: 1, spelling: 1, lighting: 1, sweeping: 1, posting: 1, crooked: 1, wicked: 1, naked: 1, rugged: 1, ragged: 1, jagged: 1, aged: 1, blessed: 1, beloved: 1, sacred: 1, wretched: 1, legged: 1, dogged: 1, bed: 1, red: 1, need: 1, seed: 1, speed: 1, weed: 1, feed: 1, breed: 1, shed: 1, sled: 1, wed: 1, fed: 1, led: 1, hundred: 1 };
+  var ING_KEEP = { evening: 1, wedding: 1, nothing: 1, something: 1, anything: 1, everything: 1, ring: 1, king: 1, thing: 1, during: 1, ceiling: 1, lightning: 1, darling: 1, sterling: 1, morning: 1, spring: 1, string: 1, sing: 1, wing: 1, bring: 1, sibling: 1, pudding: 1, stuffing: 1, icing: 1, frosting: 1, clothing: 1, building: 1, painting: 1, drawing: 1, meeting: 1, feeling: 1, earring: 1, tired: 1, scared: 1, bored: 1, married: 1, excited: 1, worried: 1, teething: 1, interested: 1, boxing: 1, bowling: 1, parking: 1, dressing: 1, kidding: 1, bedding: 1, filling: 1, topping: 1, siding: 1, flooring: 1, roofing: 1, plumbing: 1, wiring: 1, timing: 1, training: 1, setting: 1, being: 1, swing: 1, sling: 1, dumpling: 1, sapling: 1, offspring: 1, savings: 1, belongings: 1, housing: 1, crossing: 1, banking: 1, landing: 1, heading: 1, booking: 1, listing: 1, rating: 1, spelling: 1, lighting: 1, sweeping: 1, posting: 1, crooked: 1, wicked: 1, naked: 1, rugged: 1, ragged: 1, jagged: 1, aged: 1, blessed: 1, beloved: 1, sacred: 1, wretched: 1, legged: 1, dogged: 1, bed: 1, red: 1, need: 1, seed: 1, speed: 1, weed: 1, feed: 1, breed: 1, shed: 1, sled: 1, wed: 1, fed: 1, led: 1, hundred: 1 };
 
   var VOCAB = null; // every word used in the question bank's answers counts as a real word too (brands, names: Lego, Chex)
   var GENERIC = { thing: 1, stuff: 1, person: 1, way: 1, time: 1, place: 1, one: 1, lot: 1, kind: 1, type: 1, something: 1, someone: 1, them: 1, they: 1, you: 1, me: 1, him: 1, do: 1, be: 1, get: 1, go: 1, make: 1, have: 1 };
   var EXTRA_OK = {}; ('big large huge giant tiny small little new old nice good great bad real fake favorite own lot lots many more few extra whole cute pretty ugly dirty clean '
     + 'fresh free cheap expensive fancy special every any other another very really too much just also all most best worst same different '
     + 'buy get have eat drink wear go use take make give do play see watch hear wash fix clean find bring keep put need want like love hate try '
-    + 'warm hot cold nice cool long short tall wild young').split(' ').forEach(function (w) { EXTRA_OK[w] = 1; });
+    + 'warm hot cold nice cool long short tall wild young cell mobile smart cordless electric digital wrist pocket').split(' ').forEach(function (w) { EXTRA_OK[w] = 1; });
+  var DROP_OK = {}; ('buy get have eat drink wear go use take make give do play see watch hear wash fix clean find bring keep put need want like love hate try '
+    + 'cell mobile smart cordless electric digital wrist pocket favorite own lots lot many more extra whole every any other another very really too much just also all').split(' ').forEach(function (w) { DROP_OK[w] = 1; });
   function hasWord(w) { return !!((PL.dict && PL.dict.has(w)) || (VOCAB && VOCAB[w])); }
-  function setVocab(labels) { VOCAB = {}; labels.forEach(function (l) { rawTokens(l).forEach(function (w) { VOCAB[w] = 1; VOCAB[w.replace(/s$/, '')] = 1; }); }); cache = {}; }
+  function setVocab(labels) { VOCAB = {}; labels.forEach(function (l) { rawTokens(l).forEach(function (w) { VOCAB[w] = 1; }); }); cache = {}; }
   function rawTokens(s) {
     s = String(s == null ? '' : s).toLowerCase();
     if (s.normalize) s = s.normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -71,20 +73,25 @@
   }
   // alias table → token sequences, longest first
   var AL = [];
-  ALIASES.forEach(function (g) { var canon = rawTokens(g[0]).filter(function (w) { return !STOP[w]; }); g.forEach(function (v) { var t = rawTokens(v).filter(function (w) { return !STOP[w]; }); if (t.length) AL.push({ from: t, to: canon }); }); });
+  // a spelling that loses a word to the filler list ("a c" -> "c") would rewrite unrelated text, so it is skipped
+  ALIASES.forEach(function (g) { var canon = rawTokens(g[0]).filter(function (w) { return !STOP[w]; }); g.forEach(function (v) { var raw = rawTokens(v), t = raw.filter(function (w) { return !STOP[w]; }); if (t.length && t.length === raw.length && !(t.length === 1 && t[0].length === 1)) AL.push({ from: t, to: canon }); }); });
   AL.sort(function (a, b) { return b.from.length - a.from.length; });
   function base(w) { // canonical word form: irregular plurals, regular plurals; verb -ing/-ed only to a real shorter word
     if (/^\d+$/.test(w) || w.length <= 3) return w;
     if (IRREG[w]) return IRREG[w];
     if (!NOSTEM[w]) {
-      if (/ies$/.test(w) && w.length > 4) return hasWord(w.slice(0, -1)) ? w.slice(0, -1) : w.slice(0, -3) + 'y'; // cookies → cookie, babies → baby
-      if (/(ch|sh|x|ss|z|o)es$/.test(w)) return w.slice(0, -2);
+      // plurals: drop the "s" when that leaves a word (shoes -> shoe, cookies -> cookie), else "es" (boxes -> box), else ies -> y
+      if (/[^su]s$/.test(w) && hasWord(w.slice(0, -1))) return w.slice(0, -1);
+      if (/(ch|sh|x|ss|z|o)es$/.test(w) && hasWord(w.slice(0, -2))) return w.slice(0, -2);
+      if (/ies$/.test(w) && w.length > 4) return w.slice(0, -3) + 'y';
       if (/[^su]s$/.test(w)) return w.slice(0, -1);
     }
     if (!ING_KEEP[w]) {
       var m = /^(.{3,}?)(ing|ed)$/.exec(w);
       if (m) {
-        var s = m[1], cands = [s, s + 'e', s.replace(/(.)\1$/, '$1'), s.replace(/i$/, 'y')];
+        // hating -> hate (not hat), riding -> ride, running -> run, cooking -> cook: after a vowel + single consonant the
+        // silent-e form is tried first; a doubled consonant is undone before the bare stem
+        var s = m[1], cands = (/[aeiou][^aeiouwxy]$/.test(s) && !/[aeiou]{2}[^aeiou]$/.test(s) ? [s + 'e'] : []).concat([s.replace(/([^aeiou])\1$/, '$1'), s, s.replace(/i$/, 'y')]);
         for (var i = 0; i < cands.length; i++) if (cands[i].length >= 3 && hasWord(cands[i])) return cands[i];
       }
     }
@@ -144,7 +151,11 @@
     var head = at[at.length - 1], ghead = gt[gt.length - 1];
     if (head !== ghead || GENERIC[head]) return 0;
     // shorter guess: must keep the head word and at least half of the answer's words ("price tag" → "remove price tag", "hat" → "top hat")
-    if (gt.length < at.length) return contains(at, gt) && gt.length * 2 >= at.length && gt.join('').length >= 3 ? 1 : 0;
+    if (gt.length < at.length) {
+      if (!contains(at, gt) || gt.length * 2 < at.length || gt.join('').length < 3) return 0;
+      var dropped = at.slice(); gt.forEach(function (w) { dropped.splice(dropped.indexOf(w), 1); });
+      return gt.length >= 2 || dropped.every(function (w) { return DROP_OK[w]; }) ? 1 : 0;   // "dog" is not "hot dog"
+    }
     // longer guess: the extra words may only be plain describing or doing words ("a big pumpkin", "buy flowers"), never another
     // noun that makes it a different thing ("garlic bread" is not "bread", "onion rings" is not "ring")
     if (gt.length <= at.length + 2 && contains(gt, at) && at.join('').length >= 3) {
@@ -159,7 +170,7 @@
   /* board: [{label, n, answers:[...]}]. Returns {i, level, via} or {i:-1, ambiguous:[...]}.
      Each answer is scored twice: on the words as typed (plain) and with aliases. A plain match ranks above an alias
      match of the same level, so when a board has both "Dad" and "Daddy", "daddy" opens Daddy, not Dad. */
-  function match(board, guess) {
+  function match(board, guess, open) {
     var gp = tokens(guess, true), ga = tokens(guess, false), per = [];
     board.forEach(function (c, i) {
       var best = 0, own = false;
@@ -172,6 +183,7 @@
     var top = Math.max.apply(null, per.map(function (x) { return x.key; }));
     if (!top) return { i: -1, level: 0 };
     var lvl = top >> 1, cands = per.filter(function (x) { return x.key === top; });
+    if (open && cands.length > 1) { var closed = cands.filter(function (x) { return !open[x.i]; }); if (closed.length) cands = closed; } // fish, then fishing
     // a tie is only resolved when both answers are worded the same (plain level 3–4); anything looser is ambiguous
     if (cands.length > 1 && !(top % 2 === 1 && lvl >= 3)) return { i: -1, level: lvl, ambiguous: cands.map(function (x) { return x.i; }) };
     cands.sort(function (a, b) { return (b.own - a.own) || (b.n - a.n) || (a.i - b.i); });
