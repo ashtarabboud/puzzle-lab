@@ -427,6 +427,31 @@ async def main():
         await page.screenshot(path=f'{OUT}/wordcount_marks.png', full_page=True)
         await type_word(page, await cur(page, 'c.p.w'))
         check(await page.locator('.summary').count() > 0, 'official guessing still works after using the workspace')
+        # ---- Word Rush scoring v2 ----
+        await go_home(page); await page.evaluate("PL.model.clearActive('wordrush')")
+        await open_game(page, 'wordrush'); await page.click('button:has-text("Start timed round")'); await page.wait_for_timeout(100)
+        check(await page.locator('.wordrush :text("Excellent here")').count() == 1, 'board benchmark shown during play')
+        words = await cur(page, 'c.p.disc.slice().sort((a, b) => a.length - b.length).slice(0, 5)')
+        for w in words:
+            path = await page.evaluate("""(w) => { const p = PL._cur().p; let res = null; for (let i = 0; i < p.letters.length && !res; i++) { const used = [];
+                (function find(pos, k) { if (res) return; const L = p.letters[pos].toLowerCase(); if (w.substr(k, L.length) !== L) return; used.push(pos);
+                  if (k + L.length === w.length) { res = used.slice(); return; } for (let j = 0; j < p.letters.length; j++) if (used.indexOf(j) < 0 && PL.trace.adj(pos, j, p.size)) find(j, k + L.length); used.pop(); })(i, 0); } return res; }""", w)
+            await trace_path(page, path)
+        check(await cur(page, 'c.rec.gs.found.length') == 5, 'five words entered')
+        await page.click('button:has-text("Finish round")'); await page.click('button:has-text("Tap again to finish")'); await page.wait_for_selector('.summary')
+        att = await page.evaluate("PL.model.attempts(a => a.game === 'wordrush').pop()")
+        check(att['metrics']['sv'] == 2 and att['perf'] < 50, f"five easy words is no longer a perfect round (performance {att['perf']})")
+        check(await page.locator('.summary :text("Findable words found")').count() == 1 and await page.locator('.summary :text("Benchmark for 100")').count() == 1, 'summary shows coverage and benchmark')
+        # an old v1 round is re-scored on start-up, keeping the original score
+        old = dict(att); old['id'] = 'wrv1test'; old['endedAt'] = att['endedAt'] - 5000; old['perf'] = 100; old['quality'] = 100
+        old['metrics'] = {'mode': 'timed', 'dur': 120, 'points': 5, 'target': 6, 'words': 5, 'found': att['metrics']['found']}; old['lines'] = [['Points', '5 (target 6)']]
+        await page.evaluate("(a) => { PL.model.saveAttempt(a); PL.store.flush(); }", old)
+        await page.reload(); await page.wait_for_selector('.gtile')
+        re = await page.evaluate("PL.model.getAttempt('wrv1test')")
+        check(re['v1']['perf'] == 100 and re['perf'] < 60 and re['metrics']['sv'] == 2, f"v1 round re-scored ({re['perf']}), original 100 kept")
+        await page.click('text=Statistics'); await page.wait_for_selector('.tiles'); await page.locator('tr.rowlink:has-text("Word Rush")').click(); await page.wait_for_timeout(200)
+        check(await page.locator('text=Re-scored from v1').count() == 1 and await page.locator('text=Share of findable words found').count() == 1, 'Word Rush statistics show coverage and re-scored rounds')
+        await page.screenshot(path=f'{OUT}/wordrush_stats.png', full_page=True)
         # ---- stats pages render ----
         await go_home(page); await page.click('text=Statistics'); await page.wait_for_selector('.tiles')
         await page.screenshot(path=f'{OUT}/stats.png', full_page=True)
@@ -463,7 +488,7 @@ async def main():
         # export round trip
         await p2.evaluate('PL._go({name:"settings"})'); await p2.wait_for_selector('text=Export data')
         exp = await p2.evaluate('JSON.stringify(PL.model.exportData())')
-        check(json.loads(exp)['schema'] == 3 and len([k for k in json.loads(exp)['data'] if k.startswith('att:')]) == 2, 'export contains everything (schema 3)')
+        check(json.loads(exp)['schema'] == 4 and len([k for k in json.loads(exp)['data'] if k.startswith('att:')]) == 2, 'export contains everything (schema 4)')
 
         # fresh start offer on the home screen (two taps), then undo from Settings
         today = await p2.evaluate('PL.dateKey()')

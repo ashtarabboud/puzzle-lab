@@ -17,6 +17,7 @@
       if (core.settings && core.settings.excluded) core.settings.excluded = core.settings.excluded.filter(function (g) { return PL.order.indexOf(g) >= 0; });
     }
     if (core.schema < 3) core.schema = 3; // v3: seven new games (ratings created below at the default level, independent of other games)
+    if (core.schema < 4) core.schema = 4; // v4: Word Rush scoring v2; old results are re-scored by M.upgradeRecords (originals kept in a.v1); daily order lists
     var d = defaultCore();
     core.settings = Object.assign({}, d.settings, core.settings || {});
     core.ratings = core.ratings || {};
@@ -75,6 +76,44 @@
       M.saveCore(c);
     }
     return { change: change, level: r.level, roll: roll };
+  };
+
+  /* ---- record upgrades (idempotent; run at start-up, after import and after bringing back reset results) ----
+     Word Rush v1 scores compared points with a small target, so almost every round scored 100 and pushed the level up.
+     Each v1 unlimited round is re-scored with v2 from its stored board, words found and hints. The original numbers stay
+     on the record (a.v1 = {quality, perf, target, points}) and the round's review says it was re-scored. Daily quiz
+     results are never changed. Then the Word Rush level is recalibrated by replaying the normal adaptive rules over the
+     re-scored rounds, so the level reflects real coverage across many games rather than the old inflated scores. */
+  M.replayLevel = function (g) {
+    var A = M.ADAPT, atts = M.attempts(function (a) { return a.game === g && M.eligible(a); });
+    if (!atts.length) return null;
+    var L = atts[0].level, since = 0, ups = 0, downs = 0;
+    atts.forEach(function (a, idx) {
+      var win = atts.slice(since, idx + 1).slice(-A.window);
+      var effs = win.map(function (x) { return PL.clamp(x.perf + A.levelCredit * (x.level - L), 0, 100); });
+      var wsum = 0, tot = 0; for (var i = 0; i < effs.length; i++) { var w = Math.pow(A.decay, effs.length - 1 - i); wsum += w; tot += w * effs[i]; }
+      var mean = tot / wsum, latest = effs[effs.length - 1], minN = idx + 1 <= A.calibAttempts ? A.calibN : A.minN;
+      if (effs.length >= minN && mean >= A.up && latest >= 70 && L < 10) { L++; ups++; since = idx + 1; }
+      else if (effs.length >= minN && mean < A.down && latest < 75 && L > 1) { L--; downs++; since = idx + 1; }
+    });
+    return { level: L, n: atts.length };
+  };
+  M.upgradeRecords = function () {
+    var G = PL.games.wordrush, n = 0;
+    if (G && G.rescore) M.attempts(function (a) { return a.game === 'wordrush' && a.mode === 'unlimited'; }).forEach(function (a) {
+      var r = G.rescore(a); if (!r) return;
+      a.v1 = r.v1; a.quality = r.quality; a.perf = r.perf; a.metrics = Object.assign({}, a.metrics, r.metrics); a.rescoredAt = Date.now();
+      a.lines = (a.lines || []).concat([['Scoring', 'Re-scored with Word Rush scoring v2: ' + r.perf + ' (was ' + r.v1.perf + ' under v1, kept on record)']]);
+      M.saveAttempt(a); n++;
+    });
+    if (n) {
+      var rep = M.replayLevel('wordrush'), c = M.core(), rt = c.ratings.wordrush;
+      if (rep && rep.level !== rt.level) {
+        rt.changes.push({ t: Date.now(), from: rt.level, to: rep.level, reason: 'Recalibrated after re-scoring ' + PL.plural(n, 'round') + ' with Word Rush scoring v2' });
+        rt.level = rep.level; M.saveCore(c);
+      }
+    }
+    return n;
   };
 
   /* ---- active unlimited sessions (resumable) ---- */
@@ -194,6 +233,7 @@
     });
     c.ratings = PL.migrate({ schema: PL.SCHEMA, ratings: arc.ratings }).ratings; c.shuffle.recent = arc.recent || []; delete c.freshAt; M.saveCore(c);
     S().del(ks[ks.length - 1]);
+    M.upgradeRecords();
     return { attempts: back };
   };
 
@@ -225,7 +265,7 @@
       // in-progress puzzles of retired games cannot be resumed
       if (k.indexOf('act:') === 0 && PL.order.indexOf(k.slice(4)) < 0) delete data[k];
     });
-    if (mode === 'replace') { S().replaceAll(data); return counts; }
+    if (mode === 'replace') { S().replaceAll(data); M.upgradeRecords(); return counts; }
     var hadAttempts = S().keys('att:').length > 0;
     Object.keys(data).forEach(function (k) {
       if (k === 'core') return;
@@ -242,6 +282,7 @@
       });
       M.saveCore(c);
     }
+    M.upgradeRecords();
     return counts;
   };
 })();

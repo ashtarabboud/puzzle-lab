@@ -1,6 +1,6 @@
 /* ===== Persistence: IndexedDB on the device (localStorage fallback), with a persistent-storage request ===== */
 (function () {
-  var SCHEMA = 3;
+  var SCHEMA = 4;
   PL.SCHEMA = SCHEMA;
   var DBNAME = 'puzzlelab', STORE = 'kv';
   var mem = {}, idb = null, mode = 'memory', persisted = null, listeners = [];

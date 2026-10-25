@@ -601,6 +601,7 @@
     root.appendChild(h('div', { class: 'boot muted' }, 'Loading your puzzles…'));
     await PL.store.init();
     M.core();
+    try { M.upgradeRecords(); } catch (e) { console.error(e); }
     render();
     PL.store.onChange(function (ev) { if (ev === 'error') toast('Saving failed on this device. Export a backup from Settings.', 'bad'); });
     M.pruneScratch();

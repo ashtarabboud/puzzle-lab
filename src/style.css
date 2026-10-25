@@ -117,7 +117,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .sum-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .sum-score b { font-family: var(--display); font-size: 30px; }
 .adapt { font-weight: 600; color: var(--accent); }
-.kv { display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; margin: 0; font-size: 14.5px; }
+.kv { display: grid; grid-template-columns: minmax(40%, max-content) minmax(0, 1fr); gap: 6px 14px; margin: 0; font-size: 14.5px; }
 .kv dt { color: var(--muted); }
 .kv dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; min-width: 0; }
 .row-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }

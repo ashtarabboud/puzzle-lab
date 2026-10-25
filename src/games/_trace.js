@@ -71,7 +71,8 @@
       else if (!moved && startCell >= 0 && path.length > 1 && path[path.length - 1] === startCell && wrap.dataset.lastTap === String(startCell)) submit(); // double-tap last letter
       wrap.dataset.lastTap = String(startCell);
     }
-    grid.addEventListener('pointerup', up); grid.addEventListener('pointercancel', up);
+    // a cancelled touch (iOS takes the gesture for scrolling, zoom or a system swipe) must never submit a word
+    grid.addEventListener('pointerup', up); grid.addEventListener('pointercancel', function () { dragging = false; });
     var controls = h('div', { class: 'row-actions tr-controls' },
       h('button', { class: 'btn ghost sm', onclick: function () { path = []; refresh(); } }, 'Clear'),
       h('button', { class: 'btn sm primary', onclick: submit }, 'Enter'));

@@ -27,6 +27,24 @@ for(const id of ['wordgrid','wordcount'])for(let lv=1;lv<=10;lv++){const G=PL.ga
 for(const lv of [1,5,8,10]){const G=PL.games.wordrush;const p=G.generate(lv,PL.rng('wr'+lv));ok(p.words.every(w=>G._firstCell(p,w)!=null&&PL.dict.has(w)),'rush words traceable');ok(p.common.length>=15,'rush board has words '+p.common.length);}
 // Word Trails: verified full-cover boards
 for(const lv of [1,4,8,10])for(let k=0;k<5;k++){const G=PL.games.trails;const p=G.generate(lv,PL.rng('tr'+lv+k),{});ok(G._verify(p),'trails board verified');ok(p.letters.length===p.C*p.R,'all cells filled');}
+// Word Rush scoring v2: coverage of this board's findable words, not a fixed handful
+{const G=PL.games.wordrush;
+ for(const lv of [2,5,8]){const p=G.generate(lv,PL.rng('wr2'+lv),{});ok(p.sv===2&&p.disc.length>=20&&p.disc.every(w=>p.words.includes(w)),'board has a findable pool');
+  const D=p.disc.slice().sort((a,b)=>a.length-b.length);const q=(n,mode,dur,h)=>G._measure(p,{found:D.slice(0,n),mode,dur},h||0).quality;
+  ok(q(5,'timed',120)<50,'five words in two minutes is limited coverage ('+q(5,'timed',120)+')');
+  ok(q(10,'timed',120)<70,'ten words in two minutes is fair at best ('+q(10,'timed',120)+')');
+  ok(q(22,'timed',120)>=88,'about 22 words in two minutes is excellent ('+q(22,'timed',120)+')');
+  ok(q(10,'timed',60)>q(10,'timed',180),'the same words score higher in a shorter round');
+  ok(q(15,'untimed',120)<q(15,'timed',120),'untimed expects more coverage');
+  ok(q(22,'timed',120,2)===q(22,'timed',120)-12||q(22,'timed',120)<12,'hints cost 6 each');
+  const bonus=p.words.filter(w=>!p.disc.includes(w));if(bonus.length){const a=G._measure(p,{found:D.slice(0,8),mode:'timed',dur:120},0),b=G._measure(p,{found:D.slice(0,8).concat(bonus.slice(0,3)),mode:'timed',dur:120},0);ok(b.quality>a.quality&&b.metrics.bonus===3,'rare words add as bonus');}
+  ok(G._measure(p,{found:p.disc.slice(),mode:'untimed',dur:120},0).quality===100,'finding every findable word is 100');}
+ {const w=PL.dict.words(4,['B']).find(x=>/s$/.test(x)&&PL.dict.tier(x.slice(0,-1))==='A');ok(w&&G._findable(w),'plurals of common words are findable ('+w+')');ok(!G._findable(PL.dict.words(5,['C'])[0]),'rare words are bonus');}
+ // re-scoring a v1 result keeps the old numbers and never touches dailies
+ const p1=G.generate(4,PL.rng('old'),{});delete p1.disc;delete p1.sv;const gs1={found:p1.common.slice(-6),mode:'timed',dur:120};
+ const att={game:'wordrush',mode:'unlimited',puzzle:JSON.parse(JSON.stringify(p1)),gs:gs1,hints:0,quality:100,perf:100,outcome:'solved',metrics:{mode:'timed',target:9,points:6}};
+ const r=G.rescore(att);ok(r&&r.v1.quality===100&&r.v1.target===9&&r.quality<60&&r.metrics.sv===2,'v1 round re-scored ('+(r&&r.quality)+'), original kept');
+ ok(G.rescore(Object.assign({},att,{metrics:r.metrics}))===null,'re-scoring is idempotent');}
 // Word Count: per-cell marks are independent; old per-letter marks are converted; hints are kept apart
 {const W=PL.games.wordcount;const gs={rows:[{g:'nouns',c:[1,1,3]},{g:'manor',c:[0,2,3]}],cur:'',mk:{n:3,o:2},told:['N is in the word.'],markMode:true};
  W._upgrade(gs);ok(!gs.mk&&gs.cm[0][0]===0&&gs.cm[0][1]===3&&gs.cm[1][3]===3&&gs.hin.join()==='n','old letter marks converted per cell; hint letters kept apart');

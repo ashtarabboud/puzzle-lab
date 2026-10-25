@@ -2,7 +2,7 @@
 const fs=require('fs'),vm=require('vm');
 const ctx={console,Math,JSON,Date,Object,Array,String,Number,Set,Error};vm.createContext(ctx);
 vm.runInContext('var PL={data:{},games:{}};'+fs.readFileSync('src/core/base.js','utf8'),ctx);
-vm.runInContext('var mem={};PL.SCHEMA=3;PL.store={get:function(k){return mem[k]},put:function(k,v){if(v&&typeof v==="object")v.u=Date.now();mem[k]=v},del:function(k){delete mem[k]},keys:function(p){return Object.keys(mem).filter(function(k){return k.indexOf(p)===0})},raw:function(){return mem},replaceAll:function(o){mem=o;}};'+fs.readFileSync('src/core/model.js','utf8'),ctx);
+vm.runInContext('var mem={};PL.SCHEMA=4;PL.store={get:function(k){return mem[k]},put:function(k,v){if(v&&typeof v==="object")v.u=Date.now();mem[k]=v},del:function(k){delete mem[k]},keys:function(p){return Object.keys(mem).filter(function(k){return k.indexOf(p)===0})},raw:function(){return mem},replaceAll:function(o){mem=o;}};'+fs.readFileSync('src/core/model.js','utf8'),ctx);
 const PL=ctx.PL,M=PL.model;let bad=0;const ok=(c,m)=>{if(!c){bad++;console.log('FAIL',m);}};
 // stub games for daily scoring benchmark
 PL.order.concat(PL.retired).forEach(g=>{PL.games[g]={benchmark:()=>100,generate:()=>({g}),init:()=>({})};});
@@ -33,7 +33,7 @@ ok(!M.validateImport(v1),'v1 export accepted');
 // import into a fresh store
 vm.runInContext('mem={}',ctx);const counts=M.importData(v1,'merge');
 ok(counts.attempts===1,'attempt imported');ok(!PL.store.get('act:logic'),'retired active dropped');
-const c=M.core();ok(c.schema===3,'schema migrated');ok(c.ratings.password.level===5,'rating preserved');ok(c.ratings.reverse&&c.ratings.links,'new ratings');ok(c.settings.excluded.indexOf('logic')<0,'excluded cleaned');
+const c=M.core();ok(c.schema===4,'schema migrated');ok(c.ratings.password.level===5,'rating preserved');ok(c.ratings.reverse&&c.ratings.links,'new ratings');ok(c.settings.excluded.indexOf('logic')<0,'excluded cleaned');
 ok(M.daily('2026-10-19').max===900,'imported old day migrated');
 // fresh start: clears stats, levels and today's daily (an old 10-game day is rebuilt with every game); undo brings it all back
 {PL.store.replaceAll({});M.core();PL.store.put('day:2026-10-25',{date:'2026-10-25',diff:'Easy',games:PL.order.slice(0,10),max:1000,levels:{},puzzles:{},prog:{}});
@@ -43,4 +43,14 @@ ok(M.daily('2026-10-19').max===900,'imported old day migrated');
  ok(M.exportData().data[r.archive],'archive included in exports');
  play('bridges',90);const u=M.undoFreshStart();ok(u.attempts===6&&M.attempts().length===7,'undo restores old results and keeps new ones');ok(M.rating('algebra').level===lvl,'undo restores levels');
  ok(M.daily('2026-10-25').games.length===PL.order.length,'today keeps the rebuilt quiz after undo');ok(M.active('loop'),'undo restores unfinished puzzle');ok(!PL.store.keys('arc:').length,'archive consumed');}
+// Word Rush v1 → v2: re-score unlimited rounds (originals kept), never dailies, and recalibrate the level by replay
+{let n0=0;PL.games.wordrush={rescore:a=>(a.metrics&&a.metrics.sv>=2)?null:{quality:55,perf:55,metrics:{sv:2,mode:'timed'},v1:{quality:a.quality,perf:a.perf,target:9}}};
+ const r=M.rating('wordrush');r.level=3;const c=M.core();c.ratings.wordrush={level:6,highest:6,changes:[{t:1,from:5,to:6}],since:0};M.saveCore(c);
+ for(let i=0;i<10;i++){t+=1000;M.saveAttempt({id:'wr'+t,game:'wordrush',mode:'unlimited',timed:false,outcome:'solved',perf:100,quality:100,level:3+Math.min(3,Math.floor(i/3)),endedAt:t,metrics:{mode:'timed',target:9},lines:[]});}
+ t+=1000;M.saveAttempt({id:'wrd'+t,game:'wordrush',mode:'daily',outcome:'solved',perf:100,quality:100,level:6,endedAt:t,metrics:{mode:'timed'},lines:[]});
+ const n=M.upgradeRecords();ok(n===10,'ten unlimited rounds re-scored, daily untouched: '+n);
+ const A=M.attempts(a=>a.game==='wordrush');ok(A.filter(a=>a.mode==='unlimited').every(a=>a.perf===55&&a.v1.perf===100&&a.lines.length===1),'v2 score in use, v1 kept and noted');
+ ok(A.find(a=>a.mode==='daily').perf===100&&!A.find(a=>a.mode==='daily').v1,'daily result unchanged');
+ const lv=M.rating('wordrush').level;ok(lv<6&&M.rating('wordrush').highest===6,'level recalibrated from the re-scored rounds ('+lv+'), history kept');
+ ok(M.upgradeRecords()===0,'upgrade runs once');}
 console.log('bad',bad);
