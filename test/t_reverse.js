@@ -22,4 +22,27 @@ for(const t of ['num','seq','grid','missing','multi','constraint'])for(const lv 
  }
  if(Date.now()-t0>3000)console.log('slow',t,lv,Date.now()-t0);
 }
-console.log(cnt);console.log('bad',bad);
+console.log(cnt);
+// ---- workspace history: exact, deterministic undo/redo/reset ----
+{const H=G._hist,ok=(c,m)=>{if(!c){bad++;console.log('FAIL',m);}};
+ const hs=H.make({rows:[[0,1,2,3]]}),S=['A','B','C','D'],show=()=>H.cur(hs).rows[0].map(i=>S[i]).join(' ');
+ const mv=(f)=>{const n=JSON.parse(JSON.stringify(H.cur(hs)));f(n.rows[0]);return H.commit(hs,n);};
+ mv(r=>{const t=r[0];r[0]=r[1];r[1]=t;});ok(show()==='B A C D','move 1');
+ mv(r=>{const x=r.splice(1,1)[0];r.splice(2,0,x);});ok(show()==='B C A D','move 2');
+ H.undo(hs);ok(show()==='B A C D','undo once');H.undo(hs);ok(show()==='A B C D','undo to start');ok(!H.undo(hs)&&show()==='A B C D','cannot undo past start');
+ H.redo(hs);ok(show()==='B A C D','redo 1');H.redo(hs);ok(show()==='B C A D','redo 2');ok(!H.redo(hs),'nothing more to redo');
+ H.undo(hs);mv(r=>r.reverse());ok(show()==='D C A B'&&!H.redo(hs),'new action clears redo');
+ H.reset(hs);ok(show()==='A B C D','reset to start');H.undo(hs);ok(show()==='D C A B','reset is undoable');
+ ok(JSON.stringify(hs.states[0])==='{"rows":[[0,1,2,3]]}','start is never modified');
+ ok(!mv(r=>r),'no-op does not create history');
+ // repeated letters keep independent identities
+ const p={type:'seq',final:['A','B','A','C'],answer:['A','A','B','C']},gs={};G._ensureTiles(p,gs);
+ const ws=gs.tws;H.commit(ws.hs,{rows:[[2,1,0,3]]});ok(G._tileRows(gs)[0].join('')==='ABAC'&&H.cur(ws.hs).rows[0][0]===2,'repeated letters tracked by id');
+ H.undo(ws.hs);ok(H.cur(ws.hs).rows[0].join()==='0,1,2,3','undo restores ids, not just letters');
+ // old saved format converts without losing the position in history
+ const old={tws:{rows:[['B','A','A','C']],hist:[[['A','B','A','C']],[['A','A','B','C']]],fut:[[['C','A','B','A']]],sel:null}};G._ensureTiles(p,old);
+ ok(G._tileRows(old)[0].join('')==='BAAC','old current row kept');H.undo(old.tws.hs);ok(G._tileRows(old)[0].join('')==='AABC','old undo history kept');
+ H.redo(old.tws.hs);H.redo(old.tws.hs);ok(G._tileRows(old)[0].join('')==='CABA','old redo history kept');
+ const gp={type:'grid',n:2,final:['a','b','c','d']},gg={cells:['b','a','c','d'],bh:[['a','b','c','d']],bf:[]};G._ensureBoard(gp,gg);ok(gg.cells.join('')==='bacd'&&gg.bhs.idx===1,'old board history converted');
+}
+console.log('bad',bad);

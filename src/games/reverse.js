@@ -276,69 +276,117 @@
 
   /* ======================= Workspaces =======================
      Free experimentation areas. Nothing here counts as a hint or an attempt; only "Check" submissions do.
-     All workspace state lives in gs (so it persists when you leave and return) with its own undo/redo. */
+     Undo model (shared by every workspace): a linear list of complete, immutable snapshots plus a cursor.
+       states[0] is the starting arrangement and is never modified; every action appends a NEW snapshot
+       (dropping any redo branch); Undo/Redo only move the cursor; Reset appends a copy of states[0].
+     Nothing is ever recomputed or reshuffled on undo, so undo/redo always land on exactly the recorded states.
+     Tiles carry stable ids (their index in the starting row), so repeated letters are tracked independently.
+     All of this lives in gs, so it survives leaving and returning. */
+  var HMAX = 400;
   function snap(o) { return JSON.parse(JSON.stringify(o)); }
-  function wsPush(ws, keyName) { ws.hist.push(snap(ws[keyName])); if (ws.hist.length > 60) ws.hist.shift(); ws.fut = []; }
-  function wsUndo(ws, keyName) { if (!ws.hist.length) return; ws.fut.push(snap(ws[keyName])); ws[keyName] = ws.hist.pop(); }
-  function wsRedo(ws, keyName) { if (!ws.fut.length) return; ws.hist.push(snap(ws[keyName])); ws[keyName] = ws.fut.pop(); }
+  function hNew(start) { return { states: [snap(start)], idx: 0 }; }
+  function hCur(hs) { return hs.states[hs.idx]; }
+  function hCommit(hs, next) { // returns false when the action changed nothing (no history entry)
+    if (JSON.stringify(next) === JSON.stringify(hCur(hs))) return false;
+    hs.states = hs.states.slice(0, hs.idx + 1); hs.states.push(snap(next));
+    if (hs.states.length > HMAX) hs.states.splice(1, hs.states.length - HMAX); // the start (states[0]) is always kept
+    hs.idx = hs.states.length - 1; return true;
+  }
+  function hUndo(hs) { if (hs.idx > 0) { hs.idx--; return true; } return false; }
+  function hRedo(hs) { if (hs.idx < hs.states.length - 1) { hs.idx++; return true; } return false; }
+  function hReset(hs) { return hCommit(hs, hs.states[0]); }
+  function hFromOld(start, hist, current, fut) { // rebuild a history saved by the old {hist, fut} format, in order
+    var hs = hNew(start), at = 0;
+    (hist || []).forEach(function (x) { hCommit(hs, x); });
+    hCommit(hs, current); at = hs.idx;
+    (fut || []).slice().reverse().forEach(function (x) { hCommit(hs, x); });
+    hs.idx = at; return hs;
+  }
+  function histButtons(hs, after, disabled) {
+    return [
+      h('button', { class: 'btn ghost sm', 'data-act': 'undo', disabled: disabled || hs.idx === 0, onclick: function () { if (hUndo(hs)) after(); } }, 'Undo'),
+      h('button', { class: 'btn ghost sm', 'data-act': 'redo', disabled: disabled || hs.idx >= hs.states.length - 1, onclick: function () { if (hRedo(hs)) after(); } }, 'Redo'),
+      h('button', { class: 'btn ghost sm', 'data-act': 'reset', disabled: disabled || JSON.stringify(hCur(hs)) === JSON.stringify(hs.states[0]), onclick: function () { if (hReset(hs)) after(); } }, 'Reset to start')];
+  }
 
   /* --- A. letter/symbol tiles --- */
   function tileStart(p) { return p.type === 'missing' ? p.start.slice() : p.final.slice(); }
-  function ensureTiles(p, gs) { if (!gs.tws) gs.tws = { rows: [tileStart(p)], sel: null, hist: [], fut: [] }; return gs.tws; }
+  function ensureTiles(p, gs) {
+    var start = tileStart(p), ids = start.map(function (_, i) { return i; });
+    var ws = gs.tws;
+    if (!ws || !ws.hs) { // new, or saved by the old version ({rows, hist, fut} of symbol rows): rebuild as id rows
+      var toIds = function (rows) { // map symbols back to ids, using each starting position once per row
+        return rows.map(function (row) { var used = {}; return row.map(function (sym) { for (var i = 0; i < start.length; i++) if (start[i] === sym && !used[i]) { used[i] = 1; return i; } return null; }); })
+          .filter(function (row) { return row.length === start.length && row.every(function (x) { return x != null; }); });
+      };
+      var conv = function (rows) { var r = toIds(rows); return { rows: r.length ? r : [ids] }; };
+      var hs = ws && ws.rows ? hFromOld({ rows: [ids] }, (ws.hist || []).map(conv), conv(ws.rows), (ws.fut || []).map(conv)) : hNew({ rows: [ids] });
+      ws = gs.tws = { sym: start, hs: hs, sel: null };
+    }
+    return ws;
+  }
+  function tileRows(gs) { var ws = gs.tws; return ws && ws.hs ? hCur(ws.hs).rows.map(function (r) { return r.map(function (id) { return ws.sym[id]; }); }) : null; }
   function tileWorkspace(api, opts) {
-    var p = api.p, gs = api.gs, ws = ensureTiles(p, gs);
-    var change = function (fn) { wsPush(ws, 'rows'); fn(); ws.sel = null; api.update(gs); };
+    var p = api.p, gs = api.gs, ws = ensureTiles(p, gs), state = hCur(ws.hs);
+    var change = function (fn) { var next = snap(hCur(ws.hs)); fn(next.rows); ws.sel = null; hCommit(ws.hs, next); api.update(gs); };
+    var after = function () { ws.sel = null; api.update(gs); };
     var rowsEl = h('div', { class: 'tws-rows' });
-    ws.rows.forEach(function (row, r) {
+    state.rows.forEach(function (row, r) {
       var tiles = h('div', { class: 'tws-tiles', 'data-row': r });
-      row.forEach(function (sym, i) {
-        var t = h('button', { class: 'tws-tile mono' + (ws.sel && ws.sel.r === r && ws.sel.i === i ? ' sel' : ''), 'data-i': i, 'aria-label': 'Tile ' + sym + ', position ' + (i + 1) }, sym);
-        attachTileDrag(t, r, i, tiles, ws, api, gs, change);
+      row.forEach(function (id, i) {
+        var sym = ws.sym[id];
+        var t = h('button', { class: 'tws-tile mono' + (ws.sel && ws.sel.r === r && ws.sel.id === id ? ' sel' : ''), 'data-i': i, 'data-id': id, 'aria-label': 'Tile ' + sym + ', position ' + (i + 1) }, sym);
+        attachTileDrag(t, r, id, tiles, ws, api, gs, change);
         tiles.appendChild(t);
       });
       var acts = h('div', { class: 'tws-acts' },
-        h('button', { class: 'btn ghost xs', 'aria-label': 'Move first tile to the end', onclick: function () { change(function () { ws.rows[r] = row.slice(1).concat(row.slice(0, 1)); }); } }, '⟲'),
-        h('button', { class: 'btn ghost xs', 'aria-label': 'Move last tile to the front', onclick: function () { change(function () { ws.rows[r] = row.slice(-1).concat(row.slice(0, -1)); }); } }, '⟳'),
-        h('button', { class: 'btn ghost xs', 'aria-label': 'Reverse this row', onclick: function () { change(function () { ws.rows[r] = row.slice().reverse(); }); } }, '⇄'),
-        h('button', { class: 'btn ghost xs', 'aria-label': 'Duplicate this row', onclick: function () { change(function () { ws.rows.splice(r + 1, 0, row.slice()); }); } }, 'Copy'),
-        ws.rows.length > 1 ? h('button', { class: 'btn ghost xs', 'aria-label': 'Delete this row', onclick: function () { change(function () { ws.rows.splice(r, 1); }); } }, '✕') : null,
-        opts.submit && !api.done ? h('button', { class: 'btn xs primary', onclick: function () { opts.submit(row.slice()); } }, 'Check') : null);
+        h('button', { class: 'btn ghost xs', 'aria-label': 'Move first tile to the end', onclick: function () { change(function (rows) { rows[r] = rows[r].slice(1).concat(rows[r].slice(0, 1)); }); } }, '1st→end'),
+        h('button', { class: 'btn ghost xs', 'aria-label': 'Move last tile to the front', onclick: function () { change(function (rows) { rows[r] = rows[r].slice(-1).concat(rows[r].slice(0, -1)); }); } }, 'last→1st'),
+        h('button', { class: 'btn ghost xs', 'aria-label': 'Reverse this row', onclick: function () { change(function (rows) { rows[r] = rows[r].slice().reverse(); }); } }, 'Flip'),
+        h('button', { class: 'btn ghost xs', 'aria-label': 'Duplicate this row', onclick: function () { change(function (rows) { rows.splice(r + 1, 0, rows[r].slice()); }); } }, 'Copy'),
+        state.rows.length > 1 ? h('button', { class: 'btn ghost xs', 'aria-label': 'Delete this row', onclick: function () { change(function (rows) { rows.splice(r, 1); }); } }, '✕') : null,
+        opts.submit && !api.done ? h('button', { class: 'btn xs primary', onclick: function () { opts.submit(row.map(function (id) { return ws.sym[id]; })); } }, 'Check') : null);
       rowsEl.appendChild(h('div', { class: 'tws-row' }, h('span', { class: 'tws-n muted' }, String(r + 1)), tiles, acts));
     });
     return h('div', { class: 'workspace' },
-      h('div', { class: 'ws-head' }, h('span', { class: 'lbl' }, 'Workspace'),
-        h('div', { class: 'row-actions' },
-          h('button', { class: 'btn ghost sm', disabled: !ws.hist.length, onclick: function () { wsUndo(ws, 'rows'); ws.sel = null; api.update(gs); } }, 'Undo'),
-          h('button', { class: 'btn ghost sm', disabled: !ws.fut.length, onclick: function () { wsRedo(ws, 'rows'); ws.sel = null; api.update(gs); } }, 'Redo'),
-          h('button', { class: 'btn ghost sm', onclick: function () { change(function () { ws.rows = [tileStart(p)]; }); } }, 'Reset'))),
-      h('div', { class: 'muted small' }, 'Drag a tile to move it, or tap two tiles to swap them. ⟲ ⟳ rotate the row, ⇄ reverses it, Copy duplicates it to try another idea.' + (opts.submit ? ' Tap Check on the row that is your answer.' : ' Nothing here affects your score.')),
+      h('div', { class: 'ws-head' }, h('span', { class: 'lbl' }, 'Workspace'), h('div', { class: 'row-actions' }, histButtons(ws.hs, after, api.done))),
+      h('div', { class: 'muted small' }, 'Drag a tile to move it, or tap two tiles to swap them. 1st→end and last→1st rotate the row, Flip reverses it, Copy duplicates it to try another idea. Undo and Redo step through your moves exactly; Reset to start goes back to the starting row (and can itself be undone).' + (opts.submit ? ' Tap Check on the row that is your answer.' : ' Nothing here affects your score.')),
       rowsEl);
   }
-  function attachTileDrag(el, r, i, tilesEl, ws, api, gs, change) {
+  /* Drag: a drop is recorded only on a real pointerup. A pointercancel (iOS cancels touches for system gestures,
+     scrolling or zoom, often reporting coordinates of 0) abandons the drag instead of dropping the tile somewhere. */
+  function attachTileDrag(el, r, id, tilesEl, ws, api, gs, change) {
     el.addEventListener('pointerdown', function (ev) {
-      if (api.done) return;
+      if (api.done || (ev.pointerType === 'mouse' && ev.button !== 0)) return;
       ev.preventDefault();
-      var sx = ev.clientX, sy = ev.clientY, moved = false, ghost = null;
-      try { el.setPointerCapture(ev.pointerId); } catch (e) { }
+      var sx = ev.clientX, sy = ev.clientY, moved = false, ghost = null, pid = ev.pointerId;
+      try { el.setPointerCapture(pid); } catch (e) { }
+      function cleanup() {
+        el.removeEventListener('pointermove', move); el.removeEventListener('pointerup', up); el.removeEventListener('pointercancel', cancel);
+        if (ghost) ghost.remove(); el.classList.remove('dragging');
+      }
       function move(e2) {
+        if (e2.pointerId !== pid) return;
         if (!moved && Math.hypot(e2.clientX - sx, e2.clientY - sy) < 8) return;
         if (!moved) { moved = true; ghost = el.cloneNode(true); ghost.classList.add('tws-ghost'); document.body.appendChild(ghost); el.classList.add('dragging'); }
         ghost.style.left = (e2.clientX - 20) + 'px'; ghost.style.top = (e2.clientY - 24) + 'px';
       }
+      function cancel(e2) { if (e2.pointerId !== pid) return; cleanup(); }
       function up(e2) {
-        el.removeEventListener('pointermove', move); el.removeEventListener('pointerup', up); el.removeEventListener('pointercancel', up);
-        if (ghost) ghost.remove(); el.classList.remove('dragging');
+        if (e2.pointerId !== pid) return;
+        cleanup();
+        var row = hCur(ws.hs).rows[r], from = row ? row.indexOf(id) : -1;
+        if (from < 0) return;
         if (!moved) { // tap: select, or swap with the selected tile in the same row
-          if (ws.sel && ws.sel.r === r && ws.sel.i !== i) { var a = ws.sel.i; change(function () { var row = ws.rows[r], t = row[a]; row[a] = row[i]; row[i] = t; }); }
-          else { ws.sel = ws.sel && ws.sel.r === r && ws.sel.i === i ? null : { r: r, i: i }; api.update(gs); }
+          if (ws.sel && ws.sel.r === r && ws.sel.id !== id) { var other = ws.sel.id; change(function (rows) { var a = rows[r].indexOf(other), b = rows[r].indexOf(id); rows[r][a] = id; rows[r][b] = other; }); }
+          else { ws.sel = ws.sel && ws.sel.r === r && ws.sel.id === id ? null : { r: r, id: id }; api.update(gs); }
           return;
         }
-        // drop: insert at the position nearest the pointer
-        var kids = Array.prototype.slice.call(tilesEl.children), best = i, bd = Infinity;
+        var kids = Array.prototype.slice.call(tilesEl.children), best = from, bd = Infinity;
         kids.forEach(function (k, j) { var b = k.getBoundingClientRect(), d = Math.abs(e2.clientX - (b.left + b.width / 2)); if (d < bd) { bd = d; best = j; } });
-        if (best !== i) change(function () { var row = ws.rows[r], x = row.splice(i, 1)[0]; row.splice(best, 0, x); });
+        if (best !== from) change(function (rows) { var rw = rows[r], x = rw.splice(rw.indexOf(id), 1)[0]; rw.splice(best, 0, x); });
       }
-      el.addEventListener('pointermove', move); el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
+      el.addEventListener('pointermove', move); el.addEventListener('pointerup', up); el.addEventListener('pointercancel', cancel);
     });
   }
 
@@ -348,48 +396,67 @@
     if (p.type === 'missing') return p.stepsShown.map(function (s, k) { return 'After step ' + (k + 1) + (s === '?' ? ' (missing)' : ' (' + s + ')'); });
     return ['Working 1', 'Working 2', 'Working 3'];
   }
-  function ensureNums(p, gs) { if (!gs.nws) gs.nws = { rows: numSteps(p).map(function (l) { return { label: l, expr: '' }; }), hist: [], fut: [] }; return gs.nws; }
+  function numStart(p) { return { rows: numSteps(p).map(function (l) { return { label: l, expr: '' }; }) }; }
+  function ensureNums(p, gs) {
+    var ws = gs.nws;
+    if (!ws || !ws.hs) {
+      var w = function (rows) { return { rows: rows }; };
+      var hs = ws && ws.rows ? hFromOld(numStart(p), (ws.hist || []).map(w), w(ws.rows), (ws.fut || []).map(w)) : hNew(numStart(p));
+      ws = gs.nws = { hs: hs };
+    }
+    return ws;
+  }
   function evalSafe(expr) { if (!expr || !expr.trim()) return ''; try { return PL.calc.evaluate(expr); } catch (e) { return '…'; } }
   function numWorkspace(api) {
-    var p = api.p, gs = api.gs, ws = ensureNums(p, gs);
-    var change = function (fn) { wsPush(ws, 'rows'); fn(); api.update(gs); };
+    var p = api.p, gs = api.gs, ws = ensureNums(p, gs), rows = hCur(ws.hs).rows;
+    var change = function (fn) { var next = snap(hCur(ws.hs)); fn(next.rows); hCommit(ws.hs, next); api.update(gs); };
     var refFinal = p.type === 'missing' ? 'Start ' + p.start + ' → end ' + p.final : p.type === 'constraint' ? p.machines.map(function (m) { return m.name + ' output ' + m.out; }).join(' · ') : 'Final result ' + p.final;
     var list = h('div', { class: 'nws-rows' });
-    ws.rows.forEach(function (row, k) {
+    rows.forEach(function (row, k) {
       var out = h('span', { class: 'nws-val mono' }, evalSafe(row.expr) ? '= ' + evalSafe(row.expr) : '');
       var lab = h('input', { class: 'nws-lab', value: row.label, 'aria-label': 'Row label' });
       var inp = h('input', { class: 'nws-in mono', value: row.expr, inputmode: 'text', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', placeholder: 'e.g. 129591 + 20', 'aria-label': 'Calculation for ' + row.label });
-      var before = null;
-      var commit = function () { if (before !== null && before !== JSON.stringify(ws.rows)) { ws.hist.push(JSON.parse(before)); if (ws.hist.length > 60) ws.hist.shift(); ws.fut = []; } before = null; api.save(gs); };
-      [lab, inp].forEach(function (el) { el.addEventListener('focus', function () { before = JSON.stringify(ws.rows); }); el.addEventListener('blur', commit); });
-      lab.addEventListener('input', function () { row.label = lab.value; api.save(gs); });
-      inp.addEventListener('input', function () { row.expr = inp.value; var v = evalSafe(row.expr); out.textContent = v ? '= ' + v : ''; api.save(gs); });
+      // typing: the first keystroke of each focus starts one new history entry; later keystrokes edit that entry
+      var editing = false;
+      var edit = function (field, el) {
+        if (!editing) { var next = snap(hCur(ws.hs)); next.rows[k][field] = el.value; if (hCommit(ws.hs, next)) editing = true; }
+        else hCur(ws.hs).rows[k][field] = el.value;
+        if (field === 'expr') { var v = evalSafe(el.value); out.textContent = v ? '= ' + v : ''; }
+        api.save(gs);
+      };
+      [lab, inp].forEach(function (el) { el.addEventListener('focus', function () { editing = false; }); el.addEventListener('blur', function () { if (editing) api.update(gs); editing = false; }); });
+      lab.addEventListener('input', function () { edit('label', lab); });
+      inp.addEventListener('input', function () { edit('expr', inp); });
       list.appendChild(h('div', { class: 'nws-row' },
         h('div', { class: 'nws-top' }, lab,
-          h('button', { class: 'btn ghost xs', 'aria-label': 'Move up', disabled: k === 0, onclick: function () { change(function () { var t = ws.rows[k - 1]; ws.rows[k - 1] = ws.rows[k]; ws.rows[k] = t; }); } }, '↑'),
-          h('button', { class: 'btn ghost xs', 'aria-label': 'Move down', disabled: k === ws.rows.length - 1, onclick: function () { change(function () { var t = ws.rows[k + 1]; ws.rows[k + 1] = ws.rows[k]; ws.rows[k] = t; }); } }, '↓'),
-          h('button', { class: 'btn ghost xs', 'aria-label': 'Copy this result into the next row', disabled: !evalSafe(row.expr) || evalSafe(row.expr) === '…', onclick: function () { var v = evalSafe(row.expr).split(' ≈')[0]; change(function () { if (k === ws.rows.length - 1) ws.rows.push({ label: 'Working ' + (ws.rows.length + 1), expr: '' }); var nx = ws.rows[k + 1]; nx.expr = (nx.expr || '') + (/^-|\//.test(v) ? '(' + v + ')' : v); }); } }, 'Copy ↓'),
-          h('button', { class: 'btn ghost xs', 'aria-label': 'Remove row', disabled: ws.rows.length <= 1, onclick: function () { change(function () { ws.rows.splice(k, 1); }); } }, '✕')),
+          h('button', { class: 'btn ghost xs', 'aria-label': 'Move up', disabled: k === 0, onclick: function () { change(function (R) { var t = R[k - 1]; R[k - 1] = R[k]; R[k] = t; }); } }, '↑'),
+          h('button', { class: 'btn ghost xs', 'aria-label': 'Move down', disabled: k === rows.length - 1, onclick: function () { change(function (R) { var t = R[k + 1]; R[k + 1] = R[k]; R[k] = t; }); } }, '↓'),
+          h('button', { class: 'btn ghost xs', 'aria-label': 'Copy this result into the next row', disabled: !evalSafe(row.expr) || evalSafe(row.expr) === '…', onclick: function () { var v = evalSafe(row.expr).split(' ≈')[0]; change(function (R) { if (k === R.length - 1) R.push({ label: 'Working ' + (R.length + 1), expr: '' }); var nx = R[k + 1]; nx.expr = (nx.expr || '') + (/^-|\//.test(v) ? '(' + v + ')' : v); }); } }, 'Copy ↓'),
+          h('button', { class: 'btn ghost xs', 'aria-label': 'Remove row', disabled: rows.length <= 1, onclick: function () { change(function (R) { R.splice(k, 1); }); } }, '✕')),
         h('div', { class: 'nws-bottom' }, inp, out)));
     });
     return h('div', { class: 'workspace' },
-      h('div', { class: 'ws-head' }, h('span', { class: 'lbl' }, 'Workspace'),
-        h('div', { class: 'row-actions' },
-          h('button', { class: 'btn ghost sm', disabled: !ws.hist.length, onclick: function () { wsUndo(ws, 'rows'); api.update(gs); } }, 'Undo'),
-          h('button', { class: 'btn ghost sm', disabled: !ws.fut.length, onclick: function () { wsRedo(ws, 'rows'); api.update(gs); } }, 'Redo'),
-          h('button', { class: 'btn ghost sm', onclick: function () { change(function () { ws.rows = numSteps(p).map(function (l) { return { label: l, expr: '' }; }); }); } }, 'Reset'))),
+      h('div', { class: 'ws-head' }, h('span', { class: 'lbl' }, 'Workspace'), h('div', { class: 'row-actions' }, histButtons(ws.hs, function () { api.update(gs); }, api.done))),
       h('div', { class: 'muted small' }, refFinal + '. Write one calculation per row; each row shows its value. The workspace never solves anything for you and never affects your score.'),
       list,
-      h('button', { class: 'btn ghost sm', onclick: function () { change(function () { ws.rows.push({ label: 'Working ' + (ws.rows.length + 1), expr: '' }); }); } }, '+ Add row'));
+      h('button', { class: 'btn ghost sm', onclick: function () { change(function (R) { R.push({ label: 'Working ' + (R.length + 1), expr: '' }); }); } }, '+ Add row'));
   }
 
-  /* --- C. board workspace: transformations are tried on "Your board" --- */
+  /* --- C. board workspace: transformations are tried on "Your board" (gs.cells mirrors the current snapshot) --- */
   function flipV(g, n) { var t = []; for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) t[(n - 1 - r) * n + c] = g[r * n + c]; return t; }
+  function ensureBoard(p, gs) {
+    if (!gs.bhs) {
+      gs.bhs = hFromOld(p.final.slice(), gs.bh, gs.cells, gs.bf); delete gs.bh; delete gs.bf;
+    }
+    gs.cells = hCur(gs.bhs).slice();
+    return gs.bhs;
+  }
+  function boardMove(api, fn, isSwap) { var gs = api.gs, hs = ensureBoard(api.p, gs); if (hCommit(hs, fn(hCur(hs).slice())) && isSwap) gs.swaps++; gs.cells = hCur(hs).slice(); api.update(gs); }
   function boardTools(api) {
-    var p = api.p, gs = api.gs, n = p.n;
-    if (!gs.bh) { gs.bh = []; gs.bf = []; }
-    var apply = function (fn) { gs.bh.push(gs.cells.slice()); if (gs.bh.length > 80) gs.bh.shift(); gs.bf = []; gs.cells = fn(gs.cells); api.update(gs); };
+    var p = api.p, gs = api.gs, n = p.n, hs = ensureBoard(p, gs);
     var sel = gs.sel, r = sel != null ? Math.floor(sel / n) : null, c = sel != null ? sel % n : null;
+    var apply = function (fn) { boardMove(api, fn); };
+    var after = function () { gs.cells = hCur(hs).slice(); gs.sel = null; api.update(gs); };
     var b = function (label, aria, fn, dis) { return h('button', { class: 'btn ghost xs', 'aria-label': aria, disabled: api.done || dis, onclick: fn }, label); };
     return h('div', { class: 'board-tools' },
       h('div', { class: 'row-actions' },
@@ -398,14 +465,12 @@
         b('Col ↑', 'Slide the selected column up', function () { apply(function (g) { return GRID_OPS.colU.f(g, n, c); }); }, sel == null),
         b('Col ↓', 'Slide the selected column down', function () { apply(function (g) { return GRID_OPS.colD.f(g, n, c); }); }, sel == null)),
       h('div', { class: 'row-actions' },
-        b('↻', 'Rotate the board clockwise', function () { apply(function (g) { return GRID_OPS.rotCW.f(g, n); }); }),
-        b('↺', 'Rotate the board anticlockwise', function () { apply(function (g) { var x = g; for (var k = 0; k < 3; k++) x = GRID_OPS.rotCW.f(x, n); return x; }); }),
-        b('⇆', 'Flip left to right', function () { apply(function (g) { return GRID_OPS.flipH.f(g, n); }); }),
-        b('⇅', 'Flip top to bottom', function () { apply(function (g) { return flipV(g, n); }); }),
-        b('Undo', 'Undo', function () { if (!gs.bh.length) return; gs.bf.push(gs.cells.slice()); gs.cells = gs.bh.pop(); api.update(gs); }, !gs.bh.length),
-        b('Redo', 'Redo', function () { if (!gs.bf.length) return; gs.bh.push(gs.cells.slice()); gs.cells = gs.bf.pop(); api.update(gs); }, !gs.bf.length),
-        b('Reset', 'Reset to the board afterwards', function () { apply(function () { return p.final.slice(); }); })),
-      h('div', { class: 'muted small' }, 'Tap two squares to swap them. Select a square, then slide its row or column. Moves are free experimentation; only Check counts.'));
+        b('Turn ↻', 'Rotate the board clockwise', function () { apply(function (g) { return GRID_OPS.rotCW.f(g, n); }); }),
+        b('Turn ↺', 'Rotate the board anticlockwise', function () { apply(function (g) { var x = g; for (var k = 0; k < 3; k++) x = GRID_OPS.rotCW.f(x, n); return x; }); }),
+        b('Mirror ⇆', 'Flip left to right', function () { apply(function (g) { return GRID_OPS.flipH.f(g, n); }); }),
+        b('Mirror ⇅', 'Flip top to bottom', function () { apply(function (g) { return flipV(g, n); }); })),
+      h('div', { class: 'row-actions' }, histButtons(hs, after, api.done)),
+      h('div', { class: 'muted small' }, 'Tap two squares to swap them. Select a square, then slide its row or column. Undo and Redo step through your moves exactly; Reset to start returns to the board afterwards. Moves are free experimentation; only Check counts.'));
   }
 
   function view(api) {
@@ -444,11 +509,12 @@
       body.push(tileWorkspace(api, { submit: function (row) { gs.guess = row; submit(row.join('')); } }));
     }
     if (p.type === 'grid') {
+      ensureBoard(p, gs);
       body.push(stepsList(p.steps));
       body.push(h('div', { class: 're-boards' },
         h('div', null, h('div', { class: 'lbl' }, 'Board afterwards'), gridView(p.final, p.n)),
         h('div', null, h('div', { class: 'lbl' }, 'Your board'), gridView(gs.cells, p.n, { sel: gs.sel, disabled: api.done, onclick: function (i) {
-          if (gs.sel == null) { gs.sel = i; } else if (gs.sel === i) { gs.sel = null; } else { if (!gs.bh) { gs.bh = []; gs.bf = []; } gs.bh.push(gs.cells.slice()); gs.bf = []; var t = gs.cells[gs.sel]; gs.cells[gs.sel] = gs.cells[i]; gs.cells[i] = t; gs.sel = null; gs.swaps++; }
+          if (gs.sel == null) { gs.sel = i; } else if (gs.sel === i) { gs.sel = null; } else { var a = gs.sel; gs.sel = null; boardMove(api, function (g) { var t = g[a]; g[a] = g[i]; g[i] = t; return g; }, true); return; }
           api.update(gs);
         } }))));
       if (!api.done) body.push(boardTools(api));
@@ -544,6 +610,6 @@
     generate: generate, init: init, view: view, hint: hint, evaluate: evaluate, review: review, stats: stats,
     benchmark: function (lv) { return 60 + lv * 25; }, timeLimit: function (lv) { return 150 + lv * 30; },
     math: function (p) { return !!p.math; },
-    _check: check, _NUM: NUM_OPS, _run: runChain, _seqApply: seqApply, _GRID: GRID_OPS, _starts: startsFor
+    _check: check, _tileRows: tileRows, _hist: { commit: hCommit, undo: hUndo, redo: hRedo, reset: hReset, cur: hCur, make: hNew }, _ensureTiles: ensureTiles, _ensureBoard: ensureBoard, _NUM: NUM_OPS, _run: runChain, _seqApply: seqApply, _GRID: GRID_OPS, _starts: startsFor
   };
 })();

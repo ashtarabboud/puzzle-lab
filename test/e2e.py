@@ -116,7 +116,7 @@ async def solve_current(page, g, with_wrong=False):
         elif t == 'multi':
             await page.locator('.opts .btn').nth(p['answer']).click()
         elif t == 'seq':
-            row = await cur(page, 'c.rec.gs.tws ? c.rec.gs.tws.rows[0] : c.p.final')
+            row = await cur(page, '(PL.games.reverse._tileRows(c.rec.gs) || [c.p.final])[0]')
             target = p['answer']; row = list(row)
             tiles = page.locator('.tws-row').first.locator('.tws-tile')
             for i in range(len(target)):
@@ -322,19 +322,77 @@ async def main():
             await page.click('summary[aria-label="More actions"]'); await page.click('text=Skip this puzzle'); await page.wait_for_timeout(150)
             await go_home(page)
         if found:
-            row0 = await cur(page, 'c.rec.gs.tws ? c.rec.gs.tws.rows[0].join("") : c.p.final.join("")')
-            tiles = page.locator('.tws-row').first.locator('.tws-tile')
-            b0 = await tiles.nth(0).bounding_box(); b2 = await tiles.nth(2).bounding_box()
+            ROWS = '(PL.games.reverse._tileRows(c.rec.gs) || [c.p.final]).map(r => r.join("")).join("|")'
+            tiles = lambda: page.locator('.tws-row').first.locator('.tws-tile')
+            async def tap_tile(i):
+                bb = await tiles().nth(i).bounding_box(); await page.touchscreen.tap(bb['x'] + bb['width'] / 2, bb['y'] + bb['height'] / 2); await page.wait_for_timeout(70)
+            async def ws_btn(act): await page.locator(f'.workspace .ws-head button[data-act="{act}"]').click(); await page.wait_for_timeout(70)
+            hist = [await cur(page, ROWS)]
+            # drag tile 0 onto position 2
+            b0 = await tiles().nth(0).bounding_box(); b2 = await tiles().nth(2).bounding_box()
             await page.mouse.move(b0['x'] + 10, b0['y'] + 20); await page.mouse.down()
             for i in range(8): await page.mouse.move(b0['x'] + 10 + (b2['x'] - b0['x'] + 12) * (i + 1) / 8, b0['y'] + 20)
             await page.mouse.up(); await page.wait_for_timeout(150)
-            row1 = await cur(page, 'c.rec.gs.tws.rows[0].join("")')
-            check(row1 == row0[1:3] + row0[0] + row0[3:], f'dragging a tile moves it ({row0} → {row1})')
-            await page.click('.workspace button:has-text("Undo")'); await page.wait_for_timeout(80)
-            check(await cur(page, 'c.rec.gs.tws.rows[0].join("")') == row0, 'workspace undo')
+            r0 = hist[0]; hist.append(await cur(page, ROWS))
+            check(hist[1] == r0[1:3] + r0[0] + r0[3:], f'dragging a tile moves it ({r0} → {hist[1]})')
+            await tap_tile(0); await tap_tile(3); hist.append(await cur(page, ROWS)); check(hist[2] != hist[1], 'tap-swap is a move')
+            await tap_tile(1); await tap_tile(2); hist.append(await cur(page, ROWS))
+            await page.locator('.tws-acts button[aria-label="Reverse this row"]').first.click(); await page.wait_for_timeout(70); hist.append(await cur(page, ROWS))
+            await page.locator('.tws-acts button[aria-label="Duplicate this row"]').first.click(); await page.wait_for_timeout(70); hist.append(await cur(page, ROWS))
+            # a cancelled touch (iOS system gesture) must not drop the tile anywhere
+            await page.evaluate("""(() => { const t = document.querySelector('.tws-row .tws-tile'); const o = {bubbles: true, pointerId: 77, pointerType: 'touch', isPrimary: true};
+                t.dispatchEvent(new PointerEvent('pointerdown', Object.assign({clientX: t.getBoundingClientRect().left + 10, clientY: t.getBoundingClientRect().top + 10}, o)));
+                t.dispatchEvent(new PointerEvent('pointermove', Object.assign({clientX: 300, clientY: t.getBoundingClientRect().top + 10}, o)));
+                t.dispatchEvent(new PointerEvent('pointercancel', Object.assign({clientX: 0, clientY: 0}, o))); })()""")
+            await page.wait_for_timeout(80)
+            check(await cur(page, ROWS) == hist[-1], 'a cancelled drag changes nothing')
+            okk = True
+            for k in range(len(hist) - 1, 0, -1):
+                await ws_btn('undo'); got = await cur(page, ROWS); okk = okk and got == hist[k - 1]
+            check(okk, 'undo steps back through every recorded arrangement to the start')
+            check(await page.locator('.workspace .ws-head button[data-act="undo"]').is_disabled(), 'undo stops at the start')
+            okk = True
+            for k in range(1, len(hist)):
+                await ws_btn('redo'); okk = okk and await cur(page, ROWS) == hist[k]
+            check(okk, 'redo replays the same arrangements')
+            await ws_btn('undo'); await ws_btn('undo')
+            await go_home(page); await open_game(page, 'reverse'); await page.wait_for_selector('#gamebody')
+            check(await cur(page, ROWS) == hist[-3], 'leaving and returning keeps the arrangement')
+            await ws_btn('undo'); check(await cur(page, ROWS) == hist[-4], 'undo history survives leaving and returning')
+            await ws_btn('redo'); await ws_btn('redo'); check(await cur(page, ROWS) == hist[-2], 'redo survives leaving and returning')
+            await tap_tile(0); await tap_tile(1); branched = await cur(page, ROWS)
+            check(await page.locator('.workspace .ws-head button[data-act="redo"]').is_disabled(), 'a new move clears redo')
+            await ws_btn('reset'); check(await cur(page, ROWS) == hist[0], 'reset to start')
+            await ws_btn('undo'); check(await cur(page, ROWS) == branched, 'reset can be undone')
             check(await cur(page, 'c.rec.hints') == 0 and await cur(page, 'c.rec.wrong') == 0, 'workspace use is not a hint or attempt')
             await page.screenshot(path=f'{OUT}/reverse_ws.png', full_page=True)
         else: check(False, 'found a sequence puzzle to test dragging')
+        # ---- Reverse Engineer board undo ----
+        await go_home(page); await page.evaluate("PL.model.clearActive('reverse')")
+        found = False
+        for attempt in range(40):
+            await open_game(page, 'reverse'); await page.wait_for_selector('#gamebody')
+            if await cur(page, 'c.p.type') == 'grid': found = True; break
+            await page.click('summary[aria-label="More actions"]'); await page.click('text=Skip this puzzle'); await page.wait_for_timeout(150)
+            await go_home(page)
+        if found:
+            B = 'JSON.stringify(c.rec.gs.cells)'; cellsel = lambda: page.locator('.re-boards > div').nth(1).locator('.re-cell')
+            bh = [await cur(page, B)]
+            await cellsel().nth(0).click(); await cellsel().nth(4).click(); await page.wait_for_timeout(60); bh.append(await cur(page, B))
+            await page.click('button[aria-label="Rotate the board clockwise"]'); await page.wait_for_timeout(60); bh.append(await cur(page, B))
+            await cellsel().nth(1).click(); await page.click('button[aria-label="Slide the selected row right"]'); await page.wait_for_timeout(60); bh.append(await cur(page, B))
+            await page.click('button[aria-label="Flip left to right"]'); await page.wait_for_timeout(60); bh.append(await cur(page, B))
+            okk = True
+            for k in range(len(bh) - 1, 0, -1):
+                await page.click('.board-tools button[data-act="undo"]'); await page.wait_for_timeout(60); okk = okk and await cur(page, B) == bh[k - 1]
+            check(okk and bh[0] == await cur(page, 'JSON.stringify(c.p.final)'), 'board undo returns exactly to the starting board')
+            okk = True
+            for k in range(1, len(bh)):
+                await page.click('.board-tools button[data-act="redo"]'); await page.wait_for_timeout(60); okk = okk and await cur(page, B) == bh[k]
+            check(okk, 'board redo replays the moves')
+            await page.click('.board-tools button[data-act="reset"]'); await page.wait_for_timeout(60)
+            check(await cur(page, B) == bh[0], 'board reset to start')
+        else: check(False, 'found a board puzzle to test undo')
 
         # ---- stats pages render ----
         await go_home(page); await page.click('text=Statistics'); await page.wait_for_selector('.tiles')
@@ -395,4 +453,5 @@ async def main():
     if failed: print('FAILED:\n' + '\n'.join(failed))
     sys.exit(1 if failed else 0)
 
-asyncio.run(main())
+if __name__ == '__main__':
+    asyncio.run(main())
