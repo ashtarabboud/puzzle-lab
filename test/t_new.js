@@ -45,6 +45,15 @@ for(const lv of [1,4,8,10])for(let k=0;k<5;k++){const G=PL.games.trails;const p=
  const att={game:'wordrush',mode:'unlimited',puzzle:JSON.parse(JSON.stringify(p1)),gs:gs1,hints:0,quality:100,perf:100,outcome:'solved',metrics:{mode:'timed',target:9,points:6}};
  const r=G.rescore(att);ok(r&&r.v1.quality===100&&r.v1.target===9&&r.quality<60&&r.metrics.sv===2,'v1 round re-scored ('+(r&&r.quality)+'), original kept');
  ok(G.rescore(Object.assign({},att,{metrics:r.metrics}))===null,'re-scoring is idempotent');}
+// Word Trails: progressive hints, one new piece per hint, along the verified path, tracked per word
+{const T=PL.games.trails;const p=T.generate(4,PL.rng('twh'),{});const gs=T.init(p);const msgs=[];
+ const first=p.words.find(x=>!x.span);let r,n=0;while(n<30){r=T.hint(p,gs);if(r.noCount)break;msgs.push(r.msg);n++;}
+ ok(n===first.path.length+1,'one hint per cell plus the outline ('+n+' for '+first.w+')');ok(new Set(msgs).size===msgs.length,'no hint repeats');
+ ok(msgs[1].includes(p.letters[first.path[0]])&&msgs.slice(2).every((m,k)=>m.includes('“'+p.letters[first.path[k+1]]+'”')),'letters follow the verified path');
+ ok(T._hintState(p,gs).stage===first.path.length+1,'progress stored on the word');
+ const second=p.words.find(x=>!x.span&&x.w!==first.w);gs.found.push(second.w);ok(T._hintState(p,gs).w===first.w,'finding another word keeps this hint');
+ gs.found.push(first.w);const r2=T.hint(p,gs);ok(!r2.noCount&&gs.hintW!==first.w&&gs.hp[gs.hintW]===1,'next hint moves to a new word');
+ const legacy={found:[],tries:0,notTheme:[],hintW:first.w,hintStage:2};ok(T._hintState(p,legacy).stage===2,'older saved hint progress carried over');}
 // Word Count: per-cell marks are independent; old per-letter marks are converted; hints are kept apart
 {const W=PL.games.wordcount;const gs={rows:[{g:'nouns',c:[1,1,3]},{g:'manor',c:[0,2,3]}],cur:'',mk:{n:3,o:2},told:['N is in the word.'],markMode:true};
  W._upgrade(gs);ok(!gs.mk&&gs.cm[0][0]===0&&gs.cm[0][1]===3&&gs.cm[1][3]===3&&gs.hin.join()==='n','old letter marks converted per cell; hint letters kept apart');

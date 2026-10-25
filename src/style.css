@@ -440,6 +440,9 @@ body.dock-open .toast { bottom: calc(var(--dock-h) + 12px); }
 .tr-cell.found { background: color-mix(in srgb, var(--accent) 22%, var(--card)); border-color: var(--accent); }
 .tr-cell.spanned { background: var(--marker); border-color: var(--marker); color: #fff; }
 .tr-cell.hinted { box-shadow: 0 0 0 3px var(--marker); }
+.tr-cell.ordered { background: var(--marker-soft); }
+.tr-ord { position: absolute; top: -4px; right: -4px; min-width: 20px; height: 20px; border-radius: 10px; background: var(--marker); color: #fff; font-family: var(--mono); font-size: 12px; line-height: 20px; text-align: center; padding: 0 4px; }
+.tr-line.hint { stroke: var(--marker); stroke-dasharray: 6 5; opacity: 0.9; }
 .tr-lines { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 0; overflow: visible; }
 .tr-line { fill: none; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; opacity: 0.35; stroke: var(--accent); }
 .tr-line.span { stroke: var(--marker); opacity: 0.55; }

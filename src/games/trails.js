@@ -129,22 +129,36 @@
     }
     throw new Error('Word Trails could not build a board');
   }
-  function init(p) { return { found: [], tries: 0, notTheme: [], hintW: null, hintStage: 0 }; }
+  function init(p) { return { found: [], tries: 0, notTheme: [], hintW: null, hintStage: 0, hp: {} }; }
+  /* Progressive hints, tracked per word in gs.hp (so progress survives leaving, and switching to another word):
+       stage 1  outline every cell of one unfound word
+       stage 2  number its starting cell (1)
+       stage 3+ number the next cell along the word's verified path (2, 3, ...) and draw the revealed segment
+     until every cell is numbered; nothing is ever repeated and only the generator's checked path is shown. */
+  function hintState(p, gs) {
+    if (!gs.hp) { gs.hp = {}; if (gs.hintW && gs.hintStage) gs.hp[gs.hintW] = gs.hintStage; } // records from before per-word progress
+    var w = gs.hintW && gs.found.indexOf(gs.hintW) < 0 ? gs.hintW : null;
+    var pl = w ? p.words.filter(function (x) { return x.w === w; })[0] : null;
+    return { w: w, pl: pl, stage: w ? gs.hp[w] || 0 : 0 };
+  }
   function view(api) {
     var p = api.p, gs = api.gs;
     var foundSet = {}; gs.found.forEach(function (w) { foundSet[w] = 1; });
     var cellOwner = {}; p.words.forEach(function (pl) { pl.path.forEach(function (x) { cellOwner[x] = pl; }); });
-    var hintCells = {}; if (gs.hintW && !foundSet[gs.hintW]) { var hp = p.words.filter(function (x) { return x.w === gs.hintW; })[0]; if (hp) hp.path.forEach(function (x) { hintCells[x] = 1; }); }
+    var hs = hintState(p, gs), hintCells = {}, hintOrd = {}, shown = 0;
+    if (hs.pl && hs.stage >= 1) { hs.pl.path.forEach(function (x) { hintCells[x] = 1; }); shown = Math.min(hs.pl.path.length, hs.stage - 1); hs.pl.path.slice(0, shown).forEach(function (x, k) { hintOrd[x] = k + 1; }); }
     var tr = PL.trace.grid({
       rows: p.R, cols: p.C, letters: p.letters, disabled: api.done,
-      lines: p.words.filter(function (pl) { return foundSet[pl.w]; }).map(function (pl) { return { path: pl.path, cls: pl.span ? 'span' : 'found' }; }),
-      cellClass: function (i) { var o = cellOwner[i]; return o && foundSet[o.w] ? (o.span ? 'spanned' : 'found') : hintCells[i] ? 'hinted' : ''; },
+      lines: p.words.filter(function (pl) { return foundSet[pl.w]; }).map(function (pl) { return { path: pl.path, cls: pl.span ? 'span' : 'found' }; })
+        .concat(shown >= 2 ? [{ path: hs.pl.path.slice(0, shown), cls: 'hint' }] : []),
+      cellClass: function (i) { var o = cellOwner[i]; return o && foundSet[o.w] ? (o.span ? 'spanned' : 'found') : hintCells[i] ? 'hinted' + (hintOrd[i] ? ' ordered' : '') : ''; },
+      cellBadge: function (i) { return hintOrd[i] || null; },
       onSubmit: function (path) {
         var w = path.map(function (i) { return p.letters[i]; }).join('');
         var match = p.words.filter(function (pl) { return pl.w === w; })[0];
         if (match && !foundSet[w]) {
           gs.found.push(w); if (gs.hintW === w) { gs.hintW = null; gs.hintStage = 0; }
-          api.toast(match.span ? 'Theme word! ' + w : w, 'good');
+          api.toast(match.span ? 'Theme word! ' + w : w, 'good'); if (PL.fx) PL.fx.good();
           if (gs.found.length === p.words.length) { api.update(gs); api.finish('solved'); return; }
           api.update(gs); return;
         }
@@ -160,23 +174,30 @@
       h('div', { class: 'tw-clue' }, h('span', { class: 'lbl' }, 'Theme '), h('b', null, p.clue)),
       h('div', { class: 'muted small' }, (gs.found.length) + ' of ' + p.words.length + ' theme words found' + (themeFound ? '' : ' · one of them spans the board and names the theme')),
       tr.el,
+      hs.pl && hs.stage >= 1 ? h('div', { class: 'muted small' }, shown >= hs.pl.path.length ? 'Hint: trace the numbered cells in order, 1 to ' + hs.pl.path.length + '.' : 'Hint: the outlined cells form one ' + hs.pl.path.length + '-letter theme word' + (shown ? '; the numbers show how it starts.' : '.')) : null,
       gs.notTheme.length ? h('div', { class: 'muted small' }, 'Words that aren’t in the theme: ' + gs.notTheme.join(', ')) : null);
   }
-  /* Hints: first outline the cells of an unfound word (theme word last), then reveal that word */
   function hint(p, gs) {
     var unfound = p.words.filter(function (pl) { return gs.found.indexOf(pl.w) < 0; });
     if (!unfound.length) return { msg: 'Everything is found.', noCount: true };
-    if (!gs.hintW || gs.found.indexOf(gs.hintW) >= 0) {
-      var others = unfound.filter(function (pl) { return !pl.span; });
-      gs.hintW = (others.length ? others : unfound)[0].w; gs.hintStage = 0;
+    var hs = hintState(p, gs);
+    if (!hs.w) { // pick the next word: one already started, else the first unfound non-theme word, theme word last
+      var started = unfound.filter(function (pl) { return gs.hp[pl.w]; }), others = unfound.filter(function (pl) { return !pl.span; });
+      gs.hintW = (started.length ? started : others.length ? others : unfound)[0].w;
+      hs = hintState(p, gs);
     }
-    gs.hintStage++;
-    if (gs.hintStage === 1) return { msg: 'The highlighted cells form one theme word.', gs: gs };
-    var w = gs.hintW; return { msg: 'The highlighted word is ' + w + '.', gs: gs };
+    var pl = hs.pl, L = pl.path.length, st = hs.stage;
+    if (st >= L + 1) return { msg: 'Every cell of this word is numbered: trace 1 to ' + L + '.', noCount: true };
+    st = gs.hp[pl.w] = st + 1; gs.hintStage = st;
+    var msg;
+    if (st === 1) msg = 'The outlined cells form one ' + L + '-letter theme word' + (pl.span ? ' (the one that names the theme)' : '') + '.';
+    else if (st === 2) msg = 'It starts at the cell marked 1: “' + p.letters[pl.path[0]] + '”.';
+    else msg = 'Letter ' + (st - 1) + ' is “' + p.letters[pl.path[st - 2]] + '”, marked ' + (st - 1) + (st - 1 === L ? '. That is the whole word.' : '.');
+    return { msg: msg, gs: gs };
   }
   function evaluate(p, gs, ctx) {
     var solved = ctx.outcome === 'solved', n = gs.found.length;
-    var q = solved ? PL.clamp(100 - ctx.hints * 10 - Math.floor(gs.tries / 4) * 3, 15, 100) : Math.round(40 * n / p.words.length);
+    var q = solved ? PL.clamp(100 - ctx.hints * 7 - Math.floor(gs.tries / 4) * 3, 15, 100) : Math.round(40 * n / p.words.length);
     return { quality: Math.round(q), metrics: { found: gs.found.slice(), words: p.words.length, theme: p.theme, size: p.C + '×' + p.R, perfect: solved && !ctx.hints, tries: gs.tries },
       lines: [['Theme words', n + ' / ' + p.words.length], ['Board', p.C + ' × ' + p.R], ['Non-theme tries', gs.tries]] };
   }
@@ -196,6 +217,6 @@
     rules: 'Every letter belongs to exactly one theme word. Trace words through touching letters, including diagonals; each letter is used once. One special theme word stretches from one side of the board to the other and names the theme. Find them all.',
     generate: generate, init: init, view: view, hint: hint, evaluate: evaluate, review: review, stats: stats,
     benchmark: function (lv) { return 150 + lv * 30; }, timeLimit: function (lv) { return 600; },
-    _build: build, _verify: verify
+    _build: build, _verify: verify, _hintState: hintState
   };
 })();

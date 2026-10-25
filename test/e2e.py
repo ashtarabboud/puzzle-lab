@@ -452,6 +452,27 @@ async def main():
         await page.click('text=Statistics'); await page.wait_for_selector('.tiles'); await page.locator('tr.rowlink:has-text("Word Rush")').click(); await page.wait_for_timeout(200)
         check(await page.locator('text=Re-scored from v1').count() == 1 and await page.locator('text=Share of findable words found').count() == 1, 'Word Rush statistics show coverage and re-scored rounds')
         await page.screenshot(path=f'{OUT}/wordrush_stats.png', full_page=True)
+        # ---- Word Trails progressive hints ----
+        await go_home(page); await page.evaluate("PL.model.clearActive('trails')")
+        await open_game(page, 'trails'); await page.wait_for_selector('.trails')
+        L = await cur(page, 'c.p.words.find(x => !x.span).path.length')
+        badges = []
+        for k in range(L + 1):
+            await page.click('#hintbtn'); await page.wait_for_timeout(80)
+            badges.append(await page.locator('.tr-ord').count())
+        check(await page.locator('.tr-cell.hinted').count() == L and badges == list(range(0, L + 1)), f'each hint numbers one more cell along the path ({badges})')
+        hints = await cur(page, 'c.rec.hints')
+        await page.click('#hintbtn'); await page.wait_for_timeout(80)
+        check(await cur(page, 'c.rec.hints') == hints == L + 1, 'a fully revealed word does not charge another hint')
+        await go_home(page); await open_game(page, 'trails'); await page.wait_for_selector('.trails')
+        check(await page.locator('.tr-ord').count() == L, 'hint progress survives leaving and returning')
+        order = await page.evaluate("""(() => { const out = []; document.querySelectorAll('.tr-cell').forEach(c => { const b = c.querySelector('.tr-ord'); if (b) out[+b.textContent - 1] = +c.dataset.i; }); return out; })()""")
+        check(order == await cur(page, 'c.p.words.find(x => !x.span).path'), 'the numbers follow the verified path')
+        await trace_path(page, order)
+        check(await cur(page, 'c.rec.gs.found.length') == 1 and await page.locator('.tr-ord').count() == 0, 'tracing the numbered cells completes the word')
+        await page.click('#hintbtn'); await page.wait_for_timeout(80)
+        check(await page.locator('.tr-cell.hinted').count() > 0 and await page.locator('.tr-ord').count() == 0, 'the next hint starts on a new word')
+        await page.screenshot(path=f'{OUT}/trails_hints.png')
         # ---- stats pages render ----
         await go_home(page); await page.click('text=Statistics'); await page.wait_for_selector('.tiles')
         await page.screenshot(path=f'{OUT}/stats.png', full_page=True)

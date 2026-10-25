@@ -5,7 +5,7 @@
 (function () {
   var h = PL.h;
   function adj(a, b, cols) { var ra = Math.floor(a / cols), ca = a % cols, rb = Math.floor(b / cols), cb = b % cols; return a !== b && Math.abs(ra - rb) <= 1 && Math.abs(ca - cb) <= 1; }
-  /* opts: rows, cols, letters (array of strings, may be 'QU'), cellClass(i) -> string, onSubmit(path) -> void, disabled,
+  /* opts: rows, cols, letters (array of strings, may be 'QU'), cellClass(i) -> string, cellBadge(i) -> number|null, onSubmit(path) -> void, disabled,
            lines: array of {path, cls} drawn as connectors (found words) */
   function traceGrid(opts) {
     var path = [], cells = [];
@@ -14,7 +14,8 @@
     var grid = h('div', { class: 'tr-grid', style: { 'grid-template-columns': 'repeat(' + opts.cols + ', 1fr)' } });
     var svg = PL.svg('svg', { class: 'tr-lines', 'aria-hidden': 'true' });
     opts.letters.forEach(function (L, i) {
-      var c = h('div', { class: 'tr-cell ' + (opts.cellClass ? opts.cellClass(i) : ''), 'data-i': i, role: 'button', 'aria-label': L + ' row ' + (Math.floor(i / opts.cols) + 1) + ' column ' + (i % opts.cols + 1) }, h('span', null, L.length > 1 ? L[0] + L.slice(1).toLowerCase() : L));
+      var badge = opts.cellBadge ? opts.cellBadge(i) : null;
+      var c = h('div', { class: 'tr-cell ' + (opts.cellClass ? opts.cellClass(i) : ''), 'data-i': i, role: 'button', 'aria-label': L + ' row ' + (Math.floor(i / opts.cols) + 1) + ' column ' + (i % opts.cols + 1) + (badge ? ', hint step ' + badge : '') }, h('span', null, L.length > 1 ? L[0] + L.slice(1).toLowerCase() : L), badge ? h('b', { class: 'tr-ord' }, String(badge)) : null);
       cells.push(c); grid.appendChild(c);
     });
     wrap.appendChild(grid); wrap.appendChild(svg);
