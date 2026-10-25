@@ -27,6 +27,10 @@
 html, body { background: var(--paper); color: var(--ink); margin: 0; }
 html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); -webkit-tap-highlight-color: transparent; }
 [hidden] { display: none !important; }
+/* No accidental zoom: "manipulation" keeps taps, scrolling and two-finger pinch zoom (and every iOS accessibility zoom)
+   but removes double-tap-to-zoom, so rapid tapping in games never zooms the page. Elements that need raw touches
+   (drawing canvas, tile and letter dragging) set touch-action: none on their own class, which overrides this. */
+*, *::before, *::after { touch-action: manipulation; }
 img { max-width: 100%; }
 body { font-family: var(--body); font-size: 16px; line-height: 1.5; -webkit-text-size-adjust: 100%;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -124,7 +128,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .row-in { display: flex; gap: 8px; }
 .row-in .txt { flex: 1; min-width: 0; }
 .txt { font: inherit; font-size: 17px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--ink); min-height: 46px; width: 100%; }
-.txt.area { min-height: 80px; resize: vertical; font-size: 15px; }
+.txt.area { min-height: 80px; resize: vertical; font-size: 16px; } /* iOS zooms into any field under 16px */
 .txt:focus { border-color: var(--accent); outline: none; }
 .sel { font: inherit; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--ink); }
 .prob { font-size: 17px; }
@@ -370,8 +374,7 @@ body.dock-open .toast { bottom: calc(var(--dock-h) + 12px); }
 .calc-expr.dim { color: var(--muted); font-size: 16px; }
 .calc-res.err { color: var(--bad); }
 .ckey.fn { color: var(--muted); font-size: 16px; }
-.calc-pad { grid-template-columns: repeat(5, 1fr); gap: 5px; }
-.calc-pad .ckey { min-height: 42px; }
+.calc-pad .ckey { min-height: 44px; }
 .canvas-wrap { min-height: 120px; }
 .scr-text { min-height: 100px; }
 /* home groups (v3) */
@@ -508,7 +511,7 @@ body.dock-open .toast { bottom: calc(var(--dock-h) + 12px); }
 .nws-rows { display: flex; flex-direction: column; gap: 8px; }
 .nws-row { display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
 .nws-top { display: flex; gap: 4px; align-items: center; }
-.nws-lab { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 13px; font-weight: 600; padding: 4px 0; }
+.nws-lab { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 16px; font-weight: 600; padding: 4px 0; }
 .nws-bottom { display: flex; gap: 8px; align-items: center; }
 .nws-in { flex: 1; min-width: 0; font-size: 16px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--ink); }
 .nws-val { flex: none; max-width: 45%; overflow-wrap: anywhere; color: var(--accent); font-size: 14px; font-weight: 700; }
@@ -556,10 +559,16 @@ button.re-cell { cursor: pointer; }
 .calc-disp { background: var(--soft); border-radius: 10px; padding: 10px 12px; min-height: 72px; display: flex; flex-direction: column; justify-content: flex-end; text-align: right; }
 .calc-expr { font-size: 22px; overflow-wrap: anywhere; }
 .calc-res { font-size: 16px; color: var(--accent); min-height: 22px; overflow-wrap: anywhere; }
-.calc-pad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-.ckey { min-height: 48px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); font-family: var(--mono); font-size: 19px; font-weight: 700; cursor: pointer; color: var(--ink); }
-.ckey.op { color: var(--accent); }
-.ckey.eq { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+.calc-pad { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.calc-pad.more { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 8px; }
+.ckey { min-height: 50px; min-width: 0; border: 1px solid var(--line); border-radius: 12px; background: var(--card); font-family: var(--mono); font-size: 20px; font-weight: 700; cursor: pointer; color: var(--ink); padding: 0; }
+.ckey.num { background: var(--card); }
+.ckey.fn { background: var(--soft); color: var(--ink); font-size: 17px; }
+.ckey.op { background: var(--accent-soft); color: var(--accent); border-color: transparent; font-size: 24px; }
+.ckey.eq { background: var(--accent); color: var(--paper); border-color: var(--accent); font-size: 24px; }
+.ckey.adv { background: var(--soft); font-size: 16px; }
+.ckey:active { transform: scale(0.97); }
+.calc-more > summary { color: var(--muted); padding: 8px 0 0; cursor: pointer; }
 .calc-hist { display: flex; flex-direction: column; max-height: 120px; overflow: auto; }
 .calc-sheet { height: auto; max-height: 88vh; max-height: 88dvh; }
 @media (max-width: 380px) { .tiles { grid-template-columns: repeat(2, 1fr); } .lt { width: 36px; } .det-acts { grid-template-columns: 1fr; } }

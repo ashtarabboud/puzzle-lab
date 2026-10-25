@@ -262,8 +262,9 @@ async def main():
         # ---- calculator & scratchpad ----
         await go_home(page); await open_game(page, 'algebra'); await page.wait_for_selector('#gamebody')
         await page.click('[aria-label="Calculator"]'); await page.wait_for_selector('.calc-pad')
-        for k in ['3', '÷', '4', '+', '1', 'a/b', '6', '=']:
-            await page.locator('.ckey', has_text=k).first.click() if k not in ('+', '÷', '=') else await page.locator(f'.ckey[aria-label="{k}"]').click()
+        await page.click('.calc-more > summary')
+        for k in ['3', '÷', '4', '+', '1', '/', '6', '=']:
+            await page.locator(f'.ckey[data-k="{k}"]').click()
         res = await page.locator('.calc-res').inner_text(); check('11/12' in res, 'calculator: 3÷4+1/6 = 11/12 (' + res + ')')
         await page.screenshot(path=f'{OUT}/calculator.png')
         await page.click('.dock button:has-text("Close")')
@@ -327,9 +328,26 @@ async def main():
         await page.click('[aria-label="Calculator"]'); await page.wait_for_selector('.dock .calc-pad')
         prob = await page.locator('.gamebody .prob').first.bounding_box(); dock = await page.locator('.dock').bounding_box()
         check(prob and prob['y'] >= 0 and prob['y'] + 20 < dock['y'], 'question stays visible above the open calculator')
-        for k in ['5', '+', '5', '=', '÷', '2', '=']:
-            await page.locator(f'.dock .ckey[aria-label="{k}"]').click()
+        async def keys(ks):
+            for k in ks: await page.locator(f'.dock .ckey[data-k="{k}"]').click()
+        await keys(['AC', '5', '+', '5', '=', '÷', '2', '='])
         res = await page.locator('.calc-res').inner_text(); check(res.strip() == '= 5', 'calculator chains 5 + 5 = ÷ 2 = → 5 (' + res + ')')
+        await keys(['AC', '5', '+', '5', '÷', '2', '='])
+        res = await page.locator('.calc-res').inner_text(); check(res.strip() == '= 7.5', 'calculator precedence 5 + 5 ÷ 2 = → 7.5 (' + res + ')')
+        await keys(['AC', '5', '−', '3', '±', '='])
+        res = await page.locator('.calc-res').inner_text(); check(res.strip() == '= 8', 'sign key: 5 − (−3) = 8 (' + res + ')')
+        await keys(['AC', '2', '×', '()', '3', '+', '4', '()', '='])
+        res = await page.locator('.calc-res').inner_text(); check(res.strip() == '= 14', 'bracket key: 2 × (3 + 4) = 14 (' + res + ')')
+        layout = await page.evaluate("""(() => { const r = k => document.querySelector('.dock .ckey[data-k="' + k + '"]').getBoundingClientRect();
+            const rows = [['7','8','9','÷'], ['4','5','6','×'], ['1','2','3','−'], ['0','.','=','+']];
+            const same = rows.every(row => row.every(k => Math.abs(r(k).top - r(row[0]).top) < 2));
+            const cols = [0,1,2,3].every(c => rows.every(row => Math.abs(r(row[c]).left - r(rows[0][c]).left) < 2));
+            const all = [...document.querySelectorAll('.dock .calc-pad:not(.more) .ckey')].map(e => e.getBoundingClientRect());
+            const sizes = all.every(b => b.height >= 44 && Math.abs(b.width - all[0].width) < 1.5);
+            let overlap = false; all.forEach((a, i) => all.forEach((b, j) => { if (i < j && a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1) overlap = true; }));
+            return {same, cols, sizes, overlap, n: all.length}; })()""")
+        check(layout['same'] and layout['cols'] and layout['sizes'] and not layout['overlap'] and layout['n'] == 20, f'keypad: 7-8-9 / 4-5-6 / 1-2-3 / 0 . = rows, operators in one column, equal sizes, no overlaps ({layout})')
+        await page.screenshot(path=f'{OUT}/calc_layout.png')
         await page.click('.dock .segb:has-text("Scratchpad")'); await page.wait_for_selector('.dock .scr-canvas')
         check(await page.locator('.gamebody .prob').first.is_visible(), 'question visible with scratchpad open')
         before_ms = await cur(page, 'c.rec.activeMs'); await page.wait_for_timeout(1200)
@@ -497,6 +515,33 @@ async def main():
         await page.click('#hintbtn'); await page.wait_for_timeout(80)
         check(await page.locator('.tr-cell.hinted').count() > 0 and await page.locator('.tr-ord').count() == 0, 'the next hint starts on a new word')
         await page.screenshot(path=f'{OUT}/trails_hints.png')
+        # ---- no accidental zoom: every game, rapid taps ----
+        cdp = await ctx.new_cdp_session(page)
+        async def rapid(x, y, n=4):
+            for _ in range(n):
+                await cdp.send('Input.dispatchTouchEvent', {'type': 'touchStart', 'touchPoints': [{'x': x, 'y': y}]})
+                await cdp.send('Input.dispatchTouchEvent', {'type': 'touchEnd', 'touchPoints': []}); await page.wait_for_timeout(40)
+        vp = await page.evaluate("document.querySelector('meta[name=viewport]').content")
+        check('user-scalable=no' not in vp and 'maximum-scale' not in vp, 'pinch zoom (accessibility) still allowed')
+        bad_ta = []
+        for g in GAMES:
+            await go_home(page); await open_game(page, g); await page.wait_for_selector('#gamebody'); await page.wait_for_timeout(150)
+            if g == 'wordrush' and await page.locator('button:has-text("Start untimed")').count(): await page.click('button:has-text("Start untimed")')
+            ta = await page.evaluate("""(() => { const out = []; document.querySelectorAll('#gamebody *, .toolbar *, button').forEach(el => { const t = getComputedStyle(el).touchAction; if (t !== 'manipulation' && t !== 'none') out.push(el.className + ':' + t); }); return out.slice(0, 3); })()""")
+            if ta: bad_ta.append((g, ta))
+            bb = await page.locator('#gamebody').bounding_box()
+            before = await cur(page, 'JSON.stringify(c.rec.hints)')
+            await rapid(bb['x'] + bb['width'] / 2, bb['y'] + 30)
+            await page.wait_for_timeout(350)
+            if await page.evaluate('visualViewport.scale') != 1: bad_ta.append((g, 'zoomed'))
+        check(not bad_ta, f'every game: double-tap zoom disabled, rapid taps never zoom ({bad_ta})')
+        # rapid taps on a real control still register every tap
+        await go_home(page); await page.evaluate("PL.model.clearActive('password')"); await open_game(page, 'password'); await page.wait_for_selector('.password')
+        for _ in range(3):  # the button moves down as clues appear, so aim at it each time (about 0.1 s apart)
+            btn = await page.locator('.password button:has-text("Next clue")').bounding_box()
+            await rapid(btn['x'] + btn['width'] / 2, btn['y'] + btn['height'] / 2, 1); await page.wait_for_timeout(60)
+        await page.wait_for_timeout(200)
+        got = await cur(page, 'c.rec.gs.res[0].shown'); check(got == 4, f'three quick taps on Next clue give three clues (shown {got})')
         # ---- stats pages render ----
         await go_home(page); await page.click('text=Statistics'); await page.wait_for_selector('.tiles')
         await page.screenshot(path=f'{OUT}/stats.png', full_page=True)

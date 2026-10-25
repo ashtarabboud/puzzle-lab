@@ -100,6 +100,17 @@
       try { var r = PL.calc.evaluate(st.expr); st.result = r; st.acc = r; st.justEval = true; st.err = false; st.lastExpr = st.expr; return r; }
       catch (e) { st.result = e.message; st.err = true; st.justEval = false; return null; }
     }
+    if (k === '±') { // negate the number being typed (or the last answer); a leading minus is unary, so 5 − ± 3 = 8
+      if (st.justEval) { st.justEval = false; st.result = ''; st.expr = st.acc != null ? resultToken(st.acc) : ''; }
+      var mm = st.expr.match(/(\d+\.?\d*|\.\d+|\([^()]*\))$/), body = mm ? st.expr.slice(0, st.expr.length - mm[1].length) : st.expr, tail = mm ? mm[1] : '';
+      var unary = /−$/.test(body) && (body.length === 1 || /[+−×÷^(\/]$/.test(body.slice(0, -1)));
+      st.expr = unary ? body.slice(0, -1) + tail : body + '−' + tail; return;
+    }
+    if (k === '()') { // one bracket key: closes an open bracket after a number or ")", otherwise opens one
+      if (st.justEval) { st.justEval = false; st.result = ''; st.expr = ''; }
+      var open = (st.expr.match(/\(/g) || []).length - (st.expr.match(/\)/g) || []).length;
+      st.expr += open > 0 && /[\d.)%]$/.test(st.expr) ? ')' : '('; return;
+    }
     if (k === 'ans') { if (st.acc == null) return; if (st.justEval) { st.expr = ''; st.justEval = false; } st.expr += resultToken(st.acc); return; }
     if (st.justEval) {
       st.justEval = false;
@@ -133,17 +144,25 @@
     var disp = h('div', { class: 'calc-disp' },
       h('div', { class: 'calc-expr mono' + (st.justEval ? ' dim' : '') }, shown || '0'),
       h('div', { class: 'calc-res mono' + (st.err ? ' err' : '') }, st.result ? (st.err ? st.result : '= ' + st.result) : (st.acc != null ? 'Ans = ' + st.acc : '')));
-    var keys = ['AC', 'CE', '⌫', '(', ')', '7', '8', '9', '÷', '√', '4', '5', '6', '×', '^', '1', '2', '3', '−', '/', '0', '.', 'ans', '+', '='];
-    var labels = { '/': 'a/b', 'ans': 'Ans' };
-    var pad = h('div', { class: 'calc-pad' }, keys.map(function (k) {
-      return h('button', { class: 'ckey' + (k === '=' ? ' eq' : OPS[k] ? ' op' : /^(AC|CE|⌫)$/.test(k) ? ' fn' : ''), 'aria-label': k === '/' ? 'fraction bar' : k === 'CE' ? 'clear entry' : k === 'AC' ? 'clear all' : k === '⌫' ? 'delete' : k, onclick: function () {
+    /* Familiar layout: digits in the usual 7-8-9 / 4-5-6 / 1-2-3 / 0 grid, the four operators in one column on the
+       right, clear / delete / sign / brackets on top. Less common keys sit in the "More" row. */
+    var keys = ['AC', '⌫', '±', '()', '7', '8', '9', '÷', '4', '5', '6', '×', '1', '2', '3', '−', '0', '.', '=', '+'];
+    var more = ['(', ')', 'CE', '√', '^', '/', 'ans', '%'];
+    var labels = { '/': 'a/b', 'ans': 'Ans', '()': '( )', '^': 'xʸ', '±': '+/−' };
+    var names = { '/': 'fraction bar', 'CE': 'clear entry', 'AC': 'clear all', '⌫': 'delete', '±': 'change sign', '()': 'bracket', '^': 'power', '√': 'square root', 'ans': 'previous answer', '÷': 'divide', '×': 'multiply', '−': 'minus', '+': 'plus', '=': 'equals', '%': 'percent' };
+    function key(k) {
+      return h('button', { class: 'ckey' + (k === '=' ? ' eq' : OPS[k] ? ' op' : /^(AC|CE|⌫|±|\(\)|\(|\))$/.test(k) ? ' fn' : /^[0-9.]$/.test(k) ? ' num' : ' adv'), 'data-k': k, 'aria-label': names[k] || k, onclick: function () {
         var r = press(st, k);
         if (k === '=' && r != null) { c.hist.push({ e: st.lastExpr, r: r }); }
         persist(); render();
       } }, labels[k] || k);
-    }));
-    c.el.appendChild(h('div', { class: 'sheet-body calc-body' }, disp, pad,
+    }
+    var pad = h('div', { class: 'calc-pad' }, keys.map(key));
+    var moreEl = h('details', { class: 'calc-more' }, h('summary', { class: 'small' }, 'More keys'), h('div', { class: 'calc-pad more' }, more.map(key)));
+    if (c.moreOpen) moreEl.open = true;
+    moreEl.addEventListener('toggle', function () { c.moreOpen = moreEl.open; });
+    c.el.appendChild(h('div', { class: 'sheet-body calc-body' }, disp, pad, moreEl,
       c.hist.length ? h('div', { class: 'calc-hist' }, c.hist.slice().reverse().map(function (x) { return h('button', { class: 'linkbtn mono small', onclick: function () { st.expr = x.e; st.justEval = false; st.result = ''; persist(); render(); } }, x.e + ' = ' + x.r); })) : null,
-      h('div', { class: 'muted small' }, 'After =, an operator continues from the answer; a number starts fresh. AC clears all, CE clears the current entry. Using the calculator never affects your score.')));
+      h('div', { class: 'muted small' }, 'After =, an operator continues from the answer; a number starts fresh. +/− changes the sign of the number you are typing; ( ) opens or closes a bracket. Using the calculator never affects your score.')));
   }
 })();

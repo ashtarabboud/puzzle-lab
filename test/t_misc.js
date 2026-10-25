@@ -17,5 +17,8 @@ for(const lv of [1,4,7,10])for(let k=0;k<4;k++){const p=LP.generate(lv,PL.rng('l
 const SH=PL.games.shape;
 for(let lv=1;lv<=10;lv++)for(let k=0;k<5;k++){const p=SH.generate(lv,PL.rng('sh'+lv+k));ok(SH._verify(p),'shape verified');const gs=SH.init(p);let n=0;while(!SH._solved(p,gs)&&n<20){SH.hint(p,gs);n++;}ok(SH._solved(p,gs),'shape hints complete the puzzle');}
 for(const [e,v] of [['3/4+1/6','11/12 ≈ 0.91666667'],['-3^2','-9'],['2(3+4)','14'],['√16','4']])ok(PL.calc.evaluate(e)===v,'calc '+e);
+{const R=k=>PL.calc.run(k);ok(R(['5','−','3','±','=']).result==='8','sign key after an operator');ok(R(['3','±','=']).result==='-3','sign key on the first number');
+ ok(R(['3','±','±','=']).result==='3','sign key toggles back');ok(R(['2','×','()','3','+','4','()','=']).result==='14','smart bracket key');
+ ok(R(['5','+','5','=','±','=']).result==='-10','sign of the previous answer');ok(R(['5','+','5','=','÷','2','=']).result==='5','chaining kept');ok(R(['5','+','5','÷','2','=']).result==='7.5','precedence kept');}
 let threw=false;try{PL.calc.evaluate('alert(1)');}catch(e){threw=true;}ok(threw,'calc rejects code');
 console.log('bad',bad);
