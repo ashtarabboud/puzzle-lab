@@ -372,7 +372,7 @@ async def main():
         # export round trip
         await p2.evaluate('PL._go({name:"settings"})'); await p2.wait_for_selector('text=Export data')
         exp = await p2.evaluate('JSON.stringify(PL.model.exportData())')
-        check(json.loads(exp)['schema'] == 2 and len([k for k in json.loads(exp)['data'] if k.startswith('att:')]) == 2, 'export contains everything (schema 2)')
+        check(json.loads(exp)['schema'] == 3 and len([k for k in json.loads(exp)['data'] if k.startswith('att:')]) == 2, 'export contains everything (schema 3)')
 
         bad_errs = [e for e in errs if 'favicon' not in e]
         check(not bad_errs, 'no page errors' + ('' if not bad_errs else ': ' + ' | '.join(bad_errs[:5])))
