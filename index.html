@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Puzzle Lab</title>
+<meta name="description" content="A personal arcade of seventeen puzzle games.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Puzzle Lab">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#f4f5f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121419" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="stylesheet" href="style.b31b4a0a26.css">
+</head>
+<body>
+<div id="app"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="data.57c157eeba.js"></script>
+<script src="app.45cc27988e.js"></script>
+<script>
+PL.boot();
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  navigator.serviceWorker && navigator.serviceWorker.register('sw.js').then(function (reg) {
+    function offer(w) { if (!w) return; PL.showUpdate(function () { w.postMessage('skip-waiting'); }); }
+    if (reg.waiting && navigator.serviceWorker.controller) offer(reg.waiting);
+    reg.addEventListener('updatefound', function () {
+      var w = reg.installing;
+      w && w.addEventListener('statechange', function () { if (w.state === 'installed' && navigator.serviceWorker.controller) offer(w); });
+    });
+    setInterval(function () { reg.update().catch(function () {}); }, 30 * 60 * 1000);
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) reg.update().catch(function () {}); });
+  }).catch(function () {});
+  // reload only when an update replaces an existing worker (not on the very first install)
+  var hadController = !!(navigator.serviceWorker && navigator.serviceWorker.controller), reloaded = false;
+  navigator.serviceWorker && navigator.serviceWorker.addEventListener('controllerchange', function () { if (!hadController || reloaded) return; reloaded = true; location.reload(); });
+}
+</script>
+</body>
+</html>
